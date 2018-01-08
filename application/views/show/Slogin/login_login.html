@@ -31,8 +31,8 @@
                     </div>
                     <div class="relative">
                         <i class="login-i login-i03"></i>
-                        <input type="text" class="form-control input-sell" placeholder="请输入您的姓名">
-                        <a role="button" class="login-yzm"><img src="public/khshop/images/yzm02.png"></a>
+                        <input type="text" id="code_input" class="form-control input-sell" placeholder="请输入您的动态码">
+                        <div id="v_container"  class="login-yzm" style="width: 150px;height: 40px;"></div>
                     </div>
                     <div class="clearfix">
                         <div class="pull-left">
@@ -44,8 +44,8 @@
                         </div>
                         <div class="pull-right forget"><a href="">忘记密码？</a></div>
                     </div>
-                    <button type="submit" class="btn btn-g btn-g02">现在登录</button>
-                    <div class="login-c-b text-right">还不是店来店往会员？ 现在<a href="">免费注册</a></div>
+                    <button type="submit" class="btn btn-g btn-g02" id="dl">现在登录</button>
+                    <div class="login-c-b text-right">还不是店来店往会员？ 现在<a href="index.php?p=show&c=login&a=register">免费注册</a></div>
                     </form>
                 </div>
                 <div class="login-help">用户名不存在或验证码错误。</div>
@@ -59,9 +59,18 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script src="public/khshop/js/common.js"></script>
 <script src="public/khshop/js/wow.min.js"></script>
+<script src="public/js/gVerify.js"></script>
 <script>
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
+var verifyCode = new GVerify("v_container");
+
+$('#dl').click(function () {
+    var res = verifyCode.validate(document.getElementById("code_input").value);
+    if(!res){
+        alert("验证码错误");return false;
+    }
+})
 </script>
 </html>
