@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>下拉框</title>
+<link rel="stylesheet" href="application/views/admin/inc/SelectMenu/selectmenu.css" type="text/css">
+<script src="application/views/admin/js/jquery.js"></script>
+<script src="application/views/admin/inc/SelectMenu/selectmenu.js"></script>
+<script src="application/views/admin/inc/SelectMenu/selectmenu.min.js"></script>
+</head>
+<body>
+<div style="float: left;">
+	<div class="panel panel-default" >
+                        <div class="panel-body" id="nbaTeamLists"></div>
+	</div>
+</div>
+<div>
+	<button type="button" id="btnMenu" >请选择</button>
+</div>
+
+
+
+
+</body>
+
+<script type="text/javascript">
+<?php 
+		 $filedModel1=new FiledModel("filed");
+         $filedId=$_GET["field_id"];
+         $filedDetail=$filedModel1->selectByPk($filedId);
+         $filedVal=$filedModel1->getFiledDefaultValue($filedId);	
+         $selectMenuData="[";
+         //$selectMenuData.="{id:'0' ,value:''}";
+		foreach($filedVal as $k=>$v)
+		{
+			if($k==0)
+				{
+				    $selectMenuData.="{id:'".$v['key']."' ,value:'".$v['value']."'}";
+				}else
+				{
+					$selectMenuData.=",{id:'".$v['key']."' ,value:'".$v['value']."'}";
+				}
+			
+		}
+		$selectMenuData.="]";
+         
+?>
+
+
+//获取父框架的元素的默认值
+var _ghyOb=$('#<?php echo $_GET["field"]?>', window.parent.document);
+var selectValue="";
+if(_ghyOb.val().trim()!="")
+{
+	selectValue=_ghyOb.val().trim();
+	var temp_selectMenuData=eval ("(<?php echo $selectMenuData ?>)");
+	for(var i=0;i<temp_selectMenuData.length;i++)
+		{
+		if(selectValue==temp_selectMenuData[i].id)
+			$('#nbaTeamLists').append('<p><strong>'+temp_selectMenuData[i].value+'</strong></p>');
+		}
+}else
+{
+	$('#nbaTeamLists').append('<p><strong>请选择</strong></p>');
+}
+
+//菜单使用的示例数据格式
+//数据格式与常规菜单模式的固定格式不同，该模式下，数据格式可以完全自定义
+//并通过设置keyField、showField、searchField等参数进行指定具体使用的数据节点
+var selectMenuData = <?php echo $selectMenuData ?>;
+$('#btnMenu').click(function(){
+    $(this).selectMenu({
+    	title : '请选择<?php echo $filedDetail[u2] ?>',
+        showField : 'value',
+        keyField : 'id',
+        arrow : true,
+        initSelected : selectValue,//默认值
+        data : selectMenuData,
+        eSelect : function(data){
+			$('#nbaTeamLists').empty();
+			if(data && data.length > 0){
+				$.each(data,function(i,row){
+					$('#nbaTeamLists').append('<p><strong>'+row.value+'</strong></p>');
+					_ghyOb.val(row.id);//修改父级框架的默认值
+				});
+			}
+		}
+    });
+});
+</script>
+
+</html>

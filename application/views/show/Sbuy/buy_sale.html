@@ -1,0 +1,81 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>出售网店</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+    <div class="back-f9">
+        <div class="container">
+            <div class="sell-banner">
+            	<img src="public/khshop/images/bbb.png">
+            </div>
+            <div class="sell-border">
+            	<div class="sell-nav">
+                	当前位置：<a href="">首页</a> > <a href="" class="active">出售网店</a>
+                </div>
+                <div class="sell-tt-c text-center">
+                	<p>简单填写资料后，我们的卖家服务顾问会尽快和您联系</p>
+                    <p>您也可以直接联系我们的销售顾问进行挂店</p>
+                </div>
+                <div class="sell-tt-sm">
+                	<div class="sell-tt-sm-txt">请选择您的店铺出售类型</div>
+                </div>
+                <div class="clearfix sell-chooiser">
+                	<div class="col-xs-4">
+                    	<div class="sell-icon-c active">
+                            <div class="sell-icon pull-left"><span></span></div>
+                            <div class="sell-icon-txt pull-left">天猫店</div>
+                        </div>
+                    </div>
+                	<div class="col-xs-4">
+                    	<div class="sell-icon-c">
+                            <div class="sell-icon pull-left"><span></span></div>
+                            <div class="sell-icon-txt pull-left">淘宝店</div>
+                        </div>
+                    </div>
+                	<div class="col-xs-4">
+                    	<div class="sell-icon-c">
+                            <div class="sell-icon pull-left"><span></span></div>
+                            <div class="sell-icon-txt pull-left">其他网店</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sell-chooiser">
+                	<input type="text" class="form-control input-sell" placeholder="姓名：" />
+                    <input type="text" class="form-control input-sell" placeholder="手机：" />
+                    <input type="text" class="form-control input-sell" placeholder="QQ：" />
+                    <textarea class="form-control input-sell input-sell-text" placeholder="请填写您希望出售的网店链接的首页或旺旺名"></textarea>
+                    <div class="sell-btn-c">
+                    	<button type="button" class="btn btn-sell-l">立即提交</button>
+                        <button type="button" class="btn btn-sell-l btn-sell-l02"><i class="icon"></i>在线咨询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+$('#id').children('li').prop('class','');
+</script>
+</html>

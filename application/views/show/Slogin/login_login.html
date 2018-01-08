@@ -1,0 +1,67 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员登录</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+    <div class="login-back">
+        <div class="container">
+            <div class="pull-right">
+                <div class="login-c">
+                    <form method="post" action="index.php?p=show&c=login&a=login1">
+                    <div class="login-tt text-center">USER LOGIN</div>
+                    <div class="login-tt-lg text-center"><span>用户登录</span></div>
+                    <div class="relative">
+                        <i class="login-i"></i>
+                        <input name="tel" type="text" class="form-control input-sell" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="relative">
+                        <i class="login-i login-i02"></i>
+                        <input name="password" type="password" class="form-control input-sell" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="relative">
+                        <i class="login-i login-i03"></i>
+                        <input type="text" class="form-control input-sell" placeholder="请输入您的姓名">
+                        <a role="button" class="login-yzm"><img src="public/khshop/images/yzm02.png"></a>
+                    </div>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> 记住用户名
+                            </label>
+                          </div>
+                        </div>
+                        <div class="pull-right forget"><a href="">忘记密码？</a></div>
+                    </div>
+                    <button type="submit" class="btn btn-g btn-g02">现在登录</button>
+                    <div class="login-c-b text-right">还不是店来店往会员？ 现在<a href="">免费注册</a></div>
+                    </form>
+                </div>
+                <div class="login-help">用户名不存在或验证码错误。</div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+</html>

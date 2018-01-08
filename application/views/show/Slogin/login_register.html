@@ -1,0 +1,84 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册</title>
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+    <div class="register-back">
+        <div class="container">
+            <div class="pull-right">
+                <div class="register-tt">
+                    <div class="login-tt text-center">FREE REGISTRETION</div>
+                    <div class="login-tt-lg text-center"><span>免费注册</span></div>
+                </div>
+                <form action="index.php?p=show&c=user&a=zhuce" method="post">
+                <div class="register-c">
+                    <div class="relative">
+                        <input name="name" type="text" class="form-control input-sell" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="relative">
+                        <input type="text" class="form-control input-sell" placeholder="动态码">
+                        <a role="button" class="login-yzm"><img src="public/khshop/images/yzm02.png"></a>
+                    </div>
+                    <input name="tel" type="text" class="form-control input-sell" placeholder="手机号码">
+                    <div class="relative">
+                        <input name="" type="text" class="form-control input-sell" placeholder="手机验证码">
+                        <button type="button" class="btn-phone-dx">获取手机验证码</button>
+                    </div>
+                    <input name="username" type="text" class="form-control input-sell" placeholder="微信或QQ号码">
+                    <div class="relative">
+                        <input name="password" type="password" class="form-control input-sell" placeholder="密码（6-12位数字+字母组合）">
+                    </div>
+                    <div class="relative" id="p2">
+                        <input id="password2" type="password" class="form-control input-sell" placeholder="再次输入密码">
+                    </div>
+                    <select name="from" class="form-control input-sell">
+                        <option value="1">请选择来源</option>
+                        <option value="2">请选择来源</option>
+                        <option value="3">请选择来源</option>
+                        <option value="4">请选择来源</option>
+                    </select>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> 我已认真阅读并同意<a href="">《店来店往服务条款》</a>
+                        </label>
+                    </div>
+                    <button id="zhuce" type="submit" class="btn btn-g btn-g02">立即注册</button>
+                    <div class="login-c-b">还不是店来店往会员？ 现在<a href="">免费注册</a></div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+$('#zhuce').click(function () {
+      var password=$('input[name=password]').val();
+      var password2=$('#password2').val();
+      if (password!=password2){
+           $('<div class="register-help"><span>两次密码不一致！</span><i class="glyphicon glyphicon-triangle-right"></i></div>').appendTo('#p2');return false;
+      }
+})
+</script>
+</html>

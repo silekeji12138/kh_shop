@@ -1,0 +1,485 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>购买网店</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+    <div class="back-f9">
+        <div class="container">
+            <div class="sell-banner">
+            	<img src="public/khshop/images/bbb.png">
+            </div>
+        	<div class="sell-border purchase-border">
+				<div class="sell-nav clearfix">
+                	<div class="pull-left">当前位置：<a href="">首页</a> &gt; <a href="" class="active">出售网店</a></div>
+                    <div class="pull-right search-margin">
+                        <div class="search-w clearfix">
+                            <input type="text" class="form-control input-search" placeholder="填写关键词或网店编号" />
+                            <button type="button" class="btn btn-search"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase">
+                	<div class="pull-left purchase-left">所在平台</div>
+                    <div class="pull-left purchase-right">
+                    	<ul class="purchase-ul">
+                        	<li><a role="button">天猫商城</a></li>                                                                                                                             
+                            <li><a role="button">企业淘宝</a></li>
+                            <li><a  role="button">蘑菇街</a></li>
+                            <li><a role="button">京东商城</a></li>
+                            <li><a role="button">微信公众号</a></li>
+                            <li><a role="button">贝贝网</a></li>
+                            <li><a role="button">聚美优品</a></li>
+                            <li><a role="button">唯品会</a></li>
+                            <li><a role="button">折800</a></li>
+                            <li><a role="button">卷皮网</a></li>
+                            <li><a role="button">楚楚街</a></li>
+                            <li><a role="button">阿里巴巴</a></li>
+                            <li><a role="button">一号店</a></li>
+                            <li><a role="button">美丽说</a></li>
+                            <li><a role="button">苏宁易购</a></li>
+                            <li><a role="button">独立商城</a></li>
+                            <li><a class="active" role="button">其它网店</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase">
+                	<div class="pull-left purchase-left">店铺状态</div>
+                    <div class="pull-left purchase-right">
+                    	<ul class="purchase-ul">
+                        	<li><a class="active" role="button">个人身份证认证</a></li>                                                                                                                             
+                            <li><a role="button">企业执照认证</a></li>
+                            <li><a role="button">个体户营业执照认证</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase">
+                	<div class="pull-left purchase-left">商标类型</div>
+                    <div class="pull-left purchase-right">
+                    	<ul class="purchase-ul">
+                        	<li><a class="active" role="button">R标</a></li>                                                                                                                             
+                            <li><a role="button">TM标</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase">
+                	<div class="pull-left purchase-left">所属行业</div>                                                                                                                                         
+                    <div class="pull-left purchase-right">
+                    	<ul class="purchase-ul">
+                        	<li><a class="active" role="button">服饰鞋包</a></li>                                                                                                                             
+                            <li><a role="button">美容护理</a></li>
+                            <li><a role="button">数码电器</a></li>
+                            <li><a role="button">游戏/话费</a></li>
+                            <li><a role="button">食品/保健</a></li>
+                            <li><a role="button">母婴</a></li>
+                            <li><a role="button">运动户外</a></li>
+                            <li><a role="button">家装家饰</a></li>
+                            <li><a role="button">家居用</a></li>
+                            <li><a role="button">品珠宝/首饰</a></li>
+                            <li><a role="button">生活服务</a></li>
+                            <li><a role="button">汽车配件</a></li>
+                            <li><a role="button">书籍音像</a></li>
+                            <li><a role="button">玩乐/收藏</a></li>
+                            <li><a role="button">手机</a></li>
+                            <li><a role="button">大家电</a></li>
+                            <li><a role="button">其它行业</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase">
+                	<div class="pull-left purchase-left">价<span></span>格</div>
+                    <div class="pull-left purchase-right">                            
+                    	<ul class="purchase-ul">
+                        	<li><a class="active" role="button">5万-10万</a></li>                                                                                                                             
+                            <li><a role="button">10万-20万</a></li>
+                            <li><a role="button">20万-50万</a></li>
+                            <li><a role="button">50万以上</a></li>
+                        </ul>
+                        <div class="pull-right">
+                        	<input type="text" class="form-control input-money" />
+                            <div class="pull-left money-txt">-</div>
+                            <input type="text" class="form-control input-money" />
+                            <button type="button" class="btn btn-money">确认</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase">
+                	<div class="pull-left purchase-left">其<span></span>他</div>
+                    <div class="pull-left purchase-right">                            
+						<ul class="purchase-tabs">
+                        	<li><a href="#purchase01" aria-controls="purchase01" role="tab" data-toggle="tab"><span id="region">地区范围</span><span class="caret"></span></a></li>
+                            <li class="active"><a href="#purchase02" aria-controls="purchase02" role="tab" data-toggle="tab"><span id="region01">开店时间</span><span class="caret"></span></a></li>
+                            <li><a href="#purchase05" aria-controls="purchase05" role="tab" data-toggle="tab"><span id="region04">提供货源</span><span class="caret"></span></a></li>
+                            <li><a href="#purchase06" aria-controls="purchase06" role="tab" data-toggle="tab"><span id="region05">团队转让</span><span class="caret"></span></a></li>
+                            <li><a href="#purchase07" aria-controls="purchase07" role="tab" data-toggle="tab"><span id="region06">经验传授</span><span class="caret"></span></a></li>
+                            <li><a href="#purchase08" aria-controls="purchase08" role="tab" data-toggle="tab"><span id="region07">团队转让</span><span class="caret"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix list-purchase border-no">
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" id="purchase01">
+                    	<ul class="purchase-ul purchase-ul-region">
+                        	<li><a class="active" role="button">地区不限</a></li>                                                                                                                             
+                            <li><a role="button">华北地区</a></li>
+                            <li><a role="button">东北地区</a></li>
+                            <li><a role="button">华东地区</a></li>
+                            <li><a role="button">华南地区</a></li>
+                            <li><a role="button">西北地区</a></li>
+                            <li><a role="button">华中地区</a></li>
+                            <li><a role="button">西南地区</a></li>
+                            <li><a role="button">海外地区</a></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="purchase02">
+						<div class="clearfix">
+                        	<div class="pull-left date-width">
+                                <div class="form-group">
+                                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                        <input class="form-control input-c" size="16" type="text" value="" placeholder="不限" readonly>
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <input type="hidden" id="dtp_input2" value="" /><br/>
+                                </div> 
+                            </div>
+                            <div class="pull-left date-center">-</div>
+                        	<div class="pull-left date-width">
+                                <div class="form-group">
+                                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                        <input class="form-control input-c" size="16" type="text" value="" placeholder="不限" readonly>
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <input type="hidden" id="dtp_input2" value="" /><br/>
+                                </div> 
+                            </div>
+                            <div class="pull-left"><button type="button" class="btn btn-money btn-date">确认</button></div>
+                        </div>
+                    </div>
+                    
+                    <div role="tabpanel" class="tab-pane" id="purchase05">
+                    	<ul class="purchase-ul purchase-ul-region04">
+                        	<li><a class="active" role="button">提供货源1</a></li>                                                                                                                             
+                            <li><a role="button">提供货源2</a></li>
+                            <li><a role="button">提供货源3</a></li>
+                            <li><a role="button">提供货源4</a></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="purchase06">
+                    	<ul class="purchase-ul purchase-ul-region05">
+                        	<li><a class="active" role="button">商标类别1</a></li>                                                                                                                             
+                            <li><a role="button">商标类别2</a></li>
+                            <li><a role="button">商标类别3</a></li>
+                            <li><a role="button">商标类别4</a></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="purchase07">
+                    	<ul class="purchase-ul purchase-ul-region06">
+                        	<li><a class="active" role="button">商标过户1</a></li>                                                                                                                             
+                            <li><a role="button">商标过户2</a></li>
+                            <li><a role="button">商标过户3</a></li>
+                            <li><a role="button">商标过户4</a></li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="sell-border purchase-border">
+				<div class="sell-nav border-no clearfix">
+                	<div class="pull-left sell-nav-one">默认排序</div>
+                    <div class="pull-left"><a role="button" class="sell-px sell-px-one">出售价格</a></div>
+                </div>
+            </div>
+            <div class="sell-border purchase-border">
+            	<div class="clearfix">
+                	<div class="purchase-left-width pull-left">
+                    	<div class="purchase-left-width-tt clearfix"><i class="title-icon"></i><a href="">华南地区14年入驻母婴旗舰店童装女装类目名字好听诚心出售</a><span class="title-label">独家</span></div>
+                        <div class="row purchase-row">
+                        	<div class="col-xs-4"><span>所属行业：</span>服饰鞋包</div>
+                            <div class="col-xs-4"><span>消 保 金：</span>50000.0元(退还)</div>
+                            <div class="col-xs-4"><span>所在地区：</span>华南地区</div>
+                            <div class="col-xs-4"><span>技术年费：</span>60000.0元(退还)</div>
+                            <div class="col-xs-4"><span>商城类型：</span>旗舰店</div>
+                            <div class="col-xs-4"><span>动态评分：</span>暂无</div>
+                            <div class="col-xs-4"><span>商标类型：</span>R标（第<span class="number">25</span>类）</div>
+                            <div class="col-xs-4"><span>违规扣分：</span>0 - 0 - 0</div>
+                            <div class="col-xs-4"><span>纳税资质：</span>小规模纳税人</div>
+                            <div class="col-xs-4"><span>是否带货：</span>否</div>
+                            <div class="col-xs-12"><span>卖家描述：</span>江浙沪地区08年入驻天猫化妆品专营店9年老店，动态全红天猫美妆店，公司名下有一个京东专营店，京东有5万押金要退的。天猫店铺里有一个品牌的押金还有5000元需退还。公司一般纳税人，店铺没有扣分。双11入选欢乐总动员商家。有需要联系哦、</div>
+                        </div>
+                    </div>
+                    <div class="pull-left purchase-right-width text-center">
+                    	<div class="purchase-right-width-number"><span>33.4</span>万</div>
+                        <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                    </div>
+                </div>
+                <div class="clearfix purchase-bottom">
+                	<div class="pull-left">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油</div>
+                    <div class="pull-right">
+                    	<span class="purchase-bottom-label">可提供货源</span>
+                        <span class="purchase-bottom-label">公司认证</span>
+                        <span class="purchase-bottom-label">可当面交易</span>
+                        <span class="purchase-bottom-label">动态全红</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sell-border purchase-border">
+            	<div class="clearfix">
+                	<div class="purchase-left-width pull-left">
+                    	<div class="purchase-left-width-tt clearfix"><i class="title-icon title-icon02"></i><a href="">华南地区14年入驻母婴旗舰店童装女装类目名字好听诚心出售</a><span class="title-label">独家</span></div>
+                        <div class="row purchase-row">
+                        	<div class="col-xs-4"><span>所属行业：</span>服饰鞋包</div>
+                            <div class="col-xs-4"><span>消 保 金：</span>50000.0元(退还)</div>
+                            <div class="col-xs-4"><span>所在地区：</span>华南地区</div>
+                            <div class="col-xs-4"><span>技术年费：</span>60000.0元(退还)</div>
+                            <div class="col-xs-4"><span>商城类型：</span>旗舰店</div>
+                            <div class="col-xs-4"><span>动态评分：</span>暂无</div>
+                            <div class="col-xs-4"><span>商标类型：</span>R标（第<span class="number">25</span>类）</div>
+                            <div class="col-xs-4"><span>违规扣分：</span>0 - 0 - 0</div>
+                            <div class="col-xs-4"><span>纳税资质：</span>小规模纳税人</div>
+                            <div class="col-xs-4"><span>是否带货：</span>否</div>
+                            <div class="col-xs-12"><span>卖家描述：</span>江浙沪地区08年入驻天猫化妆品专营店9年老店，动态全红天猫美妆店，公司名下有一个京东专营店，京东有5万押金要退的。天猫店铺里有一个品牌的押金还有5000元需退还。公司一般纳税人，店铺没有扣分。双11入选欢乐总动员商家。有需要联系哦、</div>
+                        </div>
+                    </div>
+                    <div class="pull-left purchase-right-width text-center">
+                    	<div class="purchase-right-width-number"><span>33.4</span>万</div>
+                        <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                    </div>
+                </div>
+                <div class="clearfix purchase-bottom">
+                	<div class="pull-left">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油</div>
+                    <div class="pull-right">
+                    	<span class="purchase-bottom-label">可提供货源</span>
+                        <span class="purchase-bottom-label">公司认证</span>
+                        <span class="purchase-bottom-label">可当面交易</span>
+                        <span class="purchase-bottom-label">动态全红</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sell-border purchase-border">
+            	<div class="clearfix">
+                	<div class="purchase-left-width pull-left">
+                    	<div class="purchase-left-width-tt clearfix"><i class="title-icon title-icon03"></i><a href="">华南地区14年入驻母婴旗舰店童装女装类目名字好听诚心出售</a><span class="title-label">独家</span></div>
+                        <div class="row purchase-row">
+                        	<div class="col-xs-4"><span>所属行业：</span>服饰鞋包</div>
+                            <div class="col-xs-4"><span>消 保 金：</span>50000.0元(退还)</div>
+                            <div class="col-xs-4"><span>所在地区：</span>华南地区</div>
+                            <div class="col-xs-4"><span>技术年费：</span>60000.0元(退还)</div>
+                            <div class="col-xs-4"><span>商城类型：</span>旗舰店</div>
+                            <div class="col-xs-4"><span>动态评分：</span>暂无</div>
+                            <div class="col-xs-4"><span>商标类型：</span>R标（第<span class="number">25</span>类）</div>
+                            <div class="col-xs-4"><span>违规扣分：</span>0 - 0 - 0</div>
+                            <div class="col-xs-4"><span>纳税资质：</span>小规模纳税人</div>
+                            <div class="col-xs-4"><span>是否带货：</span>否</div>
+                            <div class="col-xs-12"><span>卖家描述：</span>江浙沪地区08年入驻天猫化妆品专营店9年老店，动态全红天猫美妆店，公司名下有一个京东专营店，京东有5万押金要退的。天猫店铺里有一个品牌的押金还有5000元需退还。公司一般纳税人，店铺没有扣分。双11入选欢乐总动员商家。有需要联系哦、</div>
+                        </div>
+                    </div>
+                    <div class="pull-left purchase-right-width text-center">
+                    	<div class="purchase-right-width-number"><span>33.4</span>万</div>
+                        <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                    </div>
+                </div>
+                <div class="clearfix purchase-bottom">
+                	<div class="pull-left">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油</div>
+                    <div class="pull-right">
+                    	<span class="purchase-bottom-label">可提供货源</span>
+                        <span class="purchase-bottom-label">公司认证</span>
+                        <span class="purchase-bottom-label">可当面交易</span>
+                        <span class="purchase-bottom-label">动态全红</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sell-border purchase-border">
+            	<div class="clearfix">
+                	<div class="purchase-left-width pull-left">
+                    	<div class="purchase-left-width-tt clearfix"><i class="title-icon title-icon04"></i><a href="">华南地区14年入驻母婴旗舰店童装女装类目名字好听诚心出售</a><span class="title-label">独家</span></div>
+                        <div class="row purchase-row">
+                        	<div class="col-xs-4"><span>所属行业：</span>服饰鞋包</div>
+                            <div class="col-xs-4"><span>消 保 金：</span>50000.0元(退还)</div>
+                            <div class="col-xs-4"><span>所在地区：</span>华南地区</div>
+                            <div class="col-xs-4"><span>技术年费：</span>60000.0元(退还)</div>
+                            <div class="col-xs-4"><span>商城类型：</span>旗舰店</div>
+                            <div class="col-xs-4"><span>动态评分：</span>暂无</div>
+                            <div class="col-xs-4"><span>商标类型：</span>R标（第<span class="number">25</span>类）</div>
+                            <div class="col-xs-4"><span>违规扣分：</span>0 - 0 - 0</div>
+                            <div class="col-xs-4"><span>纳税资质：</span>小规模纳税人</div>
+                            <div class="col-xs-4"><span>是否带货：</span>否</div>
+                            <div class="col-xs-12"><span>卖家描述：</span>江浙沪地区08年入驻天猫化妆品专营店9年老店，动态全红天猫美妆店，公司名下有一个京东专营店，京东有5万押金要退的。天猫店铺里有一个品牌的押金还有5000元需退还。公司一般纳税人，店铺没有扣分。双11入选欢乐总动员商家。有需要联系哦、</div>
+                        </div>
+                    </div>
+                    <div class="pull-left purchase-right-width text-center">
+                    	<div class="purchase-right-width-number"><span>33.4</span>万</div>
+                        <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                    </div>
+                </div>
+                <div class="clearfix purchase-bottom">
+                	<div class="pull-left">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油</div>
+                    <div class="pull-right">
+                    	<span class="purchase-bottom-label">可提供货源</span>
+                        <span class="purchase-bottom-label">公司认证</span>
+                        <span class="purchase-bottom-label">可当面交易</span>
+                        <span class="purchase-bottom-label">动态全红</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sell-border purchase-border">
+            	<div class="clearfix">
+                	<div class="purchase-left-width pull-left">
+                    	<div class="purchase-left-width-tt clearfix"><i class="title-icon title-icon05"></i><a href="">华南地区14年入驻母婴旗舰店童装女装类目名字好听诚心出售</a><span class="title-label">独家</span></div>
+                        <div class="row purchase-row">
+                        	<div class="col-xs-4"><span>所属行业：</span>服饰鞋包</div>
+                            <div class="col-xs-4"><span>消 保 金：</span>50000.0元(退还)</div>
+                            <div class="col-xs-4"><span>所在地区：</span>华南地区</div>
+                            <div class="col-xs-4"><span>技术年费：</span>60000.0元(退还)</div>
+                            <div class="col-xs-4"><span>商城类型：</span>旗舰店</div>
+                            <div class="col-xs-4"><span>动态评分：</span>暂无</div>
+                            <div class="col-xs-4"><span>商标类型：</span>R标（第<span class="number">25</span>类）</div>
+                            <div class="col-xs-4"><span>违规扣分：</span>0 - 0 - 0</div>
+                            <div class="col-xs-4"><span>纳税资质：</span>小规模纳税人</div>
+                            <div class="col-xs-4"><span>是否带货：</span>否</div>
+                            <div class="col-xs-12"><span>卖家描述：</span>江浙沪地区08年入驻天猫化妆品专营店9年老店，动态全红天猫美妆店，公司名下有一个京东专营店，京东有5万押金要退的。天猫店铺里有一个品牌的押金还有5000元需退还。公司一般纳税人，店铺没有扣分。双11入选欢乐总动员商家。有需要联系哦、</div>
+                        </div>
+                    </div>
+                    <div class="pull-left purchase-right-width text-center">
+                    	<div class="purchase-right-width-number"><span>33.4</span>万</div>
+                        <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                    </div>
+                </div>
+                <div class="clearfix purchase-bottom">
+                	<div class="pull-left">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油</div>
+                    <div class="pull-right">
+                    	<span class="purchase-bottom-label">可提供货源</span>
+                        <span class="purchase-bottom-label">公司认证</span>
+                        <span class="purchase-bottom-label">可当面交易</span>
+                        <span class="purchase-bottom-label">动态全红</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="page-center clearfix">
+                <ul class="pagination pull-left">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                 </ul>
+                 <div class="pull-left page-txt margin-left">共681页 跳转到第</div>
+                 <div class="pull-left"><input type="text" class="form-control input-page"></div>
+                 <div class="pull-left page-txt">页</div>
+                 <div class="pull-left"><button type="button" class="btn-page btn">确定</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    	<div class="page-center clearfix">
+        	<div class="pull-left purchase-icon">未找到</div>
+            <div class="pull-left">
+            	<div class="clearfix">
+                	<div class="pull-left purchase-bottom-lg">暂未找到心仪网店？</div>
+                    <div class="pull-left"><a href="" class="qq-link qq-link-purchase"><i class="icon"></i>咨询服务顾问</a></div>
+                </div>
+                <div class="purchase-bottom-sm">不要急哦，好多好店没有展示出来，马上联系服务顾问获取！</div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="public/khshop/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script>
+  $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+    });
+</script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+<script>
+//购买网店条件选择JS
+$(".purchase-ul li a").click(function(){
+	$(this).parents(".purchase-ul").find("a").removeClass("active");
+	$(this).addClass("active");	
+})
+$('#id').children('li').prop('class','');
+$('#qt').attr('class','active');
+</script>
+<script type="text/javascript">
+//地区
+    $(".purchase-ul-region li a").click(function(){
+		var txt = $(this).html();
+        $("#region").html(txt);
+        
+    });
+//扣分
+    $(".purchase-ul-region01 li a").click(function(){
+		var txt = $(this).html();
+        $("#region01").html(txt);
+        
+    });
+//纳税
+    $(".purchase-ul-region02 li a").click(function(){
+		var txt = $(this).html();
+        $("#region02").html(txt);
+        
+    });
+//是否带货
+    $(".purchase-ul-region03 li a").click(function(){
+		var txt = $(this).html();
+        $("#region03").html(txt);
+        
+    });
+//提供货源
+    $(".purchase-ul-region04 li a").click(function(){
+		var txt = $(this).html();
+        $("#region04").html(txt);
+        
+    });
+//商标类别
+    $(".purchase-ul-region05 li a").click(function(){
+		var txt = $(this).html();
+        $("#region05").html(txt);
+        
+    });
+//商标过户
+    $(".purchase-ul-region06 li a").click(function(){
+		var txt = $(this).html();
+        $("#region06").html(txt);
+        
+    });
+//团队转让
+    $(".purchase-ul-region li a").click(function(){
+		var txt = $(this).html();
+        $("#region").html(txt);
+        
+    });
+</script>
+</html>
