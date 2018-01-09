@@ -68984,3 +68984,82 @@
 [2018-01-06 18:38:47] select *from sl_search2 WHERE class='京东商城'
 [2018-01-06 18:38:47] select *from sl_search2 WHERE class='蘑菇街'
 [2018-01-06 18:38:47] select *from sl_search2 WHERE class='苏宁易购'
+[2018-01-08 18:22:45] set names utf8
+[2018-01-08 18:22:45] DESC sl_member
+[2018-01-08 18:22:45] select *from sl_member WHERE tel='18582479523'
+[2018-01-08 18:22:45] select *from sl_member WHERE password='123456'
+[2018-01-08 18:46:29] set names utf8
+[2018-01-08 18:46:30] DESC sl_member
+[2018-01-08 18:46:30] select *from sl_member WHERE tel='18582479523'
+[2018-01-08 18:46:30] select *from sl_member WHERE password='123456'
+[2018-01-09 14:56:04] set names utf8
+[2018-01-09 14:56:04] DESC sl_System
+[2018-01-09 14:56:04] set names utf8
+[2018-01-09 14:56:04] DESC sl_System
+[2018-01-09 14:56:04] select dtime from sl_System where  u3='127.0.0.1' and u4='管理员登录' order by id desc 
+[2018-01-09 14:56:04] set names utf8
+[2018-01-09 14:56:04] DESC sl_admin
+[2018-01-09 14:56:04] SELECT * FROM sl_admin WHERE 
+		       username = '18582479523' AND password = 'e10adc3949ba59abbe56e057f20f883e'
+		       LIMIT 1
+[2018-01-09 14:56:04] INSERT INTO `sl_System` (`u1`,`u2`,`u3`,`u4`) VALUES ('18582479523','18582479523:登录失败，用户名或密码错误。操作页面:www.shops.com/index.php?p=admin&amp;c=login&amp;a=signin','127.0.0.1','管理员登录')
+[2018-01-09 14:56:15] set names utf8
+[2018-01-09 14:56:15] DESC sl_System
+[2018-01-09 14:56:16] set names utf8
+[2018-01-09 14:56:16] DESC sl_System
+[2018-01-09 14:56:16] select dtime from sl_System where  u3='127.0.0.1' and u4='管理员登录' order by id desc 
+[2018-01-09 14:56:16] set names utf8
+[2018-01-09 14:56:16] DESC sl_admin
+[2018-01-09 14:56:16] SELECT * FROM sl_admin WHERE 
+		       username = 'cdsile' AND password = '01ac3d95a020811609ceef9ed8336e2e'
+		       LIMIT 1
+[2018-01-09 14:56:16] set names utf8
+[2018-01-09 14:56:16] DESC sl_group
+[2018-01-09 14:56:16] select * from `sl_group` where `id`=1
+[2018-01-09 14:56:16] UPDATE `sl_admin` SET `last_login_time`='1515480976',`last_login_ip`='127.0.0.1' WHERE `user_id`=23
+[2018-01-09 14:56:16] INSERT INTO `sl_System` (`u1`,`u2`,`u3`,`u4`) VALUES ('cdsile','cdsile(超级管理员):登录成功,操作页面:www.shops.com/index.php?p=admin&amp;c=login&amp;a=signin','127.0.0.1','管理员登录')
+[2018-01-09 14:56:16] set names utf8
+[2018-01-09 14:56:16] DESC sl_column_group
+[2018-01-09 14:56:16] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 14:56:16] set names utf8
+[2018-01-09 14:56:16] DESC sl_column_group
+[2018-01-09 14:56:16] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 15:09:45] set names utf8
+[2018-01-09 15:09:45] DESC sl_column
+[2018-01-09 15:09:45] SELECT * FROM sl_column   order by u2 asc,id desc
+[2018-01-09 15:09:45] set names utf8
+[2018-01-09 15:09:45] DESC sl_column_group
+[2018-01-09 15:09:45] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 15:09:45] set names utf8
+[2018-01-09 15:09:45] DESC sl_column_group
+[2018-01-09 15:09:45] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 15:09:46] set names utf8
+[2018-01-09 15:09:46] DESC sl_column
+[2018-01-09 15:09:46] SELECT * FROM sl_column   order by u2 asc,id desc
+[2018-01-09 15:09:46] set names utf8
+[2018-01-09 15:09:46] DESC sl_column_group
+[2018-01-09 15:09:46] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 15:09:46] set names utf8
+[2018-01-09 15:09:46] DESC sl_column_group
+[2018-01-09 15:09:46] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 15:10:36] set names utf8
+[2018-01-09 15:10:36] DESC sl_column
+[2018-01-09 15:10:37] INSERT INTO `sl_column` (`classid`,`u1`,`u2`,`u3`,`u4`) VALUES ('0','用户后台管理','1','','显示')
+[2018-01-09 15:10:38] set names utf8
+[2018-01-09 15:10:38] DESC sl_column
+[2018-01-09 15:10:38] SELECT * FROM sl_column   order by u2 asc,id desc
+[2018-01-09 15:10:38] set names utf8
+[2018-01-09 15:10:38] DESC sl_column_group
+[2018-01-09 15:10:38] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 15:10:38] set names utf8
+[2018-01-09 15:10:38] DESC sl_column_group
+[2018-01-09 15:10:38] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 16:15:53] set names utf8
+[2018-01-09 16:15:53] DESC sl_moxing
+[2018-01-09 16:15:53] SELECT *,(SELECT u2 from sl_canshu where u1=mx.u3 ) as moxinglianjie from sl_moxing as mx order by id desc
+[2018-01-09 16:15:53] set names utf8
+[2018-01-09 16:15:53] DESC sl_column_group
+[2018-01-09 16:15:53] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2018-01-09 16:15:53] set names utf8
+[2018-01-09 16:15:53] DESC sl_column_group
+[2018-01-09 16:15:53] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
