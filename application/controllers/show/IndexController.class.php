@@ -3,7 +3,8 @@
 class IndexController extends BaseController
 {
     public function textAction(){
-        include CUR_VIEW_PATH . "Spublic" . DS ."foot.html";
+//        include CUR_VIEW_PATH . "Spublic" . DS ."foot.html";
+          var_dump($_SESSION['18582479523']);
     }
     //主页
     public function indexAction(){
@@ -13,6 +14,10 @@ class IndexController extends BaseController
         $jd=$model->select("select *from sl_search2 WHERE class='京东商城'");
         $mgj=$model->select("select *from sl_search2 WHERE class='蘑菇街'");
         $snyg=$model->select("select *from sl_search2 WHERE class='苏宁易购'");
+        $m2=new model('gonggao');
+        $gonggao=$m2->select("select gg from sl_gonggao");
+        $zhinan=$m2->select("select zn from sl_gonggao");
+        $wenda=$m2->select("select wd from sl_gonggao");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_index.html";
     }
     //待入驻页面
@@ -21,6 +26,9 @@ class IndexController extends BaseController
     }
     //购买其他网点入口
     public function qitaAction(){
+        $model=new model('shangpin');
+        $result=$model->select("select *from sl_shangpin");
+
         include CUR_VIEW_PATH . "Sindex" . DS ."index_qita.html";
     }
     //404错误入口

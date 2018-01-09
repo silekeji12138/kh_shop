@@ -174,8 +174,10 @@
                     <div class="pull-left news-tt"><i class="icon"></i>公告</div>
                     <div id="carousel-example-vertical" class="carousel vertical slide pull-left">
                       <div class="carousel-inner" role="listbox">
-                        <div class="item active"><a target="_blank" href="">店来店往2017国庆节放假通知往2017国庆节放假通往2017国庆节放假通.</a></div>
-                        <div class="item"><a target="_blank" href="">店来店往2017国庆节放7国庆节放假通知往2017国7国庆节放假通知往2017国假通知......</a></div>
+                        <!--<div class="item active"><a target="_blank" href="">店来店往2017国庆节放假通知往2017国庆节放假通往2017国庆节放假通.</a></div>-->
+                          <?php foreach($gonggao as $v): ?>
+                        <div id="q" class="item"><a target="_blank" href=""><?=$v['gg']?></a></div>
+                          <?php endforeach; ?>
                       </div>
                     </div>
                 </div>
@@ -183,8 +185,9 @@
                     <div class="pull-left news-tt"><i class="icon"></i>指南</div>
                     <div id="carousel-example-vertical" class="carousel vertical slide pull-left">
                       <div class="carousel-inner" role="listbox">
-                        <div class="item active"><a target="_blank" href="">店来店往2017国庆节放假通知往2017国庆节放假通往2017国庆节放假通.</a></div>
-                        <div class="item"><a target="_blank" href="">店来店往2017国庆节放7国庆节放假通知往2017国7国庆节放假通知往2017国假通知......</a></div>
+                          <?php foreach($zhinan as $v): ?>
+                          <div id="w" class="item"><a target="_blank" href=""><?=$v['zn']?></a></div>
+                          <?php endforeach; ?>
                       </div>
                     </div>
                 </div>
@@ -192,8 +195,9 @@
                     <div class="pull-left news-tt"><i class="icon"></i>问答</div>
                     <div id="carousel-example-vertical" class="carousel vertical slide pull-left">
                       <div class="carousel-inner" role="listbox">
-                        <div class="item active"><a target="_blank" href="">店来店往2017国庆节放假通知往2017国庆节放假通往2017国庆节放假通.</a></div>
-                        <div class="item"><a target="_blank" href="">店来店往2017国庆节放7国庆节放假通知往2017国7国庆节放假通知往2017国假通知......</a></div>
+                          <?php foreach($wenda as $v): ?>
+                          <div id="e" class="item"><a target="_blank" href=""><?=$v['wd']?></a></div>
+                          <?php endforeach; ?>
                       </div>
                     </div>
                 </div>
@@ -703,6 +707,8 @@ $('#tj').children('li').click(function () {
     var tj=$(this).children('a').html();
     t.val(tj);
 })
-
+$('#q:first').prop('class','item active')
+$('#w:first').prop('class','item active')
+$('#e:first').prop('class','item active')
 </script>
 </html>

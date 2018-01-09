@@ -29,6 +29,14 @@ class BuyController extends BaseController
     public function saleAction(){
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_sale.html";
     }
+    //购买商铺的详情页面
+    public function xiangxiAction(){
+        $id=$_GET['id'];
+        $model=new model('shangpin');
+        $result=$model->select("select *from sl_shangpin WHERE id=$id");
+        $v=$result[0];
+        include CUR_VIEW_PATH . "Sbuy" . DS ."buy_xiangxi.html";
+    }
 
 
     

@@ -10,7 +10,7 @@ class LoginController extends BaseController
     //登录显示页面
     public function loginAction(){
         include CUR_VIEW_PATH . "Slogin" . DS ."login_login.html";
-    }
+}
 
     public function login1Action(){
         $data=$_POST;
@@ -29,5 +29,21 @@ class LoginController extends BaseController
         }
     }
 
-    
+  //用户注册的功能
+    public function zhuceAction(){
+        $data=$_POST;
+        $model=new model('member');
+        $model->insert($data);
+        $this->jump('index.php?p=show&c=login&a=success&name='.$data['name'],'',0);
+    }
+    //注册成功的页面展示
+    public function successAction(){
+        include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
+    }
+
+    public function getAction(){
+        $num=$_GET['tel'];
+        echo $_SESSION[$num];
+    }
+
 }

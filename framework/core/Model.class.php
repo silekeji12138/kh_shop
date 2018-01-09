@@ -427,6 +427,55 @@ class Model
         }
         return $res;
     }
+
+
+    public function xg($list,$where)
+    {
+        $uplist = ''; // 更新列表字符串
+        foreach ($list as $k => $v) {
+            $uplist .= "`$k`='$v'" . ",";
+        }
+        // 去除uplist右边的
+        $uplist = rtrim($uplist, ',');
+        // 构造sql语句
+        $sql = "UPDATE `{$this->table}` SET {$uplist} WHERE {$where}";
+
+        if ($this->db->query($sql)) {
+            // 成功，并判断受影响的记录数
+            if ($rows = mysql_affected_rows()) {
+                // 有受影响的记录数
+                return $rows;
+            } else {
+                // 没有受影响的记录数，没有更新操作
+                return false;
+            }
+        } else {
+            // 失败，返回false
+            return false;
+        }
+    }
+
+
+    //1111
+    public function dl($where)
+    {
+
+        $sql = "DELETE FROM `{$this->table}` WHERE $where";
+
+        if ($this->db->query($sql)) {
+            // 成功，并判断受影响的记录数
+            if ($rows = mysql_affected_rows()) {
+                // 有受影响的记录
+                return $rows;
+            } else {
+                // 没有受影响的记录
+                return false;
+            }
+        } else {
+            // 失败返回false
+            return false;
+        }
+    }
     
     
     
