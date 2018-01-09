@@ -49,7 +49,7 @@
                     </select>
                     <div class="checkbox">
                         <label>
-                          <input type="checkbox"> 我已认真阅读并同意<a href="">《店来店往服务条款》</a>
+                          <input id="xy" type="checkbox"> 我已认真阅读并同意<a href="">《店来店往服务条款》</a>
                         </label>
                     </div>
                     <button id="zhuce" type="submit" class="btn btn-g btn-g02">立即注册</button>
@@ -114,7 +114,12 @@ $('#zhuce').click(function () {
     if(!res){
         alert("验证码错误");return false;
     }
+    if ($('#xy').is(":checked")==false){
+        alert("请认真读取协议"); return false;
+    }
+
 });
+
 
 
 
