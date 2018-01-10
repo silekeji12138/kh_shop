@@ -1,0 +1,236 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员中心-出售淘宝网店</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">我是卖家</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list">
+                <li class="<?=$_GET['a']=='taobao'?'active':''?>"><a href="index.php?p=show&c=shop&a=taobao">出售淘宝网店</a></li>
+                <li class="<?=$_GET['a']=='tianmao'?'active':''?>"><a href="index.php?p=show&c=shop&a=tianmao">出售天猫商城</a></li>
+            </ul>
+            <div class="pull-right cs-txt"><span>温馨提示：</span>出售网店，交易成功后，店来店往将收取网店成交价格的10%作为手续费！</div>
+        </div>
+        <form action="index.php?p=show&c=shop&a=taobao" method="post">
+        <div class="table-bottom">
+          <div class="cs-top">
+            <div class="cs-lc clearfix">
+              <div class="pull-left">1. 注册店来店往账号</div>
+              <div class="pull-left"><i class="glyphicon glyphicon-triangle-right"></i>2. 登记网店</div>
+              <div class="pull-left"><i class="glyphicon glyphicon-triangle-right"></i>3. 网站审核</div>
+              <div class="pull-left"><i class="glyphicon glyphicon-triangle-right"></i>4. 买家拍下网店并付款</div>
+              <div class="pull-left"><i class="glyphicon glyphicon-triangle-right"></i>5. 交接网店并签订合同</div>
+              <div class="pull-left"><i class="glyphicon glyphicon-triangle-right"></i>6. 放款提现</div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 信息标题</div>
+              <div class="pull-left"><input type="text" name="biaoti" class="form-control input input-cs" /></div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 网店描述</div>
+              <div class="pull-left"><textarea name="miaoshu" class="form-control input input-cs input-cs-text"></textarea></div>
+            </div>
+          </div>
+          <div class="cs-input-tt">店铺信息</div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 网店地址</div>
+              <div class="pull-left"><input type="text" name="url" class="form-control input input-cs" /></div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 旺旺名</div>
+              <div class="pull-left"><input type="text" name="wang" class="form-control input input-cs" /></div>
+              <div class="cs-txt-p">提交后不可修改，请认真填写</div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 网店价格</div>
+              <div class="pull-left"><input type="text" name="jiage" class="form-control input input-cs" /></div>
+              <div class="cs-txt-p">元</div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 消保保证金</div>
+              <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="xblx" value="需要退还" checked> 需要退还
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="xblx" value="不需要退还"> 不需要退还
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="xblx" value="信用消保"> 信用消保
+                </label>
+              </div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 注册网店身份证</div>
+              <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="zcsf" value="本人身份证" checked> 本人身份证开的店
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="zcsf" value="他人身份证"> 不是本人身份证开的店
+                </label>
+              </div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 扣分情况</div>
+              <div class="pull-left cs-left-txt cs-left-txt02">一般违规扣</div>
+              <div class="pull-left"><input type="text" name="yb"  value="0" class="form-control input input-cs input-cs-xs" placeholder="0" /></div>
+              <div class="pull-left cs-left-txt cs-left-txt02">分</div>
+              <div class="pull-left cs-left-txt cs-left-txt02 cs-left-txt03">严重违规扣</div>
+              <div class="pull-left"><input type="text" name="yz" class="form-control input input-cs input-cs-xs" placeholder="0"  value="0"/></div>
+              <div class="pull-left cs-left-txt cs-left-txt02">分</div>
+              <div class="pull-left cs-left-txt cs-left-txt02 cs-left-txt03">出售假冒商品违规扣</div>
+              <div class="pull-left"><input type="text" name="wg" value="0" class="form-control input input-cs input-cs-xs" placeholder="0" /></div>
+              <div class="pull-left cs-left-txt cs-left-txt02">分</div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt">可提供的证件</div>
+              <div class="pull-left">
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="sfz" value="身份证" checked> 身份证
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="scsfz" value="手持身份证与上半身照"> 手持身份证与上半身照
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="hkb" value="户口本"> 户口本
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="schkb"  value="手持户口本"> 手持户口本
+                </label>
+              </div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt">月利润</div>
+              <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="ylr" value="无" checked> 无
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ylr" value="有"> 有
+                </label>
+              </div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt">是否提供货源渠道</div>
+              <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="sfgh" value="否" checked> 否
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="sfgh" value="是"> 是
+                </label>
+              </div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt">是否带团队转让</div>
+              <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="tdzr" value="否" checked> 否
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="tdzr" value="是"> 是
+                </label>
+              </div>
+            </div>
+            <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt">是否传授运营经验</div>
+              <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="jy" value="否" checked> 否
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="jy" value="是"> 是
+                </label>
+              </div>
+            </div>
+        </div>
+        <div class="cs-back">
+          <div class="cs-input-tt">联系方式</div>
+          <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 您的姓名</div>
+              <div class="pull-left"><input type="text" name="name" class="form-control input input-cs"></div>
+          </div>
+          <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> 您的手机</div>
+              <div class="pull-left"><input type="text" id="phone" name="phone" class="form-control input input-cs"></div>
+          </div>
+          <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt">固定电话</div>
+              <div class="pull-left"><input type="text" name="tel" class="form-control input input-cs"></div>
+          </div>
+          <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"><span>*</span> QQ号码</div>
+              <div class="pull-left"><input type="text" name="qq" class="form-control input input-cs"></div>
+          </div>
+          <div class="clearfix cs-clearfix">
+              <div class="pull-left cs-left-txt"></div>
+              <div class="pull-left">
+              <button type="button" class="btn btn-cs">确认提交</button>
+              <div class="btn-txt"><a href="">店来店往责任与义务相关声明</a></div>
+              </div>
+          </div>
+        </div>
+        </form>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script type="text/javascript">
+    $(".btn-cs").click(function () {
+        if ($("#phone").val().length!=11){
+            alert("手机号码不正确");
+            return false
+        }else {
+            $('form').submit();
+        }
+    })
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>

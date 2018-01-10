@@ -1,0 +1,171 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>资金管理-我要提现</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/calendar.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">我是卖家</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list tab-list-sm">
+                <li class="active"><a href="">我要提现</a></li>
+                <li><a href="index.php?p=show&c=user&a=log">提现记录</a></li>
+            </ul>
+            <div class="pull-right">
+            	<div class="pull-left select-txt radio-txt">起止日期</div>
+            	<div class="pull-left">
+                      <input type="text" id="dt" class="form-control input time-input">
+                      <div id="dd"></div>
+                </div>
+                <div class="pull-left select-txt radio-txt">-</div>
+            	<div class="pull-left">
+                      <input type="text" id="dt02" class="form-control input time-input">
+                      <div id="dd02"></div>
+                </div>
+                <div class="pull-left select-txt radio-txt">处理结果</div>
+                <div class="pull-left radio-cz">
+                    <label class="radio-inline">
+                      <input type="radio"> 所有
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"> 成功
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"> 失败
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"> 处理中
+                    </label>
+                </div>
+                <a href="" class="btn btn-tj btn-tj02 pull-right">立即查询</a>
+            </div>
+        </div>
+        <table class="table table-sj table-bordered">
+          <thead>
+            <tr>
+              <th>银行账户</th>
+              <th>银行卡尾号</th>
+              <th>开户名</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>023612121321232</td>
+              <td>6008</td>
+              <td>王晓晓</td>
+              <td>无</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-bottom">
+            <a role="button" class="btn btn-tj btn-tj02 btn-tx"><i class="glyphicon glyphicon-plus-sign"></i>添加银行卡<span>（还可以添加5个）</span></a>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">提现金额</div>
+              <div class="pull-left"><input type="text" class="form-control input" /></div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm">元</div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm txt-tx">可提现金额<span> 0.00 </span>元</div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">支付密码</div>
+              <div class="pull-left"><input type="password" class="form-control input tx-password" /></div>
+			  <div class="pull-left"><a href="" class="btn btn-tj btn-tj02">设置支付密码</a></div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">短信验证码</div>
+              <div class="pull-left"><input type="password" class="form-control input tx-dx" /></div>
+            </div>
+            <div class="clearfix tx-bottom">
+            	<div class="clearfix">
+            	<div class="pull-left cs-left-txt cs-left-txt-sm">手机号：159****6968</div>
+                <div class="pull-left"><input type="button" class="btn btn-tj btn-tj02" value="获取短信验证码" /></div>
+                </div>
+                <div class="tx-ts">【温馨提示：为了您的满意，提现手续费将由店来店往承担，感谢您对舞泡的支持！】</div>
+                <button type="button" class="btn btn-tj btn-tj01 btn-login">确认提交</button>
+            </div>
+        </div>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script>
+	//日历JS
+    $('#dd').calendar({
+        trigger: '#dt',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+    $('#dd02').calendar({
+        trigger: '#dt02',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+</script>
+<script type="text/javascript">
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>

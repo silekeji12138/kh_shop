@@ -1,0 +1,96 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员中心-信息管理-手机认证</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">投诉评价</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list tab-list-sm">
+                <li><a href="index.php?p=show&c=user&a=person">个人资料</a></li>
+                <li><a href="index.php?p=show&c=user&a=password">登录密码</a></li>
+                <li><a href="index.php?p=show&c=user&a=paywords">支付密码</a></li>
+                <li><a href="index.php?p=show&c=user&a=protect">密码保护</a></li>
+                <li class="active"><a href="index.php?p=show&c=user&a=phone">手机认证</a></li>
+                <li><a href="index.php?p=show&c=user&a=email">邮箱认证</a></li>
+                <li><a href="index.php?p=show&c=user&a=safe">账户安全</a></li>
+            </ul>
+        </div>
+        <div class="user-back">
+        	<div class="gl-phone"><img src="public/khshop/images/user/phone.png"></div>
+			<div class="gl-phone-bottom">
+            	<div class="clearfix">
+                	<div class="pull-left">
+                        <div class="hl-phone-txt">温馨提示：您的手机号[<span>159****6968</span>]已经通过认证</div>
+                        <a href="" class="btn btn-tj btn-tj01 btn-login">修改认证手机号</a>
+                    </div>
+                    <div class="pull-left phone-back">
+                    	<div class="phone-tt">手机认证成功以后，您可以享有以下特权：</div>
+                        <div class="phone-txt">· <span>重要事件提醒：</span>进行时，可及时收到短信提醒。</div>
+                        <div class="phone-txt">· <span>找回支付密码：</span>忘记支付密码时，可使用手机短信找回密码。</div>
+                    </div>
+                </div>
+                <div class="hl-phone-txt bold">认证解除：已向[<span>159****6968</span>]发送短信验证码!</div>
+                <div class="clearfix gl-clearfix gl-clearfix02">
+                  <div class="pull-left cs-left-txt cs-left-txt02"><span>*</span> 真实姓名</div>
+                  <div class="pull-left"><input type="text" class="form-control input"></div>
+                </div>
+                <button type="button" class="btn btn-tj btn-tj01 btn-login">确认</button>
+                <div class="phone-bottom">如果您没有收到验证码短信：</div>
+                <div class="phone-bottom-txt">短信到达需要1-2分钟，若您长时间未收到确认短信，建议您 <a role="button">重发验证码</a></div>
+            </div>
+            
+        </div>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script type="text/javascript">
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>

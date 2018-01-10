@@ -1,0 +1,226 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>资金管理-提现记录</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/calendar.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">我是卖家</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list tab-list-sm">
+                <li><a href="index.php?p=show&c=user&a=cash">我要提现</a></li>
+                <li class="active"><a href="">提现记录</a></li>
+            </ul>
+            <div class="pull-right">
+            	<div class="pull-left select-txt radio-txt">起止日期</div>
+            	<div class="pull-left">
+                      <input type="text" id="dt" class="form-control input time-input">
+                      <div id="dd"></div>
+                </div>
+                <div class="pull-left select-txt radio-txt">-</div>
+            	<div class="pull-left">
+                      <input type="text" id="dt02" class="form-control input time-input">
+                      <div id="dd02"></div>
+                </div>
+                <div class="pull-left select-txt radio-txt">处理结果</div>
+                <div class="pull-left radio-cz">
+                    <label class="radio-inline">
+                      <input type="radio"> 所有
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"> 成功
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"> 失败
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio"> 处理中
+                    </label>
+                </div>
+                <a href="" class="btn btn-tj btn-tj02 pull-right">立即查询</a>
+            </div>
+        </div>
+        <table class="table table-sj table-bordered">
+          <thead>
+            <tr>
+              <th>流水号</th>
+              <th>开户银行</th>
+              <th>银行账号</th>
+              <th>提现申请时间</th>
+              <th>提现金额</th>
+              <th>实际到账</th>
+              <th style="width: 120px">提现状态</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>023612121321232</td>
+              <td>中国银行北京海淀区双榆树支行</td>
+              <td>201728985006</td>
+              <td>2017-10-12</td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td><span class="table-number">¥7,800</span></td>
+              <td>已提现</td>
+              <td>无</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-bottom">
+            <div class="table-null text-center">暂无充值记录信息！</div>
+        </div>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script>
+	//日历JS
+    $('#dd').calendar({
+        trigger: '#dt',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+    $('#dd02').calendar({
+        trigger: '#dt02',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+</script>
+<script type="text/javascript">
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>

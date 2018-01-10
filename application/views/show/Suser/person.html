@@ -1,0 +1,264 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员中心-信息管理-个人资料</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">投诉评价</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list tab-list-sm">
+                <li class="active"><a href="">个人资料</a></li>
+                <li><a href="index.php?p=show&c=user&a=password">登录密码</a></li>
+                <li><a href="index.php?p=show&c=user&a=paywords">支付密码</a></li>
+                <li><a href="index.php?p=show&c=user&a=protect">密码保护</a></li>
+                <li><a href="index.php?p=show&c=user&a=phone">手机认证</a></li>
+                <li><a href="index.php?p=show&c=user&a=email">邮箱认证</a></li>
+                <li><a href="index.php?p=show&c=user&a=safe">账户安全</a></li>
+            </ul>
+        </div>
+        <div class="user-back">
+        	<div class="clearfix gl-clearfix">
+                <div class="pull-left user-img-c">
+                    <div id="preview" class="zj">
+                        <img id="imghead" width="100%" height="auto" border="0" src="public/khshop/images/user/user-img.png">
+                    </div>
+                </div>
+                <div class="pull-left user-uploader">
+                    <div class="uploader white">
+                    <input type="text" class="filename form-control input input-cz input-user" readonly/>
+                    <input type="button" name="file" class="button button-user" value="浏览"/>
+                    <input type="file" class="file" onchange="previewImage(this)" size="30"/>
+                    </div> 
+                </div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">真实姓名</div>
+              <div class="pull-left"><input type="text" class="form-control input"></div>
+              <div class="pull-left cs-left-txt cs-left-txt03">* 请真实填写,提交后不可修改</div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">性别</div>
+			  <div class="pull-left">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" value="option1" checked=""> 男
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" value="option2"> 女
+                </label>
+              </div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">出生日期</div>
+              <div class="pull-left">
+              	<select class="form-control input input-select">
+                	<option>请选择</option>
+                    <option>1995</option>
+                    <option>1994</option>
+                    <option>1993</option>
+                    <option>1992</option>
+                    <option>1991</option>
+                </select>
+              </div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm">年</div>
+              <div class="pull-left">
+              	<select class="form-control input input-select">
+                	<option>请选择</option>
+                    <option>1995</option>
+                    <option>1994</option>
+                    <option>1993</option>
+                    <option>1992</option>
+                    <option>1991</option>
+                </select>
+              </div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm">月</div>
+              <div class="pull-left">
+              	<select class="form-control input input-select">
+                	<option>请选择</option>
+                    <option>1995</option>
+                    <option>1994</option>
+                    <option>1993</option>
+                    <option>1992</option>
+                    <option>1991</option>
+                </select>
+              </div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm">日</div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">手机号码</div>
+              <div class="pull-left"><div class="pull-left cs-left-txt cs-left-txt-phone">15940000968</div></div>
+              <div class="pull-left cs-left-txt cs-left-txt03">( 不可更改，手机认证后会更新此号码 )</div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">QQ号码</div>
+              <div class="pull-left"><input type="text" class="form-control input"></div>
+            </div> 
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">安全邮箱</div>
+              <div class="pull-left"><input type="text" class="form-control input"></div>
+              <div class="pull-left cs-left-txt cs-left-txt03">* 请填写常用邮箱,提交后不可更改</div>
+            </div> 
+            <button type="button" class="btn btn-tj btn-tj01 btn-login">保存修改</button> 
+        </div>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script>$(function(){
+	$("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
+	$("input[type=file]").each(function(){
+	if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("");}
+	});
+});
+</script>
+<script>
+	$(".bank-radio .radio-inline").click(function(){
+		$(".radio-inline").removeClass("active");
+		$(this).addClass("active");
+		})
+	$(".radio-inline-one").click(function(){
+		$(".brank-one").show();
+		$(".brank-tow").hide();
+		})
+	$(".radio-inline-tow").click(function(){
+		$(".brank-one").hide();
+		$(".brank-tow").show();
+		})
+</script>
+<script>
+	//日历JS
+    $('#dd').calendar({
+        trigger: '#dt',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+    $('#dd02').calendar({
+        trigger: '#dt02',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+</script>
+<script type="text/javascript">
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+   <script type="text/javascript">
+      //图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 260; 
+          var MAXHEIGHT = 180;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+                 
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+</script>  
+</html>

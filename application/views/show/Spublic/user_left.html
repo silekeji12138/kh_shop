@@ -1,0 +1,63 @@
+<div id="nav-left" class="nav-left">
+    <a href="" class="user-home">个人中心</a>
+    <div class="nav-c">
+        <ul class="user-list">
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon"></i>我是卖家 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="">
+                    <li><a href="index.php?p=show&c=shop&a=taobao" class="<?=$_GET['a']=='taobao'||$_GET['a']=='tianmao'?'active':''?>">我要出售网店</a></li>
+                    <li><a href="index.php?p=show&c=shop&a=shopSale" class="<?=$_GET['a']=='shopSale'?'active':''?>">我出售的网店</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon nav-icon02"></i>我是买家 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="display: none;">
+                    <li><a href="index.php?p=show&c=shop&a=buy" class="<?=$_GET['a']=='buy'?'active':''?>">我购买的网店</a></li>
+                    <li><a href="index.php?p=show&c=shop&a=save" class="<?=$_GET['a']=='save'?'active':''?>">我收藏的网店</a></li>
+                    <li><a href="index.php?p=show&c=shop&a=auction" class="<?=$_GET['a']=='auction'?'active':''?>">我参与的竞拍</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon nav-icon03"></i>资金管理 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="display: none;">
+                    <li><a href="index.php?p=show&c=user&a=recharge" class="<?=$_GET['a']=='recharge'?'active':''?>">我要充值</a></li>
+                    <li><a href="index.php?p=show&c=user&a=record" class="<?=$_GET['a']=='record'?'active':''?>">充值记录</a></li>
+                    <li><a href="index.php?p=show&c=user&a=cash" class="<?=$_GET['a']=='cash'?'active':''?>">我要提现</a></li>
+                    <li><a href="index.php?p=show&c=user&a=log" class="<?=$_GET['a']=='log'?'active':''?>">提现记录</a></li>
+                    <li><a href="index.php?p=show&c=user&a=payment" class="<?=$_GET['a']=='payment'?'active':''?>">收支明细</a></li>
+                    <li><a href="index.php?p=show&c=user&a=frozen" class="<?=$_GET['a']=='frozen'?'active':''?>">冻结明细</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon nav-icon04"></i>企业服务 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="display: none;">
+                    <li><a href="">我要出售网店</a></li>
+                    <li><a href="">我出售的网店</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon nav-icon05"></i>信息管理 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="display: none;">
+                    <li><a href="index.php?p=show&c=user&a=person">个人资料</a></li>
+                    <!--<li><a href="">我出售的网店</a></li>-->
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon nav-icon06"></i>咨询建议 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="display: none;">
+                    <li><a href="index.php?p=show&c=user&a=advice">我的建议</a></li>
+                    <li><a href="index.php?p=show&c=user&a=consult">我的咨询</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="nav-click"><i class="nav-icon nav-icon07"></i>投诉评价 <i class="glyphicon glyphicon-menu-down"></i></a>
+                <ul class="nav-down" style="display: none;">
+                    <li><a href="index.php?p=show&c=user&a=complaint">我的投诉</a></li>
+                    <li><a href="index.php?p=show&c=user&a=assess">我的评价</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="text-center user-kf"><img src="public/khshop/images/user/user-kf.png"></div>
+        <div class="user-phone">400-123-5678</div>
+    </div>
+</div>

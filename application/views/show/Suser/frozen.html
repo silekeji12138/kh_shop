@@ -1,0 +1,197 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>资金管理-冻结明细</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/calendar.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">我是卖家</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list">
+                <li><a href="index.php?p=show&c=user&a=payment">收支明细</a></li>
+                <li class="active"><a href="">冻结明细</a></li>
+            </ul>
+            
+        </div>
+        <div class="user-back">
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">金额区间</div>
+              <div class="pull-left"><input type="text" class="form-control input"></div>
+              <div class="pull-left margin-left-10"><input type="text" class="form-control input"></div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm">元</div>
+            </div>
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">起止日期</div>
+            	<div class="pull-left">
+                      <input type="text" id="dt" class="form-control input time-input">
+                      <div id="dd"></div>
+                </div>
+            	<div class="pull-left margin-left-10">
+                      <input type="text" id="dt02" class="form-control input time-input">
+                      <div id="dd02"></div>
+                </div>
+            </div>
+
+			<div class="clearfix gl-clearfix">
+              <div class="pull-left cs-left-txt cs-left-txt02">关 键 字</div>
+              <div class="pull-left"><input type="text" class="form-control input input-dj"></div>
+            </div> 
+            <button type="button" class="btn btn-tj btn-tj01 btn-login btn-dj">查询</button>
+          </div>
+            <table class="table table-sj table-dj table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 120px">冻结时间</th>
+                  <th>备注说明</th>
+                  <th>类型</th>
+                  <th style="width: 200px">冻结金额</th>
+                  <th style="width: 150px">冻结状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+                <tr>
+                  <td>2017-10-12</td>
+                  <td>备注说明</td>
+                  <td>拍卖</td>
+                  <td><span class="table-number">¥7,800</span></td>
+                  <td>已解冻</td>
+                </tr>
+              </tbody>
+            </table>
+        <div class="user-back">
+            <div class="table-null text-center">暂无充值记录信息！</div>
+        </div>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script>
+	//日历JS
+    $('#dd').calendar({
+        trigger: '#dt',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+    $('#dd02').calendar({
+        trigger: '#dt02',
+        zIndex: 999,
+		format: 'yyyy-mm-dd',
+        onSelected: function (view, date, data) {
+            console.log('event: onSelected')
+        },
+        onClose: function (view, date, data) {
+            console.log('event: onClose')
+            console.log('view:' + view)
+            console.log('date:' + date)
+            console.log('data:' + (data || 'None'));
+        }
+    });
+</script>
+<script type="text/javascript">
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>
