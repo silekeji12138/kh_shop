@@ -1,0 +1,106 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>帮助中心</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+	<div class="help-banner">
+    	<div class="container">
+        	<div class="help-img wow bounceInUp animated"><img src="public/khshop/images/help01.png"></div>
+        </div>
+    </div>
+    <div class="back-f9">
+        <div class="container">
+            <div class="recruit-c help-c">
+				<div class="clearfix help-list-c">
+                	<ul class="help-list pull-right clearfix">
+                    	<li class="active">
+                        	<a href="index.php?p=show&c=index&a=tixian&name=如何充值">提现充值</a>
+                            <ul class="help-list-down">
+                            	<li><a href="index.php?p=show&c=index&a=tixian&name=如何充值">如何充值</a></li>
+                                <li><a href="index.php?p=show&c=index&a=tixian&name=如何提现">如何提现</a></li>
+                                <li class="border-no"><a href="index.php?p=show&c=index&a=tixian&name=收费标准">收费标准</a></li>
+                            </ul>
+                        </li>
+                        <li >
+                        	<a href="index.php?p=show&c=index&a=fuwu&name=购买流程">服务流程</a>
+                            <ul class="help-list-down">
+                            	<li><a href="">购买流程</a></li>
+                                <li><a href="">出售流程</a></li>
+                                <li class="border-no"><a href="">寄售交易</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                        	<a href="index.php?p=show&c=index&a=anquan&name=店铺转让认证">安全保障</a>
+                            <ul class="help-list-down help-list-down-lg">
+                            	<li><a href="">店铺转让认证</a></li>
+                                <li><a href="">担保交易</a></li>
+                                <li class="border-no"><a href="">合同如何签署</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                        	<a href="index.php?p=show&c=index&a=help&name=买家帮助">帮助中心</a>
+                            <ul class="help-list-down">
+                            	<li><a href="">买家帮助</a></li>
+                                <li><a href="">卖家帮助</a></li>
+                                <li class="border-no"><a href="">隐私保护</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                        	<a href="index.php?p=show&c=index&a=kefu1&name=客服咨询">客服中心</a>
+                            <ul class="help-list-down help-list-down-last">
+                            	<li><a href="">客服咨询</a></li>
+                                <li><a href="">建议中心</a></li>
+                                <li class="border-no"><a href="">在线问答</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="help-nav">
+                	<i class="icon"></i><a href="">提现充值</a> > <a href="" class="active"><?=$_GET['name']?></a>
+                </div>
+                <div class="clearfix">
+                	<div class="help-left pull-left">
+                    	<ul id="help">
+                            <?php foreach($zx as $v): ?>
+                            <li id="<?=$v['id']?>"><a href="index.php?p=show&c=index&a=tixian&id=<?=$v['id']?>&name=<?=$_GET['name']?>"><?=$v['biaoti']?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="pull-right help-right">
+                            <?=html_entity_decode($zx[0]['content'])?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+var id="<?=$_GET['id']?>";
+if (!id){
+    $('#help').children('li:first').prop('class','active')
+}
+window.document.getElementById(id).setAttribute('class','active')
+</script>
+</html>

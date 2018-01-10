@@ -4,7 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>帮助中心</title>
-
     <!-- Bootstrap -->
     <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
     <link href="public/khshop/css/animate.min.css" rel="stylesheet">
@@ -25,7 +24,7 @@
 				<div class="clearfix help-list-c">
                 	<ul class="help-list pull-right clearfix">
                     	<li>
-                        	<a href="">提现充值</a>
+                        	<a href="index.php?p=show&c=index&a=tixian&name=如何充值">提现充值</a>
                             <ul class="help-list-down">
                             	<li><a href="">如何充值</a></li>
                                 <li><a href="">如何提现</a></li>
@@ -33,7 +32,7 @@
                             </ul>
                         </li>
                         <li>
-                        	<a href="">服务流程</a>
+                        	<a href="index.php?p=show&c=index&a=fuwu&name=购买流程">服务流程</a>
                             <ul class="help-list-down">
                             	<li><a href="">购买流程</a></li>
                                 <li><a href="">出售流程</a></li>
@@ -41,7 +40,7 @@
                             </ul>
                         </li>
                         <li>
-                        	<a href="">安全保障</a>
+                        	<a href="index.php?p=show&c=index&a=anquan&name=店铺转让认证">安全保障</a>
                             <ul class="help-list-down help-list-down-lg">
                             	<li><a href="">店铺转让认证</a></li>
                                 <li><a href="">担保交易</a></li>
@@ -49,7 +48,7 @@
                             </ul>
                         </li>
                         <li>
-                        	<a href="">帮助中心</a>
+                        	<a href="index.php?p=show&c=index&a=help&name=买家帮助">帮助中心</a>
                             <ul class="help-list-down">
                             	<li><a href="">买家帮助</a></li>
                                 <li><a href="">卖家帮助</a></li>
@@ -59,9 +58,9 @@
                         <li class="active">
                         	<a href="">客服中心</a>
                             <ul class="help-list-down help-list-down-last">
-                            	<li><a href="">客服咨询</a></li>
+                            	<li><a href="index.php?p=show&c=index&a=kefu1&name=客服咨询">客服咨询</a></li>
                                 <li class="active"><a href="">建议中心</a></li>
-                                <li class="border-no"><a href="">在线问答</a></li>
+                                <li class="border-no"><a href="index.php?p=show&c=index&a=kefu1&name=在线问答">在线问答</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -71,15 +70,16 @@
                 </div>
                 <div class="proposal-tt text-center">有奖建议征集中</div>
                 <div class="proposal-tt-sm text-center">凡建议采纳就奖励100-1000元人民币奖金,或纪念礼品一份！</div>
+                <form method="post" action="index.php?p=show&c=index&a=jianyi">
                 <div class="row proposal-row">
                 	<div class="col-xs-12">
-						<textarea class="form-control input-sell input-proposal-text" placeholder="在这提出您建议意见:"></textarea>
+						<textarea name="content" class="form-control input-sell input-proposal-text" placeholder="在这提出您建议意见:"></textarea>
                     </div>
                     <div class="col-xs-6">
-                    	<input type="text" class="form-control input-sell" placeholder="您的姓名：">
+                    	<input name="name" type="text" class="form-control input-sell" placeholder="您的姓名：">
                     </div>
                     <div class="col-xs-6">
-                    	<input type="text" class="form-control input-sell" placeholder="您的联系方式：">
+                    	<input name="tel" type="text" class="form-control input-sell" placeholder="您的联系方式：">
                     </div>
                     <div class="col-xs-6">
                     	<button type="submit" class="btn btn-proposal">提交您的建议</button>
@@ -88,20 +88,12 @@
                     	<div class="btn-help">您的建议提交后我们会认证仔细阅读，如符合采纳要求，我们将会联系您！</div>
                     </div>
                 </div>
+                </form>
                 <div class="proposal-tt-i">获奖名单与奖品展示</div>
                 <ul class="clearfix proposal-list">
-                	<li>王***  建议已采纳 获奖金¥300元</li>
-                    <li>孙***  建议已采纳 获奖金¥1000元</li>
-                    <li>赵***  建议已采纳 获奖金¥200元</li>
-                	<li>王***  建议已采纳 获奖金¥300元</li>
-                    <li>孙***  建议已采纳 获奖金¥1000元</li>
-                    <li>赵***  建议已采纳 获奖金¥200元</li>
-                	<li>王***  建议已采纳 获奖金¥300元</li>
-                    <li>孙***  建议已采纳 获奖金¥1000元</li>
-                    <li>赵***  建议已采纳 获奖金¥200元</li>
-                	<li>王***  建议已采纳 获奖金¥300元</li>
-                    <li>孙***  建议已采纳 获奖金¥1000元</li>
-                    <li>赵***  建议已采纳 获奖金¥200元</li>
+                    <?php foreach($result as $v): ?>
+                	<li><?=mb_substr($v['name'],0,1,'utf-8')?>***  建议已采纳 获奖金<?=$v['prize']?></li>
+                    <?php endforeach; ?>
                 </ul>
                 <div id="carousel-example-generic" class="carousel slide text-center jy-slide" data-ride="carousel">
                   <!-- Wrapper for slides -->
@@ -143,7 +135,7 @@
 <script src="public/khshop/js/jquery.min.js"></script>
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script src="public/khshop/js/common.js"></script>
-<script src="public/khshop/public/khshop/js/wow.min.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
 <script>
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();

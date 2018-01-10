@@ -176,7 +176,7 @@
                       <div class="carousel-inner" role="listbox">
                         <!--<div class="item active"><a target="_blank" href="">店来店往2017国庆节放假通知往2017国庆节放假通往2017国庆节放假通.</a></div>-->
                           <?php foreach($gonggao as $v): ?>
-                        <div id="q" class="item"><a target="_blank" href=""><?=$v['gg']?></a></div>
+                        <div id="q" class="item"><a target="_blank" href="javascript:;"><?=$v['gg']?></a></div>
                           <?php endforeach; ?>
                       </div>
                     </div>
@@ -186,7 +186,7 @@
                     <div id="carousel-example-vertical" class="carousel vertical slide pull-left">
                       <div class="carousel-inner" role="listbox">
                           <?php foreach($zhinan as $v): ?>
-                          <div id="w" class="item"><a target="_blank" href=""><?=$v['zn']?></a></div>
+                          <div id="w" class="item"><a target="_blank" href="javascript:;"><?=$v['zn']?></a></div>
                           <?php endforeach; ?>
                       </div>
                     </div>
@@ -196,7 +196,7 @@
                     <div id="carousel-example-vertical" class="carousel vertical slide pull-left">
                       <div class="carousel-inner" role="listbox">
                           <?php foreach($wenda as $v): ?>
-                          <div id="e" class="item"><a target="_blank" href=""><?=$v['wd']?></a></div>
+                          <div id="e" class="item"><a target="_blank" href="javascript:;"><?=$v['wd']?></a></div>
                           <?php endforeach; ?>
                       </div>
                     </div>
@@ -211,19 +211,19 @@
                     <div class="img-c"><img src="public/khshop/images/img01.png"></div>
                     <div class="img-tt">走进店来店往</div>
                     <div class="img-txt">通过我们的专业水平和不懈努力，为广大客户提供专业放心的服务......</div>
-                    <a href="" class="btn img-more">查看更多</a>
+                    <a href="javascript:;" class="btn img-more">查看更多</a>
                 </div>
                 <div class="col-xs-4 wow bounceInUp animated">
                     <div class="img-c"><img src="public/khshop/images/img02.png"></div>
                     <div class="img-tt">服务项目</div>
                     <div class="img-txt">网店转让服务、商城代入驻服务、网店代理服务、网店运营指导......</div>
-                    <a href="" class="btn img-more">查看更多</a>
+                    <a href="javascript:;" class="btn img-more">查看更多</a>
                 </div>
                 <div class="col-xs-4 wow bounceInLeft animated">
                     <div class="img-c"><img src="public/khshop/images/img03.png"></div>
                     <div class="img-tt">网店交易流程</div>
                     <div class="img-txt">请仔细阅读网店交易流程指南，如有疑问请电话或联系在线客服.....</div>
-                    <a href="" class="btn img-more">查看更多</a>
+                    <a href="javascript:;" class="btn img-more">查看更多</a>
                 </div> 
             </div>
             <div class="shop-back clearfix">
@@ -308,7 +308,7 @@
                     </ul>
                 </div>
             	<div class="tab-back-c">
-                	<div class="tab-back-tt">其他网店<i class="icon"></i></div>
+                    <a href="#show-tab06" class="tab-back-tt">其他<i class="icon"></i></a>
                     <ul class="tab-back-list clearfix" style="display:none">
                     	<li><a href="index.php?p=show&c=index&a=search3&t1=其他网店&t2=旗舰店">旗舰店</a></li>
                         <li><a href="index.php?p=show&c=index&a=search3&t1=其他网店&t2=专营店">专营店</a></li>
@@ -326,20 +326,20 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <ul class="shop-tab clearfix">
-                            <li><a class="active" href="#tabs01" onclick="location.href='abc.html';">服装饰品</a></li>
-                            <li><a href="#tabs02" onclick="location.href='abc.html';">家居用品</a></li>
-                            <li><a href="#tabs03" onclick="location.href='abc.html';">家装家饰</a></li>
-                            <li><a href="#tabs04" onclick="location.href='abc.html';">美容护理</a></li>
-                            <li><a href="#tabs05" onclick="location.href='abc.html';">母婴用品</a></li>
-                            <li><a href="#tabs06">3C数码类</a></li>
-                            <li><a href="#tabs07">运动户外</a></li>
-                            <li class="border-no"><a href="#tabs08">食品保健</a></li>
+                        <ul class="shop-tab clearfix" id="tm">
+                            <li><a class="active" href="#tabs1" onclick="location.href='abc.html';">服装饰品</a></li>
+                            <li><a href="#tabs2" onclick="location.href='javascript';">家居用品</a></li>
+                            <li><a href="#tabs3" onclick="location.href='abc.html';">家装家饰</a></li>
+                            <li><a href="#tabs4" onclick="location.href='abc.html';">美容护理</a></li>
+                            <li><a href="#tabs5" onclick="location.href='abc.html';">母婴用品</a></li>
+                            <li><a href="#tabs6">3C数码类</a></li>
+                            <li><a href="#tabs7">运动户外</a></li>
+                            <li class="border-no"><a href="#tabs8">食品保健</a></li>
                         </ul>
                     </div>
                     <div class="item">
                         <ul class="shop-tab clearfix">
-                            <li><a href="#tabs09">服装饰品</a></li>
+                            <li><a href="#tabs9">服装饰品</a></li>
                             <li><a href="#tabs10">家居用品</a></li>
                             <li><a href="#tabs11">家装家饰</a></li>
                             <li><a href="#tabs12">美容护理</a></li>
@@ -360,88 +360,27 @@
                   </a>
                 </div>
                   <!-- Tab panes -->
+                <!--天猫商城-->
+
+
+                  <?php foreach($r1 as $key=>$v):?>
+                  <?php if($v!=false){ ?>
                   <div class="tab-content tab-shop-container">
-                    <div role="tabpanel" class="tab-pane active" id="tabs01">
+                    <div role="tabpanel" class="tab-pane" id="<?=$key?>">
                         <div class="shop-tt clearfix">
                             <i class="icon"></i>
-                            <div class="shop-tt-txt">江浙沪地区京东车品专营店低价诚心出售，自带TM标和公司一起转让 ，需要的亲联系客服哦</div>
+                            <div class="shop-tt-txt"><?=$v[0]['miaoshu']?></div>
                         </div>
                         <div class="clearfix shop-tab-b">
-                            <div class="pull-left shop-change">网店类型：<span>淘宝旗舰店</span></div>
-                            <div class="pull-left shop-change">店铺等级：<span>3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
-                            <div class="pull-left shop-change">店铺等级：<span>服装饰品</span></div>
-                            <div class="pull-left shop-change shop-change-last">收藏人气：<span>> 5000</span></div>
+                            <div class="pull-left shop-change">网店类型：<span><?=$v[0]['sclx']?></span></div>
+                            <div class="pull-left shop-change">店铺等级：<span>带加入:3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
+                            <div class="pull-left shop-change">所属行业：<span><?=$v[0]['sshy']?></span></div>
+                            <div class="pull-left shop-change shop-change-last">收藏人气：<span>待加入:> 5000</span></div>
                         </div>
                         <div class="clearfix">
                             <div class="pull-left">
                                 <div class="money-t">售价</div>
-                                <div class="money-b">¥<span>36,8000</span></div>
-                            </div>
-                            <div class="pull-right">
-                                <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
-                                <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
-                            </div>
-                        </div> 
-                    </div>
-                    <div role="tabpanel" class="tab-pane"  id="tabs08">
-                        <div class="shop-tt clearfix">
-                            <i class="icon"></i>
-                            <div class="shop-tt-txt">江浙沪地区京东车品专营一起转让 ，需要的亲联系客服哦</div>
-                        </div>
-                        <div class="clearfix shop-tab-b">
-                            <div class="pull-left shop-change">网店类型：<span>淘宝旗舰店</span></div>
-                            <div class="pull-left shop-change">店铺等级：<span>3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
-                            <div class="pull-left shop-change">店铺等级：<span>服装饰品</span></div>
-                            <div class="pull-left shop-change shop-change-last">收藏人气：<span>> 5000</span></div>
-                        </div>
-                        <div class="clearfix">
-                            <div class="pull-left">
-                                <div class="money-t">售价</div>
-                                <div class="money-b">¥<span>36,8000</span></div>
-                            </div>
-                            <div class="pull-right">
-                                <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
-                                <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
-                            </div>
-                        </div> 
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tabs03">
-                        <div class="shop-tt clearfix">
-                            <i class="icon"></i>
-                            <div class="shop-tt-txt">江浙沪地区京东车品专营店低价诚心出售，自带司一起转让 ，需要的亲联系客服哦</div>
-                        </div>
-                        <div class="clearfix shop-tab-b">
-                            <div class="pull-left shop-change">网店类型：<span>淘宝旗舰店</span></div>
-                            <div class="pull-left shop-change">店铺等级：<span>3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
-                            <div class="pull-left shop-change">店铺等级：<span>服装饰品</span></div>
-                            <div class="pull-left shop-change shop-change-last">收藏人气：<span>> 5000</span></div>
-                        </div>
-                        <div class="clearfix">
-                            <div class="pull-left">
-                                <div class="money-t">售价</div>
-                                <div class="money-b">¥<span>36,8000</span></div>
-                            </div>
-                            <div class="pull-right">
-                                <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
-                                <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
-                            </div>
-                        </div> 
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tabs04">
-                        <div class="shop-tt clearfix">
-                            <i class="icon"></i>
-                            <div class="shop-tt-txt">江诚心出售，自带TM标和公司一起转让 ，需要的亲联系客服哦</div>
-                        </div>
-                        <div class="clearfix shop-tab-b">
-                            <div class="pull-left shop-change">网店类型：<span>淘宝旗舰店</span></div>
-                            <div class="pull-left shop-change">店铺等级：<span>3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
-                            <div class="pull-left shop-change">店铺等级：<span>服装饰品</span></div>
-                            <div class="pull-left shop-change shop-change-last">收藏人气：<span>> 5000</span></div>
-                        </div>
-                        <div class="clearfix">
-                            <div class="pull-left">
-                                <div class="money-t">售价</div>
-                                <div class="money-b">¥<span>36,8000</span></div>
+                                <div class="money-b">¥<span><?=$v[0]['jiage']?></span></div>
                             </div>
                             <div class="pull-right">
                                 <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
@@ -450,68 +389,327 @@
                         </div> 
                     </div>
                   </div>
+                <?php } ?>
+                <?php endforeach; ?>
+
+
             </div>
+            <!--淘宝商城-->
         	<div id="show-tab02" class="show-tab-c">
-                <div id="slide-show02" class="carousel slide slide-show">
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
+            <div id="slide-show02" class="carousel slide slide-show">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         <ul class="shop-tab clearfix">
-                            <li><a class="active" href="#tabs01">服装饰品</a></li>
-                            <li><a href="#tabs02">家居用品</a></li>
-                            <li><a href="#tabs03">家装家饰</a></li>
-                            <li><a href="#tabs04">美容护理</a></li>
-                            <li><a href="#tabs05">母婴用品</a></li>
-                            <li><a href="#tabs06">3C数码类</a></li>
-                            <li><a href="#tabs07">运动户外</a></li>
-                            <li class="border-no"><a href="#tabs08">食品保健</a></li>
+                            <li><a class="active" href="#tabs17">服装饰品</a></li>
+                            <li><a href="#tabs18">家居用品</a></li>
+                            <li><a href="#tabs19">家装家饰</a></li>
+                            <li><a href="#tabs20">美容护理</a></li>
+                            <li><a href="#tabs21">母婴用品</a></li>
+                            <li><a href="#tabs22">3C数码类</a></li>
+                            <li><a href="#tabs23">运动户外</a></li>
+                            <li class="border-no"><a href="#tabs24">食品保健</a></li>
                         </ul>
                     </div>
                     <div class="item">
                         <ul class="shop-tab clearfix">
-                            <li><a href="#tabs09">服装饰品</a></li>
-                            <li><a href="#tabs10">家居用品</a></li>
-                            <li><a href="#tabs11">家装家饰</a></li>
-                            <li><a href="#tabs12">美容护理</a></li>
-                            <li><a href="#tabs13">母婴用品</a></li>
-                            <li><a href="#tabs14">3C数码类</a></li>
-                            <li><a href="#tabs15">运动户外</a></li>
-                            <li class="border-no"><a href="#tabs16">食品保健</a></li>
+                            <li><a href="#tabs25">服装饰品</a></li>
+                            <li><a href="#tabs26">家居用品</a></li>
+                            <li><a href="#tabs27">家装家饰</a></li>
+                            <li><a href="#tabs28">美容护理</a></li>
+                            <li><a href="#tabs29">母婴用品</a></li>
+                            <li><a href="#tabs30">3C数码类</a></li>
+                            <li><a href="#tabs31">运动户外</a></li>
+                            <li class="border-no"><a href="#tabs32">食品保健</a></li>
                         </ul>
                     </div>
-                  </div>
-                
-                  <!-- Controls -->
-                  <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
-                    <
-                  </a>
-                  <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
-                    >
-                  </a>
                 </div>
 
-                <div class="shop-tt clearfix" >
-                    <i class="icon"></i>
-                    <div class="shop-tt-txt">江浙沪地区京东车品专营店低价诚心出售，自带TM标，已经授权到店铺商标和公司一起转让 ，需要的亲联系客服哦</div>
-                </div>
-                <div class="clearfix shop-tab-b">
-                    <div class="pull-left shop-change">网店类型：<span>淘宝旗舰店</span></div>
-                    <div class="pull-left shop-change">店铺等级：<span>3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
-                    <div class="pull-left shop-change">店铺等级：<span>服装饰品</span></div>
-                    <div class="pull-left shop-change shop-change-last">收藏人气：<span>> 5000</span></div>
-                </div>
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <div class="money-t">售价</div>
-                        <div class="money-b">¥<span>36,8000</span></div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                    <
+                </a>
+                <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                    >
+                </a>
+            </div>
+            <div class="tab-content tab-shop-container">
+
+
+                <?php foreach($r2 as $key=>$v):?>
+                <?php if($v!=false){ ?>
+                <div class="tab-content tab-shop-container">
+                    <div role="tabpanel" class="tab-pane" id="<?=$key?>">
+                        <div class="shop-tt clearfix">
+                            <i class="icon"></i>
+                            <div class="shop-tt-txt"><?=$v[0]['miaoshu']?></div>
+                        </div>
+                        <div class="clearfix shop-tab-b">
+                            <div class="pull-left shop-change">网店类型：<span><?=$v[0]['sclx']?></span></div>
+                            <div class="pull-left shop-change">店铺等级：<span>带加入:3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
+                            <div class="pull-left shop-change">所属行业：<span><?=$v[0]['sshy']?></span></div>
+                            <div class="pull-left shop-change shop-change-last">收藏人气：<span>待加入:> 5000</span></div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                <div class="money-t">售价</div>
+                                <div class="money-b">¥<span><?=$v[0]['jiage']?></span></div>
+                            </div>
+                            <div class="pull-right">
+                                <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
+                                <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pull-right">
-                        <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
-                        <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
+                </div>
+                <?php } ?>
+                <?php endforeach; ?>
+
+
+
+
+
+            </div>
+        </div>
+   <!--京东商城-->
+            <div id="show-tab03" class="show-tab-c">
+                <div id="slide-show03" class="carousel slide slide-show">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <ul class="shop-tab clearfix">
+                                <li><a class="active" href="#tabs33">服装饰品</a></li>
+                                <li><a href="#tabs34">家居用品</a></li>
+                                <li><a href="#tabs35">家装家饰</a></li>
+                                <li><a href="#tabs36">美容护理</a></li>
+                                <li><a href="#tabs37">母婴用品</a></li>
+                                <li><a href="#tabs38">3C数码类</a></li>
+                                <li><a href="#tabs39">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs40">食品保健</a></li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="shop-tab clearfix">
+                                <li><a href="#tabs41">服装饰品</a></li>
+                                <li><a href="#tabs42">家居用品</a></li>
+                                <li><a href="#tabs43">家装家饰</a></li>
+                                <li><a href="#tabs44">美容护理</a></li>
+                                <li><a href="#tabs45">母婴用品</a></li>
+                                <li><a href="#tabs46">3C数码类</a></li>
+                                <li><a href="#tabs47">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs48">食品保健</a></li>
+                            </ul>
+                        </div>
                     </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                        <
+                    </a>
+                    <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                        >
+                    </a>
+                </div>
+                <div class="tab-content tab-shop-container">
+
+
+                    <?php foreach($r3 as $key=>$v):?>
+                    <?php if($v!=false){ ?>
+                    <div class="tab-content tab-shop-container">
+                        <div role="tabpanel" class="tab-pane" id="<?=$key?>">
+                            <div class="shop-tt clearfix">
+                                <i class="icon"></i>
+                                <div class="shop-tt-txt"><?=$v[0]['miaoshu']?></div>
+                            </div>
+                            <div class="clearfix shop-tab-b">
+                                <div class="pull-left shop-change">网店类型：<span><?=$v[0]['sclx']?></span></div>
+                                <div class="pull-left shop-change">店铺等级：<span>带加入:3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
+                                <div class="pull-left shop-change">所属行业：<span><?=$v[0]['sshy']?></span></div>
+                                <div class="pull-left shop-change shop-change-last">收藏人气：<span>待加入:> 5000</span></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="pull-left">
+                                    <div class="money-t">售价</div>
+                                    <div class="money-b">¥<span><?=$v[0]['jiage']?></span></div>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
+                                    <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php endforeach; ?>
+
+
+
+
                 </div>
 
             </div>
+
+<!--蘑菇街-->
+            <div id="show-tab05" class="show-tab-c">
+                <div id="slide-show05" class="carousel slide slide-show">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <ul class="shop-tab clearfix">
+                                <li><a class="active" href="#tabs49">服装饰品</a></li>
+                                <li><a href="#tabs50">家居用品</a></li>
+                                <li><a href="#tabs51">家装家饰</a></li>
+                                <li><a href="#tabs52">美容护理</a></li>
+                                <li><a href="#tabs53">母婴用品</a></li>
+                                <li><a href="#tabs54">3C数码类</a></li>
+                                <li><a href="#tabs55">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs56">食品保健</a></li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="shop-tab clearfix">
+                                <li><a href="#tabs57">服装饰品</a></li>
+                                <li><a href="#tabs58">家居用品</a></li>
+                                <li><a href="#tabs59">家装家饰</a></li>
+                                <li><a href="#tabs60">美容护理</a></li>
+                                <li><a href="#tabs61">母婴用品</a></li>
+                                <li><a href="#tabs62">3C数码类</a></li>
+                                <li><a href="#tabs63">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs64">食品保健</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                        <
+                    </a>
+                    <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                        >
+                    </a>
+                </div>
+                <div class="tab-content tab-shop-container">
+
+
+
+
+                    <?php foreach($r4 as $key=>$v):?>
+                    <?php if($v!=false){ ?>
+                    <div class="tab-content tab-shop-container">
+                        <div role="tabpanel" class="tab-pane" id="<?=$key?>">
+                            <div class="shop-tt clearfix">
+                                <i class="icon"></i>
+                                <div class="shop-tt-txt"><?=$v[0]['miaoshu']?></div>
+                            </div>
+                            <div class="clearfix shop-tab-b">
+                                <div class="pull-left shop-change">网店类型：<span><?=$v[0]['sclx']?></span></div>
+                                <div class="pull-left shop-change">店铺等级：<span>带加入:3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
+                                <div class="pull-left shop-change">所属行业：<span><?=$v[0]['sshy']?></span></div>
+                                <div class="pull-left shop-change shop-change-last">收藏人气：<span>待加入:> 5000</span></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="pull-left">
+                                    <div class="money-t">售价</div>
+                                    <div class="money-b">¥<span><?=$v[0]['jiage']?></span></div>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
+                                    <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php endforeach; ?>
+
+
+
+
+
+                </div>
+
+            </div>
+<!--其他的-->
+
+            <div id="show-tab06" class="show-tab-c">
+                <div id="slide-show06" class="carousel slide slide-show">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <ul class="shop-tab clearfix">
+                                <li><a class="active" href="#tabs65">服装饰品</a></li>
+                                <li><a href="#tabs66">家居用品</a></li>
+                                <li><a href="#tabs67">家装家饰</a></li>
+                                <li><a href="#tabs68">美容护理</a></li>
+                                <li><a href="#tabs69">母婴用品</a></li>
+                                <li><a href="#tabs70">3C数码类</a></li>
+                                <li><a href="#tabs71">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs72">食品保健</a></li>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul class="shop-tab clearfix">
+                                <li><a href="#tabs73">服装饰品</a></li>
+                                <li><a href="#tabs74">家居用品</a></li>
+                                <li><a href="#tabs75">家装家饰</a></li>
+                                <li><a href="#tabs76">美容护理</a></li>
+                                <li><a href="#tabs77">母婴用品</a></li>
+                                <li><a href="#tabs78">3C数码类</a></li>
+                                <li><a href="#tabs79">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs80">食品保健</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                        <
+                    </a>
+                    <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                        >
+                    </a>
+                </div>
+                <div class="tab-content tab-shop-container">
+
+
+
+
+                    <?php foreach($r5 as $key=>$v):?>
+                    <?php if($v!=false){ ?>
+                    <div class="tab-content tab-shop-container">
+                        <div role="tabpanel" class="tab-pane" id="<?=$key?>">
+                            <div class="shop-tt clearfix">
+                                <i class="icon"></i>
+                                <div class="shop-tt-txt"><?=$v[0]['miaoshu']?></div>
+                            </div>
+                            <div class="clearfix shop-tab-b">
+                                <div class="pull-left shop-change">网店类型：<span><?=$v[0]['sclx']?></span></div>
+                                <div class="pull-left shop-change">店铺等级：<span>带加入:3冠</span><i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-hg"></i></div>
+                                <div class="pull-left shop-change">所属行业：<span><?=$v[0]['sshy']?></span></div>
+                                <div class="pull-left shop-change shop-change-last">收藏人气：<span>待加入:> 5000</span></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="pull-left">
+                                    <div class="money-t">售价</div>
+                                    <div class="money-b">¥<span><?=$v[0]['jiage']?></span></div>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="" class="btn btn-sc"><i class="icon"></i>收藏</a>
+                                    <a role="button" data-toggle="modal" data-target="#kefu" class="btn btn-sc btn-kefu"><i class="icon"></i>联系客服</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php endforeach; ?>
+
+
+
+
+                </div>
+
+            </div>
+
         </div>
     </div>
     <!--用户说-->
@@ -706,9 +904,16 @@ var t=$('#t');
 $('#tj').children('li').click(function () {
     var tj=$(this).children('a').html();
     t.val(tj);
-})
-$('#q:first').prop('class','item active')
-$('#w:first').prop('class','item active')
-$('#e:first').prop('class','item active')
+});
+$('#q:first').prop('class','item active');
+$('#w:first').prop('class','item active');
+$('#e:first').prop('class','item active');
+
+$('#tabs1').prop('class','tab-pane active')
+$('#tabs17').prop('class','tab-pane active')
+$('#tabs33').prop('class','tab-pane active')
+$('#tabs49').prop('class','tab-pane active')
+$('#tabs65').prop('class','tab-pane active')
+
 </script>
 </html>

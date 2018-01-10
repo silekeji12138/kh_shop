@@ -24,9 +24,14 @@ class BuyController extends BaseController
         $result=$model->select("select *from sl_shangpin WHERE szpt='淘宝网店'");
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_tb.html";
     }
-
     //商城出售页面
     public function saleAction(){
+        if ($_SERVER['REQUEST_METHOD']=='POST'){
+            $data=$_POST;
+            $model=new model('sale');
+            $model->insert($data);
+            $this->jump('index.php?p=show&c=buy&a=sale','提交成功',2);
+        }
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_sale.html";
     }
     //购买商铺的详情页面

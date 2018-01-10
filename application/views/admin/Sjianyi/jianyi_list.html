@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<?php include CUR_VIEW_PATH."public/head.html"?>
+</head>
+
+<body class="body-color">
+	<header>
+		<?php include CUR_VIEW_PATH."public/header.html"?>
+
+	</header>
+	<!--侧边菜单栏-->
+	<aside class="side-nav">
+		<?php include CUR_VIEW_PATH."public/aside.html"?>
+	</aside>
+	<!--侧边菜单栏 end-->
+
+	<!--主体部分-->
+	<section class="body-content">
+		<!--当前位置-->
+		<div class="site-location">
+			&nbsp;&nbsp;
+			<span class="ficon ficon-weizhi"></span>&nbsp;<a href="index.php?p=admin&c=index&a=index">用户首页</a>
+			&nbsp;&gt;&nbsp;<a href="index.php?p=admin&c=moxing&a=index">模型管理</a>
+			&nbsp;&gt;&nbsp;<a href="#">表单管理</a>
+		</div>
+		
+		<!--当前位置 end-->
+		<br/>
+		
+		<!--筛选条件-->
+<div class="filter">
+<form method="post" action="index.php?p=admin&c=autotable&a=index&model_id=<?php echo $_GET['model_id'] ?>" name='theForm' id="search_from">
+	<div class="filter-left">
+		<div class="form-control">
+			<input name="u6" type="text" id="u6" class="input" placeholder="搜索条件" />
+
+			<input type="submit" name="Button1" value="搜索" id="Button1" class="btn btn-blue" />
+		</div>
+		
+	</div>
+
+
+</form>
+	
+	<br />
+	<p class="clear-right"></p>
+</div>
+<!--筛选条件 end-->
+
+<!--表单table-->
+<table class="table table-border table-hover" id="content">
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>建议</th>
+			<th>联系方式</th>
+			<th>奖品</th>
+			<th>状态</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	
+	
+	<?php foreach($result as $v) : ?>
+	<tr id="<?=$v['id']?>">
+		<td style='width:5%'><?=$v['name']?></td>
+		<td style='width:5%'><?=$v['content']?></td>
+		<td style='width:5%'><?=$v['tel']?></td>
+		<td style='width:5%' id="prize1"><?=$v['prize']?></td>
+		<td style='width:5%'><?=$v['status']?></td>
+		<td style='width:5%'><a href="index.php?p=admin&c=jianyi&a=change&id=<?=$v['id']?>">同意</a>丨<a href="index.php?p=admin&c=jianyi&a=change1&id=<?=$v['id']?>">拒绝</a>丨<a  href="javascript:;" id="prize">设置奖品</a>丨<a  href="javascript:;" id="dl">删除</a></td>
+	</tr>
+	<?php endforeach;?>
+	
+	
+</table>
+
+<footer>
+	<?php include CUR_VIEW_PATH."public/footer.html"?>
+</footer>
+</section>
+
+<p class="clear"></p>
+
+<script src="application/views/admin/js/wow.min.js" type="text/javascript"></script>
+<script src="application/views/admin/js/common.js" type="text/javascript"></script>
+
+<!--wow 初始化-->
+<script>
+	if(!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+		new WOW().init();
+	};
+	$('body').on('click','#dl',function () {
+             var that=$(this).closest('tr');
+             var id=that.prop('id');
+            $.get('index.php?p=admin&c=jianyi&a=delete',{id:id},function () {
+				that.remove();
+            })
+    });
+	$('body').on('click','#prize',function () {
+        var that=$(this).closest('tr');
+        var id=that.prop('id');
+        var q=that.children('#prize1');
+        var a=prompt('请输入奖品');
+        if ( a!=null){
+            $.get('index.php?p=admin&c=jianyi&a=edit',{b:a,id:id},function (msg) {
+                if (msg=='1'){
+                    q.html(a);
+                }
+            })
+        }
+    })
+//	$('#prize').click(function () {
+//	    var q=$('#prize1');
+//        var that=$(this).closest('tr');
+//        var id=that.prop('id');
+//        var a=prompt('请输入奖品');
+//        if ( a!=null){
+//			$.get('index.php?p=admin&c=jianyi&a=edit',{b:a,id:id},function (msg) {
+//				if (msg=='1'){
+//                       q.html(a);
+//				}
+//            })
+//		}
+//    })
+</script>
+</body>
+
+</html>
