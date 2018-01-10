@@ -21,7 +21,7 @@ class LoginController extends BaseController
             if ($rs_password){
                 $_SESSION['username']=$rs_tel[0]['name'];
                 $_SESSION['tel']=$rs_tel[0]['tel'];
-                $_SESSION['uid']=$rs_tel[0]['id'];
+                $_SESSION['user_id']=$rs_tel[0]['id'];
                 $this->jump('index.php?p=show&c=user&a=index','',0);
             }else{
                 $this->jump('index.php?p=show&c=login&a=login','密码错误',3);
