@@ -38,8 +38,21 @@ class LunboController extends BaseController
     // 显示轮播商标
     public function indexAction()
     {
+        $page=$_GET['page']?$_GET['page']:1;
+        $num=5;
+        $act=$num*($page-1);
         $modle=new model('search2');
-        $result=$modle->select("select *from sl_search2");
+        $result=$modle->select("select *from sl_search2 limit $act,$num ");
+        $sum=$modle->select("select count(*)from sl_search2 ");
+        $sum=$sum[0]['count(*)'];
+
+        include LIB_PATH . "Page.class.php";
+        $page = new Page($sum, $num, $page, "index.php", array(
+            "p" => "admin",
+            "c" => "lunbo",
+            "a" => "index",
+        ));
+        $pageinfo = $page->showPage();
         include CUR_VIEW_PATH . "Slunbo" . DS . "lunbo_list.html";
     }
     //标题下拉列表的展示
