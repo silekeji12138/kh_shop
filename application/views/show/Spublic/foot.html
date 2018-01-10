@@ -137,40 +137,20 @@
         </div>
         <div class="modal-content modal-content-kf">
             <div class="modal-body">
-                <div class="clearfix qq-link-c">
-                    <div class="col-xs-6 qq-after">
-                        <div class="clearfix">
-                            <div class="icon icon-tall"></div>
-                            <div class="pull-left shop-name">买天猫店</div>
-                            <a href="" class="qq-link"><i class="icon"></i>联系我</a>
-                        </div>
-                        <div class="clearfix">
-                            <div class="icon icon-tall02"></div>
-                            <div class="pull-left shop-name">买淘宝店</div>
-                            <a href="" class="qq-link"><i class="icon"></i>联系我</a>
-                        </div>
-                        <div class="clearfix">
-                            <div class="icon icon-tall03"></div>
-                            <div class="pull-left shop-name">买其它店</div>
-                            <a href="" class="qq-link"><i class="icon"></i>联系我</a>
-                        </div>
+                <div class="clearfix qq-link-c" >
+                    <div class="col-xs-6 qq-after" id="kf1">
+                        <!--<div class="clearfix">-->
+                            <!--<div class="icon icon-tall03"></div>-->
+                            <!--<div class="pull-left shop-name">买其它店</div>-->
+                            <!--<a href="" class="qq-link"><i class="icon"></i>联系我</a>-->
+                        <!--</div>-->
                     </div>
-                    <div class="col-xs-6">
-                        <div class="clearfix">
-                            <div class="icon icon-tall"></div>
-                            <div class="pull-left shop-name">买天猫店</div>
-                            <a href="" class="qq-link"><i class="icon"></i>联系我</a>
-                        </div>
-                        <div class="clearfix">
-                            <div class="icon icon-tall02"></div>
-                            <div class="pull-left shop-name">买淘宝店</div>
-                            <a href="" class="qq-link"><i class="icon"></i>联系我</a>
-                        </div>
-                        <div class="clearfix">
-                            <div class="icon icon-tall03"></div>
-                            <div class="pull-left shop-name">买其它店</div>
-                            <a href="" class="qq-link"><i class="icon"></i>联系我</a>
-                        </div>
+                    <div class="col-xs-6" id="kf2">
+                        <!--<div class="clearfix">-->
+                            <!--<div class="icon icon-tall"></div>-->
+                            <!--<div class="pull-left shop-name">买天猫店</div>-->
+                            <!--<a href="" class="qq-link"><i class="icon"></i>联系我</a>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <a href="" class="qq-sh">店来店往售后客服</a>
@@ -178,3 +158,18 @@
         </div>
     </div>
 </div>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script>
+    $.getJSON('index.php?p=show&c=index&a=kefu',function (msg) {
+        $(msg).each(function (i,v) {
+            if (i<3){
+                $('<div class="clearfix"><div class="icon icon-tall"></div><div class="pull-left shop-name">'+this.nc+'</div><a href="http://wpa.qq.com/msgrd?v=3&uin='+this.yg+'&site=qq&menu=yes" class="qq-link"><i class="icon"></i>联系我</a></div>').appendTo('#kf2')
+            }else {
+                $('<div class="clearfix"><div class="icon icon-tall"></div><div class="pull-left shop-name">'+this.nc+'</div><a href="http://wpa.qq.com/msgrd?v=3&uin='+this.yg+'&site=qq&menu=yes" class="qq-link"><i class="icon"></i>联系我</a></div>').appendTo('#kf1')
+
+            }
+        })
+    })
+</script>
+
+

@@ -20,6 +20,7 @@ class LoginController extends BaseController
             $rs_password=$model->select("select *from sl_member WHERE password='".$data['password']."'");
             if ($rs_password){
                 $_SESSION['username']=$rs_tel[0]['name'];
+                $_SESSION['tel']=$rs_tel[0]['tel'];
                 $this->jump('index.php?p=show&c=user&a=index','',0);
             }else{
                 $this->jump('index.php?p=show&c=login&a=login','密码错误',3);

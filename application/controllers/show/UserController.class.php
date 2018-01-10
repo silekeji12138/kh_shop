@@ -9,13 +9,11 @@ class UserController extends BaseController
          }
      }
 
+
     //会员的个人中心
     public function indexAction(){
         include CUR_VIEW_PATH . "Suser" . DS ."user_index.html";
     }
-    //会员注册中心
-    
-    //用户登录验证,进入个人中心
 
     //用户注销功能的方法
     public function loginoutAction(){
