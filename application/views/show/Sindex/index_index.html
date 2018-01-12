@@ -732,22 +732,25 @@
               </ol>
             
               <!-- Wrapper for slides -->
+
               <div class="carousel-inner" role="listbox">
-                <div class="item active">
+                  <?php foreach($user_say as $v): ?>
+                <div class="item" id="d">
                     <div class="user-clear clearfix">
                         <div class="pull-left">
-                            <div class="user-talk-img"><img src="public/khshop/images/01.png"></div>
-                            <div class="user-talk-name text-center">~麥芮 Marry~<br><span>网店购买者</span></div>
-                            <div class="user-talk-label">第<span>001</span>期</div>
+                            <div class="user-talk-img"><img src="<?=$v['header']?>"></div>
+                            <div class="user-talk-name text-center"><?=$v['name']?><br><span>网店购买者</span></div>
+                            <div class="user-talk-label">第<span><?=$v['qs']?></span>期</div>
                         </div>
                         <div class="pull-right user-talk-width">
                         
-                            <div class="user-talk-width-tt">不想被束缚，放飞电商梦。</div>
-                            <div class="user-talk-right-txt">万事开头难，只怕有心人。三百六十行，行行出状元，在电商这行里面，您是否依然再坚持着自己的梦想？是否有信心去创造属于自己的人生？让我们一起跟着小编去探寻本期主人公刘先生的电商之路吧！</div>
+                            <div class="user-talk-width-tt"><?=$v['biaoti']?></div>
+                            <div class="user-talk-right-txt"><?=$v['content']?></div>
                             <div class="clearfix">
-                                <div class="pull-left shop-change shop-change01">商城类型：<span>旗舰店</span><span class="shop-tm">TM</span>标</div>
-                                <div class="pull-left shop-change">价格：<span class="shop-money">28,5000</span>元</div>
-                                <div class="pull-left shop-change shop-change03">网店等级：<i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i></div>
+                                <div class="pull-left shop-change shop-change01">商城类型：<span><?=$v['sclx']?></span><span class="shop-tm"><?=$v['sblx']?></span>标</div>
+                                <div class="pull-left shop-change">价格：<span class="shop-money"><?=$v['jiage']?></span>元</div>
+                                <div class="pull-left shop-change shop-change03">网店等级：<?php for($i=0;$i<$v['hgsum'];$i++): ?><i class="icon icon-hg"></i><?php endfor; ?><?php for($i=0;$i<$v['zxsum'];$i++): ?><i class="icon icon-zs"></i><?php endfor; ?>
+                                </div>
                             </div>
                             <div class="clearfix">
                                 <a href="" class="user-talk-more">查看详细 <span>></span></a>
@@ -755,93 +758,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="user-clear clearfix">
-                        <div class="pull-left">
-                            <div class="user-talk-img"><img src="public/khshop/images/01.png"></div>
-                            <div class="user-talk-name text-center">~麥芮 Marry~<br><span>网店购买者</span></div>
-                            <div class="user-talk-label">第<span>001</span>期</div>
-                        </div>
-                        <div class="pull-right user-talk-width">
-                        
-                            <div class="user-talk-width-tt">不想被束缚，放飞电商梦。</div>
-                            <div class="user-talk-right-txt">万事开头难，只怕有心人。三百六十行，行行出状元，在电商这行里面，您是否依然再坚持着自己的梦想？是否有信心去创造属于自己的人生？让我们一起跟着小编去探寻本期主人公刘先生的电商之路吧！</div>
-                            <div class="clearfix">
-                                <div class="pull-left shop-change shop-change01">商城类型：<span>旗舰店</span><span class="shop-tm">TM</span>标</div>
-                                <div class="pull-left shop-change">价格：<span class="shop-money">28,5000</span>元</div>
-                                <div class="pull-left shop-change shop-change03">网店等级：<i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i></div>
-                            </div>
-                            <div class="clearfix">
-                                <a href="" class="user-talk-more">查看详细 <span>></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="user-clear clearfix">
-                        <div class="pull-left">
-                            <div class="user-talk-img"><img src="public/khshop/images/01.png"></div>
-                            <div class="user-talk-name text-center">~麥芮 Marry~<br><span>网店购买者</span></div>
-                            <div class="user-talk-label">第<span>001</span>期</div>
-                        </div>
-                        <div class="pull-right user-talk-width">
-                        
-                            <div class="user-talk-width-tt">不想被束缚，放飞电商梦。</div>
-                            <div class="user-talk-right-txt">万事开头难，只怕有心人。三百六十行，行行出状元，在电商这行里面，您是否依然再坚持着自己的梦想？是否有信心去创造属于自己的人生？让我们一起跟着小编去探寻本期主人公刘先生的电商之路吧！</div>
-                            <div class="clearfix">
-                                <div class="pull-left shop-change shop-change01">商城类型：<span>旗舰店</span><span class="shop-tm">TM</span>标</div>
-                                <div class="pull-left shop-change">价格：<span class="shop-money">28,5000</span>元</div>
-                                <div class="pull-left shop-change shop-change03">网店等级：<i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i></div>
-                            </div>
-                            <div class="clearfix">
-                                <a href="" class="user-talk-more">查看详细 <span>></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="user-clear clearfix">
-                        <div class="pull-left">
-                            <div class="user-talk-img"><img src="public/khshop/images/01.png"></div>
-                            <div class="user-talk-name text-center">~麥芮 Marry~<br><span>网店购买者</span></div>
-                            <div class="user-talk-label">第<span>001</span>期</div>
-                        </div>
-                        <div class="pull-right user-talk-width">
-                        
-                            <div class="user-talk-width-tt">不想被束缚，放飞电商梦。</div>
-                            <div class="user-talk-right-txt">万事开头难，只怕有心人。三百六十行，行行出状元，在电商这行里面，您是否依然再坚持着自己的梦想？是否有信心去创造属于自己的人生？让我们一起跟着小编去探寻本期主人公刘先生的电商之路吧！</div>
-                            <div class="clearfix">
-                                <div class="pull-left shop-change shop-change01">商城类型：<span>旗舰店</span><span class="shop-tm">TM</span>标</div>
-                                <div class="pull-left shop-change">价格：<span class="shop-money">28,5000</span>元</div>
-                                <div class="pull-left shop-change shop-change03">网店等级：<i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i></div>
-                            </div>
-                            <div class="clearfix">
-                                <a href="" class="user-talk-more">查看详细 <span>></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="user-clear clearfix">
-                        <div class="pull-left">
-                            <div class="user-talk-img"><img src="public/khshop/images/01.png"></div>
-                            <div class="user-talk-name text-center">~麥芮 Marry~<br><span>网店购买者</span></div>
-                            <div class="user-talk-label">第<span>001</span>期</div>
-                        </div>
-                        <div class="pull-right user-talk-width">
-                        
-                            <div class="user-talk-width-tt">不想被束缚，放飞电商梦。</div>
-                            <div class="user-talk-right-txt">万事开头难，只怕有心人。三百六十行，行行出状元，在电商这行里面，您是否依然再坚持着自己的梦想？是否有信心去创造属于自己的人生？让我们一起跟着小编去探寻本期主人公刘先生的电商之路吧！</div>
-                            <div class="clearfix">
-                                <div class="pull-left shop-change shop-change01">商城类型：<span>旗舰店</span><span class="shop-tm">TM</span>标</div>
-                                <div class="pull-left shop-change">价格：<span class="shop-money">28,5000</span>元</div>
-                                <div class="pull-left shop-change shop-change03">网店等级：<i class="icon icon-hg"></i><i class="icon icon-hg"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i><i class="icon icon-zs"></i></div>
-                            </div>
-                            <div class="clearfix">
-                                <a href="" class="user-talk-more">查看详细 <span>></span></a>
-                            </div>
-                        </div>
-                    </div>
+                  <?php endforeach; ?>
+
                 </div>
               </div>
             </div>
@@ -896,6 +814,7 @@
 <script src="public/khshop/js/common.js"></script>
 <script src="public/khshop/js/wow.min.js"></script>
 <script>
+    $('#d:first').prop('class','item active')
 //滚屏动画JS
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();

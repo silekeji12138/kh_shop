@@ -78,7 +78,11 @@
                         </ul>
                     </div>
                     <div class="pull-right help-right">
-                            <?=html_entity_decode($zx[0]['content'])?>
+                        <?php if(!$_GET['id']){
+                                   echo html_entity_decode($zx[0]['content']);
+                                       }else{?>
+                        <?=html_entity_decode($res)?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

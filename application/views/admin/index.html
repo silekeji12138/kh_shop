@@ -77,11 +77,30 @@
 						<span class="ficon ficon-shujutongji"></span>&nbsp;数据分析
 					</div>
 					<div class="home-modular-contet">
-						<div class="data-analysis" id="container">
-							 
-						</div>
+						<div class="data-analysis" id="container" style=" width: 100%"> </div>
 						
-						<div class="data-type">
+						
+						
+				       <p class="clear"></p>
+				      
+						<div class="data-analysis"  style=" width: 75%"> 
+						 <ul class="data-type-list"style="clear: both; width:100%">
+								
+								<?php foreach($sort as $k=>$v1) : ?>
+									<li>
+										<a>
+											<span class="ficon ficon-dingdan"></span><br>
+											<span class="data-num">
+												<?php echo $tableModel->select(" SELECT count(id) as count_id from {$v1['u1']}  ")[0]['count_id']  ?>
+											</span>
+											<br> <?php echo $v1['u2'] ?>
+										</a>
+									</li>
+								<?php endforeach;?>
+				 			</ul>
+				 			</div>
+				 			
+				 			<div class="data-type">
                             <ul style="line-height:29px">
                                 <li>IP地址：<?php echo GetHostByName($_SERVER['SERVER_NAME']) ?></li>
                                 <li>域名：<?php echo $_SERVER["HTTP_HOST"]?></li>
@@ -94,21 +113,20 @@
                                 <li>通信协议： <?php echo $_SERVER['SERVER_PROTOCOL'] ?></li>
                                
                             </ul>
-				           
+				            
 				        </div>
 				        
 				        
-						 
-						<p class="clear"></p>
 					</div>
+					
 				</div>
-			</section>
-			<!--数据分析 end -->
-
-			<!--数据块-->
-			<section class="hmc-small">
+				 
 				
 			</section>
+			<!--数据分析 end -->
+						
+			<!--数据块-->
+			 
 			<!--数据块  end -->
 
 			<footer>
@@ -132,7 +150,7 @@
 		$(function () {
 		    $('#container').highcharts({
 		        title: {
-		            text: '走访数量',
+		            text: '<?php echo $GLOBALS['config_cache']['COMPANYNAME'] ?>30天统计统计',
 		            x: -20 //center
 		        },
 		        subtitle: {
@@ -168,11 +186,11 @@
 		        series: [
 					<?php foreach($sort as $k=>$v1) : ?>
 					{
-					    name: '<?php echo $v1['u1'] ?>',
+					    name: '<?php echo $v1['u2'] ?>',
 					    data: [
 					           
 					<?php foreach($dtime as $k=>$v ){ ?>   
-					<?php echo $tableModel->select(" SELECT count(id) as count_id from sl_wenda where sort_id={$v1['id']}  and DATE_SUB('".date('y-m-d',strtotime($v['dtime']))."', INTERVAL 0 DAY) = date(dtime) ")[0]['count_id']  ?>,
+					<?php echo $tableModel->select(" SELECT count(id) as count_id from {$v1['u1']} where   DATE_SUB('".date('y-m-d',strtotime($v['dtime']))."', INTERVAL 0 DAY) = date(dtime) ")[0]['count_id']  ?>,
 					<?php }?>	    
 					           
 					           ]

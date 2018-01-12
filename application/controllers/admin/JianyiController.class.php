@@ -38,8 +38,22 @@ class JianyiController extends BaseController
     // 显示轮播商标
     public function indexAction()
     {
+        $page=$_GET['page']?$_GET['page']:1;
+        $num=5;
+        $act=$num*($page-1);
         $modle=new model('jianyi');
-        $result=$modle->select("select *from sl_jianyi");
+        $result=$modle->select("select *from sl_jianyi limit $act,$num ");
+        $sum=$modle->select("select count(*)from sl_jianyi ");
+        $sum=$sum[0]['count(*)'];
+
+
+        include LIB_PATH . "Page.class.php";
+        $page = new Page($sum, $num, $page, "index.php", array(
+            "p" => "admin",
+            "c" => "jianyi",
+            "a" => "index",
+        ));
+        $pageinfo = $page->showPage();
         include CUR_VIEW_PATH . "Sjianyi" . DS . "jianyi_list.html";
     }
     //修改状态的方法

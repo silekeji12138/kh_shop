@@ -56,7 +56,7 @@
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">商城类型</div>
                     <div class="pull-left purchase-right">
-                    	<ul class="purchase-ul">
+                    	<ul class="purchase-ul" id="sc">
                         	<li><a class="active" role="button">旗舰店</a></li>                                                                                                                             
                             <li><a role="button">专营店</a></li>
                             <li><a role="button">专卖店</a></li>
@@ -66,7 +66,7 @@
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">商标类型</div>
                     <div class="pull-left purchase-right">
-                    	<ul class="purchase-ul">
+                    	<ul class="purchase-ul" id="sb">
                         	<li><a class="active" role="button">R标</a></li>                                                                                                                             
                             <li><a role="button">TM标</a></li>
                         </ul>
@@ -269,6 +269,7 @@
             </div>
         </div>
     </div>
+    </div>
     <div class="container">
     	<div class="page-center clearfix">
         	<div class="pull-left purchase-icon">未找到</div>
@@ -298,6 +299,18 @@ if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 
 $('#id').children('li').prop('class','');
 $('#jd').attr('class','active');
+
+var t2="<?=$_GET['t2']?>";
+if (t2){
+    $('#sc').children('li').children('a').prop('class','');
+    $('#sb').children('li').children('a').prop('class','');
+    var a=$('#sc').children('li').children('a:contains("'+t2+'")').prop('class','active');
+    var b=$('#sb').children('li').children('a:contains("'+t2+'标")').prop('class','active');
+    //判断参数传过来的有无 后期做修改
+//            console.log(a.length);
+//            console.log(b.length);
+
+}
 </script>
 <script type="text/javascript">
 //地区

@@ -10,16 +10,30 @@ class IndexController extends BaseController {
 	}
 	public function indexAction(){
 	    
-	    //如果是村管理员1
-	    if($_SESSION['admin']['zuming']=="村管理员")
-	    {
-	        $adminModel = new AdminModel('admin');
-	        $user = $adminModel->selectByPk($_SESSION['admin']['user_id']);
-	         
-	    }
 	    
-
+// 	    $sortModel=new Model("sort");
+// 	    $tableModel=new Model("wenda");
+// 	    $systemMode=new Model("system");
+// 	    //统计分类  SELECT COUNT(*) as count_id from (SELECT  u3,dtime from sl_system where u1='访客' and u4='访客记录'  GROUP BY u3 )as t
+// 	    $sort=$sortModel->select("select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc ");
+// 	    //发布时间
+// 	    $dtime=$tableModel->select("SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc");
+	    
+	    //查询有哪些表
+	    $sortModel=new Model("moxing");
+	    $tableModel=new Model("moxing");
+	    $systemMode=new Model("system");
+	    //统计分类  SELECT COUNT(*) as count_id from (SELECT  u3,dtime from sl_system where u1='访客' and u4='访客记录'  GROUP BY u3 )as t
+	    $sort=$sortModel->select("select * from sl_moxing  order by id desc ");
+	    //发布时间
+	    $dtime=$systemMode->select("SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_system where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc");
+	     
+	    
+	    
+	    
 	    include CUR_VIEW_PATH . "index.html";
+	    
+	    
 	}
 	public function topAction(){
 		include CUR_VIEW_PATH . "top.html";
