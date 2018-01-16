@@ -29,46 +29,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
-            <tr>
-              <td>王晓晓</td>
-              <td>交易全称服务周到， 热心，点赞。</td>
-              <td>2017-10-12</td>
-            </tr>
+          <?php foreach($list as $v):?>
+          <tr>
+              <td><?=$v['username']?></td>
+              <td><?=$v['content']?></td>
+              <td><?=substr($v['dtime'],0,10)?></td>
+          </tr>
+          <?php endforeach;?>
           </tbody>
         </table>
         <div class="table-bottom">

@@ -22,20 +22,21 @@
                 <li><a href="index.php?p=show&c=user&a=protect">密码保护</a></li>
                 <li><a href="index.php?p=show&c=user&a=phone">手机认证</a></li>
                 <li class="active"><a href="">邮箱认证</a></li>
-                <li><a href="index.php?p=show&c=user&a=safe">账户安全</a></li>
             </ul>
         </div>
         <div class="user-back">
         	<div class="gl-phone"><img src="public/khshop/images/user/email.png"></div>
 			<div class="gl-phone-bottom">
             	<div class="clearfix">
+                    <form action="index.php?p=show&c=user&a=email" method="post">
                 	<div class="pull-left">
                         <div class="clearfix gl-clearfix gl-clearfix02">
                           <div class="pull-left cs-left-txt cs-left-txt02">填写邮箱地址</div>
-                          <div class="pull-left"><input type="text" class="form-control input"></div>
+                          <div class="pull-left"><input type="text" name="email" class="form-control input"></div>
                         </div>
-                        <button type="button" class="btn btn-tj btn-tj01 btn-login">立即认证</button>
+                        <button type="submit" class="btn btn-tj btn-tj01 btn-login">立即认证</button>
                     </div>
+                    </form>
                     <div class="pull-left phone-back email-back">
                     	<div class="phone-tt">邮箱认证成功以后，您可以享有以下特权：</div>
                         <div class="phone-txt">· <span>优先显示：</span>认证用户可优先显示上架店铺。</div>

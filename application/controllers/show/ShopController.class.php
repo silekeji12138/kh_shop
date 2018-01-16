@@ -54,7 +54,7 @@ class ShopController extends BaseController
     //出售的网店
     public function shopSaleAction(){
         $model = new Model('sale');
-        $uid = $_SESSION['admin']['user_id'];
+        $uid = $_SESSION['user_id'];
         $lists = $model->select("select *from sl_sale WHERE uid={$uid}");
         include CUR_VIEW_PATH . "Sshop" . DS ."shop_sale.html";
     }
@@ -65,7 +65,7 @@ class ShopController extends BaseController
     //购买的网店
     public function buyAction(){
         $model = new Model('buy');
-        $uid = $_SESSION['admin']['user_id'];
+        $uid = $_SESSION['user_id'];
         $lists = $model->select("select *from sl_buy WHERE uid={$uid}");
         include CUR_VIEW_PATH . "Sshop" . DS ."buy.html";
     }
@@ -73,13 +73,17 @@ class ShopController extends BaseController
 
     //收藏的网店
     public function saveAction(){
-
+        $model = new Model('save');
+        $uid = $_SESSION['user_id'];
+        $lists = $model->select("select *from sl_save WHERE uid={$uid}");
         include CUR_VIEW_PATH . "Sshop" . DS ."save.html";
     }
 
     //竞拍的网店
     public function auctionAction(){
-
+        $model = new Model('auction');
+        $uid = $_SESSION['user_id'];
+        $lists = $model->select("select *from sl_auction WHERE uid={$uid}");
         include CUR_VIEW_PATH . "Sshop" . DS ."auction.html";
     }
 

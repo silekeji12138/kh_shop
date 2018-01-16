@@ -15,8 +15,9 @@ class LoginController extends BaseController
     public function login1Action(){
         $data=$_POST;
         $model=new model('member');
-        $rs_tel=$model->select("select *from sl_member WHERE tel='".$data['tel']."'");
+        $rs_tel=$model->select("select *from sl_member WHERE tel='".$data['tel']."' or `name`='{$data['tel']}'");
         if ($rs_tel){
+            //$data['password'] = md5($data['password']);
             $rs_password=$model->select("select *from sl_member WHERE password='".$data['password']."'");
             if ($rs_password){
                 $_SESSION['username']=$rs_tel[0]['name'];

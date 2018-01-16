@@ -174,7 +174,7 @@ class Model
         $uplist = rtrim($uplist, ',');
         // 构造sql语句
         $sql = "UPDATE `{$this->table}` SET {$uplist} WHERE {$where}";
-       
+
         if ($this->db->query($sql)) {
             // 成功，并判断受影响的记录数
             if ($rows = mysql_affected_rows()) {
