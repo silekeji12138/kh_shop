@@ -205,7 +205,11 @@
             <div class="sell-border purchase-border">
                 <div class="clearfix">
                     <div class="purchase-left-width pull-left">
-                        <div class="purchase-left-width-tt clearfix"><i class="title-icon title-icon05"></i><a href="index.php?p=show&c=buy&a=xiangxi&id=<?=$v['id']?>"><?=$v['biaoti']?></a><span class="title-label">独家</span></div>
+                        <div class="purchase-left-width-tt clearfix"><i class="<?=$v['logo']?>"></i><a href="index.php?p=show&c=buy&a=xiangxi&id=<?=$v['id']?>"><?=$v['biaoti']?></a>
+                            <?php if($v['dj']=='是'): ?>
+                            <span class="title-label">独家</span>
+                            <?php endif; ?>
+                        </div>
                         <div class="row purchase-row">
                             <div class="col-xs-4"><span>所属行业：</span><?=$v['sshy']?></div>
                             <div class="col-xs-4"><span>消 保 金：</span><?=$v['xbj']?>元(退还)</div>
@@ -226,7 +230,7 @@
                     </div>
                 </div>
                 <div class="clearfix purchase-bottom">
-                    <div class="pull-left">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油</div>
+                    <div class="pull-left">一级类目：<?=$v['sshy']?></div>
                     <div class="pull-right">
                         <span class="purchase-bottom-label">可提供货源</span>
                         <span class="purchase-bottom-label">公司认证</span>
@@ -275,24 +279,28 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script src="public/khshop/js/common.js"></script>
 <script src="public/khshop/js/wow.min.js"></script>
-<!--<script type="text/javascript" src="public/khshop/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>-->
-<!--<script type="text/javascript" src="public/khshop/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>-->
+<script type="text/javascript" src="public/khshop/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="public/khshop/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script>
-  $('.form_date').datetimepicker({
-        language:  'zh-CN',
-        weekStart: 1,
-        todayBtn:  1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 2,
-    minView: 2,
-    forceParse: 0
-    });
+    $('#id').children('li').prop('class','');
+    $('#qt').attr('class','active');
+
+      $('.form_date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+        });
 </script>
 <script>
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
+
 </script>
 <script>
 //购买网店条件选择JS
@@ -300,8 +308,7 @@ $(".purchase-ul li a").click(function(){
 	$(this).parents(".purchase-ul").find("a").removeClass("active");
 	$(this).addClass("active");
 })
-$('#id').children('li').prop('class','');
-$('#qt').attr('class','active');
+
 </script>
 <script type="text/javascript">
 //地区

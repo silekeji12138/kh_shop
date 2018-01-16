@@ -25,7 +25,7 @@
                 </div>
 				<div class="clearfix pm-list">
                 	<div class="pull-left purchase-left-width pm-list-left">
-						<div class="purchase-left-width-tt clearfix"><i class="title-icon"></i><a href=""><?=$v['biaoti']?></a></div>
+						<div class="purchase-left-width-tt clearfix"><i class="<?=$v['logo']?>"></i><a href=""><?=$v['biaoti']?></a></div>
                         <div class="pm-label-c clearfix">
                         	<span class="purchase-bottom-label active">独家</span>
                             <span class="purchase-bottom-label">可提供货源</span>
@@ -37,8 +37,8 @@
                         	<div class="pull-left">
                                 <div class="money-g">官方估价:<span class="lind-money">38.39万</span> | 技术年费:<span><?=$v['jsnf']?>万(需退还)</span> | 消保金:<span><?=$v['xbj']?>万(需退还)</span></div>
                                 <div class="clearfix pm-list-btn">
-                                    <button type="button" class="btn btn-sell-l btn-phone" data-toggle="modal" data-target="#pm-bzj">交纳保证金</button>
-                                    <button type="button" class="btn btn-sell-l btn-sell-l02">我要出价</button>
+                                    <button type="button" class="btn btn-sell-l btn-phone" data-toggle="modal" data-target="#pm-bzj">立即购买</button>
+                                    <button type="button" class="btn btn-sell-l btn-sell-l02">立即预约</button>
                                  </div>
                              </div>
                              <div class="pull-right">
@@ -88,7 +88,7 @@
                     <div class="col-xs-4"><span>是否带货：</span><?=$v['sfdh']?></div>
                     <div class="col-xs-4"><span>团队转让：</span>否(待加入)</div>
                     <div class="col-xs-4"><span>运营经验：</span>不传授(待加入)</div>
-					<div class="col-xs-12 bottom-color">一级类目：彩妆/香水/美妆工具、美发护发/假发、美容护肤/美体/精油(待加入)</div>
+					<div class="col-xs-12 bottom-color">一级类目：<?=$v['sshy']?></div>
                     <div class="col-xs-12"><span>卖家描述：</span><?=html_entity_decode($v['miaoshu'])?></div>
           		</div>
                 </div>
@@ -175,46 +175,20 @@
                     </div>
                     <div class="bzj-border bzj-border02">
                     	<ul class="news-list-c">
+
+                            <?php foreach($cjwt as $v):  ?>
                         	<li>
                             	<div class="clearfix">
                             		<div class="w-back pull-left">问</div>
-                                    <div class="w-text">购买天猫商城怎么办理公司过户呢？</div>
+                                    <div class="w-text"><?=$v['wt']?></div>
                                 </div>
                             	<div class="clearfix">
                             		<div class="w-back a-txt pull-left">答</div>
-                                    <div class="w-text d-text">购买天猫商城是将天猫帐号信息以及所属公司一并过户给买家，需要买家付款后预约见面交易并亲自到所属公司当地工商所办理公司法人和股权过户手续。如您还有任何其它天猫商城转让疑问请咨询在线服务顾问。</div>
+                                    <div class="w-text d-text"><?=$v['hd']?></div>
                                 </div>
                             </li>
-                        	<li>
-                            	<div class="clearfix">
-                            		<div class="w-back pull-left">问</div>
-                                    <div class="w-text">购买天猫商城怎么办理公司过户呢？</div>
-                                </div>
-                            	<div class="clearfix">
-                            		<div class="w-back a-txt pull-left">答</div>
-                                    <div class="w-text d-text">购买天猫商城是将天猫帐号信息以及所属公司一并过户给买家，需要买家付款后预约见面交易并亲自到所属公司当地工商所办理公司法人和股权过户手续。如您还有任何其它天猫商城转让疑问请咨询在线服务顾问。</div>
-                                </div>
-                            </li>
-                        	<li>
-                            	<div class="clearfix">
-                            		<div class="w-back pull-left">问</div>
-                                    <div class="w-text">购买天猫商城怎么办理公司过户呢？</div>
-                                </div>
-                            	<div class="clearfix">
-                            		<div class="w-back a-txt pull-left">答</div>
-                                    <div class="w-text d-text">购买天猫商城是将天猫帐号信息以及所属公司一并过户给买家，需要买家付款后预约见面交易并亲自到所属公司当地工商所办理公司法人和股权过户手续。如您还有任何其它天猫商城转让疑问请咨询在线服务顾问。</div>
-                                </div>
-                            </li>
-                        	<li>
-                            	<div class="clearfix">
-                            		<div class="w-back pull-left">问</div>
-                                    <div class="w-text">购买天猫商城怎么办理公司过户呢？</div>
-                                </div>
-                            	<div class="clearfix">
-                            		<div class="w-back a-txt pull-left">答</div>
-                                    <div class="w-text d-text">购买天猫商城是将天猫帐号信息以及所属公司一并过户给买家，需要买家付款后预约见面交易并亲自到所属公司当地工商所办理公司法人和股权过户手续。如您还有任何其它天猫商城转让疑问请咨询在线服务顾问。</div>
-                                </div>
-                            </li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div class="bzj-border bzj-border03" id="three">
@@ -228,19 +202,22 @@
                     </div>
                     <div class="bzj-border bzj-border02">
                     	<div class="row tj-row">
+
+
+                            <?php foreach($m3 as $v): ?>
                         	<div class="col-xs-6">
                             	<div class="tj-c">
                                 	<i class="icon-j">荐</i>
-									<div class="purchase-left-width-tt clearfix"><i class="title-icon"></i><a href="">华南装类目名字好听诚心出售</a></div>
+									<div class="purchase-left-width-tt clearfix"><i class="<?=$v['logo']?>"></i><a href=""><?=$v['biaoti']?></a></div>
                                     <div class="clearfix">
                                     	<div class="pull-left tj-c-left">
-                                        	<div>所属行业：服饰鞋包</div>
-                                            <div>商标类型：R标</div>
-                                            <div>商城类型：旗舰店</div>
+                                        	<div>所属行业：<?=$v['sshy']?></div>
+                                            <div>商标类型：<?=$v['sblx']?></div>
+                                            <div>商城类型：<?=$v['sclx']?></div>
                                         </div>
                                         <div class="pull-right">
-                                            <div class="money-right"><span>28.4</span>万</div>
-                                            <a href="" class="look-more">查看详细 ></a>
+                                            <div class="money-right"><span><?=$v['jiage']?></span>万</div>
+                                            <a href="index.php?p=show&c=buy&a=xiangxi&id=<?=$v['id']?>" class="look-more">查看详细 ></a>
                                          </div>
                                     </div>
                                     <div class="pm-label-c clearfix">
@@ -251,29 +228,9 @@
                                     </div>
                                 </div>
                             </div>
-                        	<div class="col-xs-6">
-                            	<div class="tj-c">
-                                	<i class="icon-j">荐</i>
-									<div class="purchase-left-width-tt clearfix"><i class="title-icon"></i><a href="">华南装类目名字好听诚心出售</a></div>
-                                    <div class="clearfix">
-                                    	<div class="pull-left tj-c-left">
-                                        	<div>所属行业：服饰鞋包</div>
-                                            <div>商标类型：R标</div>
-                                            <div>商城类型：旗舰店</div>
-                                        </div>
-                                        <div class="pull-right">
-                                            <div class="money-right"><span>28.4</span>万</div>
-                                            <a href="" class="look-more">查看详细 ></a>
-                                         </div>
-                                    </div>
-                                    <div class="pm-label-c clearfix">
-                                        <span class="purchase-bottom-label">可提供货源</span>
-                                        <span class="purchase-bottom-label">公司认证</span>
-                                        <span class="purchase-bottom-label">可当面交易</span>
-                                        <span class="purchase-bottom-label">动态全红</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
+
+
                         </div>
                         <div class="bottom-tt-c">浏览过该网店的还看了</div>
                         <ul class="bottom-b-list clearfix">

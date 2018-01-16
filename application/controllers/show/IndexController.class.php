@@ -1,20 +1,59 @@
 <?php
 // 文章模型控制器
+
 header("Content-type: text/html; charset=utf-8");
+use QL\QueryList;
 class IndexController extends BaseController
 {
+
     public function textAction(){
-//           $curl=curl_init();
-//           curl_setopt($curl,CURLOPT_URL,'http://www.youku.com');
-//           curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
-//           $data=curl_exec($curl);
-        $url = "http://www.baidu.com";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-        $notice = curl_exec($ch);
-         var_dump(($notice));
+        include "public/phpQuery/phpQuery.php";
+        include "public/QueryList/QueryList.php";
+        if (1==2) {
+            $rules = array(
+                'name' => array('strong', 'text'),
+                'pf' => array('.count:first', 'text'),
+                'pf1' => array('.count:eq(1)', 'text'),
+                'pf3' => array('.count:eq(2)', 'text'),
+            );
+            $html = "https://detail.tmall.com/item.htm?spm=a221t.1710954.7526515591.6.27f22bbcwdDoAC&acm=lb-zebra-7771-270527.1003.4.1731558&id=527956695986&scm=1003.4.lb-zebra-7771-270527.ITEM_527956695986_1731558";
+            $data = QueryList::Query($html, $rules)->data;
+            $data1 = [];
+            foreach ($data[0] as $key => $value) {
+                $value = mb_convert_encoding($value, 'ISO-8859-1', 'utf-8');
+                $value = mb_convert_encoding($value, 'utf-8', 'GBK');
+                $data1[$key] = $value;
+            }
+        }else{
+            $rules = array(
+//                  'name' => array('a[target=_blank]', 'title'),
+                  'pf' => array('title','text'),
+//                'pf1' => array('.count:eq(1)', 'text'),
+//                'pf3' => array('.count:eq(2)', 'text'),
+            );
+            $html = "https://item.taobao.com/item.htm?spm=a310p.7395725.1998038907.1.51af1d061oCQV8&id=545877954654";
+            $data = QueryList::Query($html, $rules)->data;
+//            $data1 = [];
+//            foreach ($data[0] as $key => $value) {
+//                $value = mb_convert_encoding($value, 'ISO-8859-1', 'utf-8');
+//                $value = mb_convert_encoding($value, 'utf-8', 'GBK');
+//                $data1[$key] = $value;
+//            }
+        }
+//        $data[2]['name'] = mb_convert_encoding($data[2]['name'], 'ISO-8859-1', 'utf-8');
+//        $data[2]['name'] = mb_convert_encoding($data[2]['name'], 'utf-8', 'GBK');
+        //测试所用的方法
+//        $data[13]['pf'] = mb_convert_encoding($data[13]['pf'], 'ISO-8859-1', 'utf-8');
+//        $data[13]['pf'] = mb_convert_encoding($data[13]['pf'], 'utf-8', 'GBK');
+        print_r($data);
+
+
+//        print_r($data[0]);
+
+
+
+
+
 //        include CUR_VIEW_PATH . "Sindex" . DS ."index_text.html";
     }
 
@@ -84,6 +123,12 @@ class IndexController extends BaseController
     }
     //代运营入口方法和页面
     public function dyyAction(){
+        if ($_SERVER['REQUEST_METHOD']=='POST'){
+            $data=$_POST;
+            $model=new model('xqxx');
+            $model->insert($data);
+            $this->jump('index.php?p=show&c=index&a=dyy','提交成功',2);
+        }
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dyy.html";
     }
     //用户说详情页面的进入
@@ -174,6 +219,72 @@ class IndexController extends BaseController
             $res=$result[0]['content'];
         }
         include CUR_VIEW_PATH . "Sindex" . DS ."index_kefu.html";
+    }
+    //企业服务功能展示方法
+    public function qyfwAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_qyfw.html";
+    }
+    //企业服务代理记账页面展示方法
+    public function dljzAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_dljz.html";
+    }
+    //企业服务店铺升级页面的展示方法
+    public function dpsjAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_dpsj.html";
+    }
+    //企业服务变更服务页面的展示方法
+    public function bgfwAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_bgfw.html";
+    }
+    //帮助类的在线问答的实现的方法
+    public function zxwdAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_zxwd.html";
+    }
+    //公司简介展示型页面
+    public function gsjjAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_gsjj.html";
+    }
+    //商务合作展示型页面的功能
+    public function swhzAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_swhz.html";
+    }
+    //诚聘英才展示型页面的功能
+    public function cpycAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_cpyc.html";
+    }
+    //网站咨询展示型页面的功能
+    public function wzzxAction(){
+        $model=new model('wzzx');
+        $num=4;
+        $number=$model->select("select count(*)from sl_wzzx");
+        $total=ceil($number[0]['count(*)']/$num);
+
+        if ($_SERVER['REQUEST_METHOD']=='POST'){
+            $page=$_POST['page'];
+            $_GET['page']=$page;
+        }else{
+            $page=$_GET['page']?$_GET['page']:1;
+        }
+        if ($page<=1){
+            $page=1;
+            $_GET['page']=1;
+        }
+        if ($_GET['page']>$total){
+            $page=$total;
+            $_GET['page']=$total;
+        }
+        $min=$page-2;
+        $max=$page+5;
+        if ($min<=1){
+            $min=1;
+        };
+        if ($max>=$total){
+            $max=$total;
+        }
+
+        $act=($page-1)*$num;
+        $result=$model->select("select *from sl_wzzx limit $act,$num");
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_wzzx.html";
     }
 
 
@@ -274,10 +385,14 @@ class IndexController extends BaseController
                 include CUR_VIEW_PATH . "Sbuy" . DS ."buy_jd.html";
                 break;
             case '蘑菇街':
-                echo '皮皮虾二号';
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND sshy LIKE '%".$t2."%'");
+                include CUR_VIEW_PATH . "Sindex" . DS ."index_qita.html";
                 break;
             case '苏宁易购':
-                echo '皮皮虾';
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND sshy LIKE '%".$t2."%'");
+                include CUR_VIEW_PATH . "Sindex" . DS ."index_qita.html";
                 break;
         }
     }
@@ -302,10 +417,14 @@ class IndexController extends BaseController
                 include CUR_VIEW_PATH . "Sbuy" . DS ."buy_jd.html";
                 break;
             case '蘑菇街':
-                echo '皮皮虾二号';
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND (sclx='".$t2."' or sblx='".$t2."')");
+                include CUR_VIEW_PATH . "Sindex" . DS ."index_qita.html";
                 break;
             case '其他网店':
-                echo '皮皮虾';
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE sclx='".$t2."' or sblx='".$t2."'");
+                include CUR_VIEW_PATH . "Sindex" . DS ."index_qita.html";
                 break;
         }
     }

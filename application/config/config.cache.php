@@ -7,7 +7,7 @@
 	'SEODESCRIPTION'=>'',
 	'COPYRIGHT'=>'',
 	'ICPNO'=>'',
-	'COMPANYNAME'=>'爱华值保',
+	'COMPANYNAME'=>'店来店往',
 	'COMPANYLINKMAN'=>'',
 	'MOBILE'=>'',
 	'TELPHONE'=>'',

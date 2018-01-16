@@ -40,6 +40,11 @@ class BuyController extends BaseController
         $model=new model('shangpin');
         $result=$model->select("select *from sl_shangpin WHERE id=$id");
         $v=$result[0];
+        $m2=new model('cjwt');
+        $cjwt=$m2->select("select *from sl_cjwt limit 0,4");
+
+        $m3=$model->select("select *from sl_shangpin WHERE szpt='".$v['szpt']."' and (sshy='".$v['sshy']."' or sblx='".$v['sblx']."') limit 0,2");
+
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_xiangxi.html";
     }
 

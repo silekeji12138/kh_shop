@@ -156,13 +156,15 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="modal-tt text-center">在线提交需求信息</div>
+                        <form method="post" action="index.php?p=show&c=index&a=dyy">
                         <div class="yy-modal-c">
-                            <input type="text" class="form-control qq-input" placeholder="姓       名：">
-                            <input type="text" class="form-control qq-input" placeholder="手机号码：">
-                            <input type="text" class="form-control qq-input" placeholder="店  铺  名： ">
-                            <textarea class="form-control qq-input" placeholder="需求描述："></textarea>
-                            <button type="button" class="btn btn-qq">提交</button>
+                            <input name="name" type="text" class="form-control qq-input" placeholder="姓       名：">
+                            <input name="tel" type="text" class="form-control qq-input" placeholder="手机号码：">
+                            <input name="dpm" type="text" class="form-control qq-input" placeholder="店  铺  名： ">
+                            <textarea name="content" class="form-control qq-input" placeholder="需求描述："></textarea>
+                            <button type="submit" class="btn btn-qq">提交</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
