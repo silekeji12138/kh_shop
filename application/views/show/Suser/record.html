@@ -17,97 +17,60 @@
         <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">我是卖家</a></div>
         <div class="clearfix">
             <ul class="clearfix pull-left tab-list tab-list-sm">
-                <li><a href="index.php?p=show&c=user&a=recharge">我要充值</a></li>
-                <li class="active"><a href="index.php?p=show&c=user&a=record">充值记录</a></li>
+                <li><a href="?c=user&a=recharge">我要充值</a></li>
+                <li class="active"><a href="">充值记录</a></li>
             </ul>
+            <form action="" method="post">
             <div class="pull-right">
             	<div class="pull-left select-txt radio-txt">起止日期</div>
             	<div class="pull-left">
-                      <input type="text" id="dt" class="form-control input time-input">
+                      <input type="text" name="start" value="<?=$data['start']?>" id="dt" class="form-control input time-input">
                       <div id="dd"></div>
                 </div>
                 <div class="pull-left select-txt radio-txt">-</div>
             	<div class="pull-left">
-                      <input type="text" id="dt02" class="form-control input time-input">
+                      <input type="text" name="end" value="<?=$data['end']?>" id="dt02" class="form-control input time-input">
                       <div id="dd02"></div>
                 </div>
                 <div class="pull-left select-txt radio-txt">处理结果</div>
                 <div class="pull-left radio-cz">
                     <label class="radio-inline">
-                      <input type="radio"> 所有
+                      <input name="status" value="所有" type="radio"> 所有
                     </label>
                     <label class="radio-inline">
-                      <input type="radio"> 成功
+                      <input name="status" value="成功" type="radio"> 成功
                     </label>
                     <label class="radio-inline">
-                      <input type="radio"> 失败
+                      <input name="status" value="失败" type="radio"> 失败
                     </label>
                     <label class="radio-inline">
-                      <input type="radio"> 处理中
+                      <input name="status" value="处理中" type="radio"> 处理中
                     </label>
                 </div>
-                <a href="" class="btn btn-tj btn-tj02 pull-right">立即查询</a>
+                <button type="submit" class="btn btn-tj btn-tj02 pull-right">立即查询</button>
             </div>
+            </form>
         </div>
         <table class="table table-sj table-bordered">
           <thead>
             <tr>
               <th>流水号</th>
               <th>充值金额</th>
+              <th>状态</th>
               <th style="width: 120px">提交时间</th>
               <th style="width:70px;">状态</th>
             </tr>
           </thead>
           <tbody>
+           <?php foreach($list as $v):?>
             <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
+              <td><?=$v['num']?></td>
+              <td><span class="table-number">¥<?=$v['price']?></span></td>
+                <td><?=$v['status']?></td>
+                <td><?=substr($v['dtime'],0,10)?></td>
+              <td><a href="?c=shop&a=del&model=log&id=<?=$v['id']?>" class="table-a">删除</a></td>
             </tr>
-            
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>023612121321232</td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2017-10-12</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
+           <?php endforeach;?>
           </tbody>
         </table>
         <div class="table-bottom">

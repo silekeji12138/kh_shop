@@ -34,6 +34,7 @@
                 </div>
             </div>
         </div>
+        <form action="index.php?p=show&c=shop&a=del&model=save" method="post">
         <table class="table table-sj table-bordered">
           <thead>
             <tr>
@@ -46,131 +47,36 @@
             </tr>
           </thead>
           <tbody>
+          <?php foreach($lists as $v):?>
             <tr>
               <td>
                   <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
+                      <label>
+                          <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> <?=$v['biaoti']?>
+                      </label>
                   </div>
               </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
+              <td><span class="table-number">¥<?=$v['csjg']?></span></td>
+              <td><span class="table-number"><?=$v['mjxy']?></span></td>
+              <td><?=substr($v['kdsj'],0,10)?></td>
+              <td><?=$v['wdzt']?></td>
+              <td><a href="index.php?p=show&c=shop&a=del&model=save&id=<?=$v['id']?>" class="table-a">删除</a></td>
             </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
-            <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                    <label>
-                      <input type="checkbox"> 江西南昌3年老店茶叶冲饮旗舰店淘抢购KA店铺双十一全店达标
-                    </label>
-                  </div>
-              </td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td><span class="table-number">¥7,800</span></td>
-              <td>2012-10-8</td>
-              <td>运营中</td>
-              <td><a role="" class="table-a">删除</a></td>
-            </tr>
+          <?php endforeach?>
           </tbody>
         </table>
         <div class="table-bottom">
             <div class="clearfix">
               <div class="checkbox pull-left">
                 <label>
-                  <input type="checkbox"> 全选
+                    <input type="checkbox" id="checkall"> 全选
                 </label>
               </div>
-              <div class="pull-left"><a href="" class="btn btn-tj btn-tj02">全部删除</a></div>
+                <div class="pull-left"><a style="cursor: pointer" class="btn btn-tj btn-tj02">全部删除</a></div>
             </div>
             <div class="table-null text-center">暂无收藏网店信息！</div>
         </div>
+        </form>
         <div class="ewm-c">
             <div class="ewm text-center">
                 <div><img src="public/khshop/images/user/ewm.png"></div>
@@ -184,6 +90,21 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $("#checkall").click(function () {
+        if (this.checked){
+            $("input[name='ids[]']").attr('checked', true)
+        }else {
+            $("input[name='ids[]']").attr("checked",false);
+        }
+    })
+    $(".btn-tj02").click(function () {
+        if ($("input[type='checkbox']:checked").length==0){
+            alert("请选择要删除的选项");
+            return false
+        }else {
+            $("form").submit()
+        }
+    })
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  

@@ -26,7 +26,7 @@ class Framework {
 		define("HELPER_PATH", FRAMEWORK_PATH . "helpers" .DS);
 		define("UPLOAD_PATH", PUBLIC_PATH . "uploads" .DS);
 		//获取参数p、c、a,index.php?p=admin&c=goods&a=add GoodsController中的addAction
-		define('PLATFORM',isset($_GET['p']) ?  $_GET['p'] : "home");
+		define('PLATFORM',isset($_GET['p']) ?  $_GET['p'] : "show");
 		define('CONTROLLER',isset($_GET['c']) ?  ucfirst($_GET['c']) : "Index");
 		define('ACTION',isset($_GET['a']) ?  $_GET['a'] : "index");
 		//设置当前控制器和视图目录 CUR-- current

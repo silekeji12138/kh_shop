@@ -1,0 +1,122 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>网店资讯</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/gongsi_header.html";?>
+</header>
+	<div class="news-banner"></div>
+    <div class="back-f9">
+        <div class="container">
+            <div class="recruit-c help-c">
+            	<div class="news-back">
+                	<div class="news-title">网店资讯</div>
+                    <div class="clearfix">
+                        <div class="news-txt-c pull-left">
+                            <div class="news-link"><a href=""><?=$result[0]['biaoti']?></a></div>
+                            <div class="news-c-txt"><?=$result[0]['content']?></div>
+                            <div class="news-more"><a href="">MORE +</a></div>
+                            <div class="clearfix">
+                                <div class="pull-left share-left">分享</div>
+                                <div class="pull-left">
+                                    <div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1510300397722"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="pull-right news-date-c text-right">
+                        	<div class="date-lg"><?=substr($result[0]['dtime'],5,6)?></div>
+                            <div class="date-sm">-<?=substr($result[0]['dtime'],0,4)?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="news-list">
+                <?php foreach($result as $key=>$v): ?>
+                <?php if($key>0): ?>
+            	<li class="clearfix">
+                	<div class="pull-left date-back">
+                        <div class="date-lg"><?=substr($v['dtime'],5,6)?></div>
+                        <div class="date-sm">-<?=substr($v['dtime'],0,4)?></div>
+                    </div>
+                    <div class="pull-left news-width">
+                    	<div class="news-width-tt"><a href=""><?=$v['biaoti']?></a></div>
+                        <div class="news-width-txt"><?=$v['content']?></div>
+                        <div class="clearfix">
+                            <div class="pull-left share-left">分享</div>
+                            <div class="pull-left">
+                                <div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1510300397722"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/public/khshop/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <?php endif; ?>
+                <?php endforeach; ?>
+
+
+
+            </ul>
+            <form action="index.php?p=show&c=index&a=wzzx" method="post">
+            <div class="page-center clearfix">
+                <ul class="pagination pull-left">
+                    <?php if($_GET['page']<=1){ ?>
+                    <li class="disabled"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                    <?php }else{ ?>
+                    <li ><a href="index.php?p=show&c=index&a=wzzx&page=<?=$_GET['page']-1?>" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                    <?php } ?>
+
+
+
+                    <?php for($i=$min;$i<=$max;$i++):  ?>
+                    <?php if($page==$i){ ?>
+                    <li class="active"><a href="index.php?p=show&c=index&a=wzzx&page=<?=$i?>"><?=$i?></a></li>
+                    <?php }else{ ?>
+                    <li><a href="index.php?p=show&c=index&a=wzzx&page=<?=$i?>"><?=$i?></a></li>
+                    <?php } ?>
+                    <?php endfor;  ?>
+
+
+                    <?php if($_GET['page']>=$total){ ?>
+                    <li class="disabled"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                    <?php }else{ ?>
+                    <li><a href="index.php?p=show&c=index&a=wzzx&page=<?=($_GET['page']?$_GET['page']:1)+1?>" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                    <?php } ?>
+                 </ul>
+                 <div class="pull-left page-txt margin-left">共<?=$total?>页 跳转到第</div>
+                 <div class="pull-left"><input name="page" type="text" class="form-control input-page"></div>
+                 <div class="pull-left page-txt">页</div>
+                 <div class="pull-left"><button type="submit" class="btn-page btn">确定</button></div>
+
+            </div>
+            </form>
+        </div>
+
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+</html>

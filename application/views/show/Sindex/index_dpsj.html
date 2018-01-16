@@ -1,0 +1,242 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>企业服务-店铺升级</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/qiye_header.html";?>
+</header>
+    <div class="fw-banner sj-banner">
+    	<div class="container">
+            <div class="fw-banner-tt wow bounceInLeft animated">升级企业店铺</div>
+            <div class="fw-lind wow bounceInRight animated"><img src="public/khshop/images/fw02.png"></div>
+            <div class="fw03 wow bounceInUp animated"><img src="public/khshop/images/sj02.png"></div>
+        </div>
+    </div>
+    <div class="back-f9">
+        <div class="container">
+            <div class="yy-nav text-right">当前位置：<span>网店代运营</span></div>
+            <div class="rz-top yy-top fw-top bg-top">
+                <div class="clearfix bg-clearfix">
+                    <div class="pull-left bg-tt">地区</div>
+                    <ul class="pull-left dq-list clearfix" id="a">
+                        <li><a href="">黑龙江</a></li>
+                        <li><a href="">鸡西</a></li>
+                    </ul>
+                    <ul class="pull-left dq-list clearfix">
+                        <li id="ql"><a  class="dq-btn">重置</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix bg-clearfix">
+                    <div class="pull-left bg-tt bg-tt-sm">选择省：</div>
+                    <ul class="pull-left purchase-ul dq-list dq-list02 clearfix" id="b">
+                        <li><a role="button">浙江</a></li>
+                        <li><a role="button">湖南</a></li>
+                        <li><a role="button">湖北</a></li>
+                        <li><a role="button">江西</a></li>
+                        <li><a role="button">辽宁</a></li>
+                        <li><a role="button" class="active">黑龙江</a></li>
+                        <li><a role="button">北京</a></li>
+                        <li><a role="button">上海</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix">
+                    <div class="pull-left bg-tt bg-tt-sm">选择市区：</div>
+                    <ul class="pull-left purchase-ul dq-list dq-list02 clearfix" id="c">
+                        <li><a role="button" class="active">鸡西</a></li>
+                        <li><a role="button">鹤岗市</a></li>
+                        <li><a role="button">双鸭山</a></li>
+                        <li><a role="button">大庆</a></li>
+                        <li><a role="button">伊春</a></li>
+                        <li><a role="button">佳木斯</a></li>
+                        <li><a role="button">七台河</a></li>
+                        <li><a role="button">牡丹江</a></li>
+                        <li><a role="button">黑河</a></li>
+                        <li><a role="button">绥化</a></li>
+                    </ul>
+                </div>
+
+
+                <!--<div class="bg-back">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<div class="bg-back-tt active"><span>A</span>套餐</div>-->
+                            <!--<div class="bg-back-txt">企业变更（含工商、税务、银行变更）</div>-->
+                            <!--<div class="clearfix">-->
+                                <!--<div class="bg-back-money pull-left"><span>1000</span>元</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<div class="bg-back-tt"><span>B</span>套餐</div>-->
+                            <!--<div class="bg-back-txt">企业变更+小规模纳税人1年代理记账</div>-->
+                            <!--<div class="clearfix">-->
+                                <!--<div class="bg-back-money pull-left"><span>3600</span>元</div>-->
+                                <!--<div class="bg-back-money-yh pull-left">优惠<span>400</span>元</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<div class="bg-back-tt"><span>C</span>套餐</div>-->
+                            <!--<div class="bg-back-txt">企业变更+一般纳税人1年代理记账</div>-->
+                            <!--<div class="clearfix">-->
+                                <!--<div class="bg-back-money pull-left"><span>6200</span>元</div>-->
+                                <!--<div class="bg-back-money-yh pull-left">优惠<span>400</span>元</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+                <div  class="navbarExample">
+                    <div class="bg-car bg-car02">
+                        <div class="clearfix">
+                            <div class="bg-icon pull-left">加入购物车</div>
+                            <div class="pull-left">
+                                <div class="relative bg-car-input"><span>套餐A</span> (黑龙江省-鸡西市)<a role="button" class="icon"></a></div>
+                            </div>
+                            <div class="pull-right">
+                                <div class="pull-left bg-hj"><span>小计：</span><span class="lg">1000</span><span>元</span></div>
+                                <div class="pull-left">
+                                    <div class="bg-btn-c clearfix">
+                                        <a href="" class="btn btn-bg">去结算</a>
+                                        <a href="" class="btn btn-bg btn-bg02">免费咨询</a>
+                                    </div>
+                                     <div class="checkbox fw-checkbox">
+                                        <label>
+                                          <input type="checkbox"> 我已阅读并同意《<a href="">“企业服务”服务协议</a>》
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="sj-list">
+                    <li class="clearfix">
+                        <div class="pull-left">
+                            <div class="sj-list-tt"><span>工商注册</span>请选择注册公司类型</div>
+                            <div class="sj-btn-c clearfix">
+                                <a role="button" class="sj-btn">个人独资</a>
+                                <a role="button" class="sj-btn active">企业合伙</a>
+                            </div>
+                        </div>
+                        <div class="pull-right sj-right"><span>800</span>元</div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="pull-left">
+                            <div class="sj-list-tt"><span>纳税资质</span>请选择纳税类型</div>
+                            <div class="sj-btn-c clearfix">
+                                <a role="button" class="sj-btn">小规模纳税人</a>
+                                <a role="button" class="sj-btn active">一般纳税人</a>
+                            </div>
+                        </div>
+                        <div class="pull-right sj-right"><span>800</span>元</div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="pull-left">
+                            <div class="sj-list-tt"><span>选择地址</span>一个商用的地址是注册公司的必备条件</div>
+                            <div class="sj-btn-c clearfix">
+                                <a role="button" class="sj-btn">请为我提供注册地址</a>
+                                <a role="button" class="sj-btn active">使用自己的地址</a>
+                            </div>
+                        </div>
+                        <div class="pull-right sj-right"><span>800</span>元</div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="pull-left">
+                            <div class="sj-list-tt"><span>选择银行开户</span>公司注册完成后需要开设银行基本账户</div>
+                            <div class="sj-btn-c clearfix">
+                                <a role="button" class="sj-btn">请为我办理银行开户</a>
+                                <a role="button" class="sj-btn active">我自行办理</a>
+                            </div>
+                        </div>
+                        <div class="pull-right sj-right"><span>800</span>元</div>
+                    </li>
+                    <li class="clearfix border-no">
+                        <div class="sj-list-tt"><span>需求描述</span>公司注册完成后需要开设银行基本账户</div>
+                        <textarea class="form-control input-sell" placeholder="让您的代理人更了解您的需求，如公司名、公司类型、经营范围、注册资金等"></textarea>
+                    </li>
+                </ul>
+                <div class="sj-bottom"><span class="bold">注：</span><span class="margin-sj">1.部分地区以上价格不含工本费及银行实报实销的费用；</span><span class="margin-sj"> 2.如需可开发票地址，地址费差价额外另付；</span><span class="margin-sj">3.后续每年需收取的地址费根据政策决定。</span></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container fw-zm sj-lc">
+        <div class="yy-title"><span>升级店铺流程</span></div>
+        <div class="yy-title-sm text-center">TO UPGRADE THE STORE PROCESS</div>
+        <div class="sj-lc-img text-center"><img src="public/khshop/images/sj05.png"></div>
+        <div class="clearfix">
+            <div class="width20">
+                <div class="sjlc-c">
+                    <div class="sjlc-tt">工商注册</div>
+                    <div class="sjlc-txt"><span>3-20</span>个工作日</div>
+                </div>
+            </div>
+            <div class="width20">
+                <div class="sjlc-c">
+                    <div class="sjlc-tt">税种报道</div>
+                    <div class="sjlc-txt"><span>2-3</span>个工作日</div>
+                </div>
+            </div>
+            <div class="width20">
+                <div class="sjlc-c">
+                    <div class="sjlc-tt">银行开户</div>
+                    <div class="sjlc-txt"><span>15-20</span>个工作日</div>
+                </div>
+            </div>
+            <div class="width20">
+                <div class="sjlc-c">
+                    <div class="sjlc-tt">淘宝后台上传信息</div>
+                    <div class="sjlc-txt"><span>30</span>个工作日</div>
+                </div>
+            </div>
+            <div class="width20">
+                <div class="sjlc-c">
+                    <div class="sjlc-tt">股权变更</div>
+                    <div class="sjlc-txt"><span>7-10</span>个工作日</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+$('#id').children('li').prop('class','');
+
+
+//+++++
+$('#b').children('li').click(function () {
+    var a=$(this).text();
+    $('#a').children('li:first').children('a').text(a);
+});
+//++++++
+$('#c').children('li').click(function () {
+    var a=$(this).text();
+    $('#a').children('li:not(:first)').children('a').text(a);
+});
+
+//-----
+$('#ql').click(function () {
+    $('#a').children('li:first').children('a').text('黑龙江');
+    $('#a').children('li:not(:first)').children('a').text('鸡西市');
+});
+</script>
+</html>
