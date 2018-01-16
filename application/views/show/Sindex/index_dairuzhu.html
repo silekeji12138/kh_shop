@@ -25,7 +25,7 @@
         	<div class="rz-top">
             	<div class="rz-bz text-center"><img src="public/khshop/images/rz01.png"></div>
                 <div class="rz-btn-c text-center">
-                    <a role="button" class="btn btn-rz">在线咨询</a>
+                    <a role="button" href="http://wpa.qq.com/msgrd?v=3&uin=447171377&site=qq&menu=yes" class="btn btn-rz">在线咨询</a>
                     <a role="button" class="btn btn-rz btn-rz-r">现在入驻</a>
                 </div>
                 <div class="rz-tt text-center">多平台全类目强势入驻</div>
@@ -39,161 +39,48 @@
                   <div class="tab-content wow bounceInRight animated">
                     <div role="tabpanel" class="tab-pane active" id="home">
                         <div class="row text-center rz-row">
+
+                            <?php foreach($tm as $v): ?>
                             <div class="pull-left">
                                 <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon01.png"></div>
-                                    <div class="rz-icon-txt">男装女装</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
+                                    <div class="rz-icon"><img src="<?=$v['img']?>"></div>
+                                    <div class="rz-icon-txt"><?=$v['biaoti']?></div>
+                                    <a href="<?=$v['url']?>" class="rz-icon-a">了解详情</a>
                                 </div>
                             </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon02.png"></div>
-                                    <div class="rz-icon-txt">鞋类箱包</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon03.png"></div>
-                                    <div class="rz-icon-txt">汽车配件</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon04.png"></div>
-                                    <div class="rz-icon-txt">珠宝首饰</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon05.png"></div>
-                                    <div class="rz-icon-txt">食品保健</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon06.png"></div>
-                                    <div class="rz-icon-txt">居家用品</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left rz-icon-c-last">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon07.png"></div>
-                                    <div class="rz-icon-txt">更多分类</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
+                           <?php endforeach; ?>
+
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
                         <div class="row text-center rz-row">
+
+                            <?php foreach($mgj as $v): ?>
                             <div class="pull-left">
                                 <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon08.png"></div>
-                                    <div class="rz-icon-txt">衣服</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
+                                    <div class="rz-icon"><img src="<?=$v['img']?>"></div>
+                                    <div class="rz-icon-txt"><?=$v['biaoti']?></div>
+                                    <a href="<?=$v['url']?>" class="rz-icon-a">了解详情</a>
                                 </div>
                             </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon09.png"></div>
-                                    <div class="rz-icon-txt">包包</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon10.png"></div>
-                                    <div class="rz-icon-txt">鞋子</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon11.png"></div>
-                                    <div class="rz-icon-txt">配饰</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon12.png"></div>
-                                    <div class="rz-icon-txt">百货</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon13.png"></div>
-                                    <div class="rz-icon-txt">男装</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left rz-icon-c-last">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon07.png"></div>
-                                    <div class="rz-icon-txt">更多分类</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
+
+
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="messages">
                         <div class="row text-center rz-row">
+
+                            <?php foreach($jd as $v):  ?>
                             <div class="pull-left">
                                 <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon14.png"></div>
-                                    <div class="rz-icon-txt">服饰内衣</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
+                                    <div class="rz-icon"><img src="<?=$v['img']?>"></div>
+                                    <div class="rz-icon-txt"><?=$v['biaoti']?></div>
+                                    <a href="<?=$v['url']?>" class="rz-icon-a">了解详情</a>
                                 </div>
                             </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon15.png"></div>
-                                    <div class="rz-icon-txt">珠宝首饰</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon16.png"></div>
-                                    <div class="rz-icon-txt">厨房用具</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon17.png"></div>
-                                    <div class="rz-icon-txt">食品饮料</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon18.png"></div>
-                                    <div class="rz-icon-txt">汽车配件</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon19.png"></div>
-                                    <div class="rz-icon-txt">玩具乐器</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
-                            <div class="pull-left rz-icon-c-last">
-                                <div class="rz-icon-c">
-                                    <div class="rz-icon"><img src="public/khshop/images/rz-icon07.png"></div>
-                                    <div class="rz-icon-txt">更多分类</div>
-                                    <a href="" class="rz-icon-a">了解详情</a>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
+
                         </div>
                     </div>
                 </div>
@@ -213,52 +100,36 @@
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <div class="row  rz-tabs-img-c-row">
+
+                                    <?php foreach($tm1 as $key=>$v): ?>
+                                    <?php if($key<3): ?>
                                     <div class="col-xs-4">
                                         <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs01.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div>服饰鞋帽</div>
+                                            <div><img src="<?=$v['al']?>"></div>
+                                            <div class=" rz-tabs-txt"><?=$v['ms1']?></div>
+                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div><?=$v['ms2']?></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs02.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs03.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="row  rz-tabs-img-c-row">
+
+                                    <?php foreach($tm1 as $key=>$v): ?>
+                                    <?php if($key>=3): ?>
                                     <div class="col-xs-4">
                                         <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs01.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div>服饰鞋帽</div>
+                                            <div><img src="<?=$v['al']?>"></div>
+                                            <div class=" rz-tabs-txt"><?=$v['ms1']?></div>
+                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div><?=$v['ms2']?></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs02.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs03.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+
                                 </div>
                             </div>
                           </div>
@@ -276,52 +147,43 @@
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <div class="row  rz-tabs-img-c-row">
+
+
+
+                                    <?php foreach($mgj1 as $key=>$v): ?>
+                                    <?php if($key<3): ?>
                                     <div class="col-xs-4">
                                         <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs03.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div>服饰鞋帽</div>
+                                            <div><img src="<?=$v['al']?>"></div>
+                                            <div class=" rz-tabs-txt"><?=$v['ms1']?></div>
+                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div><?=$v['ms2']?></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs01.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs02.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+
+
+
+
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="row  rz-tabs-img-c-row">
+
+                                    <?php foreach($mgj1 as $key=>$v): ?>
+                                    <?php if($key>=3): ?>
                                     <div class="col-xs-4">
                                         <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs01.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div>服饰鞋帽</div>
+                                            <div><img src="<?=$v['al']?>"></div>
+                                            <div class=" rz-tabs-txt"><?=$v['ms1']?></div>
+                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div><?=$v['ms2']?></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs02.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs03.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+
+
+
                                 </div>
                             </div>
                           </div>
@@ -339,52 +201,45 @@
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <div class="row  rz-tabs-img-c-row">
+
+
+
+                                    <?php foreach($jd1 as $key=>$v): ?>
+                                    <?php if($key>=3): ?>
                                     <div class="col-xs-4">
                                         <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs02.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div>服饰鞋帽</div>
+                                            <div><img src="<?=$v['al']?>"></div>
+                                            <div class=" rz-tabs-txt"><?=$v['ms1']?></div>
+                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div><?=$v['ms2']?></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs01.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs03.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+
+
+
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="row  rz-tabs-img-c-row">
+
+
+
+                                    <?php foreach($mgj1 as $key=>$v): ?>
+                                    <?php if($key>=3): ?>
                                     <div class="col-xs-4">
                                         <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs01.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div>服饰鞋帽</div>
+                                            <div><img src="<?=$v['al']?>"></div>
+                                            <div class=" rz-tabs-txt"><?=$v['ms1']?></div>
+                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon01.png"></p></div><?=$v['ms2']?></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs02.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon02.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <div class="rz-tabs-img-c">
-                                            <div><img src="public/khshop/images/rz-tabs03.png"></div>
-                                            <div class=" rz-tabs-txt">华南地区女装旗舰店</div>
-                                            <div class="rz-tabs-label"><div><p><img src="public/khshop/images/rz-tabs-icon03.png"></p></div>服饰鞋帽</div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+
+
+
+
                                 </div>
                             </div>
                           </div>

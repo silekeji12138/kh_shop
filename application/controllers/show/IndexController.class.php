@@ -4,8 +4,17 @@ header("Content-type: text/html; charset=utf-8");
 class IndexController extends BaseController
 {
     public function textAction(){
-           $rs=self::tmAction('淘宝网店');
-           var_dump($rs);
+//           $curl=curl_init();
+//           curl_setopt($curl,CURLOPT_URL,'http://www.youku.com');
+//           curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+//           $data=curl_exec($curl);
+        $url = "http://www.baidu.com";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        $notice = curl_exec($ch);
+         var_dump(($notice));
 //        include CUR_VIEW_PATH . "Sindex" . DS ."index_text.html";
     }
 
@@ -56,11 +65,30 @@ class IndexController extends BaseController
         $gonggao=$m2->select("select gg from sl_gonggao");
         $zhinan=$m2->select("select zn from sl_gonggao");
         $wenda=$m2->select("select wd from sl_gonggao");
+        $user=new model('usersay');
+        $user_say=$user->select("select *from sl_usersay limit 0,5");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_index.html";
     }
     //待入驻页面
     public function dairuzhuAction(){
+        $modle=new model('search2');
+        $tm=$modle->select("select *from sl_search2 WHERE class='天猫商城' limit 0,6");
+        $jd=$modle->select("select *from sl_search2 WHERE class='京东商城' limit 0,6");
+        $mgj=$modle->select("select *from sl_search2 WHERE class='蘑菇街' limit 0,6");
+
+        $m=new model('cgal');
+        $tm1=$m->select("select *from sl_cgal WHERE szpt='天猫商城' limit 0,6");
+        $mgj1=$m->select("select *from sl_cgal WHERE szpt='蘑菇街' limit 0,6");
+        $jd1=$m->select("select *from sl_cgal WHERE szpt='京东商城' limit 0,6");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dairuzhu.html";
+    }
+    //代运营入口方法和页面
+    public function dyyAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_dyy.html";
+    }
+    //用户说详情页面的进入
+    public function usAction(){
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_us.html";
     }
     //购买其他网点入口
     public function qitaAction(){
@@ -216,7 +244,9 @@ class IndexController extends BaseController
                 include CUR_VIEW_PATH . "Sindex" . DS ."index_qita.html";
                 break;
             case '天猫新店':
-                echo '皮皮虾';
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND sshy LIKE '%".$t2."%'");
+                include CUR_VIEW_PATH . "Sbuy" . DS ."buy_tmall.html";
                 break;
             case '企业店铺':
                 echo '皮皮虾2号';
@@ -269,6 +299,29 @@ class IndexController extends BaseController
             case '京东商城':
                 $model=new model('shangpin');
                 $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND (sclx='".$t2."' or sblx='".$t2."')");
+                include CUR_VIEW_PATH . "Sbuy" . DS ."buy_jd.html";
+                break;
+            case '蘑菇街':
+                echo '皮皮虾二号';
+                break;
+            case '其他网店':
+                echo '皮皮虾';
+                break;
+        }
+    }
+    //代入驻类的商品链接搜索
+    public function search4Action(){
+           $t1=$_GET['t1'];
+           $t3=$_GET['t3'];
+        switch ($t1){
+            case '天猫商城':
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND sshy='".$t3."' ");
+                include CUR_VIEW_PATH . "Sbuy" . DS ."buy_tmall.html";
+                break;
+            case '京东商城':
+                $model=new model('shangpin');
+                $result=$model->select("select *from sl_shangpin WHERE szpt='".$t1."' AND sshy='".$t3."' ");
                 include CUR_VIEW_PATH . "Sbuy" . DS ."buy_jd.html";
                 break;
             case '蘑菇街':
