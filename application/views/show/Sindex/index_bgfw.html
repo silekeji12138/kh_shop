@@ -27,28 +27,30 @@
             <div class="rz-top yy-top fw-top bg-top">
                 <div class="clearfix bg-clearfix">
                     <div class="pull-left bg-tt">地区</div>
+                    <ul class="pull-left dq-list clearfix" id="a">
+                        <li><a href="">黑龙江</a></li>
+                        <li><a href="">鸡西</a></li>
+                    </ul>
                     <ul class="pull-left dq-list clearfix">
-                        <li><a href="">黑龙江省</a></li>
-                        <li><a href="">鸡西市</a></li>
-                        <li><a href="" class="dq-btn">重置</a></li>
+                        <li id="ql"><a  class="dq-btn">重置</a></li>
                     </ul>
                 </div>
                 <div class="clearfix bg-clearfix">
                     <div class="pull-left bg-tt bg-tt-sm">选择省：</div>
-                    <ul class="pull-left purchase-ul dq-list dq-list02 clearfix">
-                        <li><a role="button" class="active">浙江</a></li>
+                    <ul class="pull-left purchase-ul dq-list dq-list02 clearfix" id="b">
+                        <li><a role="button" >浙江</a></li>
                         <li><a role="button">湖南</a></li>
                         <li><a role="button">湖北</a></li>
                         <li><a role="button">江西</a></li>
                         <li><a role="button">辽宁</a></li>
-                        <li><a role="button">黑龙江</a></li>
+                        <li><a role="button" class="active">黑龙江</a></li>
                         <li><a role="button">北京</a></li>
                         <li><a role="button">上海</a></li>
                     </ul>
                 </div>
                 <div class="clearfix">
                     <div class="pull-left bg-tt bg-tt-sm">选择市区：</div>
-                    <ul class="pull-left purchase-ul dq-list dq-list02 clearfix">
+                    <ul class="pull-left purchase-ul dq-list dq-list02 clearfix" id="c">
                         <li><a role="button" class="active">鸡西</a></li>
                         <li><a role="button">鹤岗市</a></li>
                         <li><a role="button">双鸭山</a></li>
@@ -64,23 +66,23 @@
                 <div class="bg-back">
                     <div class="row">
                         <div class="col-xs-4">
-                            <div class="bg-back-tt active"><span>A</span>套餐</div>
-                            <div class="bg-back-txt">企业变更（含工商、税务、银行变更）</div>
+                            <div class="bg-back-tt active" name="q"><span>A</span>套餐</div>
+                            <div class="bg-back-txt" name="a">企业变更（含工商、税务、银行变更）</div>
                             <div class="clearfix">
                                 <div class="bg-back-money pull-left"><span>1000</span>元</div>
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <div class="bg-back-tt"><span>B</span>套餐</div>
-                            <div class="bg-back-txt">企业变更+小规模纳税人1年代理记账</div>
+                            <div class="bg-back-tt" name="w"><span>B</span>套餐</div>
+                            <div class="bg-back-txt" name="s">企业变更+小规模纳税人1年代理记账</div>
                             <div class="clearfix">
                                 <div class="bg-back-money pull-left"><span>3600</span>元</div>
                                 <div class="bg-back-money-yh pull-left">优惠<span>400</span>元</div>
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <div class="bg-back-tt"><span>C</span>套餐</div>
-                            <div class="bg-back-txt">企业变更+一般纳税人1年代理记账</div>
+                            <div class="bg-back-tt" name="e"><span>C</span>套餐</div>
+                            <div class="bg-back-txt" name="d">企业变更+一般纳税人1年代理记账</div>
                             <div class="clearfix">
                                 <div class="bg-back-money pull-left"><span>6200</span>元</div>
                                 <div class="bg-back-money-yh pull-left">优惠<span>400</span>元</div>
@@ -93,23 +95,25 @@
                 <div class="clearfix">
                     <div class="bg-icon pull-left">加入购物车</div>
                     <div class="pull-left">
-                        <div class="relative bg-car-input"><span>套餐A</span> (黑龙江省-鸡西市)<a role="button" class="icon"></a></div>
-                        <div class="bg-jz">企业变更+小规模纳税人1年代理记账</div>
+                        <div class="relative bg-car-input"><span id="d">套餐A</span> (<name id="f">黑龙江</name>-<name id="g">鸡西</name>)<a role="button" class="icon"></a></div>
+                        <div class="bg-jz" name="f">企业变更（含工商、税务、银行变更）</div>
                     </div>
+                    <form method="post" action="www.baidu.com">
                     <div class="pull-right">
-                        <div class="pull-left bg-hj"><span>小计：</span><span class="lg">1000</span><span>元</span></div>
+                        <div class="pull-left bg-hj"><span>小计：</span><span class="lg" id="xj">1000</span><span>元</span></div>
                         <div class="pull-left">
                             <div class="bg-btn-c clearfix">
-                                <a href="" class="btn btn-bg">去结算</a>
+                                <button  class="btn btn-bg" id="js">去结算</button>
                                 <a href="" class="btn btn-bg btn-bg02">免费咨询</a>
                             </div>
                              <div class="checkbox fw-checkbox">
                                 <label>
-                                  <input type="checkbox"> 我已阅读并同意《<a href="">“企业服务”服务协议</a>》
+                                  <input type="checkbox" id="xy"> 我已阅读并同意《<a href="">“企业服务”服务协议</a>》
                                 </label>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -187,6 +191,70 @@ if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
 $('#id').children('li').prop('class','');
+
+
+
+$('#b').children('li').click(function () {
+    var a=$(this).text();
+    $('#a').children('li:first').children('a').text(a);
+    $('#f').text(a);
+    $('#province').val(a);
+});
+//++++++
+$('#c').children('li').click(function () {
+    var a=$(this).text();
+    $('#a').children('li:not(:first)').children('a').text(a);
+    $('#g').text(a);
+    $('#city').val(a);
+});
+
+//-----
+$('#ql').click(function () {
+    $('#a').children('li:first').children('a').text('黑龙江');
+    $('#a').children('li:not(:first)').children('a').text('鸡西');
+
+    $('#b').children('li').children('a').prop('class','');
+    $('#c').children('li').children('a').prop('class','');
+
+    $('#b').children('li:eq(5)').children('a').prop('class','active');
+    $('#c').children('li:eq(0)').children('a').prop('class','active');
+
+    $('#f').text('黑龙江');
+    $('#g').text('鸡西');
+
+    $('#province').val('黑龙江');
+    $('#city').val('鸡西');
+});
+
+$('div[name=q]').click(function () {
+   var a=$(this).text();
+   var b=$('div[name=a]').text();
+   $('div[name=f]').text(b);
+   $('#d').text(a);
+   $('#xj').text(1000);
+})
+
+$('div[name=w]').click(function () {
+    var a=$(this).text();
+    var b=$('div[name=s]').text();
+    $('div[name=f]').text(b);
+    $('#d').text(a);
+    $('#xj').text(3200);
+})
+
+$('div[name=e]').click(function () {
+    var a=$(this).text();
+    var b=$('div[name=d]').text();
+    $('div[name=f]').text(b);
+    $('#d').text(a);
+    $('#xj').text(5800);
+})
+
+    $('#js').click(function () {
+        if ($('#xy').is(":checked")==false){
+            alert("请认真读取协议"); return false;
+        }
+    })
 
 </script>
 </html>

@@ -9,11 +9,12 @@ class IndexController extends BaseController
     public function textAction(){
         include "public/phpQuery/phpQuery.php";
         include "public/QueryList/QueryList.php";
+//        include "public/Snoopy/Snoopy.class.php";
         if (1==2) {
             $rules = array(
                 'name' => array('strong', 'text'),
-                'pf' => array('.count:first', 'text'),
-                'pf1' => array('.count:eq(1)', 'text'),
+                'pf1' => array('.count:first', 'text'),
+                'pf2' => array('.count:eq(1)', 'text'),
                 'pf3' => array('.count:eq(2)', 'text'),
             );
             $html = "https://detail.tmall.com/item.htm?spm=a221t.1710954.7526515591.6.27f22bbcwdDoAC&acm=lb-zebra-7771-270527.1003.4.1731558&id=527956695986&scm=1003.4.lb-zebra-7771-270527.ITEM_527956695986_1731558";
@@ -26,33 +27,26 @@ class IndexController extends BaseController
             }
         }else{
             $rules = array(
-//                  'name' => array('a[target=_blank]', 'title'),
-                  'pf' => array('title','text'),
+//                 'name' => array('strong>a[target=_blank]', 'title'),
+
+                'pf' => array('span','text'),
 //                'pf1' => array('.count:eq(1)', 'text'),
 //                'pf3' => array('.count:eq(2)', 'text'),
             );
-            $html = "https://item.taobao.com/item.htm?spm=a310p.7395725.1998038907.1.51af1d061oCQV8&id=545877954654";
+            $html = "https://rate.taobao.com/user-rate-0025ab586719dfab34560c3823afe693.htm?spm=2013.1.1000126.3.1943fbadeugP7k";
             $data = QueryList::Query($html, $rules)->data;
 //            $data1 = [];
 //            foreach ($data[0] as $key => $value) {
 //                $value = mb_convert_encoding($value, 'ISO-8859-1', 'utf-8');
 //                $value = mb_convert_encoding($value, 'utf-8', 'GBK');
 //                $data1[$key] = $value;
-//            }
+////            }
+//        抓取到淘宝的店铺的名称的方法
+        $data[7]['pf'] = mb_convert_encoding($data[7]['pf'], 'ISO-8859-1', 'utf-8');
+        $data[7]['pf'] = mb_convert_encoding($data[7]['pf'], 'utf-8', 'GBK');
         }
-//        $data[2]['name'] = mb_convert_encoding($data[2]['name'], 'ISO-8859-1', 'utf-8');
-//        $data[2]['name'] = mb_convert_encoding($data[2]['name'], 'utf-8', 'GBK');
-        //测试所用的方法
-//        $data[13]['pf'] = mb_convert_encoding($data[13]['pf'], 'ISO-8859-1', 'utf-8');
-//        $data[13]['pf'] = mb_convert_encoding($data[13]['pf'], 'utf-8', 'GBK');
         print_r($data);
-
-
 //        print_r($data[0]);
-
-
-
-
 
 //        include CUR_VIEW_PATH . "Sindex" . DS ."index_text.html";
     }
@@ -252,6 +246,53 @@ class IndexController extends BaseController
     public function cpycAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_cpyc.html";
     }
+    //用户评价客服的功能方法
+    public function pjxtAction(){
+       $id=$_GET['id'];
+       $data1['py']=$_GET['ms'];
+       $data1['fx']=$_GET['fx'];
+       $uid=$_SESSION['user_id'];
+       $time=strtotime(date("Y-m-d",time()+3600*8));
+       if ($uid==''){
+           echo '0';
+       }else{
+           $model=new model('pfxt');
+           $result=$model->select("select *from sl_pfxt WHERE uid=$uid and kfid=$id and add_time=$time");
+           if ($result){
+               echo '2';
+           }else{
+               $data1['uid']=$uid;
+               $data1['kfid']=$id;
+               $data1['add_time']=$time;
+               $model->insert($data1);
+               echo '1';
+           }
+       }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //网站咨询展示型页面的功能
     public function wzzxAction(){
         $model=new model('wzzx');
@@ -286,29 +327,6 @@ class IndexController extends BaseController
         $result=$model->select("select *from sl_wzzx limit $act,$num");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_wzzx.html";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //投诉建议中心的入口
     public function jianyiAction(){

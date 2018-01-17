@@ -48,13 +48,13 @@
                         </div>
                     </div>
                     <div class="pull-left pm-list-right">
-                    	<div class="clearfix">
-                        	<div class="pull-left text-center pm-user">
-                            	<div class="pm-user-img"><img src="public/khshop/images/user-img.png"></div>
+                        <div class="clearfix">
+                            <div class="pull-left text-center pm-user">
+                                <div class="pm-user-img"><img src="public/khshop/images/user-img.png"></div>
                                 <div class="pm-user-name">销售顾问</div>
                             </div>
                             <div class="pull-left">
-								<a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                                <a role="button" class="btn-purchase icon">咨询服务顾问</a>
                                 <div class="pm-border-b margin-top-20 clearfix">
                                     <div class="pm-kf-name pull-left">刘欢欢 </div>
                                     <div class="pm-kf-gh pm-kf-gh02 padding-left pull-left">工号:2094</div>
@@ -64,8 +64,8 @@
                                     <div class="pm-kf-name pm-kf-qq pm-kf-gh02 pull-left">2355840870</div>
                                 </div>
                                 <div class="btn-toolbar">
-                                  <div class="btn-group"><div class="pf-label">评分：5</div></div>
-                                  <div class="btn-group"><a role="button" data-toggle="modal" data-target="#pingfen" class="pf-label pf-link">我要评分</a></div>
+                                    <div class="btn-group"><div class="pf-label">评分：5</div></div>
+                                    <div class="btn-group"><a role="button" data-toggle="modal" data-target="#pingfen" class="pf-label pf-link" name="1" id="pf">我要评分</a></div>
                                 </div>
                             </div>
                         </div>
@@ -248,6 +248,40 @@
         </div>
     </div>
     <!--footer-->
+<!--评价顾问-->
+<!-- Modal -->
+<div class="modal fade" id="pingfen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-close" data-dismiss="modal" aria-label="Close"><i class="icon"></i></div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-tt text-center">评价顾问</div>
+                <div class="dis-table-c">
+                    <div class="clearfix">
+                        <div class="pull-left left-width-txt">满意度打分</div>
+                        <div class="pull-left star-c" id="xx">
+                            <i class="glyphicon glyphicon-star active" id="xx1" name="1"></i>
+                            <i class="glyphicon glyphicon-star active" id="xx2" name="2"></i>
+                            <i class="glyphicon glyphicon-star active" id="xx3" name="3"></i>
+                            <i class="glyphicon glyphicon-star active" id="xx4" name="4"></i>
+                            <i class="glyphicon glyphicon-star " id="xx5" name="5"></i>
+                        </div>
+                        <div class="pull-left pf-right" id="xx6">4分， 比较满意！</div>
+                    </div>
+                    <div class="clearfix">
+                        <div class=" left-width-txt text-right pull-left">发表评论</div>
+                        <div class="pull-left">
+                            <input name="id" type="hidden">
+                            <input name="fx" type="hidden" value="4">
+                            <textarea name="ms" id="ms" type="text" class="form-control qq-input input-text " placeholder="有很多想说的？写点评价吧~最多不超过100个字 "></textarea>
+                        </div>
+                    </div>
+                    <button type="button" id="tj" class="btn btn-qq">提交评价</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
 
@@ -260,24 +294,85 @@
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
+<!--评分的效果-->
+$('#xx1').click(function(){
+   $('#xx').children('i').removeClass('active');
+   $(this).addClass('active');
+    var fen=$(this).attr('name');
+   $('input[name=fx]').val(fen);
+   $('#xx6').text("1分,继续努力");
+});
+$('#xx2').click(function(){
+    $('#xx').children('i').removeClass('active');
+    $('#xx1').addClass('active');
+    $(this).addClass('active');
+    var fen=$(this).attr('name');
+    $('input[name=fx]').val(fen);
+    $('#xx6').text("2分,继续努力");
+});
+$('#xx3').click(function(){
+    $('#xx').children('i').removeClass('active');
+    $('#xx1').addClass('active');
+    $('#xx2').addClass('active');
+    $(this).addClass('active');
+    var fen=$(this).attr('name');
+    $('input[name=fx]').val(fen);
+    $('#xx6').text("3分,继续努力");
+});
+$('#xx4').click(function(){
+    $('#xx').children('i').removeClass('active');
+    $('#xx1').addClass('active');
+    $('#xx2').addClass('active');
+    $('#xx3').addClass('active');
+    $(this).addClass('active');
+    var fen=$(this).attr('name');
+    $('input[name=fx]').val(fen);
+    $('#xx6').text("4分,继续努力");
+});
+$('#xx5').click(function(){
+    $('#xx').children('i').removeClass('active');
+    $('#xx').children('i').addClass('active');
+    var fen=$(this).attr('name');
+    $('input[name=fx]').val(fen);
+    $('#xx6').text("5分,继续努力");
+});
+
+<!-- 评价的详细-->
+      $('#pf').click(function () {
+          var id=this.name;
+          $('#tj').click(function () {
+                var content= $('#ms').val();
+                var fx=$('input[name=fx]').val();
+                $.get('index.php?p=show&c=index&a=pjxt',{id:id,ms:content,fx:fx},function (msg) {
+                    if (msg=='1'){
+                        alert('评价成功');
+                    }else if (msg=='2'){
+                        alert('你今天已经评价过该客服了');
+                    }else {
+                        alert('请先登录');
+                    }
+                })
+              $(this).destroy();
+          })
+      })
 </script>
 <script>
     $('#id').children('li').prop('class','');
-$(document).ready(function() { 
-$('.gm-tabs a').click(function() { 
-if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) { 
-var $target = $(this.hash); 
-$target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']'); 
-if ($target.length) { 
-var targetOffset = $target.offset().top-100; 
-$('html,body').animate({ 
-scrollTop: targetOffset 
-}, 
-1000); 
-return false; 
-} 
-} 
-}); 
-});
+    $(document).ready(function() {
+    $('.gm-tabs a').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    var $target = $(this.hash);
+    $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+    if ($target.length) {
+    var targetOffset = $target.offset().top-100;
+    $('html,body').animate({
+    scrollTop: targetOffset
+    },
+    1000);
+    return false;
+    }
+    }
+    });
+    });
 </script>
 </html>
