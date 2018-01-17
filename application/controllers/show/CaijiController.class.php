@@ -3,8 +3,6 @@
 use QL\QueryList;
 class CaijiController extends BaseController
 {
-
-
     public function indexAction(){
         include "public/phpQuery/phpQuery.php";
         include "public/QueryList/QueryList.php";
@@ -17,5 +15,48 @@ class CaijiController extends BaseController
         $data[0] = mb_convert_encoding($data[0],'utf-8','GBK');
         print_r($data[0]);
     }
-    
+
+    public function textAction()
+    {
+        include "public/phpQuery/phpQuery.php";
+        include "public/QueryList/QueryList.php";
+        $rules = array(
+            'pf' => array('a', 'text'),
+        );
+//        $html = "https://rate.taobao.com/user-rate-0025ab586719dfab34560c3823afe693.htm?spm=2013.1.1000126.3.1943fbadeugP7k";
+        $html = "https://rate.taobao.com/user-rate-4f0f8abf81dff80710c7becb8bcd99c6.htm?spm=2013.1.1000126.3.2ae541a72n4QYy";
+        $data = QueryList::Query($html, $rules)->data;
+            $data1 = [];
+            foreach ($data as $key=>$value) {
+                $value['pf'] = mb_convert_encoding($value['pf'], 'ISO-8859-1', 'utf-8');
+                $value['pf']= mb_convert_encoding($value['pf'], 'utf-8', 'GBK');
+                print_r($value['pf']);
+                echo '<br>';
+            }
+//        $data[0]['pf'] = mb_convert_encoding($data[0]['pf'], 'ISO-8859-1', 'utf-8');
+//        $data[0]['pf']= mb_convert_encoding($data[0]['pf'], 'utf-8', 'GBK');
+//        print_r($data);
+    }
+    public function text1Action(){
+        include "public/phpQuery/phpQuery.php";
+        phpQuery::newDocumentFile('https://rate.taobao.com/user-rate-d9c64ba0e692d7326dadc12e98ed7a9d.htm?spm=2013.1.1000126.4.7b922cf3N6I7CC');
+//        phpQuery::newDocumentFile('https://haier.jd.com/');
+        $b=pq('li')->html();
+        $b= mb_convert_encoding($b, 'ISO-8859-1', 'utf-8');
+        $b= mb_convert_encoding($b, 'utf-8', 'GBK');
+        echo $b;
+    }
+
+    public function text2Action(){
+        include "public/Snoopy/Snoopy.class.php";
+        $snoopy = new Snoopy();
+        $url = "http://www.baidu.com";
+        // $snoopy->fetch($url);
+        // $snoopy->fetchtext($url);//去除HTML标签和其他的无关数据
+        $snoopy->fetchtext($url);//只获取表单
+        //只返回网页中链接 默认情况下，相对链接将自动补全，转换成完整的URL。
+        // $snoopy->fetchlinks($url);
+        var_dump($snoopy->results);
+    }
+
 }
