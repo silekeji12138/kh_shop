@@ -23,6 +23,13 @@ class LoginController extends BaseController
                 $_SESSION['username']=$rs_tel[0]['name'];
                 $_SESSION['tel']=$rs_tel[0]['tel'];
                 $_SESSION['user_id']=$rs_tel[0]['id'];
+                //下次是否自动登录
+                if (isset($data['remember'])){
+                    $id=$rs_tel[0]['id'];
+                    $password=md5($rs_tel[0]['password']."cdsile");
+                    setcookie('id',$id,time()+7*24*3600,"/");
+                    setcookie('password',$password,time()+7*24*3600,"/");
+                }
                 $this->jump('index.php?p=show&c=user&a=index','',0);
             }else{
                 $this->jump('index.php?p=show&c=login&a=login','密码错误',3);

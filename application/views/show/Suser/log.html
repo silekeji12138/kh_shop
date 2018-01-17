@@ -47,7 +47,7 @@
                       <input name="status" value="处理中" type="radio"> 处理中
                     </label>
                 </div>
-                <button type="submit" class="btn btn-tj btn-tj02 pull-right">立即查询</a>
+                <button type="submit" class="btn btn-tj btn-tj02 pull-right">立即查询</button>
             </div>
             </form>
         </div>
@@ -70,7 +70,7 @@
               <td><?=$v['num']?></td>
               <td><?=$v['bank']?></td>
               <td><?=$v['account']?></td>
-              <td><?=substr($v['dtime'],0,10)?></td>
+              <td><?=date('Y-m-d',$v['dtime'])?></td>
               <td><span class="table-number">¥<?=$v['price']?></span></td>
               <td><span class="table-number">¥7,800</span></td>
               <td><?=$v['status']?></td>
