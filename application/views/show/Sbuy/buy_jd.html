@@ -8,6 +8,7 @@
     <!-- Bootstrap -->
     <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
     <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
     <link href="public/khshop/css/css.css" rel="stylesheet">
 </head>
 <body>
@@ -29,27 +30,44 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="clearfix list-purchase">
+                    <div class="pull-left purchase-left">您的选择</div>
+                    <div class="pull-left purchase-right">
+                        <ul class="purchase-ul gjc-ul">
+                            <li><span>天猫商城<a role="button" href="www.baidu.com">×</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">所在平台</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul">
-                        	<li><a  role="button">天猫商城</a></li>
-                            <li><a role="button">企业淘宝</a></li>
-                            <li><a role="button">蘑菇街</a></li>
-                            <li><a class="active" role="button">京东商城</a></li>
-                            <li><a role="button">微信公众号</a></li>
-                            <li><a role="button">贝贝网</a></li>
-                            <li><a role="button">聚美优品</a></li>
-                            <li><a role="button">唯品会</a></li>
-                            <li><a role="button">折800</a></li>
-                            <li><a role="button">卷皮网</a></li>
-                            <li><a role="button">楚楚街</a></li>
-                            <li><a role="button">阿里巴巴</a></li>
-                            <li><a role="button">一号店</a></li>
-                            <li><a role="button">美丽说</a></li>
-                            <li><a role="button">苏宁易购</a></li>
-                            <li><a role="button">独立商城</a></li>
-                            <li><a role="button">其它网店</a></li>
+                            <?php $vs=BuyController::syptAction(); foreach($vs as $v): ?>
+                            <?php if($v['name']=='京东商城'){ ?>
+                            <li><a  class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>"><?=$v['name']?></a></li>
+                            <?php  }else{ ;?>
+                            <li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>"><?=$v['name']?></a></li>
+                            <?php }?>
+                        	<!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>">天猫商城</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('企业淘宝'));?>">企业淘宝</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>">蘑菇街</a></li>-->
+                            <!--<li><a  class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>">京东商城</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('微信公众号'));?>">微信公众号</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('贝贝网'));?>">贝贝网</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('聚美优品'));?>">聚美优品</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('唯品会'));?>">唯品会</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('折800'));?>">折800</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('卷皮网'));?>">卷皮网</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('楚楚街'));?>">楚楚街</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('阿里巴巴'));?>">阿里巴巴</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('一号店'));?>">一号店</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('美丽说'));?>">美丽说</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('苏宁易购'));?>">苏宁易购</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('独立商城'));?>">独立商城</a></li>-->
+                            <!--<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他网店'));?>">其它网店</a></li>-->
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
@@ -57,9 +75,9 @@
                 	<div class="pull-left purchase-left">商城类型</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul" id="sc">
-                        	<li><a class="active" role="button">旗舰店</a></li>                                                                                                                             
-                            <li><a role="button">专营店</a></li>
-                            <li><a role="button">专卖店</a></li>
+                        	<li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&lx=<?=urlencode(base64_encode('旗舰店'));?>">旗舰店</a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&lx=<?=urlencode(base64_encode('专营店'));?>">专营店</a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&lx=<?=urlencode(base64_encode('专卖店'));?>">专卖店</a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,16 +85,16 @@
                 	<div class="pull-left purchase-left">商标类型</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul" id="sb">
-                        	<li><a class="active" role="button">R标</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">R标</a></li>
                             <li><a role="button">TM标</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="clearfix list-purchase">
-                	<div class="pull-left purchase-left">所属行业</div>                                                                                                                                         
+                	<div class="pull-left purchase-left">所属行业</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul">
-                        	<li><a class="active" role="button">服饰鞋包</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">服饰鞋包</a></li>
                             <li><a role="button">美容护理</a></li>
                             <li><a role="button">数码电器</a></li>
                             <li><a role="button">游戏/话费</a></li>
@@ -98,9 +116,9 @@
                 </div>
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">价<span></span>格</div>
-                    <div class="pull-left purchase-right">                            
+                    <div class="pull-left purchase-right">
                     	<ul class="purchase-ul">
-                        	<li><a class="active" role="button">5万-10万</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">5万-10万</a></li>
                             <li><a role="button">10万-20万</a></li>
                             <li><a role="button">20万-50万</a></li>
                             <li><a role="button">50万以上</a></li>
@@ -115,7 +133,7 @@
                 </div>
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">其<span></span>他</div>
-                    <div class="pull-left purchase-right">                            
+                    <div class="pull-left purchase-right">
 						<ul class="purchase-tabs">
                         	<li><a href="#purchase01" aria-controls="purchase01" role="tab" data-toggle="tab"><span id="region">地区范围</span><span class="caret"></span></a></li>
                             <li><a href="#purchase02" aria-controls="purchase02" role="tab" data-toggle="tab"><span id="region01">扣分情况</span><span class="caret"></span></a></li>
@@ -133,7 +151,7 @@
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane" id="purchase01">
                     	<ul class="purchase-ul purchase-ul-region">
-                        	<li><a class="active" role="button">地区不限</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">地区不限</a></li>
                             <li><a role="button">华北地区</a></li>
                             <li><a role="button">东北地区</a></li>
                             <li><a role="button">华东地区</a></li>
@@ -146,7 +164,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase02">
                     	<ul class="purchase-ul purchase-ul-region01">
-                        	<li><a class="active" role="button">不扣分</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">不扣分</a></li>
                             <li><a role="button">扣分10</a></li>
                             <li><a role="button">扣分09</a></li>
                             <li><a role="button">扣分08</a></li>
@@ -154,7 +172,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase03">
                     	<ul class="purchase-ul purchase-ul-region02">
-                        	<li><a class="active" role="button">纳税人资质1</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">纳税人资质1</a></li>
                             <li><a role="button">纳税人资质2</a></li>
                             <li><a role="button">纳税人资质3</a></li>
                             <li><a role="button">纳税人资质4</a></li>
@@ -162,7 +180,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase04">
                     	<ul class="purchase-ul purchase-ul-region03">
-                        	<li><a class="active" role="button">是否带货1</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">是否带货1</a></li>
                             <li><a role="button">是否带货2</a></li>
                             <li><a role="button">是否带货3</a></li>
                             <li><a role="button">是否带货4</a></li>
@@ -170,7 +188,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase05">
                     	<ul class="purchase-ul purchase-ul-region04">
-                        	<li><a class="active" role="button">提供货源1</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">提供货源1</a></li>
                             <li><a role="button">提供货源2</a></li>
                             <li><a role="button">提供货源3</a></li>
                             <li><a role="button">提供货源4</a></li>
@@ -178,7 +196,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase06">
                     	<ul class="purchase-ul purchase-ul-region05">
-                        	<li><a class="active" role="button">商标类别1</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">商标类别1</a></li>
                             <li><a role="button">商标类别2</a></li>
                             <li><a role="button">商标类别3</a></li>
                             <li><a role="button">商标类别4</a></li>
@@ -186,7 +204,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase07">
                     	<ul class="purchase-ul purchase-ul-region06">
-                        	<li><a class="active" role="button">商标过户1</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">商标过户1</a></li>
                             <li><a role="button">商标过户2</a></li>
                             <li><a role="button">商标过户3</a></li>
                             <li><a role="button">商标过户4</a></li>
@@ -194,7 +212,7 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase08">
                     	<ul class="purchase-ul">
-                        	<li><a class="active" role="button">团队转让1</a></li>                                                                                                                             
+                        	<li><a class="active" role="button">团队转让1</a></li>
                             <li><a role="button">团队转让2</a></li>
                             <li><a role="button">团队转让3</a></li>
                             <li><a role="button">团队转让4</a></li>
@@ -292,7 +310,7 @@
 
     <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
 
-</body> 
+</body>
 <script src="public/khshop/js/jquery.min.js"></script>
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script src="public/khshop/js/common.js"></script>
@@ -323,49 +341,49 @@ if (t2){
     $(".purchase-ul-region li a").click(function(){
 		var txt = $(this).html();
         $("#region").html(txt);
-        
+
     });
 //扣分
     $(".purchase-ul-region01 li a").click(function(){
 		var txt = $(this).html();
         $("#region01").html(txt);
-        
+
     });
 //纳税
     $(".purchase-ul-region02 li a").click(function(){
 		var txt = $(this).html();
         $("#region02").html(txt);
-        
+
     });
 //是否带货
     $(".purchase-ul-region03 li a").click(function(){
 		var txt = $(this).html();
         $("#region03").html(txt);
-        
+
     });
 //提供货源
     $(".purchase-ul-region04 li a").click(function(){
 		var txt = $(this).html();
         $("#region04").html(txt);
-        
+
     });
 //商标类别
     $(".purchase-ul-region05 li a").click(function(){
 		var txt = $(this).html();
         $("#region05").html(txt);
-        
+
     });
 //商标过户
     $(".purchase-ul-region06 li a").click(function(){
 		var txt = $(this).html();
         $("#region06").html(txt);
-        
+
     });
 //团队转让
     $(".purchase-ul-region li a").click(function(){
 		var txt = $(this).html();
         $("#region").html(txt);
-        
+
     });
 </script>
 </html>

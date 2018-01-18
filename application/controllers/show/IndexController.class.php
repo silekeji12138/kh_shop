@@ -469,5 +469,14 @@ class IndexController extends BaseController
                 break;
         }
     }
+    //分类搜索
+    public function search5Action(){
+            echo base64_decode($_GET['pt']);
+            echo '<br>';
+            echo $_GET['a'];
+
+
+
+    }
     
 }

@@ -48,15 +48,20 @@ class CaijiController extends BaseController
     }
 
     public function text2Action(){
-        include "public/Snoopy/Snoopy.class.php";
-        $snoopy = new Snoopy();
-        $url = "http://www.baidu.com";
-        // $snoopy->fetch($url);
-        // $snoopy->fetchtext($url);//去除HTML标签和其他的无关数据
-        $snoopy->fetchtext($url);//只获取表单
-        //只返回网页中链接 默认情况下，相对链接将自动补全，转换成完整的URL。
-        // $snoopy->fetchlinks($url);
-        var_dump($snoopy->results);
+        $ch = curl_init();
+        $url = "http://www.cdsile.com";
+        $header = array(
+            'CLIENT-IP:192.168.44.61',
+            'X-FORWARDED-FOR:192.168.44.61',
+        );
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+        $page_content = curl_exec($ch);
+        curl_close($ch);
+        echo $page_content;
+        echo $_SERVER['REMOTE_ADDR'];
+
     }
 
 }

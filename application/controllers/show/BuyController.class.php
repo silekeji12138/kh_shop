@@ -47,6 +47,12 @@ class BuyController extends BaseController
 
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_xiangxi.html";
     }
+    //
+    public static function syptAction(){
+        $s=new  model('sypt');
+        $vs=$s->select("select *from sl_sypt");
+        return $vs;
+    }
 
 
     
