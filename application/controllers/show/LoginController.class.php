@@ -5,8 +5,11 @@ class LoginController extends BaseController
 
     //注册显示页面
     public function registerAction(){
+
         include CUR_VIEW_PATH . "Slogin" . DS ."login_register.html";
     }
+
+
     //登录显示页面
     public function loginAction(){
         include CUR_VIEW_PATH . "Slogin" . DS ."login_login.html";
@@ -44,10 +47,13 @@ class LoginController extends BaseController
         $data=$_POST;
         $model=new model('member');
         $model->insert($data);
-        $this->jump('index.php?p=show&c=login&a=success&name='.$data['name'],'',0);
+
+        include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
     }
     //注册成功的页面展示
     public function successAction(){
+        $model = new Model('member');
+
         include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
     }
 

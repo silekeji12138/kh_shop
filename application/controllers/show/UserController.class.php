@@ -32,6 +32,7 @@ class UserController extends BaseController
         }
     }
 
+
     //自动登录
     private function checkByCookie($id,$password){
         $model = new Model('member');
