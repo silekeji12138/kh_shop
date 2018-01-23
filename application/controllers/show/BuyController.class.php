@@ -1,6 +1,6 @@
 <?php
 // 文章模型控制器
- header("Content-type: text/html; charset=utf-8");
+
 class BuyController extends BaseController
 {
 
