@@ -68,7 +68,7 @@ class LunboController extends BaseController
         move_uploaded_file($_FILES["file"]["tmp_name"],$filename);
         $data=$_POST;
         $data['img']=$filename;
-        $data['url']="index.php?p=show&c=index&a=search2"."&t1=".$data['class']."&t2=".$data['biaoti'];
+        $data['url']="index.php?p=show&c=index&a=search5"."&pt=".urlencode(base64_encode($data['class']))."&hy=".urlencode(base64_encode($data['biaoti']));
         $model=new  model('search2');
         $number=$model->select("select count(*)from sl_search2 WHERE class='".$data['class']."'");
         $num=$number[0]['count(*)']+1;
@@ -96,7 +96,7 @@ class LunboController extends BaseController
         $id=$data['id'];
         $data1['biaoti']=$data['biaoti'];
         $data1['class']=$data['class'];
-        $data1['url']="index.php?p=show&c=index&a=search2"."&t1=".$data['class']."&t2=".$data['biaoti'];
+        $data['url']="index.php?p=show&c=index&a=search5"."&pt=".urlencode(base64_encode($data['class']))."&hy=".urlencode(base64_encode($data['biaoti']));
         if ($_FILES['file']['name']==''){
             $data1['img']=$data['tupian'];
         }else{

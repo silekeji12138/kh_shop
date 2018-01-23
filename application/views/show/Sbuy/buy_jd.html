@@ -8,6 +8,7 @@
     <!-- Bootstrap -->
     <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
     <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
     <link href="public/khshop/css/css.css" rel="stylesheet">
 </head>
 <body>
@@ -22,34 +23,67 @@
         	<div class="sell-border purchase-border">
 				<div class="sell-nav clearfix">
                 	<div class="pull-left">当前位置：<a href="">首页</a> &gt; <a href="" class="active">出售网店</a></div>
+                    <form method="post" action="index.php?p=show&c=buy&a=search7">
                     <div class="pull-right search-margin">
                         <div class="search-w clearfix">
-                            <input type="text" class="form-control input-search" placeholder="填写关键词或网店编号" />
-                            <button type="button" class="btn btn-search"><i class="glyphicon glyphicon-search"></i></button>
+                            <input name="key" type="text" class="form-control input-search" placeholder="填写关键词或网店编号" />
+                            <button type="submit" class="btn btn-search"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
+                    </form>
                 </div>
+
+                <div class="clearfix list-purchase">
+                    <div class="pull-left purchase-left">您的选择</div>
+                    <div class="pull-left purchase-right">
+                        <ul class="purchase-ul gjc-ul">
+                            <?php foreach($data as $key=>$v): ?>
+                            <?php if($v): ?>
+                            <?php if($key=='jg'): ?>
+                             <?php
+                                switch($v){
+                                    case 1:
+                                    $v="5万-10万";
+                                    break;
+
+                                    case 2:
+                                    $v="10万-20万";
+                                    break;
+
+                                    case 3:
+                                    $v="20万-50万";
+                                    break;
+
+                                    case 4:
+                                    $v="50万以上";
+                                    break;
+                                }
+                             ?>
+                            <?php endif; ?>
+                            <li><span><?=$v?><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&qx=<?=$key?>">×</a></span></li>
+                            <?php endif;  ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">所在平台</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul">
-                        	<li><a  role="button">天猫商城</a></li>
-                            <li><a role="button">企业淘宝</a></li>
-                            <li><a role="button">蘑菇街</a></li>
-                            <li><a class="active" role="button">京东商城</a></li>
-                            <li><a role="button">微信公众号</a></li>
-                            <li><a role="button">贝贝网</a></li>
-                            <li><a role="button">聚美优品</a></li>
-                            <li><a role="button">唯品会</a></li>
-                            <li><a role="button">折800</a></li>
-                            <li><a role="button">卷皮网</a></li>
-                            <li><a role="button">楚楚街</a></li>
-                            <li><a role="button">阿里巴巴</a></li>
-                            <li><a role="button">一号店</a></li>
-                            <li><a role="button">美丽说</a></li>
-                            <li><a role="button">苏宁易购</a></li>
-                            <li><a role="button">独立商城</a></li>
-                            <li><a role="button">其它网店</a></li>
+
+                            <li><a  role="button" href="index.php?p=show&c=index&a=search6">企业淘宝</a></li>
+                            <?php $vs=BuyController::syptAction(); foreach($vs as $v): ?>
+
+                            <?php if($v['u1']==$data['pt']){ ?>
+                            <li><a  class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($v['u1']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php  }else{ ;?>
+                            <li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($v['u1']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php }?>
+
+                            <?php endforeach; ?>
+
+
                         </ul>
                     </div>
                 </div>
@@ -57,9 +91,15 @@
                 	<div class="pull-left purchase-left">商城类型</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul" id="sc">
-                        	<li><a class="active" role="button">旗舰店</a></li>                                                                                                                             
-                            <li><a role="button">专营店</a></li>
-                            <li><a role="button">专卖店</a></li>
+
+                            <?php $vs1=BuyController::sysclxAction(); foreach($vs1 as $v): ?>
+                            <?php if($data['lx']==$v['u1']){ ?>
+                        	<li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($v['u1']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php }else{ ;?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($v['u1']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php } ?>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                 </div>
@@ -67,64 +107,70 @@
                 	<div class="pull-left purchase-left">商标类型</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul" id="sb">
-                        	<li><a class="active" role="button">R标</a></li>                                                                                                                             
-                            <li><a role="button">TM标</a></li>
+
+
+                            <?php $vs2=BuyController::sblxAction(); foreach($vs2 as $v): ?>
+                            <?php if($data['sb']==$v['u1']){ ?>
+                            <li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($v['u1']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php }else{ ;?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($v['u1']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php } ?>
+                            <?php endforeach; ?>
+
+
                         </ul>
                     </div>
                 </div>
                 <div class="clearfix list-purchase">
-                	<div class="pull-left purchase-left">所属行业</div>                                                                                                                                         
+                	<div class="pull-left purchase-left">所属行业</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul">
-                        	<li><a class="active" role="button">服饰鞋包</a></li>                                                                                                                             
-                            <li><a role="button">美容护理</a></li>
-                            <li><a role="button">数码电器</a></li>
-                            <li><a role="button">游戏/话费</a></li>
-                            <li><a role="button">食品/保健</a></li>
-                            <li><a role="button">母婴</a></li>
-                            <li><a role="button">运动户外</a></li>
-                            <li><a role="button">家装家饰</a></li>
-                            <li><a role="button">家居用</a></li>
-                            <li><a role="button">品珠宝/首饰</a></li>
-                            <li><a role="button">生活服务</a></li>
-                            <li><a role="button">汽车配件</a></li>
-                            <li><a role="button">书籍音像</a></li>
-                            <li><a role="button">玩乐/收藏</a></li>
-                            <li><a role="button">手机</a></li>
-                            <li><a role="button">大家电</a></li>
-                            <li><a role="button">其它行业</a></li>
+
+
+                            <?php $vs3=BuyController::sshyAction(); foreach($vs3 as $v): ?>
+                            <?php if($data['hy']==$v['u1']){ ?>
+                            <li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($v['u1']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php }else{ ;?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($v['u1']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <?php } ?>
+                            <?php endforeach; ?>
+
+
+
                         </ul>
                     </div>
                 </div>
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">价<span></span>格</div>
-                    <div class="pull-left purchase-right">                            
-                    	<ul class="purchase-ul">
-                        	<li><a class="active" role="button">5万-10万</a></li>                                                                                                                             
-                            <li><a role="button">10万-20万</a></li>
-                            <li><a role="button">20万-50万</a></li>
-                            <li><a role="button">50万以上</a></li>
+                    <div class="pull-left purchase-right">
+                    	<ul class="purchase-ul" id="jg">
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=1" role="button">5万-10万</a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=2" role="button">10万-20万</a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=3" role="button">20万-50万</a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=4" role="button">50万以上</a></li>
                         </ul>
+                        <form method="post" action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>">
                         <div class="pull-right">
-                        	<input type="text" class="form-control input-money" />
+                        	<input name="low" type="text" class="form-control input-money" />
                             <div class="pull-left money-txt">-</div>
-                            <input type="text" class="form-control input-money" />
-                            <button type="button" class="btn btn-money">确认</button>
+                            <input name="high" type="text" class="form-control input-money" />
+                            <button type="submit" class="btn btn-money">确认</button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="clearfix list-purchase">
                 	<div class="pull-left purchase-left">其<span></span>他</div>
-                    <div class="pull-left purchase-right">                            
+                    <div class="pull-left purchase-right">
 						<ul class="purchase-tabs">
-                        	<li><a href="#purchase01" aria-controls="purchase01" role="tab" data-toggle="tab"><span id="region">地区范围</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase02" aria-controls="purchase02" role="tab" data-toggle="tab"><span id="region01">扣分情况</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase03" aria-controls="purchase03" role="tab" data-toggle="tab"><span id="region02">纳税人资质</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase04" aria-controls="purchase04" role="tab" data-toggle="tab"><span id="region03">是否带货</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase05" aria-controls="purchase05" role="tab" data-toggle="tab"><span id="region04">提供货源</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase06" aria-controls="purchase06" role="tab" data-toggle="tab"><span id="region05">商标类别</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase07" aria-controls="purchase07" role="tab" data-toggle="tab"><span id="region06">商标过户</span><span class="caret"></span></a></li>
-                            <li><a href="#purchase08" aria-controls="purchase08" role="tab" data-toggle="tab"><span id="region07">团队转让</span><span class="caret"></span></a></li>
+                        	<li><a href="#purchase01" aria-controls="purchase01" role="tab" data-toggle="tab"><span  id="region"><?=$data2['szdq']?$data2['szdq']:地区范围?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase02" aria-controls="purchase02" role="tab" data-toggle="tab"><span id="region01"><?=$data2['kfqk']?$data2['kfqk']:扣分情况?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase03" aria-controls="purchase03" role="tab" data-toggle="tab"><span id="region02"><?=$data2['nszz']?$data2['nszz']:纳税人资质?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase04" aria-controls="purchase04" role="tab" data-toggle="tab"><span id="region03"><?=$data2['sfdh']?'带货:'.$data2['sfdh']:是否带货?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase05" aria-controls="purchase05" role="tab" data-toggle="tab"><span id="region04"><?=$data2['tghy']?'货源:'.$data2['tghy']:提供货源?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase06" aria-controls="purchase06" role="tab" data-toggle="tab"><span id="region05"><?=$data2['sblb']?'类别:'.$data2['sblb']:商标类别?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase07" aria-controls="purchase07" role="tab" data-toggle="tab"><span id="region06"><?=$data2['sbgh']?'商标:'.$data2['sbgh']:商标过户?></span><span class="caret"></span></a></li>
+                            <li><a href="#purchase08" aria-controls="purchase08" role="tab" data-toggle="tab"><span id="region07"><?=$data2['tdzr']?'转让:'.$data2['tdzr']:团队转让?></span><span class="caret"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -133,71 +179,82 @@
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane" id="purchase01">
                     	<ul class="purchase-ul purchase-ul-region">
-                        	<li><a class="active" role="button">地区不限</a></li>                                                                                                                             
-                            <li><a role="button">华北地区</a></li>
-                            <li><a role="button">东北地区</a></li>
-                            <li><a role="button">华东地区</a></li>
-                            <li><a role="button">华南地区</a></li>
-                            <li><a role="button">西北地区</a></li>
-                            <li><a role="button">华中地区</a></li>
-                            <li><a role="button">西南地区</a></li>
-                            <li><a role="button">海外地区</a></li>
+                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&szdq=1">不限</a></li>
+
+                            <?php $vs4=BuyController::diquAction(); foreach($vs4 as $v): ?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&szdq=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase02">
                     	<ul class="purchase-ul purchase-ul-region01">
-                        	<li><a class="active" role="button">不扣分</a></li>                                                                                                                             
-                            <li><a role="button">扣分10</a></li>
-                            <li><a role="button">扣分09</a></li>
-                            <li><a role="button">扣分08</a></li>
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&kfqk=1" role="button">不限</a></li>
+
+                            <?php $vs11=BuyController::kfqkAction(); foreach($vs11 as $v): ?>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&kfqk=<?=$v['u1']?>" role="button"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase03">
                     	<ul class="purchase-ul purchase-ul-region02">
-                        	<li><a class="active" role="button">纳税人资质1</a></li>                                                                                                                             
-                            <li><a role="button">纳税人资质2</a></li>
-                            <li><a role="button">纳税人资质3</a></li>
-                            <li><a role="button">纳税人资质4</a></li>
+                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&nszz=1">不限</a></li>
+
+                            <?php $vs5=BuyController::zizhiAction(); foreach($vs5 as $v): ?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&nszz=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase04">
                     	<ul class="purchase-ul purchase-ul-region03">
-                        	<li><a class="active" role="button">是否带货1</a></li>                                                                                                                             
-                            <li><a role="button">是否带货2</a></li>
-                            <li><a role="button">是否带货3</a></li>
-                            <li><a role="button">是否带货4</a></li>
+                        	<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sfdh=1">不限</a></li>
+
+                            <?php $vs6=BuyController::daihuoAction(); foreach($vs6 as $v): ?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sfdh=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase05">
                     	<ul class="purchase-ul purchase-ul-region04">
-                        	<li><a class="active" role="button">提供货源1</a></li>                                                                                                                             
-                            <li><a role="button">提供货源2</a></li>
-                            <li><a role="button">提供货源3</a></li>
-                            <li><a role="button">提供货源4</a></li>
+                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tghy=1">不限</a></li>
+
+                            <?php $vs7=BuyController::daihuoAction(); foreach($vs7 as $v): ?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tghy=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase06">
                     	<ul class="purchase-ul purchase-ul-region05">
-                        	<li><a class="active" role="button">商标类别1</a></li>                                                                                                                             
-                            <li><a role="button">商标类别2</a></li>
-                            <li><a role="button">商标类别3</a></li>
-                            <li><a role="button">商标类别4</a></li>
+                        	<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sblb=1">不限</a></li>
+
+                            <?php $vs8=BuyController::sblx1Action(); foreach($vs8 as $v): ?>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sblb=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase07">
                     	<ul class="purchase-ul purchase-ul-region06">
-                        	<li><a class="active" role="button">商标过户1</a></li>                                                                                                                             
-                            <li><a role="button">商标过户2</a></li>
-                            <li><a role="button">商标过户3</a></li>
-                            <li><a role="button">商标过户4</a></li>
+
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sbgh=1" role="button">不限</a></li>
+                            <?php $vs9=BuyController::sbghAction(); foreach($vs9 as $v): ?>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sbgh=<?=$v['u1']?>" role="button"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase08">
                     	<ul class="purchase-ul">
-                        	<li><a class="active" role="button">团队转让1</a></li>                                                                                                                             
-                            <li><a role="button">团队转让2</a></li>
-                            <li><a role="button">团队转让3</a></li>
-                            <li><a role="button">团队转让4</a></li>
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tdzr=1"  role="button">不限</a></li>
+
+                            <?php $vs10=BuyController::tdzrAction(); foreach($vs10 as $v): ?>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tdzr=<?=$v['u1']?>" role="button"><?=$v['u1']?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                   </div>
@@ -239,17 +296,20 @@
                         </div>
                     </div>
                     <div class="pull-left purchase-right-width text-center">
-                        <div class="purchase-right-width-number"><span><?=$v['jiage']?></span>万</div>
-                        <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                        <div class="purchase-right-width-number"><span><?=number_format($v['jiage']/10000,1)?></span>万</div>
+                        <?php $rs=BuyController::kefuAction()[0]; ?>
+                        <a role="button" href="http://wpa.qq.com/msgrd?v=3&uin=<?=$rs['yg']?>&site=qq&menu=yes" class="btn-purchase icon">咨询服务顾问</a>
                     </div>
                 </div>
                 <div class="clearfix purchase-bottom">
                     <div class="pull-left">一级类目：<?=$v['sshy']?></div>
                     <div class="pull-right">
-                        <span class="purchase-bottom-label">可提供货源</span>
-                        <span class="purchase-bottom-label">公司认证</span>
-                        <span class="purchase-bottom-label">可当面交易</span>
-                        <span class="purchase-bottom-label">动态全红</span>
+
+                        <span class="purchase-bottom-label <?=$v['tghy']=='是'?'active':''?>">可提供货源</span>
+                        <span class="purchase-bottom-label <?=$v['gsrz']=='是'?'active':''?>">公司认证</span>
+                        <span class="purchase-bottom-label <?=$v['dmjy']=='是'?'active':''?>">可当面交易</span>
+                        <span class="purchase-bottom-label <?=$v['dtqh']=='是'?'active':''?>">动态全红</span>
+
                     </div>
                 </div>
             </div>
@@ -258,21 +318,43 @@
 
 
         <div class="container">
-            <div class="page-center clearfix">
-                <ul class="pagination pull-left">
-                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
-                 </ul>
-                 <div class="pull-left page-txt margin-left">共681页 跳转到第</div>
-                 <div class="pull-left"><input type="text" class="form-control input-page"></div>
-                 <div class="pull-left page-txt">页</div>
-                 <div class="pull-left"><button type="button" class="btn-page btn">确定</button></div>
-            </div>
+
+
+            <form action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>" method="post">
+                <div class="page-center clearfix">
+                    <ul class="pagination pull-left">
+                        <?php if($_GET['page']<=1){ ?>
+                        <li class="disabled"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                        <?php }else{ ?>
+                        <li ><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$_GET['page']-1?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                        <?php } ?>
+
+
+
+                        <?php for($i=$min;$i<=$max;$i++):  ?>
+                        <?php if($page==$i){ ?>
+                        <li class="active"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$i?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>"><?=$i?></a></li>
+                        <?php }else{ ?>
+                        <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$i?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>"><?=$i?></a></li>
+                        <?php } ?>
+                        <?php endfor;  ?>
+
+
+                        <?php if($_GET['page']>=$total){ ?>
+                        <li class="disabled"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                        <?php }else{ ?>
+                        <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=($_GET['page']?$_GET['page']:1)+1?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                        <?php } ?>
+                    </ul>
+                    <div class="pull-left page-txt margin-left">共<?=$total?>页 跳转到第</div>
+                    <div class="pull-left"><input name="page" type="text" class="form-control input-page"></div>
+                    <div class="pull-left page-txt">页</div>
+                    <div class="pull-left"><button type="submit" class="btn-page btn">确定</button></div>
+
+                </div>
+            </form>
+
+
         </div>
     </div>
     </div>
@@ -282,7 +364,8 @@
             <div class="pull-left">
             	<div class="clearfix">
                 	<div class="pull-left purchase-bottom-lg">暂未找到心仪网店？</div>
-                    <div class="pull-left"><a href="" class="qq-link qq-link-purchase"><i class="icon"></i>咨询服务顾问</a></div>
+                    <?php $rs=BuyController::kefuAction()[0]; ?>
+                    <div class="pull-left"><a href="http://wpa.qq.com/msgrd?v=3&uin=<?=$rs['yg']?>&site=qq&menu=yes" class="qq-link qq-link-purchase"><i class="icon"></i>咨询服务顾问</a></div>
                 </div>
                 <div class="purchase-bottom-sm">不要急哦，好多好店没有展示出来，马上联系服务顾问获取！</div>
             </div>
@@ -292,7 +375,7 @@
 
     <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
 
-</body> 
+</body>
 <script src="public/khshop/js/jquery.min.js"></script>
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script src="public/khshop/js/common.js"></script>
@@ -301,10 +384,10 @@
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
-
+var a1="<?=$data['pt']?>";
 
 $('#id').children('li').prop('class','');
-$('#jd').attr('class','active');
+$('#'+a1).attr('class','active');
 
 var t2="<?=$_GET['t2']?>";
 if (t2){
@@ -315,57 +398,63 @@ if (t2){
     //判断参数传过来的有无 后期做修改
 //            console.log(a.length);
 //            console.log(b.length);
-
 }
+var jg="<?=$data['jg']?>";
+if (jg){
+//    $('#jg').children('li').children('a:contains("'+jg+'")').prop('class','active');
+    var q=jg-1;
+    $('#jg').children('li:eq("'+q+'")').children('a').prop('class','active');
+}
+
 </script>
 <script type="text/javascript">
 //地区
     $(".purchase-ul-region li a").click(function(){
 		var txt = $(this).html();
         $("#region").html(txt);
-        
+
     });
 //扣分
     $(".purchase-ul-region01 li a").click(function(){
 		var txt = $(this).html();
         $("#region01").html(txt);
-        
+
     });
 //纳税
     $(".purchase-ul-region02 li a").click(function(){
 		var txt = $(this).html();
         $("#region02").html(txt);
-        
+
     });
 //是否带货
     $(".purchase-ul-region03 li a").click(function(){
 		var txt = $(this).html();
         $("#region03").html(txt);
-        
+
     });
 //提供货源
     $(".purchase-ul-region04 li a").click(function(){
 		var txt = $(this).html();
         $("#region04").html(txt);
-        
+
     });
 //商标类别
     $(".purchase-ul-region05 li a").click(function(){
 		var txt = $(this).html();
         $("#region05").html(txt);
-        
+
     });
 //商标过户
     $(".purchase-ul-region06 li a").click(function(){
 		var txt = $(this).html();
         $("#region06").html(txt);
-        
+
     });
 //团队转让
     $(".purchase-ul-region li a").click(function(){
 		var txt = $(this).html();
         $("#region").html(txt);
-        
+
     });
 </script>
 </html>

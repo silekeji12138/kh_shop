@@ -12,6 +12,8 @@ class AutotableController extends BaseController{
 	    // 获得当前表名
 	    $moxingModel = new MoxingModel("moxing");
 	    $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
+        $u7=$moxingModel->select("select u7 from sl_moxing WHERE u1='".$tableName."'")[0]['u7'];
+
 	    //先获取文章信息
 	    $tableModel = new Model($tableName);
 	    //查询条件
@@ -279,13 +281,46 @@ class AutotableController extends BaseController{
 	    $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
 	    //先获取文章信息
 	    $tableModel = new Model($tableName);
-	    
+
 	    if ($tableModel->delete($array_id)!="false") {
 	        $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "删除成功", 2);
 	    } else {
 	        $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "删除失败", 3);
 	    }
 	}
+
+	//同意的方法
+    public function tongyiAction(){
+	    $model_id=$_REQUEST['model_id'];
+        $sys_id = $_REQUEST['id'];
+        $array_id=explode(",", $sys_id)[0];
+        $moxingModel = new MoxingModel("moxing");
+        $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
+        //先获取文章信息
+        $tableModel = new Model($tableName);
+        $data['status']='通过';
+        if ($tableModel->xg($data,"id=$array_id")!="false") {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "成功", 2);
+        } else {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "失败", 3);
+        }
+    }
+    //拒绝的方法
+    public function jujueAction(){
+        $model_id=$_REQUEST['model_id'];
+        $sys_id = $_REQUEST['id'];
+        $array_id=explode(",", $sys_id)[0];
+        $moxingModel = new MoxingModel("moxing");
+        $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
+        //先获取文章信息
+        $tableModel = new Model($tableName);
+        $data['status']='拒绝';
+        if ($tableModel->xg($data,"id=$array_id")!="false") {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "成功", 2);
+        } else {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "失败", 3);
+        }
+    }
 	
 	
 	//复制当前记录

@@ -328,6 +328,14 @@ class IndexController extends BaseController
         include CUR_VIEW_PATH . "Sindex" . DS ."index_wzzx.html";
     }
 
+    public function wzzx1Action(){
+        $id=$_GET['id'];
+        $model=new model('wzzx');
+        $result=$model->select("select *from sl_wzzx WHERE  id=$id");
+        $v=$result[0];
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_wzzx1.html";
+    }
+
     //投诉建议中心的入口
     public function jianyiAction(){
         if ($_SERVER['REQUEST_METHOD']=='POST'){
@@ -468,6 +476,522 @@ class IndexController extends BaseController
                 echo '皮皮虾';
                 break;
         }
+    }
+    //分类搜索
+    public function search5Action(){
+        $name=$_SERVER['HTTP_REFERER'];
+        $array=explode('&', $name);
+        $a=substr($array[2],2,7);
+        if($a!='search5'){
+            $_SESSION['szdq']='';
+            $_SESSION['nszz']='';
+            $_SESSION['sfdh']='';
+            $_SESSION['tghy']='';
+            $_SESSION['sblb']='';
+            $_SESSION['sbgh']='';
+            $_SESSION['tdzr']='';
+            $_SESSION['kfqk']='';
+        }
+        //--------------------
+           $pt=base64_decode($_GET['pt']);
+           $lx=base64_decode($_GET['lx']);
+           $sb=base64_decode($_GET['sb']);
+           $hy=base64_decode($_GET['hy']);
+           $jg=$_GET['jg'];
+           $qx=$_GET['qx'];
+           //---------------------
+            $_SESSION['szdq']=$_GET['szdq']?$_GET['szdq']:$_SESSION['szdq'];
+            if ($_GET['szdq']==1){
+                $_SESSION['szdq']='';
+            }
+            $_SESSION['nszz']=$_GET['nszz']?$_GET['nszz']:$_SESSION['nszz'];
+            if ($_GET['nszz']==1){
+                $_SESSION['nszz']='';
+            }
+            $_SESSION['sfdh']=$_GET['sfdh']?$_GET['sfdh']:$_SESSION['sfdh'];
+            if ($_GET['sfdh']==1){
+                $_SESSION['sfdh']='';
+            }
+            $_SESSION['tghy']=$_GET['tghy']?$_GET['tghy']:$_SESSION['tghy'];
+            if ($_GET['tghy']==1){
+                $_SESSION['tghy']='';
+            }
+            $_SESSION['sblb']=$_GET['sblb']?$_GET['sblb']:$_SESSION['sblb'];
+            if ($_GET['sblb']==1){
+                $_SESSION['sblb']='';
+            }
+            $_SESSION['sbgh']=$_GET['sbgh']?$_GET['sbgh']:$_SESSION['sbgh'];
+            if ($_GET['sbgh']==1){
+                $_SESSION['sbgh']='';
+            }
+            $_SESSION['tdzr']=$_GET['tdzr']?$_GET['tdzr']:$_SESSION['tdzr'];
+            if ($_GET['tdzr']==1){
+                $_SESSION['tdzr']='';
+            }
+            $_SESSION['kfqk']=$_GET['kfqk']?$_GET['kfqk']:$_SESSION['kfqk'];
+            if ($_GET['kfqk']==1){
+                $_SESSION['kfqk']='';
+            }
+
+           //------------------------
+        $data2['szdq']=$_SESSION['szdq'];
+        $data2['nszz']=$_SESSION['nszz'];
+        $data2['sfdh']=$_SESSION['sfdh'];
+        $data2['tghy']=$_SESSION['tghy'];
+        $data2['sblb']=$_SESSION['sblb'];
+        $data2['sbgh']=$_SESSION['sbgh'];
+        $data2['tdzr']=$_SESSION['tdzr'];
+        $data2['kfqk']=$_SESSION['kfqk'];
+        //------------------------
+            $data['pt']=$pt;
+            $data['lx']=$lx;
+            $data['sb']=$sb;
+            $data['hy']=$hy;
+            $data['jg']=$jg;
+         //----------------------------------------------------------------
+            if ($_SERVER['REQUEST_METHOD']=='POST'){
+                if ($_POST['t1']){
+                    $data['pt']=$_POST['t1'];
+                    $pt=$_POST['t1'];
+                }
+                if ($_POST['t2']){
+                    $data['hy']=$_POST['t2'];
+                    $hy=$_POST['t2'];
+                }
+            }
+        //----------------------------------------------------------
+            if ($qx){
+                $data[$qx]='';
+            }
+                $model=new model('shangpin');
+                $sql="select *from sl_shangpin WHERE ";
+                $sql1="select count(*)from sl_shangpin WHERE ";
+                if ($data['pt']){
+                    $sql=$sql."szpt='".$pt."' and ";
+                    $sql1=$sql1."szpt='".$pt."' and ";
+                }
+                if ($data['lx']){
+                    $sql=$sql."sclx='".$lx."' and ";
+                    $sql1=$sql1."sclx='".$lx."' and ";
+                }
+                if ($data['sb']){
+                    $sql=$sql."sblx='".$sb."' and ";
+                    $sql1=$sql1."sblx='".$sb."' and ";
+                }
+                if ($data['hy']){
+                    $sql=$sql."sshy='".$hy."' and ";
+                    $sql1=$sql1."sshy='".$hy."' and ";
+                }
+                //搜索2次分类功能
+                 if ($data2['szdq']){
+                     $sql=$sql."szdq='".$data2['szdq']."'  and ";
+                     $sql1=$sql1."szdq='".$data2['szdq']."'  and ";
+                 }
+                if ($data2['nszz']){
+                    $sql=$sql."nszz='".$data2['nszz']."'  and ";
+                    $sql1=$sql1."nszz='".$data2['nszz']."'  and ";
+                }
+                if ($data2['sfdh']){
+                    $sql=$sql."sfdh='".$data2['sfdh']."'  and ";
+                    $sql1=$sql1."sfdh='".$data2['sfdh']."'  and ";
+                }
+                if ($data2['tghy']){
+                    $sql=$sql."tghy='".$data2['tghy']."'  and ";
+                    $sql1=$sql1."tghy='".$data2['tghy']."'  and ";
+                }
+                if ($data2['sblb']){
+                    $sql=$sql."sblb='".$data2['sblb']."'  and ";
+                    $sql1=$sql1."sblb='".$data2['sblb']."'  and ";
+                }
+                if ($data2['sbgh']){
+                    $sql=$sql."sbgh='".$data2['sbgh']."'  and ";
+                    $sql1=$sql1."sbgh='".$data2['sbgh']."'  and ";
+                }
+                if ($data2['tdzr']){
+                    $sql=$sql."tdzr='".$data2['tdzr']."'  and ";
+                    $sql1=$sql1."tdzr='".$data2['tdzr']."'  and ";
+                }
+                if ($data2['kfqk']){
+                    $sql=$sql."kfqk='".$data2['kfqk']."'  and ";
+                    $sql1=$sql1."kfqk='".$data2['kfqk']."'  and ";
+                }
+
+
+
+
+
+
+        //结束搜索2次功能
+//        $sql=substr($sql,0,-4);
+                if ($_SERVER['REQUEST_METHOD']=='GET') {
+                    if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '') {
+                        //情况1
+                        if ($data['jg']) {
+                            switch ($data['jg']) {
+                                case 1:
+                                    $sql = $sql . " jiage between 50000 and 100000";
+                                    $sql1 = $sql1 . " jiage between 50000 and 100000";
+                                    break;
+                                case 2:
+                                    $sql = $sql . " jiage between 100000 and 200000";
+                                    $sql1 = $sql1 . " jiage between 100000 and 200000";
+                                    break;
+                                case 3:
+                                    $sql = $sql . " jiage between 200000 and 500000";
+                                    $sql1 = $sql1 . " jiage between 200000 and 500000";
+                                    break;
+                                case 4:
+                                    $sql = $sql . "  jiage>500000";
+                                    $sql1 = $sql1 . "  jiage>500000";
+                                    break;
+                            }
+                        } else {
+                            $sql = substr($sql, 0, -6);
+                            $sql1 = substr($sql1, 0, -6);
+                        }
+                    } else {
+                        //情况2
+                        $sql = substr($sql, 0, -4);
+                        $sql1 = substr($sql1, 0, -4);
+                        if ($data['jg']) {
+                            switch ($data['jg']) {
+                                case 1:
+                                    $sql = $sql . " and (jiage between 50000 and 100000)";
+                                    $sql1 = $sql1 . " and (jiage between 50000 and 100000)";
+                                    break;
+                                case 2:
+                                    $sql = $sql . " and (jiage between 100000 and 200000)";
+                                    $sql1 = $sql1 . " and (jiage between 100000 and 200000)";
+                                    break;
+                                case 3:
+                                    $sql = $sql . " and (jiage between 200000 and 500000)";
+                                    $sql1 = $sql1 . " and (jiage between 200000 and 500000)";
+                                    break;
+                                case 4:
+                                    $sql = $sql . " and jiage>500000";
+                                    $sql1 = $sql1 . " and jiage>500000";
+                                    break;
+                            }
+                        }
+                    }
+                }
+                //------------------------------------------------------------
+                if ($_SERVER['REQUEST_METHOD']=='POST'){
+//                    if ($_POST['low'] && $_POST['high']) {
+                    if($_POST['page']=='') {
+                        if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '') {
+                            $data1['low'] = $_POST['low'] ? $_POST['low'] : 1;
+                            $data1['high'] = $_POST['high'] ? $_POST['high'] : 100000000;
+                            $low = $data1['low'];
+                            $high = $data1['high'];
+                            $sql = $sql . "  jiage between $low and $high";
+                            $sql1 = $sql1 . "  jiage between $low and $high";
+                            $data['jg'] = '';
+                        } else {
+                            $sql = substr($sql, 0, -4);
+                            $sql1 = substr($sql1, 0, -4);
+                            $data1['low'] = $_POST['low'] ? $_POST['low'] : 1;
+                            $data1['high'] = $_POST['high'] ? $_POST['high'] : 100000000;
+                            $low = $data1['low'];
+                            $high = $data1['high'];
+                            $sql = $sql . " and (jiage between $low and $high)";
+                            $sql1 = $sql1 . " and (jiage between $low and $high)";
+                            $data['jg'] = '';
+                        }
+                    }
+//                    }
+//                    if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='') {
+//                        $sql = substr($sql, 0, -6);
+//                        $sql1 = substr($sql1, 0, -6);
+//                    }else{
+//                        $sql = substr($sql, 0, -4);
+//                        $sql1 = substr($sql1, 0, -4);
+//                    }
+                }
+
+                //-----------------------------------------------------------------
+              if ($_GET['jg']=='' && $_SERVER['REQUEST_METHOD']=='GET' && $_GET['low']!=''){
+                  if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='') {
+                      $low=$_GET['low'];
+                      $high=$_GET['high'];
+                      $data1['low']= $low;
+                      $data1['high'] = $high;
+                      $sql = $sql . " where jiage between $low and $high";
+                      $sql1 = $sql1 . " where  jiage between $low and $high";
+                  }else{
+                      $low=$_GET['low'];
+                      $high=$_GET['high'];
+                      $data1['low']= $low;
+                      $data1['high'] = $high;
+                      $sql = $sql . " and (jiage between $low and $high)";
+                      $sql1 = $sql1 . " and (jiage between $low and $high)";
+                  }
+              }
+        //---------------------------------------------------------------
+              if ($_SERVER['REQUEST_METHOD']=='POST' && $_GET['low']!='' && $_GET['high']!=''){
+                  if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='') {
+                      $low=$_GET['low'];
+                      $high=$_GET['high'];
+                      $data1['low']= $low;
+                      $data1['high'] = $high;
+                      $sql = $sql . "  jiage between $low and $high";
+                      $sql1 = $sql1 . "   jiage between $low and $high";
+                  }else{
+                      $low=$_GET['low'];
+                      $high=$_GET['high'];
+                      $data1['low']= $low;
+                      $data1['high'] = $high;
+                      $sql = $sql . " (jiage between $low and $high)";
+                      $sql1 = $sql1 . "  (jiage between $low and $high)";
+                  }
+              }
+        //---------------------------------------------------------------
+                if ($_SERVER['REQUEST_METHOD']=='POST'){
+                  if ($data1['low']=='') {
+                      if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '') {
+                          $sql = substr($sql, 0, -6);
+                          $sql1 = substr($sql1, 0, -6);
+                      } else {
+                          $sql = substr($sql, 0, -4);
+                          $sql1 = substr($sql1, 0, -4);
+                      }
+                  }
+                    $page=$_POST['page'];
+                    $_GET['page']=$page;
+                }else{
+                    $page=$_GET['page']?$_GET['page']:1;
+                }
+        //----------------------------------------------------------------
+//                $result=$model->select($sql);
+
+                $num=3;
+                $number=$model->select($sql1);
+                $total=ceil($number[0]['count(*)']/$num)?ceil($number[0]['count(*)']/$num):1;
+        //--------------------------------
+                $page=$_GET['page']?$_GET['page']:1;
+                if ($page<=1){
+                    $page=1;
+                    $_GET['page']=1;
+                }
+                if ($_GET['page']>$total){
+                    $page=$total;
+                    $_GET['page']=$total;
+                }
+                $min=$page-2;
+                $max=$page+5;
+                if ($min<=1){
+                    $min=1;
+                };
+                if ($max>=$total){
+                    $max=$total;
+                }
+                $act=($page-1)*$num;
+                $result=$model->select($sql." limit $act,$num");
+
+                include CUR_VIEW_PATH . "Sbuy" . DS ."buy_jd.html";
+    }
+
+    public function search6Action(){
+        $name=$_SERVER['HTTP_REFERER'];
+        $array=explode('&', $name);
+        $a=substr($array[2],2,7);
+        if($a!='search6'){
+            $_SESSION['szdq']='';
+            $_SESSION['tghy']='';
+            $_SESSION['tdzr']='';
+            $_SESSION['jy']='';
+        }
+
+
+        $model=new model('qytb');
+        $sql="select *from sl_qytb WHERE ";
+        $sql1="select count(*)from sl_qytb WHERE ";
+        $dpzt=base64_decode($_GET['dpzt']);
+        $sshy=base64_decode($_GET['sshy']);
+        $jg=$_GET['jg'];
+        $qx=$_GET['qx'];
+        //--------------------------------
+        if ($_POST['range']){
+             $dj=explode(';',$_POST['range']);
+             $a=mb_substr($dj[0],1,3);
+             $b=mb_substr($dj[1],1,3);
+             if ($a=='钻'){
+                 $ms1['low']=substr($dj[0],0,1);
+             }elseif($a=='皇冠'){
+                 $ms1['low']=substr($dj[0],0,1)+5;
+             }else{
+                 $ms1['low']=substr($dj[0],0,1)+10;
+             }
+
+            if ($b=='钻'){
+                $ms1['high']=substr($dj[1],0,1);
+            }elseif($b=='皇冠'){
+                $ms1['high']=substr($dj[1],0,1)+5;
+            }else{
+                $ms1['high']=substr($dj[1],0,1)+10;
+            }
+            $_GET['low']=$ms1['low'];
+            $_GET['high']=$ms1['high'];
+        }
+        if ($_GET['range']==1){
+            $_GET['low']='';
+            $_GET['high']='';
+        }
+        if ($_GET['low'] && $_GET['high']) {
+            if ($_GET['low'] == $_GET['high']) {
+                $sql = $sql . "high=" . $_GET['high'] . " and ";
+                $sql1 = $sql1 . "high=" . $_GET['high'] . " and ";
+            }else{
+                $sql = $sql . " (high between " . $_GET['low'] . " and " . $_GET['high'] . ") and ";
+                $sql1 = $sql1 . " (high between " . $_GET['low'] . " and " . $_GET['high'] . ") and ";
+            }
+        }
+        //-------------------------------
+        $_SESSION['szdq']=$_GET['szdq']?$_GET['szdq']:$_SESSION['szdq'];
+        $_SESSION['tghy']=$_GET['tghy']?$_GET['tghy']:$_SESSION['tghy'];
+        $_SESSION['tdzr']=$_GET['tdzr']?$_GET['tdzr']:$_SESSION['tdzr'];
+        $_SESSION['jy']=$_GET['jy']?$_GET['jy']:$_SESSION['jy'];
+        //--------------------------------------
+        if ($_GET['szdq']==1){
+            $_SESSION['szdq']='';
+        }
+        if ($_GET['tghy']==1){
+            $_SESSION['tghy']='';
+        }
+        if ($_GET['tdzr']==1){
+            $_SESSION['tdzr']='';
+        }
+        if ($_GET['jy']==1){
+            $_SESSION['jy']='';
+        }
+
+        //-----------------------------------
+        $ms1['szdq']=$_SESSION['szdq'];
+        $ms1['tghy']=$_SESSION['tghy'];
+        $ms1['tdzr']=$_SESSION['tdzr'];
+        $ms1['jy']=$_SESSION['jy'];
+       //----------------------------------
+
+        $ms['dpzt']=$dpzt;
+        $ms['sshy']=$sshy;
+        $ms['jg']=$jg;
+
+
+        if ($qx){
+            $ms[$qx]='';
+        }
+
+
+        if ($ms['dpzt']){
+            $sql=$sql."dpzt='".$dpzt."' and ";
+            $sql1=$sql1."dpzt='".$dpzt."' and ";
+        }
+        if ($ms['sshy']){
+            $sql=$sql."sshy='".$sshy."' and ";
+            $sql1=$sql1."sshy='".$sshy."' and ";
+        }
+        if ($ms1['szdq']){
+            $sql=$sql."szdq='".$ms1['szdq']."' and ";
+            $sql1=$sql1."szdq='".$ms1['szdq']."' and ";
+        }
+        if ($ms1['tghy']){
+            $sql=$sql."tghy='".$ms1['tghy']."' and ";
+            $sql1=$sql1."tghy='".$ms1['tghy']."' and ";
+        }
+        if ($ms1['tdzr']){
+            $sql=$sql."tdzr='".$ms1['tdzr']."' and ";
+            $sql1=$sql1."tdzr='".$ms1['tdzr']."' and ";
+        }
+        if ($ms1['jy']){
+            $sql=$sql."jy='".$ms1['jy']."' and ";
+            $sql1=$sql1."jy='".$ms1['jy']."' and ";
+        }
+        if ($_SERVER['REQUEST_METHOD']=='POST' && $_POST['range']==''){
+            $di=$_POST['di']?$_POST['di']:0;
+            $gao=$_POST['gao']?$_POST['gao']:100000000000000;
+            $sql = $sql . " (jiage between ".$di." and ".$gao.")    ";
+            $sql1 = $sql1 . " (jiage between ".$di." and ".$gao.")    ";
+            $_GET['di']=$di;
+            $_GET['gao']=$gao;
+            $ms['jg']='';
+        }
+        if ($_SERVER['REQUEST_METHOD']!='POST') {
+            if ($ms['jg']) {
+                switch ($ms['jg']) {
+                    case 1:
+                        $sql = $sql . " (jiage between 50000 and 100000)    ";
+                        $sql1 = $sql1 . " (jiage between 50000 and 100000)    ";
+                        break;
+                    case 2:
+                        $sql = $sql . " (jiage between 100000 and 200000)    ";
+                        $sql1 = $sql1 . " (jiage between 100000 and 200000)    " ;
+                        break;
+                    case 3:
+                        $sql = $sql . " (jiage between 200000 and 500000)    ";
+                        $sql1 = $sql1 . " (jiage between 200000 and 500000)    ";
+                        break;
+                    case 4:
+                        $sql = $sql . "  (jiage>500000)    ";
+                        $sql1 = $sql1 . "  (jiage>500000)    ";
+                        break;
+                }
+            }elseif($_GET['di'] && $_GET['gao']){
+                $sql = $sql . " (jiage between ".$_GET['di']." and ".$_GET['gao'].")    ";
+                $sql1 = $sql1 . " (jiage between ".$_GET['di']." and ".$_GET['gao'].")    ";
+            }
+        }
+        if (($ms['dpzt'] || $ms['sshy'] || $ms['szdq'] || $ms['tghy'] || $ms['tgzr'] || $ms['jy'])){
+                $sql =substr($sql, 0, -4);
+                $sql1 =substr($sql1, 0, -4);
+        }elseif($ms['dpzt']=='' && $ms['sshy']=='' && $ms['szdq']=='' && $ms['tghy']=='' && $ms['tgzr']=='' && $ms['jy']=='' && $ms['jg']=='' ){
+            if ($_POST['range']!=''){
+                $sql =substr($sql, 0, -4);
+                $sql1 =substr($sql1, 0, -4);
+            }elseif($di){
+                $sql =substr($sql, 0, -4);
+                $sql1 =substr($sql1, 0, -4);
+            }else{
+                $sql =substr($sql, 0, -4);
+                $sql1 =substr($sql1, 0, -4);
+            }
+        }
+
+
+         if($_POST['p1']){
+               $_GET['page']=$_POST['page']?$_POST['page']:1;
+         }
+//        var_dump($sql);die;
+//        $result=$model->select($sql);
+        //-----------------------------------
+        $num=3;
+        $number=$model->select($sql1);
+        $total=ceil($number[0]['count(*)']/$num)?ceil($number[0]['count(*)']/$num):1;
+        //--------------------------------
+        $page=$_GET['page']?$_GET['page']:1;
+        if ($page<=1){
+            $page=1;
+            $_GET['page']=1;
+        }
+        if ($_GET['page']>$total){
+            $page=$total;
+            $_GET['page']=$total;
+        }
+        $min=$page-2;
+        $max=$page+5;
+        if ($min<=1){
+            $min=1;
+        };
+        if ($max>=$total){
+            $max=$total;
+        }
+        $act=($page-1)*$num;
+        $result=$model->select($sql." limit $act,$num");
+        //-----------------------------------
+
+
+
+
+        include CUR_VIEW_PATH . "Sbuy" . DS ."buy_qytb.html";
     }
     
 }

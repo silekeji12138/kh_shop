@@ -22,7 +22,7 @@
                 	<div class="news-title">网店资讯</div>
                     <div class="clearfix">
                         <div class="news-txt-c pull-left">
-                            <div class="news-link"><a href=""><?=$result[0]['biaoti']?></a></div>
+                            <div class="news-link"><a href="index.php?p=show&c=index&a=wzzx1&id=<?=$result[0]['id']?>"><?=$result[0]['biaoti']?></a></div>
                             <div class="news-c-txt"><?=$result[0]['content']?></div>
                             <div class="news-more"><a href="">MORE +</a></div>
                             <div class="clearfix">
@@ -51,7 +51,7 @@
                         <div class="date-sm">-<?=substr($v['dtime'],0,4)?></div>
                     </div>
                     <div class="pull-left news-width">
-                    	<div class="news-width-tt"><a href=""><?=$v['biaoti']?></a></div>
+                    	<div class="news-width-tt"><a href="index.php?p=show&c=index&a=wzzx1&id=<?=$v['id']?>"><?=$v['biaoti']?></a></div>
                         <div class="news-width-txt"><?=$v['content']?></div>
                         <div class="clearfix">
                             <div class="pull-left share-left">分享</div>
