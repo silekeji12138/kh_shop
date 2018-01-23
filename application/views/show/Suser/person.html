@@ -17,11 +17,11 @@
         <div class="clearfix">
             <ul class="clearfix pull-left tab-list tab-list-sm">
                 <li class="active"><a href="">个人资料</a></li>
-                <li><a href="?&c=user&a=password">登录密码</a></li>
-                <li><a href="?&c=user&a=paywords">支付密码</a></li>
-                <li><a href="?&c=user&a=protect">密码保护</a></li>
-                <li><a href="?&c=user&a=phone">手机认证</a></li>
-                <li><a href="?&c=user&a=email">邮箱认证</a></li>
+                <li><a href="?c=user&a=password">登录密码</a></li>
+                <li><a href="?c=user&a=paywords">支付密码</a></li>
+                <li><a href="?c=user&a=protect">密码保护</a></li>
+                <li><a href="?c=user&a=phone">手机认证</a></li>
+                <li><a href="?c=user&a=email">邮箱认证</a></li>
             </ul>
         </div>
         <form action="?&c=user&a=person" method="post" enctype="multipart/form-data">
@@ -97,7 +97,7 @@
             </div> 
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">安全邮箱</div>
-              <div class="pull-left"><input type="text" <?=isset($list['email'])?'readonly':''?> name="email" value="<?=$list['email']?>" class="form-control input"></div>
+              <div class="pull-left"><input type="text" readonly name="email" value="<?=$list['email']?>" class="form-control input"></div>
               <div class="pull-left cs-left-txt cs-left-txt03">* 请填写常用邮箱,提交后不可更改</div>
             </div> 
             <button type="submit" class="btn btn-tj btn-tj01 btn-login">保存修改</button>

@@ -38,9 +38,21 @@
             <?php endforeach;?>
           </tbody>
         </table>
-        <div class="table-bottom">
-            <div class="table-null text-center">暂无建议信息！</div>
-        </div>
+        <form action="?c=user&a=advice" method="post">
+            <div class="table-bottom">
+                <div class="table-null text-center">暂无投诉信息！</div>
+                <div class="ts-tt"><i class="glyphicon glyphicon-triangle-right"></i>我要建议</div>
+                <div class="clearfix ts-c">
+                    <div class="pj-txt pull-left">&emsp;建议人</div>
+                    <div class="pull-left"><input type="text" id="username" name="username" class="form-control input" /></div>
+                </div>
+                <div class="clearfix ts-c">
+                    <div class="pj-txt pull-left">建议内容</div>
+                    <div class="pull-left"><textarea name="content" id="content" class="form-control input input-lg"></textarea></div>
+                </div>
+                <a href="javascript:;" id="submit" class="btn btn-tj btn-tj01 btn-ts">提交投诉信息</a>
+            </div>
+        </form>
         <div class="ewm-c">
             <div class="ewm text-center">
                 <div><img src="public/khshop/images/user/ewm.png"></div>
@@ -54,6 +66,14 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $("#submit").click(function () {
+        if ( $("#content").val()==""){
+            alert("请输入建议内容")
+        }else {
+            $("form").submit();
+        }
+
+    })
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  

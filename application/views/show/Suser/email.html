@@ -28,13 +28,13 @@
         	<div class="gl-phone"><img src="public/khshop/images/user/email.png"></div>
 			<div class="gl-phone-bottom">
             	<div class="clearfix">
-                    <form action="index.php?p=show&c=user&a=email" method="post">
+                    <form action="" method="post">
                 	<div class="pull-left">
                         <div class="clearfix gl-clearfix gl-clearfix02">
                           <div class="pull-left cs-left-txt cs-left-txt02">填写邮箱地址</div>
-                          <div class="pull-left"><input type="text" name="email" class="form-control input"></div>
+                          <div class="pull-left"><input type="text" name="email" id="email" class="form-control input"></div>
                         </div>
-                        <button type="submit" class="btn btn-tj btn-tj01 btn-login">立即认证</button>
+                        <button type="button" id="submit" class="btn btn-tj btn-tj01 btn-login">立即认证</button>
                     </div>
                     </form>
                     <div class="pull-left phone-back email-back">
@@ -45,7 +45,7 @@
                         <div class="phone-txt">· <span>找回账号密码：</span>忘记密码时，可使用邮件找回密码。</div>
                     </div>
                 </div>
-                <div class="hl-phone-txt">已发送邮件至804410944@qq.com<a href=""> 请立即完成验证。</a></div>
+                <div class="hl-phone-txt">已发送邮件至 <span id="target">您的邮箱</span> <a href="" id="link"> 请立即完成验证。</a></div>
                 <div class="hl-phone-txt hl-phone-txt01">验证邮件24小时内有效,请尽快登录您的邮箱点击验证链接完成验证.</div>
 
                 
@@ -67,6 +67,61 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $("#submit").click(function () {
+        $.post("?c=user&a=email",{
+            'email':$("#email").val()
+        },function (data) {
+            if (data=='success'){
+                alert("邮件发送成功");
+                $("#target").text($("#email").val());
+                $("#link").text();
+                link();
+            }else {
+                alert("邮件发送失败")
+            }
+        })
+    })
+
+    var hash={
+        'qq.com':'http://mail.qq.com',
+        'gmail.com': 'http://mail.google.com',
+        'sina.com': 'http://mail.sina.com.cn',
+        '163.com': 'http://mail.163.com',
+        '126.com': 'http://mail.126.com',
+        'yeah.net': 'http://www.yeah.net/',
+        'sohu.com': 'http://mail.sohu.com/',
+        'tom.com': 'http://mail.tom.com/',
+        'sogou.com': 'http://mail.sogou.com/',
+        '139.com': 'http://mail.10086.cn/',
+        'hotmail.com': 'http://www.hotmail.com',
+        'live.com': 'http://login.live.com/',
+        'live.cn': 'http://login.live.cn/',
+        'live.com.cn': 'http://login.live.com.cn',
+        '189.com': 'http://webmail16.189.cn/webmail/',
+        'yahoo.com.cn': 'http://mail.cn.yahoo.com/',
+        'yahoo.cn': 'http://mail.cn.yahoo.com/',
+        'eyou.com': 'http://www.eyou.com/',
+        '21cn.com': 'http://mail.21cn.com/',
+        '188.com': 'http://www.188.com/',
+        'foxmail.coom': 'http://www.foxmail.com'
+    };
+    function link(){
+        $("#link").each(function(){
+            var url = $("#email").val().split('@')[1];
+
+            var sel_url_val ;//定义全局变量
+            $.each( hash, function(i, n){
+                if(i == url){
+                    $("#link").attr("href", n);//给跳转链接重新赋值
+                    sel_url_val = 1 ;
+                }
+            });
+            if(sel_url_val != 1){
+                alert('输入邮箱号无法正确定位');
+            }
+        });
+    }
+
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  
