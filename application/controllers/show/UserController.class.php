@@ -48,8 +48,15 @@ class UserController extends BaseController
         return $result;
     }
 
+    //订单付款
+    public function orderAction(){
+
+        include CUR_VIEW_PATH . "Suser" . DS ."order.html";
+    }
+
     //会员的个人中心
     public function indexAction(){
+
         include CUR_VIEW_PATH . "Suser" . DS ."user_index.html";
     }
 
@@ -63,6 +70,7 @@ class UserController extends BaseController
         session_destroy();
         $this->jump('index.php?p=show&c=login&a=login','',0);
     }
+
     //充值
     public function rechargeAction(){
 
@@ -257,7 +265,19 @@ class UserController extends BaseController
 
     //登录密码
     public function passwordAction(){
-
+        $model = new Model('member');
+        $request = $_SERVER['REQUEST_METHOD'];
+        $uid = $_SESSION['user_id'];
+        if ($request=="POST"){
+            $data['password'] = md5($_POST['pwd']);
+            $list = $model->select("select password from sl_member WHERE id={$uid}")[0];
+            if (md5($_POST['old'])==$list['password']){
+                $model->xg($data,"id={$uid}");
+                $this->jump('index.php?p=show&c=user&a=loginout','',0);
+            }else{
+                $this->jump('index.php?p=show&c=user&a=password','旧密码不正确',3);
+            }
+        }
         include CUR_VIEW_PATH . "Suser" . DS ."password.html";
     }
 
@@ -267,6 +287,9 @@ class UserController extends BaseController
         if ($request=='POST'){
             $model = new Model('member');
             $data = $_POST;
+            if (empty($data['paywords'])){
+                $this->jump('index.php?p=show&c=user&a=paywords','密码不能为空',3);
+            }
             $data['paywords'] = md5($data['paywords']);
             $uid = $_SESSION['user_id'];
             if($model->xg($data,"id=".$uid)){
@@ -309,12 +332,32 @@ class UserController extends BaseController
 
     //手机认证
     public function phoneAction(){
+        $model = new Model('member');
+        $request = $_SERVER['REQUEST_METHOD'];
+        $uid = $_SESSION['user_id'];
 
+        if ($request=="POST"){
+            if ($_POST['captcha']!=$_SESSION[$_POST['old']]){
+            $this->jump('index.php?p=show&c=user&a=phone','旧手机验证码错误',3);
+            exit;
+             }
+            $data['tel'] = $_POST['tel'];
+            if ($_POST['code']==$_SESSION[$_POST['tel']]){
+                $model->xg($data,"id = $uid");
+                $this->jump('index.php?p=show&c=user&a=loginout','',0);
+
+            }else{
+                $this->jump('index.php?p=show&c=user&a=phone','新手机验证码错误',3);
+                exit;
+            }
+        }
+        $lists = $model->select("select tel from sl_member WHERE id = {$uid}")[0];
         include CUR_VIEW_PATH . "Suser" . DS ."phone.html";
     }
 
     //邮箱认证
     public function emailAction(){
+        $uid = $_SESSION['user_id'];
         $request = $_SERVER['REQUEST_METHOD'];
         if ($request=="POST"){
             $email = trim($_POST['email']);
@@ -336,16 +379,19 @@ class UserController extends BaseController
                 $mail->FromName = "店来店往";
                 $mail->AddAddress($email);
                 $mail->Subject = '邮箱认证';
-                $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+                $mail->Body    = '<b><a style="color:red;" href="">点击确认</a></b>绑定邮箱';
                 $mail->WordWrap = 80; // 设置每行字符串的长度
                 $mail->IsHTML(true);
                 $mail->Send();
-                echo '邮件已发送';
+                echo "success";die;
             } catch (phpmailerException $e) {
-                var_dump($mail->ErrorInfo);die;
-                echo "邮件发送失败：".$e->errorMessage();die;
+                //var_dump($mail->ErrorInfo);die;
+                //$this->jump('index.php?p=show&c=user&a=email','邮件发送失败',3);
+                echo 'failed';die;
             }
         }
+
+        $email = $_SESSION['email'.$uid];
         include CUR_VIEW_PATH . "Suser" . DS ."email.html";
     }
 

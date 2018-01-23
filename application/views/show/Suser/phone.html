@@ -16,21 +16,27 @@
         <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">投诉评价</a></div>
         <div class="clearfix">
             <ul class="clearfix pull-left tab-list tab-list-sm">
-                <li><a href="index.php?p=show&c=user&a=person">个人资料</a></li>
-                <li><a href="index.php?p=show&c=user&a=password">登录密码</a></li>
-                <li><a href="index.php?p=show&c=user&a=paywords">支付密码</a></li>
-                <li><a href="index.php?p=show&c=user&a=protect">密码保护</a></li>
-                <li class="active"><a href="index.php?p=show&c=user&a=phone">手机认证</a></li>
-                <li><a href="index.php?p=show&c=user&a=email">邮箱认证</a></li>
+                <li><a href="?&c=user&a=person">个人资料</a></li>
+                <li><a href="?&c=user&a=password">登录密码</a></li>
+                <li><a href="?&c=user&a=paywords">支付密码</a></li>
+                <li><a href="?&c=user&a=protect">密码保护</a></li>
+                <li class="active"><a href="">手机认证</a></li>
+                <li><a href="?&c=user&a=email">邮箱认证</a></li>
             </ul>
         </div>
         <div class="user-back">
         	<div class="gl-phone"><img src="public/khshop/images/user/phone.png"></div>
+            <form action="?c=user&a=phone" method="post">
 			<div class="gl-phone-bottom">
             	<div class="clearfix">
                 	<div class="pull-left">
-                        <div class="hl-phone-txt">温馨提示：您的手机号[<span>159****6968</span>]已经通过认证</div>
-                        <a href="" class="btn btn-tj btn-tj01 btn-login">修改认证手机号</a>
+                        <div class="hl-phone-txt">温馨提示：您的手机号[<span><?=substr($lists['tel'],0,3)?>****<?=substr($lists['tel'],7,4)?></span>]已经通过认证</div>
+                        <div class="phone-title">解除旧手机</div>
+                        <div class="clearfix gl-clearfix gl-clearfix02">
+                          <div class="pull-left cs-left-txt cs-left-txt02">短信验证</div>
+                          <div class="pull-left"><input type="text" name="captcha" class="form-control input"></div>
+                          <div class="pull-left"><input type="button" id="btn_unbind" class="btn btn-tj btn-tj02" value="获取验证码"></div>
+                        </div>
                     </div>
                     <div class="pull-left phone-back">
                     	<div class="phone-tt">手机认证成功以后，您可以享有以下特权：</div>
@@ -38,16 +44,24 @@
                         <div class="phone-txt">· <span>找回支付密码：</span>忘记支付密码时，可使用手机短信找回密码。</div>
                     </div>
                 </div>
-                <div class="hl-phone-txt bold">认证解除：已向[<span>159****6968</span>]发送短信验证码!</div>
+                <div class="phone-border"></div>
+                <div class="phone-title">修改手机认证</div>
                 <div class="clearfix gl-clearfix gl-clearfix02">
-                  <div class="pull-left cs-left-txt cs-left-txt02"><span>*</span> 真实姓名</div>
-                  <div class="pull-left"><input type="text" class="form-control input"></div>
+                  <div class="pull-left cs-left-txt cs-left-txt02">新手机号</div>
+                  <div class="pull-left"><input type="text" name="tel" id="tel" class="form-control input"></div>
+                  <div class="pull-left"><input type="button" id="bind" class="btn btn-tj btn-tj02" value="获取验证码"></div>
                 </div>
-                <button type="button" class="btn btn-tj btn-tj01 btn-login">确认</button>
+                <input type="hidden" id="old" name="old" value="<?=$lists['tel']?>">
+                <div class="clearfix gl-clearfix gl-clearfix02">
+                  <div class="pull-left cs-left-txt cs-left-txt02">短信验证</div>
+                  <div class="pull-left"><input type="text" name="code"  class="form-control input"></div>
+                </div>
+
+                <button type="submit" id="submit" class="btn btn-tj btn-tj01 btn-login">确认</button>
                 <div class="phone-bottom">如果您没有收到验证码短信：</div>
                 <div class="phone-bottom-txt">短信到达需要1-2分钟，若您长时间未收到确认短信，建议您 <a role="button">重发验证码</a></div>
             </div>
-            
+            </form>
         </div>
         <div class="ewm-c">
             <div class="ewm text-center">
@@ -62,6 +76,68 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $("#btn_unbind").click(function () {
+        var that = $("#btn_unbind")
+        $.post('?c=sms&a=sms',{
+            'tel':$("#old").val()
+        },function (data) {
+            if (data=='success'){
+                alert("短信发送成功");
+                settime(that);
+            }else {
+                alert("发送失败，请稍后再试")
+            }
+        })
+    })
+
+    $("#bind").click(function () {
+        var reg = /^1[34578]\d{9}$/;
+        var txt = $(this);
+        if (reg.test($("#tel").val())){
+            var that = $("#btn_unbind")
+            $.post('?c=sms&a=sms',{
+                'tel':$("#tel").val()
+            },function (data) {
+                if (data=='success'){
+                    alert("短信发送成功");
+                    settime(txt);
+                }else {
+                    alert("发送失败，请稍后再试")
+                }
+            })
+        }else {
+            alert("手机格式不正确")
+        }
+    });
+
+    $("#submit").click(function () {
+        if ($("#tel").val().length==0){
+            alert("请输入手机号");
+            return false;
+        }
+
+    })
+
+    var countdown=60;
+    function settime(obj) { //发送验证码倒计时
+        if (countdown == 0) {
+            obj.attr('disabled',false);
+            //obj.removeattr("disabled");
+            obj.val("获取验证码");
+            countdown = 60;
+            return;
+        } else {
+            obj.attr('disabled',true);
+            obj.val("重新发送(" + countdown + ")");
+            countdown--;
+        }
+        setTimeout(function() {
+                settime(obj)
+            }
+            ,1000)
+    }
+
+
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  

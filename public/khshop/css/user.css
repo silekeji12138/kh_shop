@@ -326,3 +326,42 @@ input[type=text]::-webkit-focus-inner{padding:0; border:0 none; -webkit-box-sizi
 .user-img-c .zj img{ width:65px !important; height:65px !important; border-radius:50%;}
 .user-uploader{ margin-top:25px;}
 .button-user{ background:#ffb775 !important; color:#fff !important; border-color:#eee;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********2017-1-17修改*************/
+.input-c-sm{ width:500px; position:relative;}
+.input-c-sm .input-cs{ width:500px;}
+.input-cs-bzj{ width:160px;}
+.cs-left-txt02{ text-align:left; width:auto !important;}
+.no-relative{ position:static;}
+.cs-left-color{ color:#3bbb71;}
+.password-help{ padding:20px 0 60px 60px; color:#ecb867;}
+.table-title{ color:#888;}
+.table-title span{ color:#01b171;}
+.table-checkbox span{ color:#333;}
+.fk-title{ height:42px; line-height:40px; background:#f0f0f0; border:solid 1px #ddd; color:#888; padding-left:30px;}
+.fk-title span{ color:#01b171;}
+
+.fk-c p{ height:34px; line-height:34px; margin-bottom:10px;}
+.fk-c .blod{ font-weight:bold; color:#ecb867;}
+.btn-ddfk{ padding:7px 30px; color:#fff; background:#01b171; border:none; margin-left:10px;}
+.btn-ddfk:hover{ color:#fff; background:#07ce86;}
+.padding-l{ padding-left:28px;}
+.btn-padding{ padding:0px 30px;}
+.margin-top-20{ margin-top:20px;}
+.phone-title{ color:#26b67d; margin:20px 0;}
+.phone-border{ border-bottom:solid 1px #eaeaea; width:390px;}

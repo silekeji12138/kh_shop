@@ -27,12 +27,12 @@
         <form action="index.php?p=show&c=user&a=paywords" method="post">
         <div class="user-back">
 			<div class="clearfix gl-clearfix">
-              <div class="pull-left cs-left-txt cs-left-txt02">新支付密码</div>
-              <div class="pull-left"><input type="text" id="pwd" name="paywords" class="form-control input"></div>
+              <div class="pull-left cs-left-txt cs-left-txt02">&emsp;&emsp;新支付密码</div>
+              <div class="pull-left"><input type="password" id="pwd" name="paywords" class="form-control input"></div>
             </div>
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">确认新支付密码</div>
-              <div class="pull-left"><input type="text" id="r_pwd" class="form-control input"></div>
+              <div class="pull-left"><input type="password" id="r_pwd" class="form-control input"></div>
             </div>
             <div class="password-ts" style="display: none">两次输入密码不一致</div>
             <button type="button" class="btn btn-tj btn-tj01 btn-login">保存修改</button>
@@ -52,6 +52,10 @@
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
     $(".btn-tj").click(function () {
+        if($("#pwd").val().length==0){
+            alert("支付密码不能为空")
+            return false;
+        }
         if($("#pwd").val()!=$("#r_pwd").val()){
             $(".password-ts").css("display","inline-block")
         }else {

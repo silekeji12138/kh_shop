@@ -723,7 +723,9 @@ opacity:0;
 .purchase-left-width{ padding-left:78px; width:960px;}
 .purchase-row span{ color:#999;}
 .purchase-row{ position:relative;}
-.purchase-row:after{ content:""; display:block; height:188px; border-right:solid 1px #eee; position:absolute; top:0; right:0;}
+.purchase-row:before{ content:""; display:block; height:188px; border-right:solid 1px #eee; position:absolute; top:0; right:0;}
+.purchase-row-sm:before{ height:140px;}
+.purchase-row-sm{ height:auto!important; padding-bottom:20px;}
 .purchase-row .col-xs-4,.purchase-row .col-xs-12{ margin-bottom:15px;}
 .purchase-row span.number{ color:#eca567;}
 .purchase-right-width{ width:238px; padding-top:80px;}
@@ -1099,7 +1101,7 @@ opacity:0;
 .yy-modal-c textarea.qq-input{ height: 110px !important; }
 .yy-modal-c .btn-qq{ width: 100%; margin:0; float: none; }
 /*****会员登录******/
-.login-back{ height: 804px; background: url(../images/login-back.png) center no-repeat; }
+.login-back{ height: 804px; background:url(../images/login-back.png) center no-repeat; }
 .login-c{ width: 410px; background: #fff; border-radius: 4px; box-shadow: 1px 2px 64px -30px #717070; margin-top: 170px; padding:50px 35px 30px 35px; }
 .login-tt{ font-size: 18px; color: #e8e7e7; font-weight:bold; letter-spacing: 3px; }
 .login-tt-lg{ font-size: 24px; color: #666; font-weight:bold; border-bottom: solid 1px #eee; margin-bottom: 45px; }
@@ -1118,7 +1120,7 @@ opacity:0;
 .login-help{ color: #01b171; background: url(../images/login01.png) left center no-repeat; height: 24px; line-height: 24px; padding-left: 30px; margin:37px; }
 .login-back .container{ padding-right: 90px; }
 /****注册页面***/
-.register-back{ background: url(../images/register.png) center no-repeat; height: 979px; }
+.register-back{background:#f5f5f5 url(../images/register.png) center no-repeat;height: 1085px;}
 .register-tt .login-tt-lg span{ background: #f5f5f5; }
 .register-tt{ display: table; margin:80px auto 0 auto; }
 .register-c{ background: #fff; border-radius: 4px; box-shadow: 1px 2px 64px -30px #717070; width: 525px; padding: 30px;}
@@ -1448,3 +1450,69 @@ opacity:0;
 .dis-table-c{ width:450px; margin:20px auto;}
 .dis-table-c .btn-qq{ width:370px; margin-left:80px; margin-top:20px; margin-right:0; margin-bottom:30px;}
 .article-p p{ line-height:30px; margin-bottom:20px;}
+
+/********2018-1-17修改********/
+.forget-password{ width:1080px; height:540px; border:solid 1px #eee; border-radius:10px; margin:120px auto;box-shadow: 1px 2px 64px -30px #717070; padding:90px;}
+.password-width{ width:25%; float:left; text-align:center; position:relative; z-index:10;}
+.password-width i{ display:block; width:34px; height:34px; margin:0 auto; font-size:18px; color:#a8a8a8; font-weight:bold; border:solid 1px #a8a8a8; border-radius:50%; line-height:32px; text-align:left; padding-left:8px; position:relative; z-index:10; background:#fff;}
+.password-width-c{ position:relative;}
+.password-width:before{ position:absolute; left:0; top:16px; display:block; content:""; height:3px; width:100%; background:#a8a8a8;}
+.password-width.active:before{ background:#01b171;}
+.password-width.active i{ color:#fff; background:#01b171; border-color:#01b171;}
+.password-c{ width:510px; margin:50px auto 0 140px;}
+.password-c .input-sell {
+    height: 45px;
+    padding-left: 37px;
+    margin-bottom: 40px;
+}
+.yzm-help{ position:absolute; height:45px; line-height:45px; right:-140px; top:0;}
+.yzm-help a{ color:#eca567;}
+.btn-password{ height:46px; width:100%; padding:0; line-height:46px; text-align:center; color:#fff; font-size:18px; font-weight:bold; background:#01b171;}
+.btn-password:hover{ color:#fff; background:#05c37e;}
+.password-b{ height:30px; line-height:30px; margin:30px; color:#05c37e;}
+.btn-password-dx{ width:120px; height:45px; line-height:45px; padding:0; text-align:center; background:#eca567; color:#fff; margin-left:10px;}
+.btn-password-dx:hover{ color:#fff; background:#f3923d;}
+.password-width-sm{ width:375px;}
+.passowrd-txt{ padding-left:30px; color:#01b171; padding-bottom:20px;}
+.password-end{ font-size:24px; color:#7d7d7d; text-align:center; margin:100px 0;}
+.password-end a{ color:#ffb674;}
+.go-index{ display:block; width:128px; height:33px; background:url(../images/back-index.png) center no-repeat; position:absolute; left:50%; margin-left:-64px; top:20px; color:#fff; line-height:33px; padding-left:45px;}
+.gjc-ul li a{ display:inline-block; margin-left:5px; line-height:14px;color: #0bab6d; padding:0; width:auto; height:auto;}
+.purchase-ul li span {
+    display: block;
+    height: 26px;
+    line-height: 24px;
+    padding: 0 10px;
+    border: solid 1px #0bab6d;
+    color: #0bab6d;
+    border-radius: 4px;
+	position:relative;
+}
+
+.title-qi{ display:block; width:35px; height:41px; background:url(../images/title-qi.png) center no-repeat;}
+.purchase-left-width-tt a span{ float:none; padding-left:5px;}
+.title-icon-qt{ background:url(../images/title-qt.png) center no-repeat;}
+.title-xq-sm{ position:relative; margin-left:46px;}
+.title-xq-sm .title-icon{ margin-top:10px;}
+/***用户说列表页**/
+.yhs-container{ background:#fff; border:solid 1px #e5e5e5; border-radius:4px; padding:30px; margin-top:-75px; margin-bottom:40px;}
+.yhs-list{ margin:0 -30px; border-bottom:solid 1px #e5e5e5; padding:0 20px;}
+.yhs-list li{ float:left; width:33.333333%; padding:0 10px; margin-bottom:20px;}
+.yhs-border img{ border:solid 1px #eaeaea; border-radius:4px;}
+.yhs-border .clearfix{ margin-top:20px;}
+.yhs-mx{ font-size:16px; color:#999; font-weight:bold; background:url(../images/yhs-mx.png) left center no-repeat; height:28px; line-height:28px; padding-left:40px;}
+.yhs-mx span{ color:#ecb867;}
+.yhs-label{ height:28px; line-height:28px; background:#01b171; color:#fff; font-weight:bold; padding:0 10px; border-radius:4px;}
+.yhs-label span{ padding:0 2px;font-family: "Clarendon Lt BT";}
+.yhs-border p{ margin-bottom:10px; margin-top:10px; color:#888; padding-left:40px;}
+.title-icon06{background-position: -184px 0; width:31px;}
+.title-icon07{background-position: -215px 0; width:36px;}
+.title-icon08{background-position: -251px 0; width:34px;}
+.title-icon09{background-position: -285px 0; width:35px;}
+.title-icon10{background-position: -320px 0; width:29px;}
+.title-icon11{background-position: -349px 0; width:34px;}
+.title-icon12{background-position: -383px 0; width:29px;}
+.title-icon13{background-position: -412px 0; width:31px;}
+.title-icon14{background-position: -443px 0; width:31px;}
+.title-icon15{background-position: -474px 0; width:37px;}
+.title-icon16{background-position: -511px 0; width:34px;}

@@ -45,24 +45,37 @@
               <th style="min-width:70px;">操作</th>
             </tr>
           </thead>
-          <tbody>
-          <?php foreach($lists as $v):?>
+            <tbody>
+            <?php foreach($lists as $k=>$val):?>
             <tr>
-              <td>
-                  <div class="checkbox table-checkbox">
-                      <label>
-                          <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> <?=$v['fwxq']?>
-                      </label>
-                  </div>
-              </td>
-              <td><?=$v['dq']?></td>
-              <td><span class="table-number">¥<?=$v['fwjg']?></span></td>
-              <td><?=$v['fws']?></td>
-              <td><?=$v['status']?></td>
-              <td><a href="index.php?p=show&c=shop&a=del&model=service&id=<?=$v['id']?>" class="table-a">删除</a></td>
+                <td colspan="6">
+                    <div class="clearfix table-title">
+                        <div class="pull-left"><span>订单编号：</span><?=$k?></div>
+                        <div class="pull-right">下单时间：<?=$val[0]['dtime']?> </div>
+                    </div>
+                </td>
             </tr>
-          <?php endforeach;?>
-          </tbody>
+
+            <?php foreach($val as $k=>$v):?>
+            <tr>
+                <td>
+                    <div class="checkbox table-checkbox">
+                        <label>
+                            <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> 企业变更<br><span><?=$v['fwxq']?></span>
+                        </label>
+                    </div>
+                </td>
+                <td><?=$v['dq']?></td>
+                <td><span class="table-number">¥<?=$v['fwjg']?></span></td>
+                <td><?=$v['fws']?></td>
+                <td><?=$v['status']?></td>
+                <td><a href="index.php?p=show&c=shop&a=del&model=service&id=<?=$v['id']?>" class="table-a">删除</a></td>
+
+            </tr>
+            <?php endforeach;?>
+
+            <?php endforeach;?>
+            </tbody>
         </table>
         <div class="table-bottom">
                 <div class="clearfix">

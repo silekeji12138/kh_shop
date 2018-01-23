@@ -46,12 +46,22 @@
             </tr>
           </thead>
           <tbody>
-          <?php foreach($lists as $v):?>
-            <tr>
+          <?php foreach($lists as $k=>$val):?>
+          <tr>
+              <td colspan="6">
+                  <div class="clearfix table-title">
+                      <div class="pull-left"><span>订单编号：</span><?=$k?></div>
+                      <div class="pull-right">下单时间：<?=$val[0]['dtime']?> </div>
+                  </div>
+              </td>
+          </tr>
+
+          <?php foreach($val as $k=>$v):?>
+          <tr>
               <td>
                   <div class="checkbox table-checkbox">
                       <label>
-                          <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> <?=$v['fwxq']?>
+                          <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> 店铺升级<br><span><?=$v['fwxq']?></span>
                       </label>
                   </div>
               </td>
@@ -60,7 +70,10 @@
               <td><?=$v['fws']?></td>
               <td><?=$v['status']?></td>
               <td><a href="index.php?p=show&c=shop&a=del&model=service&id=<?=$v['id']?>" class="table-a">删除</a></td>
-            </tr>
+
+          </tr>
+          <?php endforeach;?>
+
           <?php endforeach;?>
           </tbody>
         </table>
