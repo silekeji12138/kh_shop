@@ -1,0 +1,65 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>网店资讯-详情</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/gongsi_header.html";?>
+</header>
+
+	<div class="news-banner"></div>
+    <div class="back-f9">
+        <div class="container">
+            <div class="recruit-c help-c">
+            	<div class="news-back">
+                	<div class="news-title">网店资讯</div>
+                </div>
+            </div>
+            <div class="news-article">
+                <div class="clearfix">
+                    <div class="news-txt-c pull-left">
+                        <div class="news-link"><a href="javascript:;"><?=$v['biaoti']?></a></div>
+                        <div class="clearfix">
+                            <div class="pull-left share-left">分享</div>
+                            <div class="pull-left">
+                                <div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1510300397722"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right news-date-c news-date-c02 text-right">
+                        <div class="date-lg">10-30</div>
+                        <div class="date-sm">-2017</div>
+                    </div>
+                </div>
+            </div>
+            <div class="article-c">
+            	<p><?=$v['content']?></p>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+</html>

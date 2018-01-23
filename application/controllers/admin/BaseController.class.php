@@ -393,7 +393,15 @@ class BaseController extends Controller {
                         </tr>';
 	        
 	        
-	    }else  {
+	    }else if ($type=="商品编号"){
+            return ' <div class="marb-20">
+					        <p class="title"><em class="txt-blue ficon ficon-deng"></em>'.$kjName.'</p>
+					        <p> <input type="hidden" class="input"   name="'.$filedName.'"  id="'.$filedName.'"  value="'.time().rand(1000000,9999999).'"/> </p>
+				        </div>';
+
+        }
+
+	    else  {
 	       
 	        if($filedName=="laiyuanbianhao" && !empty($_GET['guanlianziduan_val']))
 	        {

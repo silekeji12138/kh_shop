@@ -1,0 +1,395 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>网店拍卖-详情页</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body class="body-padding-sm">
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+<div class="back-f9">
+    <div class="container">
+        <div class="sell-banner">
+            <img src="public/khshop/images/bbb.png">
+        </div>
+        <div class="sell-border sell-border-m">
+            <div class="sell-nav">
+                当前位置：<a href="">首页</a> > <a href="">网店拍卖</a> > <a href="" class="active">详情页</a>
+            </div>
+            <div class="clearfix pm-list">
+                <div class="pull-left purchase-left-width pm-list-left">
+                    <div class="purchase-left-width-tt clearfix"><i class="title-icon title-qi"></i><a href=""><?=$v['biaoti']?></a></div>
+                    <div class="pm-label-c clearfix">
+                        <span class="purchase-bottom-label <?=$v['dj']=='是'?'active':''?>">独家</span>
+                        <span class="purchase-bottom-label <?=$v['tghy']=='是'?'active':''?>">可提供货源</span>
+                        <span class="purchase-bottom-label <?=$v['gsrz']=='是'?'active':''?>" >公司认证</span>
+                        <span class="purchase-bottom-label <?=$v['dmjy']=='是'?'active':''?>">可当面交易</span>
+                        <span class="purchase-bottom-label <?=$v['dtqh']=='是'?'active':''?>">动态全红</span>
+                    </div>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <div class="money-g">官方估价:<span class="lind-money">38.39万</span> | 技术年费:<span><?=$v['jsnf']?>元(需退还)</span> | 消保金:<span><?=$v['xbj']?>元(需退还)</span></div>
+                            <div class="clearfix pm-list-btn">
+                                <button type="button" class="btn btn-sell-l btn-phone" data-toggle="modal" data-target="#pm-bzj">立即购买</button>
+                                <button type="button" class="btn btn-sell-l btn-sell-l02">立即预约</button>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="money-right"><span><?=number_format($v['jiage']/10000,1)?></span>万</div>
+                            <a role="button" class="btn-soucang"><i class="glyphicon glyphicon-star"></i>收藏</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pull-left pm-list-right">
+                    <div class="clearfix">
+                        <div class="pull-left text-center pm-user">
+                            <div class="pm-user-img"><img src="public/khshop/images/user-img.png"></div>
+                            <div class="pm-user-name">销售顾问</div>
+                        </div>
+                        <div class="pull-left">
+                            <a role="button" class="btn-purchase icon">咨询服务顾问</a>
+                            <?php $rs=BuyController::kefuAction()[0];?>
+                            <div class="pm-border-b margin-top-20 clearfix">
+                                <div class="pm-kf-name pull-left"><?=$rs['nc']?> </div>
+                                <div class="pm-kf-gh pm-kf-gh02 padding-left pull-left">工号:<?=$rs['id']?></div>
+                            </div>
+                            <div class="pm-border-b clearfix">
+                                <div class="pm-kf-name pull-left">联系QQ：</div>
+                                <div class="pm-kf-name pm-kf-qq pm-kf-gh02 pull-left"><?=$rs['yg']?></div>
+                            </div>
+                            <div class="btn-toolbar">
+                                <div class="btn-group"><div class="pf-label">评分：(待定)</div></div>
+                                <div class="btn-group"><a role="button" data-toggle="modal" data-target="#pingfen" class="pf-label pf-link" name="<?=$rs['id']?>" id="pf">我要评分</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sell-border sell-border-m">
+            <div class="clearfix title-con">
+                <div class="pull-left title-xq-sm"><i class="title-icon title-qi"></i>商城编号:24358321506734316</div>
+                <div class="pull-right">一般违规<span>0</span>分 严重违规<span>0</span>分 售假违规<span>0</span>分</div>
+            </div>
+            <div class="clearfix">
+
+                    <div class="clearfix purchase-row purchase-row02">
+                        <div class="col-xs-4"><span>所属行业：</span><?=$v['sshy']?></div>
+                        <div class="col-xs-4"><span>网店信誉：</span>待定</div>
+                        <div class="col-xs-4"><span>创店时间：</span>2014年</div>
+                        <div class="col-xs-4"><span>消  保  金：</span><?=$v['xbj']?>元(退还)</div>
+                        <div class="col-xs-4"><span>虚拟占比：</span>待定</div>
+                        <div class="col-xs-4"><span>好  评  率：</span>待定</div>
+                        <div class="col-xs-4"><span>动态评分：</span><?=$v['dtpf']?></div>
+                        <div class="col-xs-4"><span>老客户数：</span>待定</div>
+                        <div class="col-xs-4"><span>收  藏  量：</span>18</div>
+                        <div class="col-xs-4"><span>违规扣分：</span><?=$v['wgkf']?></div>
+                        <div class="col-xs-12"><span>卖家描述：</span><?=$v['miaoshu']?></div>
+
+            </div>
+        </div>
+        <div class="sell-border">
+            <div class="gd navbarExample">
+                <ul class="pm-tabs gm-tabs nav clearfix">
+                    <li class="active one"><a href="#one">卖家描述</a></li>
+                    <li class="tow"><a href="#tow">常见问题</a></li>
+                    <li class="three"><a href="#three">购买流程</a></li>
+                    <li class="four"><a href="#four">同类店铺</a></li>
+                </ul>
+            </div>
+            <div class="pm-tabs-c clearfix">
+                <div class="pm-add-tt" id="one">华南地区母婴旗舰店童装女装类目名字好听诚心出售</div>
+                <div class="bzj-border bzj-border02">
+                    <p>店铺半年内动态评分</p>
+                    <div class="clearfix">
+                        <div class="sp-left pull-left clearfix">
+                            <div class="pull-left">宝贝与描述相符 ：</div>
+
+                            <?php if($ms=="高"){ ?>
+                            <div class="pull-left sp-label">比同行业水平<span>高</span></div>
+                            <?php }else{ ;?>
+                            <div class="pull-left sp-label sp-left-down">比同行业水平<span>低</span></div>
+                            <?php } ?>
+
+                        </div>
+                        <div class="sp-left pull-left clearfix">
+                            <div class="pull-left">卖家的服务态度 ：</div>
+
+                            <?php if($fwtd=='高'){ ?>
+                            <div class="pull-left sp-label">比同行业水平<span>高</span></div>
+                            <?php }else{ ;?>
+                            <div class="pull-left sp-label sp-left-down">比同行业水平<span>低</span></div>
+                            <?php } ?>
+
+                        </div>
+                        <div class="sp-left pull-left clearfix">
+                            <div class="pull-left">卖家的发货速度 ：</div>
+
+                            <?php if($fhsd=='高'){ ?>
+                            <div class="pull-left sp-label">比同行业水平<span>高</span></div>
+                            <?php }else{ ;?>
+                            <div class="pull-left sp-label sp-left-down">比同行业水平<span>低</span></div>
+                            <?php } ?>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="bzj-border bzj-border02">
+                    <p>店铺半年内动态评分</p>
+                    <table class="table wd-table">
+                        <thead>
+                        <tr>
+                            <th>统计日期</th>
+                            <th>浏览量</th>
+                            <th>访客数</th>
+                            <th>支付商品件数</th>
+                            <th>支付买家数</th>
+                            <th>客单价</th>
+                            <th>支付转化率</th>
+                            <th>支付金额</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>2017-10-15</td>
+                            <td>15800</td>
+                            <td>3980</td>
+                            <td>168</td>
+                            <td>18</td>
+                            <td>22</td>
+                            <td>82%</td>
+                            <td>395000</td>
+                        </tr>
+                        <tr>
+                            <td>2017-10-15</td>
+                            <td>15800</td>
+                            <td>3980</td>
+                            <td>168</td>
+                            <td>18</td>
+                            <td>22</td>
+                            <td>82%</td>
+                            <td>395000</td>
+                        </tr>
+                        <tr>
+                            <td>2017-10-15</td>
+                            <td>15800</td>
+                            <td>3980</td>
+                            <td>168</td>
+                            <td>18</td>
+                            <td>22</td>
+                            <td>82%</td>
+                            <td>395000</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bzj-border bzj-border02" id="tow">
+                    <div class="news-title-icon">常见问题</div>
+                </div>
+                <div class="bzj-border bzj-border02">
+                    <ul class="news-list-c">
+
+                        <?php foreach($cjwt as $v):  ?>
+                        <li>
+                            <div class="clearfix">
+                                <div class="w-back pull-left">问</div>
+                                <div class="w-text"><?=$v['wt']?></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="w-back a-txt pull-left">答</div>
+                                <div class="w-text d-text"><?=$v['hd']?></div>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+
+                    </ul>
+                </div>
+                <div class="bzj-border bzj-border03" id="three">
+                    <div class="news-title-icon news-title-icon02">购买流程</div>
+                </div>
+                <div class="bzj-border bzj-border02">
+                    <div class="lc-img"><img src="public/khshop/images/lc-img.png"></div>
+                </div>
+                <div class="bzj-border bzj-border03" id="four">
+                    <div class="news-title-icon news-title-icon03">同类店铺</div>
+                </div>
+                <div class="bzj-border bzj-border02">
+                    <div class="row tj-row">
+
+
+                        <?php foreach($m3 as $v): ?>
+                        <div class="col-xs-6">
+                            <div class="tj-c">
+                                <i class="icon-j">荐</i>
+                                <div class="purchase-left-width-tt clearfix"><i class="<?=$v['logo']?>"></i><a href="index.php?p=show&c=buy&a=xiangxi&id=<?=$v['id']?>"><?=$v['biaoti']?></a></div>
+                                <div class="clearfix">
+                                    <div class="pull-left tj-c-left">
+                                        <div>所属行业：<?=$v['sshy']?></div>
+                                        <div>商标类型：<?=$v['sblx']?></div>
+                                        <div>商城类型：<?=$v['sclx']?></div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <div class="money-right"><span><?=number_format($v['jiage']/10000,1)?></span>万</div>
+                                        <a href="index.php?p=show&c=buy&a=xiangxi&id=<?=$v['id']?>" class="look-more">查看详细 ></a>
+                                    </div>
+                                </div>
+                                <div class="pm-label-c clearfix">
+                                    <span class="purchase-bottom-label <?=$v['tghy']=='是'?'active':''?>">可提供货源</span>
+                                    <span class="purchase-bottom-label <?=$v['gsrz']=='是'?'active':''?>">公司认证</span>
+                                    <span class="purchase-bottom-label <?=$v['dmjy']=='是'?'active':''?>">可当面交易</span>
+                                    <span class="purchase-bottom-label <?=$v['dtqh']=='是'?'active':''?>">动态全红</span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+
+
+                    </div>
+                    <div class="bottom-tt-c">浏览过该网店的还看了</div>
+                    <ul class="bottom-b-list clearfix">
+                        <?php $rs=BuyController::historyAction(); foreach($rs as $v): ?>
+                        <li><a href="index.php?p=show&c=buy&a=xiangxi&id=<?=$v['id']?>"><span class="lg"><?=number_format($v['jiage']/10000,1)?></span><span class="sm">万</span><?=$v['biaoti']?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--footer-->
+<!--评价顾问-->
+<!-- Modal -->
+<div class="modal fade" id="pingfen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-close" data-dismiss="modal" aria-label="Close"><i class="icon"></i></div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-tt text-center">评价顾问</div>
+                <div class="dis-table-c">
+                    <div class="clearfix">
+                        <div class="pull-left left-width-txt">满意度打分</div>
+                        <div class="pull-left star-c" id="xx">
+                            <i class="glyphicon glyphicon-star active" id="xx1" name="1"></i>
+                            <i class="glyphicon glyphicon-star active" id="xx2" name="2"></i>
+                            <i class="glyphicon glyphicon-star active" id="xx3" name="3"></i>
+                            <i class="glyphicon glyphicon-star active" id="xx4" name="4"></i>
+                            <i class="glyphicon glyphicon-star " id="xx5" name="5"></i>
+                        </div>
+                        <div class="pull-left pf-right" id="xx6">4分， 比较满意！</div>
+                    </div>
+                    <div class="clearfix">
+                        <div class=" left-width-txt text-right pull-left">发表评论</div>
+                        <div class="pull-left">
+                            <input name="id" type="hidden">
+                            <input name="fx" type="hidden" value="4">
+                            <textarea name="ms" id="ms" type="text" class="form-control qq-input input-text " placeholder="有很多想说的？写点评价吧~最多不超过100个字 "></textarea>
+                        </div>
+                    </div>
+                    <button type="button" id="tj" class="btn btn-qq">提交评价</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+        new WOW().init();
+    };
+    <!--评分的效果-->
+    $('#xx1').click(function(){
+        $('#xx').children('i').removeClass('active');
+        $(this).addClass('active');
+        var fen=$(this).attr('name');
+        $('input[name=fx]').val(fen);
+        $('#xx6').text("1分,继续努力");
+    });
+    $('#xx2').click(function(){
+        $('#xx').children('i').removeClass('active');
+        $('#xx1').addClass('active');
+        $(this).addClass('active');
+        var fen=$(this).attr('name');
+        $('input[name=fx]').val(fen);
+        $('#xx6').text("2分,继续努力");
+    });
+    $('#xx3').click(function(){
+        $('#xx').children('i').removeClass('active');
+        $('#xx1').addClass('active');
+        $('#xx2').addClass('active');
+        $(this).addClass('active');
+        var fen=$(this).attr('name');
+        $('input[name=fx]').val(fen);
+        $('#xx6').text("3分,继续努力");
+    });
+    $('#xx4').click(function(){
+        $('#xx').children('i').removeClass('active');
+        $('#xx1').addClass('active');
+        $('#xx2').addClass('active');
+        $('#xx3').addClass('active');
+        $(this).addClass('active');
+        var fen=$(this).attr('name');
+        $('input[name=fx]').val(fen);
+        $('#xx6').text("4分,继续努力");
+    });
+    $('#xx5').click(function(){
+        $('#xx').children('i').removeClass('active');
+        $('#xx').children('i').addClass('active');
+        var fen=$(this).attr('name');
+        $('input[name=fx]').val(fen);
+        $('#xx6').text("5分,继续努力");
+    });
+
+    <!-- 评价的详细-->
+    $('#pf').click(function () {
+        var id=this.name;
+        $('#tj').click(function () {
+            var content= $('#ms').val();
+            var fx=$('input[name=fx]').val();
+            $.get('index.php?p=show&c=index&a=pjxt',{id:id,ms:content,fx:fx},function (msg) {
+                if (msg=='1'){
+                    alert('评价成功');
+                }else if (msg=='2'){
+                    alert('你今天已经评价过该客服了');
+                }else {
+                    alert('请先登录');
+                }
+            })
+            $(this).destroy();
+        })
+    })
+</script>
+<script>
+    $('#id').children('li').prop('class','');
+    $(document).ready(function() {
+        $('.gm-tabs a').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var $target = $(this.hash);
+                $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+                if ($target.length) {
+                    var targetOffset = $target.offset().top-100;
+                    $('html,body').animate({
+                            scrollTop: targetOffset
+                        },
+                        1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+</html>

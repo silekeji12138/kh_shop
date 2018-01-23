@@ -14,6 +14,7 @@ class MoxingController extends BaseController{
 	public function addAction(){
 	    $canshuModel = new Model("canshu");
 	    $u3=$canshuModel->select("SELECT * from sl_canshu where classid='1' order by id desc");
+	    $u4=$canshuModel->select("SELECT * from sl_canshu where classid='342' order by id desc");
 	    $common =new Common();
 	    $fileArray=  $common->get_onedirfiles("./application/views/home");
 		include CUR_VIEW_PATH . "Smoxing".DS. "moxing_add.html";
@@ -31,6 +32,8 @@ class MoxingController extends BaseController{
 		//初始化其他选项
 		$canshuModel = new Model("canshu");
 		$u3=$canshuModel->select("SELECT * from sl_canshu where classid='1' order by id desc");
+		$u4=$canshuModel->select("SELECT * from sl_canshu where classid='342' order by id desc");
+
 		$common =new Common();
 		$fileArray=  $common->get_onedirfiles("./application/views/home");
 		

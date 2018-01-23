@@ -66,6 +66,7 @@
 					</select>
 				</td>
 			</tr>
+			<!---->
 			<tr>
 				<th>栏目内容模版</th>
 				<td>
@@ -78,6 +79,19 @@
 					</select>
 				</td>
 			</tr>
+			<!---->
+            <tr>
+               <th>操作类型模板</th>
+				<td>
+					<select name="u7" id="u7" class="select-container1" style="width: 300px">
+						<option value="1">默认模板</option>
+						<?php foreach($u4 as $u4) : ?>
+						<option value="<?php echo $u4['u2'];?>"><?php echo  $u4['u1'];?></option>
+						<?php endforeach;?>
+					</select>
+				</td>
+			</tr>
+			<!---->
 			<tr>
 				<th>栏目路径</th>
 				<td>

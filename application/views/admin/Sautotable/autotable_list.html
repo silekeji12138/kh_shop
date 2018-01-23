@@ -88,9 +88,18 @@
 		<td>
 			<div>
 				<!-- <a href='#' target=_blank>查看</a> | -->
+
+				<?php if($u7==1){ ?>
 				<a href="index.php?p=admin&c=autotable&a=copy&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">复制</a>|
 				<a href="index.php?p=admin&c=autotable&a=edit&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">修改</a> |
 				<a onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');" href="index.php?p=admin&c=wenzhang&a=delete&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">删除</a>
+				<?php  }elseif($u7=2){ ?>
+				<a href="index.php?p=admin&c=autotable&a=copy&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">复制</a>|
+				<a href="index.php?p=admin&c=autotable&a=tongyi&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">同意</a>|
+				<a href="index.php?p=admin&c=autotable&a=jujue&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">拒绝</a>|
+				<a href="index.php?p=admin&c=autotable&a=edit&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">修改</a> |
+				<a onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');" href="index.php?p=admin&c=wenzhang&a=delete&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">删除</a>
+				<?php };?>
 			</div>
 		</td>
 	</tr>
