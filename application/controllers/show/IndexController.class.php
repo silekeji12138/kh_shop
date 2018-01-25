@@ -218,18 +218,25 @@ class IndexController extends BaseController
     public function qyfwAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_qyfw.html";
     }
+
+
+
     //企业服务代理记账页面展示方法
     public function dljzAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dljz.html";
     }
     //企业服务店铺升级页面的展示方法
     public function dpsjAction(){
+
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dpsj.html";
     }
     //企业服务变更服务页面的展示方法
     public function bgfwAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_bgfw.html";
     }
+
+
+
     //帮助类的在线问答的实现的方法
     public function zxwdAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_zxwd.html";
@@ -993,5 +1000,23 @@ class IndexController extends BaseController
 
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_qytb.html";
     }
-    
+
+    //用户说
+    public function saidAction(){
+        $model = new Model('usersay');
+        $lists = $model->select("select *from sl_usersay ORDER BY qs DESC limit 0,6");
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."said_list.html";
+    }
+
+    //用户说详情
+    public function detailAction(){
+        $model = new Model('usersay');
+        $id = $_GET['id'];
+        $list = $model->select("select *from sl_usersay WHERE id = {$id}")[0];
+        $list['content'] = html_entity_decode($list['content']);
+        $lists = $model->select("select *from sl_usersay ORDER BY qs DESC limit 0,6");
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."said_detail.html";
+    }
 }

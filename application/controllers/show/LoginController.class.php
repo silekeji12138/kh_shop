@@ -46,9 +46,12 @@ class LoginController extends BaseController
     public function zhuceAction(){
         $data=$_POST;
         $model=new model('member');
-        $model->insert($data);
+        if($model->insert($data)){
+            include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
+        }else{
+            $this->jump('index.php?p=show&c=login&a=register',"注册失败，请重试",3);
+        }
 
-        include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
     }
     //注册成功的页面展示
     public function successAction(){

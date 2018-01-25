@@ -37,13 +37,13 @@
                         <div class="pull-left">
                             <div class="money-g">官方估价:<span class="lind-money">38.39万</span> | 技术年费:<span><?=$v['jsnf']?>元(需退还)</span> | 消保金:<span><?=$v['xbj']?>元(需退还)</span></div>
                             <div class="clearfix pm-list-btn">
-                                <button type="button" class="btn btn-sell-l btn-phone" data-toggle="modal" data-target="#pm-bzj">立即购买</button>
+                                <button type="button" class="btn btn-sell-l btn-phone" data-toggle="modal" data-target="#pm-bzj"><a href="?c=user&a=order&type=2&id=<?=$v['id']?>" style="color: white">立即购买</a></button>
                                 <button type="button" class="btn btn-sell-l btn-sell-l02">立即预约</button>
                             </div>
                         </div>
                         <div class="pull-right">
                             <div class="money-right"><span><?=number_format($v['jiage']/10000,1)?></span>万</div>
-                            <a role="button" class="btn-soucang"><i class="glyphicon glyphicon-star"></i>收藏</a>
+                            <a role="button" href="?c=shop&a=collection&type=2&id=<?=$v['id']?>" class="btn-soucang"><i class="glyphicon glyphicon-star"></i>收藏</a>
                         </div>
                     </div>
                 </div>

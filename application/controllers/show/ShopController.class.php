@@ -137,6 +137,36 @@ class ShopController extends BaseController
         include CUR_VIEW_PATH . "Sshop" . DS ."buy.html";
     }
 
+    //收藏网店
+    public function collectionAction(){
+        $goods_id = $_GET['id'];
+        $type = $_GET['type'];
+        $uid = $_SESSION['user_id'];
+        $model = new Model('save');
+        if ($type==1){
+            $list = $model->select("select *from sl_shangpin WHERE id = {$goods_id}")[0];
+        }else{
+            $list = $model->select("select *from sl_qytb WHERE id = {$goods_id}")[0];
+        }
+        $mark = $model->select("select id from sl_save WHERE goods_id={$goods_id} and `type`={$type}");
+        if (empty($mark)){
+            return $this->jump($_SERVER['HTTP_REFERER'],'该商品已被收藏',3);
+        }
+        $row['biaoti'] = $list['biaoti'];
+        $row['csjg'] = $list['jiage'];
+        //卖家信用
+        $row['mjxy'] = $list['dtpf'];
+        $row['kdsj'] = $list['kdsj'];
+        $row['wdzt'] = $list['wdzt'];
+        $row['uid'] = $uid;
+        $row['goods_id'] = $goods_id;
+        if ($model->insert($row)){
+            $this->jump('?c=shop&a=save','收藏成功',3);
+        }else{
+            return $this->jump($_SERVER['HTTP_REFERER'],'收藏失败',3);
+        }
+        $model = new Model('商品');
+    }
 
     //收藏的网店
     public function saveAction(){
@@ -159,6 +189,7 @@ class ShopController extends BaseController
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
         $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=78 GROUP BY `no` ORDER BY dtime DESC");
+
         foreach ($cate as $v){
             $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=78 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }
@@ -166,6 +197,7 @@ class ShopController extends BaseController
         include CUR_VIEW_PATH . "Sshop" . DS ."upgrade.html";
     }
 
+    //代理记账
     public function agentAction(){
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
@@ -176,6 +208,7 @@ class ShopController extends BaseController
         include CUR_VIEW_PATH . "Sshop" . DS ."agent.html";
     }
 
+    //企业变更
     public function replaceAction(){
         $model = new Model('service');
         $uid = $_SESSION['user_id'];

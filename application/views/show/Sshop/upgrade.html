@@ -69,7 +69,7 @@
               <td><span class="table-number">¥<?=$v['fwjg']?></span></td>
               <td><?=$v['fws']?></td>
               <td><?=$v['status']?></td>
-              <td><a href="index.php?p=show&c=shop&a=del&model=service&id=<?=$v['id']?>" class="table-a">删除</a></td>
+              <td><a href="?c=user&a=common&no=<?=$v['no']?>" class="table-a"><?=$v['status']=='未付款'?付款:''?></a>&emsp;<a href="index.php?p=show&c=shop&a=del&model=service&id=<?=$v['id']?>" class="table-a">删除</a></td>
 
           </tr>
           <?php endforeach;?>

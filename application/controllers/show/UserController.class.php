@@ -49,15 +49,18 @@ class UserController extends BaseController
         return $result;
     }
 
-    //订单付款
-    public function orderAction(){
-
-        include CUR_VIEW_PATH . "Suser" . DS ."order.html";
-    }
 
     //会员的个人中心
     public function indexAction(){
-
+        $model = new Model('member');
+        $uid = $_SESSION['user_id'];
+        $row = $model->select("select property,frozen from sl_member WHERE id = {$uid}")[0];
+        //购买的网店
+        $buy = $model->select("select count(*) as count from sl_buy WHERE uid = {$uid} and zfzt='已支付' or zfzt='已支付订金'")[0];
+        $sale = $model->select("select count(*) as count from sl_shangpin WHERE uid={$uid}")[0];
+        $check = $model->select("select count(*) as count from sl_examine WHERE uid={$uid}")[0];
+        $wait = $model->select("select count(*) as count from sl_buy WHERE uid={$uid} and zfzt='已支付订金'")[0];
+        //var_dump($sale);die;
         include CUR_VIEW_PATH . "Suser" . DS ."user_index.html";
     }
 
@@ -70,6 +73,235 @@ class UserController extends BaseController
         $_SESSION['username']='';
         session_destroy();
         $this->jump('index.php?p=show&c=login&a=login','',0);
+    }
+
+    //商品订单
+    public function orderAction(){
+        $goods_id = $_GET['id'];
+        $model = new Model('shangpin');
+        $uid = $_SESSION['user_id'];
+        $type = $_GET['type'];
+        //防重复提交token
+        $token = mt_rand(1,100000);
+        $_SESSION['token'.$uid] = $token;
+        //订单号
+        $no = date('Ymd',time()).$uid.rand(100000,999999);
+        //余额
+        $row = $model->select("select property from sl_member WHERE id={$uid}")[0];
+
+        if ($type==1){
+            $list = $model->select("select *from sl_shangpin WHERE id={$goods_id}")[0];
+        }else{
+            $list = $model->select("select * from sl_qytb id={$goods_id}")[0];
+        }
+        include CUR_VIEW_PATH . "Suser" . DS ."order.html";
+    }
+
+    //生成商品订单付款
+    public function generateAction(){
+        $data = $_POST;
+        $uid = $_SESSION['user_id'];
+        $goods_id = $data['id'];
+        $type = $_GET['type'];
+        $token = $_SESSION['token'.$uid];
+        if ($token!=$data['token']){
+            //重复提交
+            $this->jump('/','请勿重复提交',3);
+        }else{
+            //创建订单  扣除余额
+            $model = new Model('shangpin');
+            $user = new Model('member');
+            $row = $user->select("select property,paywords from sl_member WHERE id={$uid}")[0];
+            if (md5($data['paywords'])!=$row['paywords']){
+                $this->jump('index.php?p=show&c=user&a=order&id='.$goods_id,"支付密码错误",3);
+            }
+            //开启事务
+            $model->start_T();
+            try{
+                if ($type==1){
+                    $list = $model->select("select *from sl_shangpin WHERE id={$goods_id}")[0];
+                }else{
+                    $list = $model->select("select * from sl_qytb id={$goods_id}")[0];
+                }
+                $lists['uid'] = $uid;
+                $lists['biaoti'] = $list['biaoti'];
+                $lists['type'] = $type;
+                $lists['csjg'] = $list['jiage'];
+                $lists['xbje'] = $list['xbj'];
+                $lists['no'] = $data['no'];
+                $lists['goods_id'] = $goods_id;
+                if ($data['fk']==1){
+                    $lists['zfzt'] = "已支付";
+                    $pay = $list['jiage']+$list['jiage']*0.1+$list['xbj'];
+                }else{
+                    $pay = $list['jiage']*0.2;
+                    $lists['zfzt'] = "已支付订金";
+                }
+                if ($row['property']<$pay){
+                    throw new Exception("余额不足，支付失败");
+                }
+                if ($list['mark']!=1){
+                    throw new Exception("商品已被购买");
+                }
+                $buy = new Model('sl_buy');
+
+                //商品下架
+                $status['mark'] = 0;
+                if(!$model->xg($status,"id=$goods_id")){
+                    throw new Exception("购买失败,商品已被购买");
+                }
+                //扣除余额
+                $arr['property'] = $row['property'] - $pay;
+                if(!$user->xg($arr,"id={$uid}")){
+                    throw new Exception("支付失败");
+                }
+                if (!$buy->insert($lists)){
+                    throw new Exception("购买失败");
+                }
+                //生成记录
+                $log = new Model('log');
+                $record['type'] = '支出';
+                $record['uid'] = $uid;
+                $record['mark'] = '支出';
+                $record['intro'] = '无';
+                $record['differ'] = '购买';
+                $record['price'] = $pay;
+                $record['dtime'] = time();
+                $record['status'] = '已支付';
+                $record['num'] = $data['no'];
+                $record['balance'] = $row['property']-$pay;
+                $log->insert($record);
+
+                $model->comit_T();
+                $this->jump('index.php?p=show&c=shop&a=buy','',0);
+            }catch (Exception $e){
+                //回滚
+                $model->roll_T();
+                $this->jump('index.php?p=show&c=user&a=order&type=1&id='.$goods_id,$e->getMessage(),3);
+            }
+
+
+        }
+    }
+
+    //企业服务订单
+    public function commonAction(){
+        $request = $_SERVER['REQUEST_METHOD'];
+        $model = new Model('service');
+        $uid = $_SESSION['user_id'];
+        if($request=='POST'){
+            $data = $_POST;
+            $type = $_GET['type'];
+            $no = date('Ymd',time()).$uid.rand(100000,999999);
+            if ($_GET['type']==1){
+                $list['type'] = '店铺升级';
+                $list['sort_id'] = 78;
+                $list['fwxq'] = $data['gszc'].' '.$data['nszz'].' '.$data['dz'].' '.$data['yhkh'];
+            }elseif ($_GET['type']==2){
+                $list['type'] = '代理记账';
+                $list['sort_id'] = 79;
+                $list['fwxq'] = $data['gszc'];
+            }else{
+                $list['type'] = '企业变更';
+                $list['sort_id'] = 80;
+                $list['fwxq'] = $data['gszc'];
+            }
+            $list['uid'] = $uid;
+            $list['fws'] = '店来店往自营';
+            $list['fwjg'] = $data['price'];
+            $list['dq'] = $data['province'].' '.$data['city'];
+            $list['status'] = '未付款';
+
+            //防重复提交token
+            $token = mt_rand(1,100000);
+            $_SESSION['token'.$uid] = $token;
+            //订单号
+            $no = date('Ymd',time()).$uid.rand(100000,999999);
+            $list['no'] = $no;
+            $model->insert($list);
+        }else{
+            $list = $model->select("select *from sl_service WHERE `no`={$_GET['no']}")[0];
+            $token = mt_rand(1,100000);
+            $_SESSION['token'.$uid] = $token;
+            $no = $list['no'];
+            if ($list['sort_id']==78){
+                $list['type'] = '店铺升级';
+            }elseif ($list['sort_id'] = 79){
+                $list['type'] = '代理记账';
+            }else{
+                $list['type'] = '企业变更';
+            }
+        }
+        //余额
+        $row = $model->select("select property from sl_member WHERE id={$uid}")[0];
+        include CUR_VIEW_PATH . "Suser" . DS ."common.html";
+    }
+
+    //企业服务订单付款
+    public function checkAction(){
+        $model = new Model('service');
+        $data = $_POST;
+        $uid = $_SESSION['user_id'];
+        $no = $data['no'];
+        $token = $_SESSION['token'.$uid];
+        if ($token!=$data['token']){
+            //重复提交
+            $this->jump('/','请勿重复提交',3);
+        }else{
+            //开启事务
+            $model->start_T();
+            $user = new Model('member');
+            $row = $user->select("select property,paywords from sl_member WHERE id={$uid}")[0];
+            if (md5($data['paywords'])!=$row['paywords']){
+                $this->jump('index.php?p=show&c=user&a=common&no='.$no,"支付密码错误",3);
+            }
+            try{
+                $list = $model->select("select *from sl_service WHERE no={$no}")[0];
+                $pay = $list['fwjg'];
+                if ($row['property']<$pay){
+                    throw new Exception("余额不足，支付失败");
+                }
+                $lists['status'] = '已付款';
+                //扣除余额
+                $arr['property'] = $row['property'] - $pay;
+                if(!$user->xg($arr,"id={$uid}")){
+                    throw new Exception("支付失败");
+                }
+                if ($list['status']=='已付款'){
+                    throw new Exception("请勿重复购买");
+                }
+                if (!$model->xg($lists,"no=$no")){
+                    throw new Exception("购买失败");
+                }
+                //生成记录
+                $log = new Model('log');
+                $record['type'] = '支出';
+                $record['uid'] = $uid;
+                $record['mark'] = '支出';
+                $record['intro'] = '无';
+                $record['differ'] = '购买服务';
+                $record['price'] = $pay;
+                $record['dtime'] = time();
+                $record['status'] = '已支付';
+                $record['num'] = $data['no'];
+                $record['balance'] = $row['property']-$pay;
+                $log->insert($record);
+
+                $model->comit_T();
+                if ($list['sort_id']==78){
+                    $this->jump('index.php?p=show&c=shop&a=upgrade','',0);
+                }elseif ($list['sort_id']==79){
+                    $this->jump('index.php?p=show&c=shop&a=agent','',0);
+                }else{
+                    $this->jump('index.php?p=show&c=shop&a=replace','',0);
+                }
+            }catch (Exception $e){
+                //回滚
+                $model->roll_T();
+               //var_dump($e->getMessage());die;
+                $this->jump('index.php?p=show&c=user&a=common&no='.$no,$e->getMessage(),3);
+            }
+        }
     }
 
     //充值

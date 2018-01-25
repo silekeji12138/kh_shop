@@ -43,6 +43,7 @@
               <th>消保金额</th>
               <th>销售状态</th>
               <th>交易状态</th>
+              <th>网店类型</th>
               <th style="min-width:70px;">操作</th>
             </tr>
           </thead>
@@ -62,6 +63,7 @@
               <td><span class="table-number">¥ <?=$v['xbje']?></span></td>
               <td><?=$v['xszt']?></td>
               <td><?=$v['zfzt']?></td>
+              <td><?=$v['type']==1?'普通网店':'企业淘宝'?></td>
               <td><a href="index.php?p=show&c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a></td>
             </tr>
           <?php endforeach?>
