@@ -104,7 +104,7 @@ $('#zhuce').click(function () {
       $.get('index.php?p=show&c=login&a=get',{tel:tel},function (msg) {
               if (tel1!=msg){
                   alert('手机验证码错误');return false;
-              }
+      }
       });
       if (password!=password2){
            $('<div class="register-help"><span>两次密码不一致！</span><i class="glyphicon glyphicon-triangle-right"></i></div>').appendTo('#p2');return false;

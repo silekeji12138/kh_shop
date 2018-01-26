@@ -365,7 +365,7 @@ $('#xx5').click(function(){
                     }else if (msg=='2'){
                         alert('你今天已经评价过该客服了');
                     }else {
-                        alert('请先登录');
+                        window.location.href("?c=login&a=login");
                     }
                 })
               $(this).destroy();
