@@ -12,7 +12,7 @@
 <body>
 <?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
 <?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
-<form action="?c=user&a=generate&type=<?=$type?>" method="post">
+<form action="?c=user&a=retainage&id=<?=$id?>" method="post">
     <div class="right-c" id="right-c">
         <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">企业服务</a></div>
         <ul class="clearfix tab-list">
@@ -35,27 +35,24 @@
             <hr>
         	<div class="fk-c">
             	<div class="clearfix">
-                	<div class="pull-left"><p><span class="color-999">账户可用余额：</span><span id="property"><?=$row['property']?></span> 元</p></div>
+                	<div class="pull-left"><p><span class="color-999">账户可用余额：</span><span id="property"><?=$one['property']?></span> 元</p></div>
                     <div class="pull-left"><a href="?c=user&a=recharge" class="btn btn-ddfk">余额不足  去充值</a></div>
                 </div>
             	<div class="clearfix">
                 	<div class="pull-left"><p><span class="color-999">付款方式： </span></p></div>
                     <div class="pull-left margin-left-10">
                         <label class="radio-inline">
-                          <input type="radio" name="fk" value="1" checked="" id="all"> 全额支付
-                        </label>
-                        <label class="radio-inline">
-                          <input type="radio" name="fk" value="2" id="part"> 交定金（支付20%，预留7天）
+                          <input type="radio" name="fk" value="1" checked="" id="all"> 支付尾款
                         </label>
                       </div>
                 </div>
-                <p><span class="color-999">支付总额：</span> <span class="blod" id="pay"><?=$list['jiage']*1.1+$list['xbj']?></span>元</p>
+                <p><span class="color-999">支付总额：</span> <span class="blod" id="pay"><?=$list['jiage']*0.9+$list['xbj']?></span>元 <span class="blod">&emsp;（已扣除订金）</span></p>
             	<div class="clearfix">
                 	<div class="pull-left"><p><span class="color-999">请输入支付密码：</span></p></div>
                     <div class="pull-left margin-left-10"><input type="password" id="paywords" name="paywords" class="form-control input"></div>
                 </div>
                 <div class="clearfix margin-top-20">
-                	<div class="pull-left"><a id="back" href="javascript:;" class="btn btn-tj btn-tj02 btn-padding">返回</a></div>
+                	<div class="pull-left"><a href="javascript:;" id="back" class="btn btn-tj btn-tj02 btn-padding">返回</a></div>
                     <div class="pull-left margin-left-10"><a href="javascript:;" id="submit" class="btn btn-ddfk">确认</a></div>
                 </div>
             </div>
@@ -75,16 +72,6 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
-    $("#all").click(function () {
-        if($(this).prop('checked')){
-            $("#pay").text($("#total").text());
-        }
-    });
-    $("#part").click(function () {
-        if($(this).prop('checked')){
-            $("#pay").text($("#price").text()*0.2);
-        }
-    });
     $("#back").click(function () {
         window.history.back();
     });

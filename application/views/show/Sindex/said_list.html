@@ -80,8 +80,8 @@
                                 <div class="pull-right"><div class="yhs-label">第<span><?=$v['qs']?></span>期</div></div>
                             </div>
                             <p>店主称呼：<?=$v['name']?></p>
-                            <p>店来店往账号：*********9</p>
-                            <p>交易类型：<?=$v['sclx']?></p>
+                            <p>店来店往账号：*********<?=substr($v['zh'],-1,1)?></p>
+                            <p>交易类型：<?=$v['jylx']?></p>
                         </a>
                     </li>
                 	<?php endforeach?>

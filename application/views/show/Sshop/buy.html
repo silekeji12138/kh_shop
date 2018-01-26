@@ -64,7 +64,10 @@
               <td><?=$v['xszt']?></td>
               <td><?=$v['zfzt']?></td>
               <td><?=$v['type']==1?'普通网店':'企业淘宝'?></td>
-              <td><a href="index.php?p=show&c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a></td>
+              <td>
+                  <a href="?c=user&a=retainage&id=<?=$v['id']?>" class="table-a"><?=$v['zfzt']!='已支付'?'付款':''?></a>
+                  <a href="?c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a>
+              </td>
             </tr>
           <?php endforeach?>
           </tbody>

@@ -148,14 +148,15 @@ class ShopController extends BaseController
         }else{
             $list = $model->select("select *from sl_qytb WHERE id = {$goods_id}")[0];
         }
-        $mark = $model->select("select id from sl_save WHERE goods_id={$goods_id} and `type`={$type}");
-        if (empty($mark)){
+        $mark = $model->select("select count(*) as count from sl_save WHERE goods_id={$goods_id} and `type`={$type}")[0];
+        if ($mark['count']!=0){
             return $this->jump($_SERVER['HTTP_REFERER'],'该商品已被收藏',3);
         }
         $row['biaoti'] = $list['biaoti'];
         $row['csjg'] = $list['jiage'];
         //卖家信用
         $row['mjxy'] = $list['dtpf'];
+        $row['type'] = $type;
         $row['kdsj'] = $list['kdsj'];
         $row['wdzt'] = $list['wdzt'];
         $row['uid'] = $uid;

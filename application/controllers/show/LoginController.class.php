@@ -26,6 +26,7 @@ class LoginController extends BaseController
                 $_SESSION['username']=$rs_tel[0]['name'];
                 $_SESSION['tel']=$rs_tel[0]['tel'];
                 $_SESSION['user_id']=$rs_tel[0]['id'];
+                $_SESSION['photo']=$rs_tel[0]['photo'];
                 //下次是否自动登录
                 if (isset($data['remember'])){
                     $id=$rs_tel[0]['id'];
@@ -45,7 +46,14 @@ class LoginController extends BaseController
   //用户注册的功能
     public function zhuceAction(){
         $data=$_POST;
+        $data['password'] = md5($data['password']);
+        $tel = $data['tel'];
         $model=new model('member');
+        //唯一性验证
+        $list = $model->select("select tel from sl_member WHERE tel={$tel}")[0];
+        if ($list){
+            return $this->jump($_SERVER['HTTP_REFERER'],'该手机号已经被注册',3);exit;
+        }
         if($model->insert($data)){
             include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
         }else{
@@ -53,12 +61,7 @@ class LoginController extends BaseController
         }
 
     }
-    //注册成功的页面展示
-    public function successAction(){
-        $model = new Model('member');
 
-        include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
-    }
 
     public function getAction(){
         $num=$_GET['tel'];

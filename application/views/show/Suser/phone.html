@@ -118,13 +118,13 @@
 
     })
 
-    var countdown=60;
+    var countdown=120;
     function settime(obj) { //发送验证码倒计时
         if (countdown == 0) {
             obj.attr('disabled',false);
             //obj.removeattr("disabled");
             obj.val("获取验证码");
-            countdown = 60;
+            countdown = 120;
             return;
         } else {
             obj.attr('disabled',true);
