@@ -9,7 +9,8 @@ class BaseController extends Controller {
 	
 	//验证用户是否登录
 	public function checkLogin(){
-        if ($_GET["a"] == "daochu") {
+        $a=empty($_REQUEST['a'])? "" : $_REQUEST['a'];
+        if ($a == "daochu" ||$a == "fileupload" ) {
             //导出功能不用判断登录；
         } else {
             //注意，此处的admin是我在登录成功时保存的登录标识符
@@ -56,36 +57,7 @@ class BaseController extends Controller {
 	       $temp_html.='</select>';
 	       //$temp_html.='</div>';
 	       
-	       //如果是村管理员1
-	       if($_SESSION['admin']['zuming']=="村管理员")
-	       {
-	           $adminModel = new AdminModel('admin');
-	           $canshuModel =new Model("canshu");
-	           $user = $adminModel->selectByPk($_SESSION['admin']['user_id']);
-	           $canshu = $canshuModel->selectByPk($user["cun_id"]);
-	           //村classID
-	           if($filedName=="suoshuzu")
-	           {
-	               $cun_classid=$user["cun_id"];
-	           }else
-	           {
-	               $cun_classid=$canshu["classid"];
-	           }
-	          
-	           //只查询本村 锁定其他选项
-	           if(!empty($cun_classid))
-	           {
-	               if($cun_classid==$classid)
-	               {
-	                   $script_str='<script>'.
-	   	                   '$("#'.$filedName.$classid.'").prevAll().attr("disabled","disabled") ;  '.
-	   	                   '</script>';
-	                   $temp_html.=$script_str;
-	               }
-	               
-	               
-	           }
-	       }
+	       
 	       
 	       
 	    }
@@ -138,14 +110,36 @@ class BaseController extends Controller {
 	        
 	    }else if($type=="图片")
 	    {
-	        return ' <tr style="display: table-row;">
+	        $_js_str="
+	            <script type='text/javascript'>
+	               //iframe窗
+	               function upload_".$filedName."()
+                   {
+                       layer.open({
+                          type: 2,
+                          title: '上传图片 ',
+                          shadeClose: true,
+                          shade: false,
+                          maxmin: true, //开启最大化最小化按钮
+                          area: ['893px', '600px'],
+                          content: '/index.php?p=admin&c=inc&a=showWebUploader&type=image&field=".$filedName."'
+                       }); 
+                   }
+                 </script>
+	               ";
+	        return $_js_str.' <tr style="display: table-row;">
 				    		    <th>'.$kjName.'</th>
 				    		    <td>
-	                            <input type = "file" name = "'.$filedName.'" class="input"  />
-                                <img src="'.$selectValue.'" style="max-width: 200px;max-height: 100px;overflow: hidden;" onerror="javascript:this.src=\'application/views/admin/images/nopic.jpg\';" />
+				    		    <input type="hidden" name="'.$filedName.'"  id="'.$filedName.'"  >
+				    		    <a id="img_a_'.$filedName.'"  href="'.$selectValue.'"  target="_blank" >
+				    		       <img id="img_'.$filedName.'" src="'.$selectValue.'" style="max-width: 200px;max-height: 100px;overflow: hidden;" onerror="javascript:this.src=\'application/views/admin/images/nopic.jpg\';" /> 
+				    		    </a>
+                                
+                                <a onclick="upload_'.$filedName.'()"  class="btn btn-blue"><em class="ficon  ficon-uploading"></em> 上传图片</a>
                                 <i>'.$tipString.'</i>
 				    		    </td>
 				    	     </tr>';
+
 	        
 	    }else if($type=="单选")
 	    {
@@ -289,7 +283,7 @@ class BaseController extends Controller {
                     	                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
                     	                var height = Math.max(bHeight, dHeight);
                     	                iframe.height = height;
-                    	                console.log(height);
+                    	                //console.log(height);
                     	            }catch (ex){}
                     	        }
                     	        window.setInterval("reinitIframe()", 200);
@@ -301,13 +295,33 @@ class BaseController extends Controller {
 	        
 	    }else if($type=="文件")
 	    {
-	        
-	        return '<tr style="display: table-row;">
+	        $_js_str="
+	            <script type='text/javascript'>
+	               //iframe窗
+	               function upload_".$filedName."()
+                   {
+                       layer.open({
+                          type: 2,
+                          title: '上传文件 ',
+                          shadeClose: true,
+                          shade: false,
+                          maxmin: true, //开启最大化最小化按钮
+                          area: ['893px', '600px'],
+                          content: '/index.php?p=admin&c=inc&a=showWebUploader&type=file&field=".$filedName."' 
+                       });
+                   }
+                 </script>
+	               ";
+	        return $_js_str.' <tr style="display: table-row;">
 				    		    <th>'.$kjName.'</th>
 				    		    <td>
-				    			<input type="file" name="'.$filedName.'"  id="'.$filedName.'" class="input"> <a href="'.$selectValue.'">'.$selectValue.'</a>
+				    		    <input type="hidden" name="'.$filedName.'"  id="'.$filedName.'"  >
+				    		    <a id="file_'.$filedName.'"  href="'.$selectValue.'"  target="_blank" >'.$selectValue.'</a>
+                                <a onclick="upload_'.$filedName.'()"  class="btn btn-blue"><em class="ficon  ficon-uploading"></em> 上传文件</a>
+                                <i>'.$tipString.'</i>
 				    		    </td>
 				    	     </tr>';
+	        
 	        
 	    }else if($type=="下拉框")
 	    {
@@ -318,30 +332,35 @@ class BaseController extends Controller {
 				    		    <td>'.
 				    		    '<input name="'.$filedName.'" id="'.$filedName.'" type="hidden"  value="'.$selectValue.'">'.
 				    		    '	       
-                                <iframe width="100%" onload="this.height=50" src="/index.php?p=admin&c=Inc&a=addSelect&field='.$filedName.'&field_id='.$filedId.'" scrolling="no" frameborder="0" id="if'.$filedName.'" ></iframe>
-                    	        <script>
-                    	        function reinitIframe'.$filedName.'(){
-                    	            var iframe = document.getElementById("if'.$filedName.'");
-                    	            try{
-                    	                var bHeight = iframe.contentWindow.document.body.scrollHeight;
-                    	                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-                    	                var height = Math.max(bHeight, dHeight);
-                    	                iframe.height = height;
-                    	                //console.log(height);
-                    	            }catch (ex){}
-                    	        }
-                    	        window.setInterval("reinitIframe'.$filedName.'()", 200);
-                    	        </script>'.
-				    		    '</td>
+                                <iframe width="100%"  onload="this.height=50"  src="/index.php?p=admin&c=Inc&a=addSelect&field='.$filedName.'&field_id='.$filedId.'" scrolling="no"  frameborder="0" id="if'.$filedName.'" ></iframe>
+                    	         <script>
+                        	        function reinitIframe'.$filedName.'(){
+                        	            var iframe = document.getElementById("if'.$filedName.'");
+                        	            try{
+                        	                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+                        	                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                        	                var height = Math.max(bHeight, dHeight);
+                        	                iframe.height = height;
+                        	                //console.log(height);
+                        	            }catch (ex){}
+                        	        }
+                        	        window.setInterval("reinitIframe'.$filedName.'()", 200);
+                    	        </script>
+                                 </td>
                         </tr>';
 	        
 	        
 	    }else if($type=="多条记录")
 	    {
+	        $commomClass = new Common();
 	        $filedModel1=new FiledModel("filed");
 	        $filedValArray=$filedModel1->getFiledDefaultValue($filedId);
 	        $_model_id=$filedValArray["modelid"];
 	        $_guanlianziduan=$filedValArray["fieldname"];//两张表通过关联的字段
+            if($selectValue=="" || empty($selectValue))
+            {
+                $selectValue = $commomClass->getOrderId();
+            }
 	        //echo '/index.php?p=admin&c=Inc&a=showDuotiaojilu&model_id='.$_model_id.'&guanlianziduan_val='.$selectValue.'&guanlianziduan='.$_guanlianziduan.'&field='.$filedName.'&field_id='.$filedId.'';die();
 	        return '<tr style="display: table-row;">
 				    		    <th>'.$kjName.'</th>
@@ -393,15 +412,7 @@ class BaseController extends Controller {
                         </tr>';
 	        
 	        
-	    }else if ($type=="商品编号"){
-            return ' <div class="marb-20">
-					        <p class="title"><em class="txt-blue ficon ficon-deng"></em>'.$kjName.'</p>
-					        <p> <input type="hidden" class="input"   name="'.$filedName.'"  id="'.$filedName.'"  value="'.time().rand(1000000,9999999).'"/> </p>
-				        </div>';
-
-        }
-
-	    else  {
+	    }else  {
 	       
 	        if($filedName=="laiyuanbianhao" && !empty($_GET['guanlianziduan_val']))
 	        {
@@ -547,7 +558,7 @@ class BaseController extends Controller {
 	        //$filedVal=$filedModel1->getFiledDefaultValue($filedId);
 	        return     '<input name="'.$filedName.$randNumber.'" id="'.$filedName.$randNumber.'" type="hidden"  value="'.$selectValue.'">'.
 					    		    '
-                                <iframe width="100%" onload="this.height=50" src="/index.php?p=admin&c=Inc&a=showSelect&field='.$filedName.$randNumber.'&field_id='.$filedId.'" scrolling="no" frameborder="0" id="if'.$filedName.'" ></iframe>
+                                <iframe width="100%"  onload="this.height=50" src="/index.php?p=admin&c=Inc&a=showSelect&field='.$filedName.$randNumber.'&field_id='.$filedId.'" scrolling="no" frameborder="0" id="if'.$filedName.'" ></iframe>
                     	        <script>
                     	        function reinitIframe'.$randNumber.'(){
                     	            var iframe = document.getElementById("if'.$filedName.'");
@@ -555,7 +566,7 @@ class BaseController extends Controller {
                     	                var bHeight = iframe.contentWindow.document.body.scrollHeight;
                     	                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
                     	                var height = Math.max(bHeight, dHeight);
-                    	                iframe.height = height;
+                    	                //iframe.height = height;
                     	                //console.log(height);
                     	            }catch (ex){}
                     	        }
