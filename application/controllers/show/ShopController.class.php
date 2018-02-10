@@ -60,10 +60,13 @@ class ShopController extends BaseController
     public function taobaoAction(){
         $request = $_SERVER['REQUEST_METHOD'];
         if ($request=='POST'){
-            $model = new Model('examine');
+            $model = new Model('shangpin');
             $data = $_POST;
             $data['uid'] = $_SESSION['user_id'];
             $data['szpt'] = "淘宝网店";
+            $data['xszt'] = "未售";
+            $data['shzt'] = "待审核";
+            $data['jyzt'] = "等待出售";
             $data['wgkf'] = $data['yb']."-".$data['yz']."-".$data['wg'];
             $data['zj'] = implode('-',$data['zj']);
             if($model->insert($data)){
@@ -80,10 +83,13 @@ class ShopController extends BaseController
     public function tianmaoAction(){
         $request = $_SERVER['REQUEST_METHOD'];
         if ($request=='POST'){
-            $model = new Model('examine');
+            $model = new Model('shangpin');
             $data = $_POST;
             $data['uid'] = $_SESSION['user_id'];
             $data['szpt'] = "天猫商城";
+            $data['xszt'] = "未售";
+            $data['shzt'] = "待审核";
+            $data['jyzt'] = "等待出售";
             $data['wgkf'] = $data['yb']."-".$data['yz']."-".$data['wg'];
             $data['zj'] = implode('-',$data['zj']);
             if($model->insert($data)){
@@ -99,11 +105,15 @@ class ShopController extends BaseController
     //出售其他网店
     public function otherAction(){
         $request = $_SERVER['REQUEST_METHOD'];
-        $model = new Model('examine');
+        $model = new Model('shangpin');
         if ($request=='POST'){
             $data = $_POST;
             $data['uid'] = $_SESSION['user_id'];
             $data['zj'] = implode('-',$data['zj']);
+            $data['xszt'] = "未售";
+            $data['shzt'] = "待审核";
+            $data['jyzt'] = "等待出售";
+            $data['xbj'] = $data['jiage']*0.2;
 //            var_dump($data);die;
             if($model->insert($data)){
                 return $this->jump('index.php?p=show&c=shop&a=other','提交成功',3);
@@ -114,15 +124,15 @@ class ShopController extends BaseController
         }
         //所属行业
         $hy = $model->select("select u1 from sl_canshu  where classid=267 order by id desc");
-
+        $pt = $model->select("select u1 from sl_canshu  where classid=278 order by id desc");
         include CUR_VIEW_PATH . "Sshop" . DS ."other.html";
     }
 
     //出售的网店
     public function shopSaleAction(){
-        $model = new Model('examine');
+        $model = new Model('shangpin');
         $uid = $_SESSION['user_id'];
-        $lists = $model->select("select *from sl_examine WHERE uid={$uid} ORDER BY dtime DESC");
+        $lists = $model->select("select *from sl_shangpin WHERE uid={$uid} ORDER BY dtime DESC");
         include CUR_VIEW_PATH . "Sshop" . DS ."shop_sale.html";
     }
 
@@ -190,7 +200,7 @@ class ShopController extends BaseController
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
         $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=78 GROUP BY `no` ORDER BY dtime DESC");
-
+        $lists = [];
         foreach ($cate as $v){
             $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=78 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }
@@ -203,6 +213,7 @@ class ShopController extends BaseController
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
         $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=79  GROUP BY `no` ORDER BY dtime DESC");
+        $lists = [];
         foreach ($cate as $v){
             $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=79 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }
@@ -214,6 +225,7 @@ class ShopController extends BaseController
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
         $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=80  GROUP BY `no` ORDER BY dtime DESC");
+        $lists = [];
         foreach ($cate as $v){
             $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=80 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }

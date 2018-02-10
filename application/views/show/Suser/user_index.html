@@ -29,15 +29,15 @@
                 </a>
             </div>
             <div class="col-xs-3">
-                <a href="?c=shop&a=shopSale" class="number-c">
+                <a href="?c=shop&a=taobao" class="number-c">
                     <div class="number-back number-back03"><i class="user-icon icon-number"></i></div>
-                    <div class="number-right">我出售的网店</div>
+                    <div class="number-right">我要出售网店</div>
                 </a>
             </div>
             <div class="col-xs-3">
-                <a href="?c=shop&a=buy" class="number-c">
+                <a href="/" class="number-c">
                     <div class="number-back number-back04"><i class="user-icon icon-number"></i></div>
-                    <div class="number-right">我购买的网店</div>
+                    <div class="number-right">网店估价</div>
                 </a>
             </div>
         </div>
@@ -57,8 +57,8 @@
                 <div class="user-back">
                     <div class="clearfix">
                         <div class="pull-left tj-number">
-                            <p>全部余额：<span><?=$row['property']?></span> 元</p>
-                            <p>可用余额：<span><?=$row['property']-$row['frozen']?></span> 元</p>
+                            <p>全部余额：<span><?=$row['property']+$row['frozen']?></span> 元</p>
+                            <p>可用余额：<span><?=$row['property']?></span> 元</p>
                             <p>冻结资金：<span><?=$row['frozen']?></span> 元</p>
                             <p>保证金余额：<span><?=$row['xbj']?></span> 元</p>
                         </div>
@@ -101,7 +101,7 @@
                 <div class="user-back">
                     <div class="clearfix">
                         <div class="pull-left lc-tt">
-                            <div class="lc-title">买家入门</div>
+                            <div class="lc-title">卖家入门</div>
                             <div><a href="" class="btn btn-tj">下载详细流程</a></div>
                         </div>
                         <div class="lc-img">
@@ -134,31 +134,27 @@
                 <div class="user-back">
                     <div class="news-tt">网站公告</div>
                     <ul class="news-list">
-                        <li><a href="">店来店往国庆中秋放假公告</a></li>
-                        <li><a href="">店来店往9月生日会：是回忆，亦是开始</a></li>
-                        <li><a href="">店来店往荣获上海科博会“创新产品奖”...</a></li>
-                        <li><a href="">店来店往8月生日会：展现最真实的自我</a></li>
-                        <li><a href="">7月生日会：没有空调西瓜不叫过夏天</a></li>
+                        <?php foreach($zx as $v):?>
+                        <li><a href="?c=user&a=notice&id=<?=$v['id']?>"><?=$v['biaoti']?></a></li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
                 <div class="user-back">
                     <div class="news-tt">在线问答</div>
                     <ul class="news-list">
-                        <li><a href="">店来店往国庆中秋放假公告</a></li>
-                        <li><a href="">店来店往9月生日会：是回忆，亦是开始</a></li>
-                        <li><a href="">店来店往荣获上海科博会“创新产品奖”...</a></li>
-                        <li><a href="">店来店往8月生日会：展现最真实的自我</a></li>
-                        <li><a href="">7月生日会：没有空调西瓜不叫过夏天</a></li>
+                        <ul class="news-list">
+                            <?php foreach($qa as $v):?>
+                            <li><a href="?c=index&a=zxwd"><?=$v['wt']?></a></li>
+                            <?php endforeach;?>
+                        </ul>
                     </ul>
                 </div>
                 <div class="user-back">
                     <div class="news-tt">投诉与建议</div>
                     <ul class="news-list">
-                        <li><a href="">店来店往国庆中秋放假公告</a></li>
-                        <li><a href="">店来店往9月生日会：是回忆，亦是开始</a></li>
-                        <li><a href="">店来店往荣获上海科博会“创新产品奖”...</a></li>
-                        <li><a href="">店来店往8月生日会：展现最真实的自我</a></li>
-                        <li><a href="">7月生日会：没有空调西瓜不叫过夏天</a></li>
+                        <?php foreach($lists as $v):?>
+                        <li><a href="javascript:;"><?=$v['biaoti']?></a></li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
             </div>

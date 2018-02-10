@@ -46,7 +46,7 @@
             </tr>
           </thead>
           <tbody>
-          <?php foreach($lists as $k=>$val):?>
+          <?php foreach($lists as $k=>$val): ?>
           <tr>
               <td colspan="6">
                   <div class="clearfix table-title">
@@ -56,7 +56,7 @@
               </td>
           </tr>
 
-          <?php foreach($val as $k=>$v):?>
+          <?php foreach($val as $v):?>
           <tr>
               <td>
                   <div class="checkbox table-checkbox">
@@ -102,6 +102,12 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
     $("#checkall").click(function () {
         if (this.checked){
             $("input[name='ids[]']").attr('checked', true)

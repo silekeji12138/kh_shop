@@ -66,6 +66,12 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
     $("#submit").click(function () {
         if ( $("#content").val()==""){
             alert("请输入建议内容")

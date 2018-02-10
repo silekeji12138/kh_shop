@@ -18,7 +18,7 @@ class LoginController extends BaseController
     public function login1Action(){
         $data=$_POST;
         $model=new model('member');
-        $rs_tel=$model->select("select *from sl_member WHERE tel='".$data['tel']."' or `name`='{$data['tel']}'");
+        $rs_tel=$model->select("select *from sl_member WHERE tel='".$data['tel']."' or `username`='{$data['tel']}' or email='{$data['tel']}'");
         if ($rs_tel){
             $data['password'] = md5($data['password']);
             $rs_password=$model->select("select *from sl_member WHERE password='".$data['password']."'");
@@ -48,13 +48,17 @@ class LoginController extends BaseController
         $data=$_POST;
         $data['password'] = md5($data['password']);
         $tel = $data['tel'];
-        $model=new model('member');
+        $model=new Model('member');
         //唯一性验证
         $list = $model->select("select tel from sl_member WHERE tel={$tel}")[0];
         if ($list){
             return $this->jump($_SERVER['HTTP_REFERER'],'该手机号已经被注册',3);exit;
         }
         if($model->insert($data)){
+            $_SESSION['username']=$data['name'];
+            $_SESSION['tel']=$data['tel'];
+            $id = $model->select("select id from sl_member WHERE tel={$tel}")[0];
+            $_SESSION['user_id']=$id['id'];
             include CUR_VIEW_PATH . "Slogin" . DS ."login_success.html";
         }else{
             $this->jump('index.php?p=show&c=login&a=register',"注册失败，请重试",3);

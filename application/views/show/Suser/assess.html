@@ -31,8 +31,8 @@
           <tbody>
           <?php foreach($list as $v):?>
           <tr>
-              <td><?=$v['username']?></td>
-              <td><?=$v['content']?></td>
+              <td><?=$v['nc']?></td>
+              <td><?=$v['py']?></td>
               <td><?=substr($v['dtime'],0,10)?></td>
           </tr>
           <?php endforeach;?>
@@ -54,6 +54,12 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  

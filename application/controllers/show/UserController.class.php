@@ -54,14 +54,32 @@ class UserController extends BaseController
     public function indexAction(){
         $model = new Model('member');
         $uid = $_SESSION['user_id'];
-        $row = $model->select("select property,frozen from sl_member WHERE id = {$uid}")[0];
+        $row = $model->select("select * from sl_member WHERE id = {$uid}")[0];
         //购买的网店
         $buy = $model->select("select count(*) as count from sl_buy WHERE uid = {$uid} and zfzt='已支付' or zfzt='已支付订金'")[0];
-        $sale = $model->select("select count(*) as count from sl_shangpin WHERE uid={$uid}")[0];
-        $check = $model->select("select count(*) as count from sl_examine WHERE uid={$uid}")[0];
+        $sale = $model->select("select count(*) as count from sl_shangpin WHERE uid={$uid} and status='通过'")[0];
+        $check = $model->select("select count(*) as count from sl_shangpin WHERE uid={$uid} and status='待审核'")[0];
         $wait = $model->select("select count(*) as count from sl_buy WHERE uid={$uid} and zfzt='已支付订金'")[0];
+        //公告
+        $zx=$model->select("select *from sl_tongzhi ORDER BY dtime DESC limit 0,5");
+        //在线问答
+        $qa = $model->select("select *from sl_zxwd ORDER BY dtime DESC limit 0,5");
+        //投诉建议
+        $lists = $model->select("select * from sl_advice WHERE sort_id = 74 or sort_id=76 limit 0,5");
         //var_dump($sale);die;
         include CUR_VIEW_PATH . "Suser" . DS ."user_index.html";
+    }
+
+    //公告
+    public function noticeAction(){
+        $id=$_GET['id'];
+        $model=new model('help');
+        $zx=$model->select("select *from sl_tongzhi ORDER BY dtime DESC limit 0,10");
+        if ($id){
+            $result=$model->select("select neirong,biaoti from sl_tongzhi WHERE id=$id");
+            $res=$result[0]['neirong'];
+        }
+        include CUR_VIEW_PATH . "Suser" . DS ."notice.html";
     }
 
     //用户注销功能的方法
@@ -118,11 +136,17 @@ class UserController extends BaseController
             //创建订单  扣除余额
             $model = new Model('shangpin');
             $user = new Model('member');
-            $row = $user->select("select property,paywords from sl_member WHERE id={$uid}")[0];
+            $row = $user->select("select property,paywords,frozen,xbj from sl_member WHERE id={$uid}")[0];
             if (md5($data['paywords'])!=$row['paywords']){
                 return $this->jump($_SERVER['HTTP_REFERER'],'支付密码错误',3);
             }
             //开启事务
+            /**
+             * arr-------用户资金管理
+             * lists-----购买订单
+             * line------冻结资金
+             * record----收支记录
+            */
             $model->start_T();
             try{
                 if ($type==1){
@@ -135,16 +159,21 @@ class UserController extends BaseController
                 $lists['biaoti'] = $list['biaoti'];
                 $lists['type'] = $type;
                 $lists['csjg'] = $list['jiage'];
-                $lists['xbje'] = $list['xbj'];
+                $lists['xbje'] = $list['jiage']*0.2;
                 $lists['no'] = $data['no'];
                 $lists['goods_id'] = $goods_id;
-                $lists['xszt'] = "停售";
+                $lists['xszt'] = "交易中";
                 if ($data['fk']==1){
-                    $pay = $list['jiage']+$list['jiage']*0.1+$list['xbj'];
+                    $pay = $list['jiage']+$list['jiage']*0.1+$list['xbj']*0.2;
+                    $arr['xbj'] = $list['jiage']*0.2;
                     $lists['zfzt'] = "已支付";
+                    $record['intro'] = "全款";
+                    $line['intro'] = "全款";
                 }else{
                     $pay = $list['jiage']*0.2;
                     $lists['zfzt'] = "已支付订金";
+                    $record['intro'] = "订金";
+                    $line['intro'] = "订金";
                 }
                 if ($row['property']<$pay){
                     throw new Exception("余额不足，支付失败");
@@ -156,11 +185,14 @@ class UserController extends BaseController
 
                 //商品下架
                 $status['mark'] = 0;
+                $status['jyzt'] = "交易中";
                 if(!$model->xg($status,"id=$goods_id")){
                     throw new Exception("购买失败,商品已被购买");
                 }
                 //扣除余额
                 $arr['property'] = $row['property'] - $pay;
+                $arr['frozen'] = $pay + $row['frozen'];
+                $arr['xbj'] = $arr['xbj'] + $row['xbj'];
                 if(!$user->xg($arr,"id={$uid}")){
                     throw new Exception("支付失败");
                 }
@@ -172,7 +204,6 @@ class UserController extends BaseController
                 $record['type'] = '支出';
                 $record['uid'] = $uid;
                 $record['mark'] = '支出';
-                $record['intro'] = '无';
                 $record['differ'] = '购买店铺';
                 $record['price'] = $pay;
                 $record['dtime'] = time();
@@ -180,7 +211,16 @@ class UserController extends BaseController
                 $record['num'] = $data['no'];
                 $record['balance'] = $row['property']-$pay;
                 $log->insert($record);
-
+                //冻结资金
+                $line['type'] = '冻结';
+                $line['uid'] = $uid;
+                $line['mark'] = '支出';
+                $line['differ'] = '购买店铺';
+                $line['price'] = $pay;
+                $line['dtime'] = time();
+                $line['status'] = '已冻结';
+                $line['num'] = $data['no'];
+                $log->insert($line);
                 $model->comit_T();
                 $this->jump('?c=shop&a=buy','',0);
             }catch (Exception $e){
@@ -215,8 +255,9 @@ class UserController extends BaseController
                     throw new Exception('购买失败');
                 }
                 //扣除余额
-                $pay = $list['jiage']*0.9+$list['xbj'];
-
+                $pay = $list['jiage']*1.1;
+                $arr['frozen'] = $pay + $one['frozen'];
+                $arr['xbj'] = $list['jiage']*0.2 + $one['xbj'];
                 $arr['property'] = $one['property'] - $pay;
                 if(!$user->xg($arr,"id={$uid}")){
                     throw new Exception("支付失败");
@@ -232,9 +273,22 @@ class UserController extends BaseController
                 $record['price'] = $pay;
                 $record['dtime'] = time();
                 $record['status'] = '已支付';
+                $record['intro'] = '尾款';
                 $record['num'] = $order['no'];
                 $record['balance'] = $one['property']-$pay;
                 $log->insert($record);
+                //冻结资金
+                $line['type'] = '冻结';
+                $line['uid'] = $uid;
+                $line['mark'] = '支出';
+                $line['differ'] = '购买店铺';
+                $line['price'] = $pay;
+                $line['dtime'] = time();
+                $line['status'] = '已冻结';
+                $line['num'] = $data['no'];
+                $log->insert($line);
+
+
                 //提交
                 $model->comit_T();
                 $this->jump('?c=shop&a=buy','',0);
@@ -370,7 +424,13 @@ class UserController extends BaseController
 
     //充值
     public function rechargeAction(){
-
+        //线下
+        $request = $_SERVER['REQUEST_METHOD'];
+        if($request=="POST"){
+            $data = $_POST;
+            $model = new Model('');
+            $model->insert($data);
+        }
         include CUR_VIEW_PATH . "Suser" . DS ."recharge.html";
     }
 
@@ -437,7 +497,7 @@ class UserController extends BaseController
         header("Content-Type:text/html;charset=utf8");
         $model = new Model('log');
         $uid = $_SESSION['user_id'];
-        $where = "where uid={$uid} ";
+        $where = "where uid={$uid} and type!='冻结'";
         $request = $_SERVER['REQUEST_METHOD'];
         if ($request=='POST'){
             $data = $_POST;
@@ -447,7 +507,7 @@ class UserController extends BaseController
                     foreach ($data['type'] as $item=>$val){
                         if ($item==0){
                             if ($val=='其它'){
-                                $where .= " and type='冻结' or type='收入'";
+                                $where .= " and type='收入'";
                             }else{
                                 $where .= " and type='$val'";
                             }
@@ -524,16 +584,21 @@ class UserController extends BaseController
         $uid = $_SESSION['user_id'];
         //查询个人信息
         $list = $model->select("select * from sl_member WHERE id={$uid}")[0];
+
         if ($request=='POST'){
             $data = $_POST;
             $row['sex'] = $data['sex'];
             $row['username'] = $data['username'];
             $row['birth'] = $data['year']."-".$data['month']."-".$data['day'];
             //剔除不可更改的信息
-            if (!isset($list['name'])){
+            if (empty($list['name'])){
+                //第一次需短信验证
+                if ($_SESSION[$list['tel']]!=$data['captcha']){
+                    $this->jump('?p=show&c=user&a=person','验证码错误',3);
+                }
                 $row['name'] = $data['name'];
             }
-            if (!isset($list['email'])){
+            if (empty($list['email'])){
                 $row['email'] = $data['email'];
             }
             //头像
@@ -545,6 +610,8 @@ class UserController extends BaseController
             }
 
             if($model->xg($row,"id=".$uid)){
+                $_SESSION['photo'] = $row['photo'];
+                $_SESSION['name'] = $data['name'];
                 $this->jump('index.php?p=show&c=user&a=person','修改成功',3);
             }else{
                 $this->jump('index.php?p=show&c=user&a=person','修改失败',3);
@@ -581,14 +648,22 @@ class UserController extends BaseController
     //支付密码
     public function paywordsAction(){
         $request = $_SERVER['REQUEST_METHOD'];
+        $model = new Model('member');
+        $uid = $_SESSION['user_id'];
+        //验证是否为首次设置密码
+        $paywords = $model->select("select paywords from sl_member WHERE id={$uid}")[0];
         if ($request=='POST'){
-            $model = new Model('member');
             $data = $_POST;
+            if (!empty($paywords['paywords'])){
+                if (md5($data['old_pay'])!=$paywords['paywords']){
+                    $this->jump('index.php?p=show&c=user&a=paywords','旧密码不正确',3);
+                }
+            }
+            unset($data['old_pay']);
             if (empty($data['paywords'])){
                 $this->jump('index.php?p=show&c=user&a=paywords','密码不能为空',3);
             }
             $data['paywords'] = md5($data['paywords']);
-            $uid = $_SESSION['user_id'];
             if($model->xg($data,"id=".$uid)){
                 $this->jump('index.php?p=show&c=user&a=paywords','修改成功',3);
             }else{
@@ -676,7 +751,7 @@ class UserController extends BaseController
                 $mail->FromName = "店来店往";
                 $mail->AddAddress($email);
                 $mail->Subject = '邮箱认证';
-                $mail->Body    = '<b><a style="color:red;" href="">点击确认</a></b>绑定邮箱';
+                $mail->Body    = "<b><a style='color:red;' href='http://new6.jileiyun.com?c=user&a=authenticate&id=".$uid."&email=".$email."'>点击确认</a></b>绑定邮箱";
                 $mail->WordWrap = 80; // 设置每行字符串的长度
                 $mail->IsHTML(true);
                 $mail->Send();
@@ -690,6 +765,14 @@ class UserController extends BaseController
 
         $email = $_SESSION['email'.$uid];
         include CUR_VIEW_PATH . "Suser" . DS ."email.html";
+    }
+
+    public function authenticateAction(){
+        $uid = $_GET['id'];
+        $data['email'] = $_GET['email'];
+        $model = new Model('member');
+        $model->xg($data,"id=$uid");
+        $this->jump('index.php?p=show&c=user&a=person','邮箱认证成功',3);
     }
 
     //建议
@@ -715,18 +798,7 @@ class UserController extends BaseController
     public function consultAction(){
         $model = new Model('advice');
         $uid = $_SESSION['user_id'];
-        $request = $_SERVER['REQUEST_METHOD'];
-        if ($request=='POST'){
-            $data = $_POST;
-            $data['uid'] = $uid;
-            $data['sort_id'] = 75;
-            if($model->insert($data)){
-                $this->jump('?c=user&a=consult','',0);
-            }else{
-                $this->jump('?c=user&a=consult','咨询失败，请稍后再试',3);
-            }
-        }
-        $list = $model->select("select * from sl_advice WHERE uid={$uid} and sort_id = 75");
+        $list = $model->select("select * from sl_zxwd WHERE uid={$uid} ORDER BY dtime DESC ");
         include CUR_VIEW_PATH . "Suser" . DS ."consult.html";
     }
 
@@ -753,7 +825,7 @@ class UserController extends BaseController
     public function assessAction(){
         $model = new Model('advice');
         $uid = $_SESSION['user_id'];
-        $list = $model->select("select * from sl_advice WHERE uid={$uid} and sort_id = 77");
+        $list = $model->select("select * from sl_kefu WHERE uid={$uid} ");
         include CUR_VIEW_PATH . "Suser" . DS ."assess.html";
     }
 }

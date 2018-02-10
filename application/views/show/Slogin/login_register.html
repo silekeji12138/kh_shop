@@ -72,10 +72,11 @@
 <script src="public/khshop/js/wow.min.js"></script>
 <script src="public/js/gVerify.js"></script>
 <script>
+    var reg =  /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
     $('#sms').click(function () {
         var num=$('#phone').val();
 
-        if (num.length!=11){
+        if (!reg.test(num)){
             alert("手机格式不正确");
             return false;
         }
@@ -94,6 +95,7 @@ if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
 $('#zhuce').click(function () {
+    var reg =  /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
     var name=$('input[name=name]').val();
     var tel=$('#phone').val();
     var username=$('input[name=username]').val();
@@ -104,19 +106,22 @@ $('#zhuce').click(function () {
       $.get('index.php?p=show&c=login&a=get',{tel:tel},function (msg) {
               if (tel1!=msg){
                   alert('手机验证码错误');return false;
-      }
+              }
       });
       if (password!=password2){
            $('<div class="register-help"><span>两次密码不一致！</span><i class="glyphicon glyphicon-triangle-right"></i></div>').appendTo('#p2');return false;
       }
+      if (!reg.test(tel)){
+          alert("手机格式不正确")
+      }
       if (name==''){
           alert('姓名不能为空');return false;
-      };
+      }
       if (tel==''){
           alert('电话号码不能为空');return false;
       }
       if (username==''){
-          alert('用户名不能为空');return false;
+          alert('微信/QQ不能为空');return false;
       }
       if (password==''){
           alert('密码不能为空');return false;

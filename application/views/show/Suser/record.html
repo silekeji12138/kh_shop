@@ -90,6 +90,12 @@
 <script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script>
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
 	//日历JS
     $('#dd').calendar({
         trigger: '#dt',
