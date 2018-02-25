@@ -60,7 +60,9 @@
               <td><?=$v['xszt']?></td>
               <td><?=$v['status']?></td>
               <td><?=$v['jyzt']?></td>
-              <td><a href="index.php?p=show&c=shop&a=del&model=sale&id=<?=$v['id']?>" class="table-a">删除</a></td>
+              <td>
+                  <a href="?c=shop&a=&model=sale&id=<?=$v['id']?>" class="table-a">修改</a>
+              </td>
             </tr>
           <?php endforeach?>
           </tbody>

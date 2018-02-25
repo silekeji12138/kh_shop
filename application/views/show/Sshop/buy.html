@@ -42,7 +42,11 @@
               <th>出售价格</th>
               <th>消保金额</th>
               <th>销售状态</th>
+<<<<<<< HEAD
               <th>交易状态</th>
+=======
+              <th>支付状态</th>
+>>>>>>> f3825c32007b4ba901592eebdc5ed128917fc7dc
               <th>网店类型</th>
               <th style="min-width:70px;">操作</th>
             </tr>
@@ -74,7 +78,12 @@
               <td><?=$v['type']==1?'普通网店':'企业淘宝'?></td>
               <td>
                   <a href="?c=user&a=retainage&id=<?=$v['id']?>" class="table-a"><?=$v['zfzt']!='已支付'?'付款':''?></a>
+<<<<<<< HEAD
                   <a href="?c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a>
+=======
+                  <!--<a href="?c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a>-->
+                  <span><?=$v['zfzt']!='已支付'?'':'无'?></span>
+>>>>>>> f3825c32007b4ba901592eebdc5ed128917fc7dc
               </td>
             </tr>
           <?php endforeach?>

@@ -1119,4 +1119,26 @@ class IndexController extends BaseController
         include CUR_VIEW_PATH . "Sindex" . DS ."index_kfzx.html";
 
     }
+<<<<<<< HEAD
+=======
+
+    //用户说
+    public function saidAction(){
+        $model = new Model('usersay');
+        $lists = $model->select("select *from sl_usersay ORDER BY qs DESC limit 0,6");
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."said_list.html";
+    }
+
+    //用户说详情
+    public function detailAction(){
+        $model = new Model('usersay');
+        $id = $_GET['id'];
+        $list = $model->select("select *from sl_usersay WHERE id = {$id}")[0];
+        $list['content'] = html_entity_decode($list['content']);
+        $lists = $model->select("select *from sl_usersay ORDER BY qs DESC limit 0,6");
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."said_detail.html";
+    }
+>>>>>>> f3825c32007b4ba901592eebdc5ed128917fc7dc
 }

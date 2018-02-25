@@ -1,5 +1,9 @@
 ﻿<?php
 // 文章模型控制器
+<<<<<<< HEAD
+=======
+
+>>>>>>> f3825c32007b4ba901592eebdc5ed128917fc7dc
 class BuyController extends BaseController
 {
 
