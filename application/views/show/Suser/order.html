@@ -1,0 +1,139 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员中心-店铺升级</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+<form action="?c=user&a=generate&type=<?=$type?>" method="post">
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">企业服务</a></div>
+        <ul class="clearfix tab-list">
+            <li class="active"><a href="">订单付款</a></li>
+        </ul>
+        <div class="fk-title"><span>订单编号：</span><?=$no?></div>
+        <input type="hidden" name="no" value="<?=$no?>">
+        <input type="hidden" name="token" value="<?=$token?>">
+        <input type="hidden" name="id" value="<?=$list['id']?>">
+        <div class="user-back">
+        	<div class="fk-c">
+            	<p><span class="color-999">地<span class="padding-l"></span>区：</span> <?=$list['szdq']?></p>
+                <p><span class="color-999">生成时间：</span> <?=date('Y-m-d H:i:s',time())?></p>
+                <p><span class="color-999">网店名称：</span> <?=$list['biaoti']?></p>
+                <p><span class="color-999">成交价格：</span> <span id="price"><?=$list['jiage']?></span>元</p>
+                <p><span class="color-999">&emsp;手续费：</span> <?=$list['jiage']*0.1?>元</p>
+                <p><span class="color-999">消保保证金：</span> <?=$list['xbj']?>元</p>
+                <p><span class="color-999">订单总价：</span> <span class="blod" id="total"><?=$list['jiage']*1.1+$list['xbj']?></span>元</p>
+            </div>
+            <hr>
+        	<div class="fk-c">
+            	<div class="clearfix">
+                	<div class="pull-left"><p><span class="color-999">账户可用余额：</span><span id="property"><?=$row['property']?></span> 元</p></div>
+                    <div class="pull-left"><a href="?c=user&a=recharge" class="btn btn-ddfk">余额不足  去充值</a></div>
+                </div>
+            	<div class="clearfix">
+                	<div class="pull-left"><p><span class="color-999">付款方式： </span></p></div>
+                    <div class="pull-left margin-left-10">
+                        <label class="radio-inline">
+                          <input type="radio" name="fk" value="1" checked="" id="all"> 全额支付
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="fk" value="2" id="part"> 交定金（支付20%，预留7天）
+                        </label>
+                      </div>
+                </div>
+                <p><span class="color-999">支付总额：</span> <span class="blod" id="pay"><?=$list['jiage']*1.1+$list['xbj']?></span>元</p>
+            	<div class="clearfix">
+                	<div class="pull-left"><p><span class="color-999">请输入支付密码：</span></p></div>
+                    <div class="pull-left margin-left-10"><input type="password" id="paywords" name="paywords" class="form-control input"></div>
+                </div>
+                <div class="clearfix margin-top-20">
+                	<div class="pull-left"><a id="back" href="javascript:;" class="btn btn-tj btn-tj02 btn-padding">返回</a></div>
+                    <div class="pull-left margin-left-10"><a href="javascript:;" id="submit" class="btn btn-ddfk">确认</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</form>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
+    $("#all").click(function () {
+        if($(this).prop('checked')){
+            $("#pay").text($("#total").text());
+        }
+    });
+    $("#part").click(function () {
+        if($(this).prop('checked')){
+            $("#pay").text($("#price").text()*0.2);
+        }
+    });
+    $("#back").click(function () {
+        window.history.back();
+    });
+    $("#submit").click(function () {
+        if (parseInt($("#property").text())<parseInt($("#pay").text())){
+            alert("余额不足，请充值");
+            return false;
+        }else {
+            if ($("#paywords").val().length==0){
+                alert("请输入支付密码");
+                return false;
+            }
+            $("form").submit();
+        }
+    })
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>

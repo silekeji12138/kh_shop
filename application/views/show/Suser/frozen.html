@@ -22,31 +22,33 @@
             </ul>
             
         </div>
+        <form action="?c=user&a=frozen" method="post">
         <div class="user-back">
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">金额区间</div>
-              <div class="pull-left"><input type="text" class="form-control input"></div>
-              <div class="pull-left margin-left-10"><input type="text" class="form-control input"></div>
+              <div class="pull-left"><input type="text" name="inf" class="form-control input"></div>
+              <div class="pull-left margin-left-10"><input type="text" name="sup" class="form-control input"></div>
               <div class="pull-left cs-left-txt cs-left-txt-sm">元</div>
             </div>
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">起止日期</div>
             	<div class="pull-left">
-                      <input type="text" id="dt" class="form-control input time-input">
+                      <input type="text" id="dt" name="start" class="form-control input time-input">
                       <div id="dd"></div>
                 </div>
             	<div class="pull-left margin-left-10">
-                      <input type="text" id="dt02" class="form-control input time-input">
+                      <input type="text" id="dt02" name="end" class="form-control input time-input">
                       <div id="dd02"></div>
                 </div>
             </div>
 
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">关 键 字</div>
-              <div class="pull-left"><input type="text" class="form-control input input-dj"></div>
+              <div class="pull-left"><input type="text" name="keywords" class="form-control input input-dj"></div>
             </div> 
-            <button type="button" class="btn btn-tj btn-tj01 btn-login btn-dj">查询</button>
+            <button type="submit" class="btn btn-tj btn-tj01 btn-login btn-dj">查询</button>
           </div>
+        </form>
             <table class="table table-sj table-dj table-bordered">
               <thead>
                 <tr>
@@ -58,62 +60,15 @@
                 </tr>
               </thead>
               <tbody>
+              <?php foreach($list as $v):?>
                 <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
+                  <td><?=date('Y-m-d',$v['dtime'])?></td>
+                  <td><?=$v['intro']?></td>
+                  <td><?=$v['differ']?></td>
+                  <td><span class="table-number">¥<?=$v['price']?></span></td>
+                  <td><?=$v['status']?></td>
                 </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
-                <tr>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td>已解冻</td>
-                </tr>
+              <?php endforeach;?>
               </tbody>
             </table>
         <div class="user-back">

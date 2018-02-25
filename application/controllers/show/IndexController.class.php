@@ -102,6 +102,15 @@ class IndexController extends BaseController
         $user_say=$user->select("select *from sl_usersay limit 0,5");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_index.html";
     }
+
+    public function index1Action(){
+        $ids=$_GET['ids'];
+        if ($ids==1){
+            $model=new model('search2');
+            $tm=$model->select("select *from sl_search2 WHERE class='天猫商城'");
+            echo json_encode($tm);
+        }
+    }
     //待入驻页面
     public function dairuzhuAction(){
         $modle=new model('search2');
@@ -218,21 +227,77 @@ class IndexController extends BaseController
     public function qyfwAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_qyfw.html";
     }
+
+
+
     //企业服务代理记账页面展示方法
     public function dljzAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dljz.html";
     }
     //企业服务店铺升级页面的展示方法
     public function dpsjAction(){
+
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dpsj.html";
     }
     //企业服务变更服务页面的展示方法
     public function bgfwAction(){
         include CUR_VIEW_PATH . "Sindex" . DS ."index_bgfw.html";
     }
+
+
+
     //帮助类的在线问答的实现的方法
     public function zxwdAction(){
+        $model=new model('zxwd');
+        $num=4;
+        $number=$model->select("select count(*)from sl_zxwd");
+        $total=ceil($number[0]['count(*)']/$num);
+
+        if ($_SERVER['REQUEST_METHOD']=='POST'){
+            $page=$_POST['page'];
+            $_GET['page']=$page;
+        }else{
+            $page=$_GET['page']?$_GET['page']:1;
+        }
+        if ($page<=1){
+            $page=1;
+            $_GET['page']=1;
+        }
+        if ($_GET['page']>$total){
+            $page=$total;
+            $_GET['page']=$total;
+        }
+        $min=$page-2;
+        $max=$page+5;
+        if ($min<=1){
+            $min=1;
+        };
+        if ($max>=$total){
+            $max=$total;
+        }
+
+        $act=($page-1)*$num;
+        $result=$model->select("select *from sl_zxwd WHERE zt='已答' limit $act,$num");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_zxwd.html";
+    }
+//    public function zxwd2Action(){
+//        $model=new model('zxwd');
+//        $id=$_SESSION['user_id'];
+//        $user=$model->select("select *from sl_zxwd WHERE uid=$id");
+//        if ($user){
+//            echo '1';
+//        }
+//    }
+    public function zxwd1Action(){
+        $data=$_POST;
+        $data['uid']=$_SESSION['user_id'];
+        $model=new model('zxwd');
+        $rs=$model->insert($data);
+        if ($rs){
+            $this->jump('index.php?p=show&c=index&a=zxwd','提交成功',3);
+        }else{
+            $this->jump('index.php?p=show&c=index&a=zxwd','系统繁忙,请稍后再试',3);
+        }
     }
     //公司简介展示型页面
     public function gsjjAction(){
@@ -252,6 +317,7 @@ class IndexController extends BaseController
        $data1['py']=$_GET['ms'];
        $data1['fx']=$_GET['fx'];
        $uid=$_SESSION['user_id'];
+        $data1['uid']=$uid;
        $time=strtotime(date("Y-m-d",time()+3600*8));
        if ($uid==''){
            echo '0';
@@ -548,6 +614,8 @@ class IndexController extends BaseController
             $data['sb']=$sb;
             $data['hy']=$hy;
             $data['jg']=$jg;
+            $mark=1;
+
          //----------------------------------------------------------------
             if ($_SERVER['REQUEST_METHOD']=='POST'){
                 if ($_POST['t1']){
@@ -569,6 +637,10 @@ class IndexController extends BaseController
                 if ($data['pt']){
                     $sql=$sql."szpt='".$pt."' and ";
                     $sql1=$sql1."szpt='".$pt."' and ";
+                }
+                if (1==1){
+                    $sql=$sql."mark=1  and ";
+                    $sql1=$sql1."mark=1  and ";
                 }
                 if ($data['lx']){
                     $sql=$sql."sclx='".$lx."' and ";
@@ -624,7 +696,7 @@ class IndexController extends BaseController
         //结束搜索2次功能
 //        $sql=substr($sql,0,-4);
                 if ($_SERVER['REQUEST_METHOD']=='GET') {
-                    if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '') {
+                    if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '' && $mark=='') {
                         //情况1
                         if ($data['jg']) {
                             switch ($data['jg']) {
@@ -679,7 +751,7 @@ class IndexController extends BaseController
                 if ($_SERVER['REQUEST_METHOD']=='POST'){
 //                    if ($_POST['low'] && $_POST['high']) {
                     if($_POST['page']=='') {
-                        if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '') {
+                        if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '' && $mark=='') {
                             $data1['low'] = $_POST['low'] ? $_POST['low'] : 1;
                             $data1['high'] = $_POST['high'] ? $_POST['high'] : 100000000;
                             $low = $data1['low'];
@@ -711,7 +783,7 @@ class IndexController extends BaseController
 
                 //-----------------------------------------------------------------
               if ($_GET['jg']=='' && $_SERVER['REQUEST_METHOD']=='GET' && $_GET['low']!=''){
-                  if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='') {
+                  if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='' && $mark=='') {
                       $low=$_GET['low'];
                       $high=$_GET['high'];
                       $data1['low']= $low;
@@ -729,7 +801,7 @@ class IndexController extends BaseController
               }
         //---------------------------------------------------------------
               if ($_SERVER['REQUEST_METHOD']=='POST' && $_GET['low']!='' && $_GET['high']!=''){
-                  if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='') {
+                  if ($data['pt']=='' && $data['lx']=='' && $data['sb']=='' && $data['hy']=='' && $mark=='') {
                       $low=$_GET['low'];
                       $high=$_GET['high'];
                       $data1['low']= $low;
@@ -748,7 +820,7 @@ class IndexController extends BaseController
         //---------------------------------------------------------------
                 if ($_SERVER['REQUEST_METHOD']=='POST'){
                   if ($data1['low']=='') {
-                      if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '') {
+                      if ($data['pt'] == '' && $data['lx'] == '' && $data['sb'] == '' && $data['hy'] == '' && $mark=='') {
                           $sql = substr($sql, 0, -6);
                           $sql1 = substr($sql1, 0, -6);
                       } else {
@@ -786,7 +858,16 @@ class IndexController extends BaseController
                     $max=$total;
                 }
                 $act=($page-1)*$num;
-                $result=$model->select($sql." limit $act,$num");
+                if ($_GET['model']){
+                        if ($_GET['model']=='shang'){
+                            $result=$model->select($sql."order by jiage DESC limit $act,$num  ");
+                        }elseif($_GET['model']=='dj'){
+                            $result=$model->select($sql."and  dj='是' limit $act,$num  ");
+                        }
+                }else{
+                    $result=$model->select($sql." limit $act,$num");
+                }
+
 
                 include CUR_VIEW_PATH . "Sbuy" . DS ."buy_jd.html";
     }
@@ -875,6 +956,7 @@ class IndexController extends BaseController
         $ms['dpzt']=$dpzt;
         $ms['sshy']=$sshy;
         $ms['jg']=$jg;
+        $mark=1;
 
 
         if ($qx){
@@ -885,6 +967,10 @@ class IndexController extends BaseController
         if ($ms['dpzt']){
             $sql=$sql."dpzt='".$dpzt."' and ";
             $sql1=$sql1."dpzt='".$dpzt."' and ";
+        }
+        if (1==1){
+            $sql=$sql."mark=1  and ";
+            $sql1=$sql1."mark=1  and ";
         }
         if ($ms['sshy']){
             $sql=$sql."sshy='".$sshy."' and ";
@@ -940,10 +1026,10 @@ class IndexController extends BaseController
                 $sql1 = $sql1 . " (jiage between ".$_GET['di']." and ".$_GET['gao'].")    ";
             }
         }
-        if (($ms['dpzt'] || $ms['sshy'] || $ms['szdq'] || $ms['tghy'] || $ms['tgzr'] || $ms['jy'])){
+        if (($ms['dpzt'] || $ms['sshy'] || $ms['szdq'] || $ms['tghy'] || $ms['tgzr'] || $ms['jy'] ||  $mark)){
                 $sql =substr($sql, 0, -4);
                 $sql1 =substr($sql1, 0, -4);
-        }elseif($ms['dpzt']=='' && $ms['sshy']=='' && $ms['szdq']=='' && $ms['tghy']=='' && $ms['tgzr']=='' && $ms['jy']=='' && $ms['jg']=='' ){
+        }elseif($ms['dpzt']=='' && $ms['sshy']=='' && $ms['szdq']=='' && $ms['tghy']=='' && $ms['tgzr']=='' && $ms['jy']=='' && $ms['jg']=='' && $mark=='' ){
             if ($_POST['range']!=''){
                 $sql =substr($sql, 0, -4);
                 $sql1 =substr($sql1, 0, -4);
@@ -985,13 +1071,52 @@ class IndexController extends BaseController
             $max=$total;
         }
         $act=($page-1)*$num;
-        $result=$model->select($sql." limit $act,$num");
+//        $result=$model->select($sql." limit $act,$num");
         //-----------------------------------
-
-
-
-
+        if ($_GET['model']){
+            if ($_GET['model']=='shang'){
+                $result=$model->select($sql."order by jiage DESC limit $act,$num  ");
+            }
+        }else{
+            $result=$model->select($sql." limit $act,$num");
+        }
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_qytb.html";
     }
-    
+
+    //用户说
+    public function saidAction(){
+        $model = new Model('usersay');
+        $lists = $model->select("select *from sl_usersay ORDER BY qs DESC limit 0,6");
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."said_list.html";
+    }
+
+    //用户说详情
+    public function detailAction(){
+        $model = new Model('usersay');
+        $id = $_GET['id'];
+        $list = $model->select("select *from sl_usersay WHERE id = {$id}")[0];
+        $list['content'] = html_entity_decode($list['content']);
+        $lists = $model->select("select *from sl_usersay ORDER BY qs DESC limit 0,6");
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."said_detail.html";
+    }
+
+    public function rzxqAction(){
+        $data=$_POST;
+        $model=new model('rzxq');
+        $model->insert($data);
+        $this->jump('index.php?p=show&c=index&a=dairuzhu','success',1);
+    }
+ //客服中心
+    public function kfzxAction(){
+        $model=new model('kefu');
+        $v=$model->select("select *from sl_kefu WHERE zt='在线' limit 0,5");
+        $v1=$model->select("select *from sl_kefu WHERE zt='在线' limit 5,5");
+
+        $model2=new model('help');
+        $v1=$model->select("select *from sl_help WHERE pname='买家帮助'");
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_kfzx.html";
+
+    }
 }

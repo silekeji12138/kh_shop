@@ -22,50 +22,52 @@
             </ul>
             
         </div>
+        <form action="?c=user&a=payment" method="post">
         <div class="user-back">
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">类型</div>
               <div class="pull-left color-999">
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1"> 充值
+                  <input type="checkbox" name="type[]" id="inlineCheckbox1" value="充值"> 充值
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox2" value="option2"> 支付
+                  <input type="checkbox" name="type[]" id="inlineCheckbox2" value="支出"> 支付
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox3" value="option3"> 提现
+                  <input type="checkbox" name="type[]" id="inlineCheckbox3" value="提现"> 提现
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox3" value="option3"> 其它
+                  <input type="checkbox" name="type[]" id="inlineCheckbox4" value="其它"> 其它
                 </label>
               </div>
 
             </div>
-			<div class="clearfix gl-clearfix">
-              <div class="pull-left cs-left-txt cs-left-txt02">金额区间</div>
-              <div class="pull-left"><input type="text" class="form-control input"></div>
-              <div class="pull-left margin-left-10"><input type="text" class="form-control input"></div>
-              <div class="pull-left cs-left-txt cs-left-txt-sm">元</div>
+            <div class="clearfix gl-clearfix">
+                <div class="pull-left cs-left-txt cs-left-txt02">金额区间</div>
+                <div class="pull-left"><input type="text" name="inf" class="form-control input"></div>
+                <div class="pull-left margin-left-10"><input type="text" name="sup" class="form-control input"></div>
+                <div class="pull-left cs-left-txt cs-left-txt-sm">元</div>
             </div>
-			<div class="clearfix gl-clearfix">
-              <div class="pull-left cs-left-txt cs-left-txt02">起止日期</div>
-            	<div class="pull-left">
-                      <input type="text" id="dt" class="form-control input time-input">
-                      <div id="dd"></div>
+            <div class="clearfix gl-clearfix">
+                <div class="pull-left cs-left-txt cs-left-txt02">起止日期</div>
+                <div class="pull-left">
+                    <input type="text" id="dt" name="start" class="form-control input time-input">
+                    <div id="dd"></div>
                 </div>
-            	<div class="pull-left margin-left-10">
-                      <input type="text" id="dt02" class="form-control input time-input">
-                      <div id="dd02"></div>
+                <div class="pull-left margin-left-10">
+                    <input type="text" id="dt02" name="end" class="form-control input time-input">
+                    <div id="dd02"></div>
                 </div>
             </div>
 
-			<div class="clearfix gl-clearfix">
-              <div class="pull-left cs-left-txt cs-left-txt02">关 键 字</div>
-              <div class="pull-left"><input type="text" class="form-control input input-dj"></div>
-            </div> 
-            <button type="button" class="btn btn-tj btn-tj01 btn-login btn-dj">查询</button>
+            <div class="clearfix gl-clearfix">
+                <div class="pull-left cs-left-txt cs-left-txt02">关 键 字</div>
+                <div class="pull-left"><input type="text" name="keywords" class="form-control input input-dj"></div>
+            </div>
+            <button type="submit" class="btn btn-tj btn-tj01 btn-login btn-dj">查询</button>
           </div>
-            <table class="table table-sj table-dj table-bordered">
+        </form>
+        <table class="table table-sj table-dj table-bordered">
               <thead>
                 <tr>
                   <th>流水号</th>
@@ -78,78 +80,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
+              <?php foreach($list as $v):?>
+              <tr>
+                  <td><?=$v['num']?></td>
+                  <td><?=date('Y-m-d',$v['dtime'])?></td>
+                  <td><?=$v['intro']?></td>
+                  <td><?=$v['differ']?></td>
+                  <td><span class="table-number">¥<?=$v['mark']=='收入'?$v['price']:'0'?></span></td>
+                  <td><span class="table-number">¥<?=$v['mark']=='支出'?$v['price']:'0'?></span></td>
+                  <td><span class="table-number">¥<?=$v['balance']?></span></td>
                 </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
-                <tr>
-                  <td>023612121321232</td>
-                  <td>2017-10-12</td>
-                  <td>备注说明</td>
-                  <td>拍卖</td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                  <td><span class="table-number">¥7,800</span></td>
-                </tr>
+              <?php endforeach;?>
               </tbody>
             </table>
         <div class="user-back">

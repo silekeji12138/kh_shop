@@ -262,10 +262,11 @@
             </div>
             <div class="sell-border purchase-border">
 				<div class="sell-nav border-no clearfix">
-                	<div class="pull-left sell-nav-one">默认排序</div>
-                    <div class="pull-left"><a role="button" class="sell-px sell-px-one">出售价格</a></div>
-                    <div class="pull-left"><a role="button" class="sell-px">独家店铺<i class="icon sell-px-i">独家</i></a></div>
-                    <div class="pull-left"><a role="button" class="sell-px">双十一店铺<i class="icon sell-px-i sell-px-i02">双11</i></a></div>
+                	<!--<div class="pull-left sell-nav-one">默认排序</div>-->
+                	<div class="pull-left <?=$_GET['model']?'':'sell-nav-one'?>">默认排序</div>
+                    <div class="pull-left"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=shang" role="button" class="sell-px sell-px-one">出售价格</a></div>
+                    <div class="pull-left"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=dj" role="button" class="sell-px">独家店铺<i class="icon sell-px-i">独家</i></a></div>
+                    <!--<div class="pull-left"><a role="button" class="sell-px">双十一店铺<i class="icon sell-px-i sell-px-i02">双11</i></a></div>-->
                 </div>
             </div>
 
@@ -320,22 +321,22 @@
         <div class="container">
 
 
-            <form action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>" method="post">
+            <form action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=<?=$_GET['model']?>" method="post">
                 <div class="page-center clearfix">
                     <ul class="pagination pull-left">
                         <?php if($_GET['page']<=1){ ?>
                         <li class="disabled"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
                         <?php }else{ ?>
-                        <li ><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$_GET['page']-1?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                        <li ><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$_GET['page']-1?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=<?=$_GET['model']?>" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
                         <?php } ?>
 
 
 
                         <?php for($i=$min;$i<=$max;$i++):  ?>
                         <?php if($page==$i){ ?>
-                        <li class="active"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$i?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>"><?=$i?></a></li>
+                        <li class="active"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$i?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=<?=$_GET['model']?>"><?=$i?></a></li>
                         <?php }else{ ?>
-                        <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$i?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>"><?=$i?></a></li>
+                        <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=$i?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=<?=$_GET['model']?>"><?=$i?></a></li>
                         <?php } ?>
                         <?php endfor;  ?>
 
@@ -343,7 +344,7 @@
                         <?php if($_GET['page']>=$total){ ?>
                         <li class="disabled"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
                         <?php }else{ ?>
-                        <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=($_GET['page']?$_GET['page']:1)+1?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                        <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&page=<?=($_GET['page']?$_GET['page']:1)+1?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=<?=$_GET['model']?>" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
                         <?php } ?>
                     </ul>
                     <div class="pull-left page-txt margin-left">共<?=$total?>页 跳转到第</div>

@@ -23,23 +23,24 @@
                 <form action="index.php?p=show&c=login&a=zhuce" method="post">
                 <div class="register-c">
                     <div class="relative">
-                        <input name="name" type="text" class="form-control input-sell" placeholder="请输入您的姓名">
+                        <input name="name" type="text" class="form-control input-sell" placeholder="请输入您的用户名">
                     </div>
                     <div class="relative">
-                        <input type="text" id="code_input" class="form-control input-sell" placeholder="动态码">
+                        <input type="text" id="code_input" class="form-control input-sell" placeholder="请输入右侧动态码">
                         <div id="v_container"  class="login-yzm" style="width: 150px;height: 40px;"></div>
                     </div>
-                    <input name="tel" type="text" class="form-control input-sell" placeholder="手机号码">
+                    <input name="tel" id="phone" type="text" class="form-control input-sell" placeholder="手机号码">
                     <div class="relative">
                         <input name="" id="tel" type="text" class="form-control input-sell" placeholder="手机验证码">
-                        <a id="sms" href="javascript:;" type="button" class="btn-phone-dx" style="float: left">获取手机验证码</a>
+                       <a  href="javascript:;" type="button" class="btn-phone-dx" style="float: left">
+                           <input type="button" id="sms" style="background-color: rgba(0,0,0,0);border: none" value="获取手机验证码"></a>
                     </div>
                     <input name="username" type="text" class="form-control input-sell" placeholder="微信或QQ号码">
                     <div class="relative">
-                        <input name="password" type="password" class="form-control input-sell" placeholder="密码（6-12位数字+字母组合）">
+                        <input name="password" type="password" class="form-control input-sell" placeholder="登录密码（6-12位数字+字母组合）">
                     </div>
                     <div class="relative" id="p2">
-                        <input id="password2" type="password" class="form-control input-sell" placeholder="再次输入密码">
+                        <input id="password2" type="password" class="form-control input-sell" placeholder="再次输入登录密码">
                     </div>
                     <select name="from" class="form-control input-sell">
                         <option value="1">请选择来源</option>
@@ -52,8 +53,8 @@
                           <input id="xy" type="checkbox"> 我已认真阅读并同意<a href="">《店来店往服务条款》</a>
                         </label>
                     </div>
-                    <button id="zhuce" type="submit" class="btn btn-g btn-g02">立即注册</button>
-                    <div class="login-c-b">还不是店来店往会员？ 现在<a href="">免费注册</a></div>
+                    <button id="zhuce" type="button" class="btn btn-g btn-g02">立即注册</button>
+                    <div class="login-c-b">已经是店来店往会员？现在<a href="?c=login&a=login">立即登录</a></div>
                 </div>
                 </form>
             </div>
@@ -71,10 +72,20 @@
 <script src="public/khshop/js/wow.min.js"></script>
 <script src="public/js/gVerify.js"></script>
 <script>
+    var reg =  /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
     $('#sms').click(function () {
-        var num=$('input[name=tel]').val();
-        $.get('index.php?p=show&c=sms&a=sms',{num:num},function (msg) {
+        var num=$('#phone').val();
 
+        if (!reg.test(num)){
+            alert("手机格式不正确");
+            return false;
+        }
+        var that=$(this);
+        $.post('index.php?p=show&c=sms&a=sms',{'tel':num},function (msg) {
+            if (msg=='success'){
+                alert("短信发送成功");
+                settime(that);
+            }
         });
     });
 
@@ -84,8 +95,9 @@ if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
 $('#zhuce').click(function () {
+    var reg =  /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
     var name=$('input[name=name]').val();
-    var tel=$('input[name=tel]').val();
+    var tel=$('#phone').val();
     var username=$('input[name=username]').val();
     var res = verifyCode.validate(document.getElementById("code_input").value);
     var tel1=$('#tel').val();
@@ -99,17 +111,23 @@ $('#zhuce').click(function () {
       if (password!=password2){
            $('<div class="register-help"><span>两次密码不一致！</span><i class="glyphicon glyphicon-triangle-right"></i></div>').appendTo('#p2');return false;
       }
+      if (!reg.test(tel)){
+          alert("手机格式不正确")
+      }
       if (name==''){
           alert('姓名不能为空');return false;
-      };
+      }
       if (tel==''){
           alert('电话号码不能为空');return false;
       }
       if (username==''){
-          alert('用户名不能为空');return false;
+          alert('微信/QQ不能为空');return false;
       }
       if (password==''){
           alert('密码不能为空');return false;
+      }
+      if (password.length<6){
+          alert("密码长度不能少于6位");return false;
       }
     if(!res){
         alert("验证码错误");return false;
@@ -117,10 +135,27 @@ $('#zhuce').click(function () {
     if ($('#xy').is(":checked")==false){
         alert("请认真读取协议"); return false;
     }
-
+    $("form").submit();
 });
 
-
+    var countdown=120;
+    function settime(obj) { //发送验证码倒计时
+        if (countdown == 0) {
+            obj.attr('disabled',false);
+            //obj.removeattr("disabled");
+            obj.val("获取手机验证码");
+            countdown = 120;
+            return;
+        } else {
+            obj.attr('disabled',true);
+            obj.val("重新发送(" + countdown + ")");
+            countdown--;
+        }
+        setTimeout(function() {
+                settime(obj)
+            }
+            ,1000)
+    }
 
 
 </script>

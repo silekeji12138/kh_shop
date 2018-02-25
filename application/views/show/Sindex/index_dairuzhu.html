@@ -26,7 +26,7 @@
             	<div class="rz-bz text-center"><img src="public/khshop/images/rz01.png"></div>
                 <div class="rz-btn-c text-center">
                     <a role="button" href="http://wpa.qq.com/msgrd?v=3&uin=447171377&site=qq&menu=yes" class="btn btn-rz">在线咨询</a>
-                    <a role="button" class="btn btn-rz btn-rz-r">现在入驻</a>
+                    <a role="button" href="#ruzhu" class="btn btn-rz btn-rz-r">现在入驻</a>
                 </div>
                 <div class="rz-tt text-center">多平台全类目强势入驻</div>
                 <div class="rz-tt-sm text-center">天猫、京东、蘑菇街等类目皆可入驻，企业信息皆可定制</div>
@@ -323,40 +323,44 @@
             <div class="rz-lc"><img src="public/khshop/images/rz07.png"></div>
         </div>
     </div>
-    <div class="rz-bottom">
+
+    <div class="rz-bottom" id="ruzhu">
         <div class="container">
+            <form method="post" action="index.php?p=show&c=index&a=rzxq">
             <div class="rz-tt text-center wow bounceInDown animated">在线需求填写</div>
             <div class="rz-tt-sm rz-tt-sm-eng text-center wow bounceInDown animated">ONLINE NEEDS TO FILL IN </div>
             <div class="clearfix">
                 <div class="pull-left about-input-txt">您的姓名</div>
-                <div class="pull-left"><input type="text" class="form-control about-input"></div>
+                <div class="pull-left"><input  name="name" type="text" class="form-control about-input"></div>
             </div>
             <div class="clearfix">
                 <div class="pull-left about-input-txt">您的手机</div>
-                <div class="pull-left"><input type="text" class="form-control about-input"></div>
+                <div class="pull-left"><input name="tel" type="text" class="form-control about-input"></div>
             </div>
             <div class="clearfix">
                 <div class="pull-left about-input-txt">您的QQ</div>
-                <div class="pull-left"><input type="text" class="form-control about-input"></div>
+                <div class="pull-left"><input name="QQ" type="text" class="form-control about-input"></div>
             </div> 
             <div class="clearfix">
                 <div class="pull-left about-input-txt">商城类型</div>
-                <div class="pull-left"><input type="text" class="form-control about-input"></div>
+                <div class="pull-left"><input name="sclx" type="text" class="form-control about-input"></div>
             </div> 
             <div class="clearfix">
                 <div class="pull-left about-input-txt">需求类目</div>
-                <div class="pull-left"><input type="text" class="form-control about-input"></div>
+                <div class="pull-left"><input name="xqxm" type="text" class="form-control about-input"></div>
             </div> 
             <div class="clearfix">
                 <div class="pull-left about-input-txt">需求描述</div>
-                <div class="pull-left"><textarea type="text" class="form-control about-input about-input-lg"></textarea></div>
+                <div class="pull-left"><textarea name="xqms" type="text" class="form-control about-input about-input-lg"></textarea></div>
             </div> 
             <div class="clearfix">
                 <div class="pull-left about-input-txt"></div>
-                <div class="pull-left"><button type="submit" class="btn btn-about">快速提交并申请</button></div>
+                <div class="pull-left"><button type="button" class="btn btn-about" id="tj">快速提交并申请</button></div>
             </div>
+</form>
         </div>
     </div>
+
     <!--footer-->
 
     <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
@@ -370,6 +374,36 @@
     if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
         new WOW().init();
     };
+
+    $('#tj').click(function () {
+
+        var tel=$('input[name=tel]').val();
+        var qq=$('input[name=QQ]').val();
+        var name=$('input[name=name]').val();
+        var reg = /^1[34578]\d{9}$/;
+        var reg1=/^[1-9][0-9]{4,9}$/;
+        if (reg.test(tel)){
+            if (reg1.test(qq)){
+                if (name!=''){
+                    $('form').submit();
+                }else {
+                    alert('请输入姓名')
+                }
+            }else {
+                alert('请正确输入QQ')
+            }
+        }else{
+            alert('请正确输入手机号码')
+        }
+
+    });
+
+
+
+
+
+
+
     $('#id').children('li').prop('class','');
     $('#drz').attr('class','active');
 </script>

@@ -7,20 +7,11 @@
 <script src="application/views/admin/js/jquery.js"></script>
 <script src="application/views/admin/inc/SelectMenu/selectmenu.js"></script>
 <script src="application/views/admin/inc/SelectMenu/selectmenu.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="application/views/admin/css/common.css" />
 </head>
 <body>
-<div style="float: left;">
-	<div class="panel panel-default" >
-                        <div class="panel-body" id="nbaTeamLists"></div>
-	</div>
-</div>
-<div>
-	<button type="button" id="btnMenu" >请选择</button>
-</div>
-
-
-
-
+<select name="classid" id="btnMenu" class="select-container1"> </select>
+ 
 </body>
 
 <script type="text/javascript">
@@ -57,36 +48,58 @@ if(_ghyOb.val().trim()!="")
 	for(var i=0;i<temp_selectMenuData.length;i++)
 		{
 		if(selectValue==temp_selectMenuData[i].id)
-			$('#nbaTeamLists').append('<p><strong>'+temp_selectMenuData[i].value+'</strong></p>');
+			{
+		    $('#btnMenu').html(' <option   selected="selected">'+temp_selectMenuData[i].value+'</option>  ');
+			}
+			
 		}
 }else
 {
-	$('#nbaTeamLists').append('<p><strong>请选择</strong></p>');
+	$('#btnMenu').html(' <option   selected="selected">请选择</option>  ');
 }
+
+ 
+
 
 //菜单使用的示例数据格式
 //数据格式与常规菜单模式的固定格式不同，该模式下，数据格式可以完全自定义
 //并通过设置keyField、showField、searchField等参数进行指定具体使用的数据节点
 var selectMenuData = <?php echo $selectMenuData ?>;
 $('#btnMenu').click(function(){
+	var _pHeight = parent.document.getElementById('if<?php echo $_GET["field"]?>').height;
+	if(parent.document.getElementById('if<?php echo $_GET["field"]?>').height==_pHeight)
+	{
+		parent.document.getElementById('if<?php echo $_GET["field"]?>').height=50;
+	}else
+	{
+		parent.document.getElementById('if<?php echo $_GET["field"]?>').height=_pHeight;
+	}
+	
+	
     $(this).selectMenu({
-    	title : '请选择<?php echo $filedDetail[u2] ?>',
+    	title : '请选择<?php echo $filedDetail["u2"] ?>',
         showField : 'value',
         keyField : 'id',
         arrow : true,
         initSelected : selectValue,//默认值
         data : selectMenuData,
         eSelect : function(data){
-			$('#nbaTeamLists').empty();
+			$('#btnMenu').empty();
 			if(data && data.length > 0){
 				$.each(data,function(i,row){
-					$('#nbaTeamLists').append('<p><strong>'+row.value+'</strong></p>');
+					$('#btnMenu').html(' <option   selected="selected">'+row.value+'</option>  ');
+					//$('#nbaTeamLists').append('<p><strong>'+row.value+'</strong></p>');
 					_ghyOb.val(row.id);//修改父级框架的默认值
+					parent.document.getElementById('if<?php echo $_GET["field"]?>').height=50;
 				});
 			}
 		}
     });
 });
+
+
+ 
+
 </script>
 
 </html>

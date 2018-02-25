@@ -1,0 +1,156 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会员中心-店铺升级</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/user.css" rel="stylesheet">
+</head>
+<body>
+<?php include CUR_VIEW_PATH."Spublic/user_header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/user_left.html";?>
+    <div class="right-c" id="right-c">
+        <div class="nav-list">当前位置：<a href="">个人中心</a> > <a href="javascript:;" class="active">企业服务</a></div>
+        <div class="clearfix">
+            <ul class="clearfix pull-left tab-list">
+                <li><a href="?c=shop&a=upgrade">店铺升级</a></li>
+                <li class="active"><a href="">代理记账</a></li>
+                <li><a href="?c=shop&a=replace">企业变更</a></li>
+            </ul>
+            <div class="pull-right">
+                <div class="pull-left select-txt">交易状态</div>
+                <div class="pull-left">
+                    <select class="form-control input">
+                      <option>不限</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <form action="index.php?p=show&c=shop&a=del&model=service" method="post">
+        <table class="table table-sj table-bordered">
+          <thead>
+            <tr>
+              <th>服务详情</th>
+              <th>地区</th>
+              <th>服务价格</th>
+              <th>服务商</th>
+              <th style="min-width:98px;">订单状态</th>
+              <th style="min-width:70px;">操作</th>
+            </tr>
+          </thead>
+            <tbody>
+            <?php foreach($lists as $k=>$val):?>
+            <tr>
+                <td colspan="6">
+                    <div class="clearfix table-title">
+                        <div class="pull-left"><span>订单编号：</span><?=$k?></div>
+                        <div class="pull-right">下单时间：<?=$val[0]['dtime']?> </div>
+                    </div>
+                </td>
+            </tr>
+
+            <?php foreach($val as $k=>$v):?>
+            <tr>
+                <td>
+                    <div class="checkbox table-checkbox">
+                        <label>
+                            <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> 代理记账<br><span><?=$v['fwxq']?></span>
+                        </label>
+                    </div>
+                </td>
+                <td><?=$v['dq']?></td>
+                <td><span class="table-number">¥<?=$v['fwjg']?></span></td>
+                <td><?=$v['fws']?></td>
+                <td><?=$v['status']?></td>
+                <td><a href="index.php?p=show&c=shop&a=del&model=service&id=<?=$v['id']?>" class="table-a">删除</a></td>
+
+            </tr>
+            <?php endforeach;?>
+
+            <?php endforeach;?>
+            </tbody>
+        </table>
+        <div class="table-bottom">
+                <div class="clearfix">
+                    <div class="checkbox pull-left">
+                        <label>
+                            <input type="checkbox" id="checkall"> 全选
+                        </label>
+                    </div>
+                    <div class="pull-left"><a style="cursor: pointer" class="btn btn-tj btn-tj02">全部删除</a></div>
+                </div>
+                <div class="table-null text-center">暂无竞拍网店信息！</div>
+            </div>
+        </form>
+        <div class="ewm-c">
+            <div class="ewm text-center">
+                <div><img src="public/khshop/images/user/ewm.png"></div>
+                扫码关注我们
+            </div>
+        </div>
+        <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+</body>
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
+    $("#checkall").click(function () {
+        if (this.checked){
+            $("input[name='ids[]']").attr('checked', true)
+        }else {
+            $("input[name='ids[]']").attr("checked",false);
+        }
+    })
+    $(".btn-tj02").click(function () {
+        if ($("input[type='checkbox']:checked").length==0){
+            alert("请选择要删除的选项");
+            return false
+        }else {
+            $("form").submit()
+        }
+    })
+$("#nav-left").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+$("#right-c").niceScroll({  
+    cursorcolor:"#a5a5a5",  
+    cursoropacitymax:1,  
+    touchbehavior:false,  
+    cursorwidth:"5px",  
+    cursorborder:"0",  
+    cursorborderradius:"5px"  
+}); 
+</script>
+  <script>
+    $(".nav-click").click(function(){
+        $(".nav-click").parents("li").removeClass("active");
+        $(".nav-down").slideUp("slow");
+            if($(this).parents("li").find(".nav-down").is(":hidden"))
+            {
+              $(this).parents("li").find(".nav-down").slideDown("slow");  
+              $(this).parents("li").addClass("active");
+            }else{
+              $(this).parents("li").find(".nav-down").slideUp("slow");
+                }
+    }); 
+  </script>
+</html>

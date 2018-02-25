@@ -36,7 +36,7 @@
           <thead>
             <tr>
               <th>网店标题</th>
-              <th>出售/起拍价格</th>
+              <th>出售价格</th>
               <th>消保金额</th>
               <th>销售状态</th>
               <th>审核状态</th>
@@ -55,10 +55,10 @@
                     </div>
                 </td>
 
-                <td><span class="table-number">¥<?=$v['csjg']?></span></td>
-              <td><span class="table-number">¥<?=$v['xbje']?></span></td>
+                <td><span class="table-number">¥<?=$v['jiage']?></span></td>
+              <td><span class="table-number">¥<?=$v['xbj']?></span></td>
               <td><?=$v['xszt']?></td>
-              <td><?=$v['shzt']?></td>
+              <td><?=$v['status']?></td>
               <td><?=$v['jyzt']?></td>
               <td><a href="index.php?p=show&c=shop&a=del&model=sale&id=<?=$v['id']?>" class="table-a">删除</a></td>
             </tr>
@@ -90,6 +90,12 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
     $("#checkall").click(function () {
         if (this.checked){
             $("input[name='ids[]']").attr('checked', true)
@@ -104,7 +110,7 @@
         }else {
             $("form").submit()
         }
-    })
+    });
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  

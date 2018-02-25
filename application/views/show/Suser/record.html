@@ -67,7 +67,7 @@
               <td><?=$v['num']?></td>
               <td><span class="table-number">¥<?=$v['price']?></span></td>
                 <td><?=$v['status']?></td>
-                <td><?=substr($v['dtime'],0,10)?></td>
+                <td><?=date('Y-m-d',$v['dtime'])?></td>
               <td><a href="?c=shop&a=del&model=log&id=<?=$v['id']?>" class="table-a">删除</a></td>
             </tr>
            <?php endforeach;?>
@@ -90,6 +90,12 @@
 <script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script>
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
 	//日历JS
     $('#dd').calendar({
         trigger: '#dt',

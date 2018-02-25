@@ -57,7 +57,7 @@
                             </ul>
                         </li>
                         <li>
-                        	<a href="index.php?p=show&c=index&a=kefu1&name=客服咨询">客服中心</a>
+                        	<a href="index.php?p=show&c=index&a=kfzx">客服中心</a>
                             <ul class="help-list-down help-list-down-last">
                             	<li><a href="">客服咨询</a></li>
                                 <li><a href="">建议中心</a></li>
@@ -70,14 +70,8 @@
                 	<i class="icon"></i><a href="">服务流程</a> > <a href="" class="active"><?=$_GET['name']?></a>
                 </div>
                 <div class="clearfix">
-                	<div class="help-left pull-left">
-                    	<ul id="help">
-                            <?php foreach($zx as $v): ?>
-                            <li id="<?=$v['id']?>"><a href="index.php?p=show&c=index&a=fuwu&id=<?=$v['id']?>&name=<?=$_GET['name']?>"><?=$v['biaoti']?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                    <div class="pull-right help-right">
+
+                    <div class="article-p">
                         <?php if(!$_GET['id']){
                                    echo html_entity_decode($zx[0]['content']);
                                        }else{?>

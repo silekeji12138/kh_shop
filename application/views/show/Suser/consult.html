@@ -32,17 +32,15 @@
           <tbody>
           <?php foreach($list as $v):?>
           <tr>
-              <td><?=$v['content']?></td>
-              <td><?=$v['response']?></td>
+              <td><?=$v['wt']?></td>
+              <td><?=$v['hd']?></td>
               <td><?=substr($v['dtime'],0,10)?></td>
-              <td><a href="?c=shop&a=del&model=advice&id=<?=$v['id']?>" class="table-a">删除</a></td>
+              <td><a href="?c=shop&a=del&model=zxwd&id=<?=$v['id']?>" class="table-a">删除</a></td>
           </tr>
           <?php endforeach;?>
           </tbody>
         </table>
-        <div class="table-bottom">
-            <div class="table-null text-center">暂无咨询信息！</div>
-        </div>
+        <div class="table-null text-center">暂无咨询信息！</div>
         <div class="ewm-c">
             <div class="ewm text-center">
                 <div><img src="public/khshop/images/user/ewm.png"></div>
@@ -56,6 +54,20 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
+    $("#submit").click(function () {
+        if ( $("#content").val()==""){
+            alert("请输入咨询内容")
+        }else {
+            $("form").submit();
+        }
+
+    })
 $("#nav-left").niceScroll({  
     cursorcolor:"#a5a5a5",  
     cursoropacitymax:1,  

@@ -18,7 +18,7 @@
             <ul class="clearfix pull-left tab-list">
                 <!--<li><a href="">我出售的网店</a></li>-->
                 <li class="active"><a href="index.php?p=show&c=shop&a=buy">我购买的网店</a></li>
-                <li ><a href="index.php?p=show&c=shop&a=auction">我参与的竞拍</a></li>
+
                 <li ><a href="index.php?p=show&c=shop&a=save">我收藏的网店</a></li>
             </ul>
             <div class="pull-right">
@@ -43,18 +43,27 @@
               <th>消保金额</th>
               <th>销售状态</th>
               <th>交易状态</th>
+              <th>网店类型</th>
               <th style="min-width:70px;">操作</th>
             </tr>
           </thead>
           <tbody>
 
           <?php foreach($lists as $v):?>
+          <tr>
+              <td colspan="7">
+                  <div class="clearfix table-title">
+                      <div class="pull-left"><span>订单编号：</span><?=$v['no']?></div>
+                      <div class="pull-right">下单时间：<?=$v['dtime']?> </div>
+                  </div>
+              </td>
+          </tr>
             <tr>
                 <td>
-                    <div class="checkbox table-checkbox">
-                        <label>
-                            <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> <?=$v['biaoti']?>
-                        </label>
+                    <div class="checkbox table-checkbox" style="margin-left: 1em">
+                        <input type="checkbox" name="ids[]" value="<?=$v['id']?>">
+                        <a href="<?=$v['type']==1?'?c=buy&a=xiangxi&id='.$v['id']:'?c=buy&a=qytb1&id='.$v['id']?>"><?=$v['biaoti']?>
+                        </a>
                     </div>
                 </td>
 
@@ -62,7 +71,11 @@
               <td><span class="table-number">¥ <?=$v['xbje']?></span></td>
               <td><?=$v['xszt']?></td>
               <td><?=$v['zfzt']?></td>
-              <td><a href="index.php?p=show&c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a></td>
+              <td><?=$v['type']==1?'普通网店':'企业淘宝'?></td>
+              <td>
+                  <a href="?c=user&a=retainage&id=<?=$v['id']?>" class="table-a"><?=$v['zfzt']!='已支付'?'付款':''?></a>
+                  <a href="?c=shop&a=del&model=buy&id=<?=$v['id']?>" class="table-a">删除</a>
+              </td>
             </tr>
           <?php endforeach?>
           </tbody>
@@ -92,6 +105,12 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
     $("#checkall").click(function () {
         if (this.checked){
             $("input[name='ids[]']").attr('checked', true)

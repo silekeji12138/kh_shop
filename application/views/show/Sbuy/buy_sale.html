@@ -64,7 +64,7 @@
                     <input name="qq" type="text" class="form-control input-sell" placeholder="QQ：" />
                     <textarea name="content" class="form-control input-sell input-sell-text" placeholder="请填写您希望出售的网店链接的首页或旺旺名"></textarea>
                     <div class="sell-btn-c">
-                    	<button type="submit" class="btn btn-sell-l">立即提交</button>
+                    	<button type="button" class="btn btn-sell-l" id="tj">立即提交</button>
                         <button type="button" class="btn btn-sell-l btn-sell-l02"><i class="icon"></i>在线咨询</button>
                     </div>
                     </form>
@@ -85,6 +85,34 @@
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
+            $('#tj').click(function () {
+
+                    var tel=$('input[name=tel]').val();
+                    var qq=$('input[name=qq]').val();
+                    var name=$('input[name=name]').val();
+                    var reg = /^1[34578]\d{9}$/;
+                    var reg1=/^[1-9][0-9]{4,9}$/;
+                    if (reg.test(tel)){
+                         if (reg1.test(qq)){
+                                if (name!=''){
+                                    $('form').submit();
+                                }else {
+                                    alert('请输入姓名')
+                                }
+                         }else {
+                             alert('请正确输入QQ')
+                         }
+                    }else{
+                        alert('请正确输入手机号码')
+                    }
+
+
+
+            });
+
+
+
+
 $('#id').children('li').prop('class','');
  $('#1').click(function () {
      $('#szpt').val('天猫店');

@@ -1,0 +1,189 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>帮助中心</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+	<div class="help-banner">
+    	<div class="container">
+        	<div class="help-img wow bounceInUp animated"><img src="public/khshop/images/help01.png"></div>
+        </div>
+    </div>
+    <div class="back-f9">
+        <div class="container">
+            <div class="recruit-c help-c">
+				<div class="clearfix help-list-c">
+                	<ul class="help-list pull-right clearfix">
+                        <li>
+                            <a href="index.php?p=show&c=index&a=tixian&name=如何充值">提现充值</a>
+                            <ul class="help-list-down">
+                                <li><a href="">如何充值</a></li>
+                                <li><a href="">如何提现</a></li>
+                                <li class="border-no"><a href="">收费标准</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="index.php?p=show&c=index&a=fuwu&name=购买流程">服务流程</a>
+                            <ul class="help-list-down">
+                                <li><a href="">购买流程</a></li>
+                                <li><a href="">出售流程</a></li>
+                                <li class="border-no"><a href="">寄售交易</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="index.php?p=show&c=index&a=anquan&name=店铺转让认证">安全保障</a>
+                            <ul class="help-list-down help-list-down-lg">
+                                <li><a href="">店铺转让认证</a></li>
+                                <li><a href="">担保交易</a></li>
+                                <li class="border-no"><a href="">合同如何签署</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="index.php?p=show&c=index&a=help&name=买家帮助">帮助中心</a>
+                            <ul class="help-list-down">
+                                <li><a href="">买家帮助</a></li>
+                                <li><a href="">卖家帮助</a></li>
+                                <li class="border-no"><a href="">隐私保护</a></li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="">客服中心</a>
+                            <ul class="help-list-down help-list-down-last">
+                                <li class="active"><a href="">客服咨询</a></li>
+                                <li ><a href="index.php?p=show&c=index&a=jianyi">建议中心</a></li>
+                                <li class="border-no"><a href="index.php?p=show&c=index&a=zxwd">在线问答</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="help-nav">
+                	<i class="icon"></i><a href="">客服中心</a> > <a href="" class="active">客服咨询</a>
+                </div>
+                <div class="proposal-tt text-center">客服服务中心</div>
+                <div class="proposal-tt-sm text-center">如果您有任何疑问或需要帮助时，可以联系以下客服。温馨提示：为了更方便的为您解答,请按需求联系指定客服。 有些版本不能直接聊天，请先加好友！</div>
+                <div id="carousel-example-generic" class="carousel slide text-center jy-slide kf-slide" data-ride="carousel">
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row jy-row">
+
+
+                            <?php foreach($v as $s): ?>
+                                <div class="width-kf">
+                                    <div class="kf-back">
+                                        <div class="kf-img"><img src="<?=$s['tx']?>"></div>
+                                        <div class="kf-name"><?=$s['ss']?>：<?=$s['nc']?></div>
+                                        <div class="kf-name">QQ：<?=$s['yg']?></div>
+                                        <a href="" class="kf-link"><i class="icon"></i>联系TA</a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row jy-row">
+                            <?php foreach($v1 as $s): ?>
+
+                            <div class="width-kf">
+                                <div class="kf-back">
+                                    <div class="kf-img"><img src="<?=$s['tx']?>"></div>
+                                    <div class="kf-name"><?=$s['ss']?>：<?=$s['nc']?></div>
+                                    <div class="kf-name">QQ：<?=$s['yg']?></div>
+                                    <a href="" class="kf-link"><i class="icon"></i>联系TA</a>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+
+                        </div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                  </a>
+                </div>
+                <div class="kf-lind"></div>
+                <div class="proposal-tt-i"><span>您可以方便快捷的自助完成</span>“找回登录密码”、“账号充值”、“资金提现”、“身份认证”<span>等服务</span></div>
+                <div class="kf-row row">
+                    <div class="col-xs-2">
+                        <div class="kf-icon-c text-center">
+                            <i class="kf-icon"></i>
+                            <div class="kf-icon-tt">账号充值</div>
+                            <div class="kf-icon-txt">给账号充值，可用于购买或做出售担保金</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="kf-icon-c text-center">
+                            <i class="kf-icon kf-icon02"></i>
+                            <div class="kf-icon-tt">资金提现</div>
+                            <div class="kf-icon-txt">提现账户资金，需要账户资金不少于50元</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="kf-icon-c text-center">
+                            <i class="kf-icon kf-icon03"></i>
+                            <div class="kf-icon-tt">找回登录密码</div>
+                            <div class="kf-icon-txt">通过注册时的邮箱、登录账号，找回登录密码</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="kf-icon-c text-center">
+                            <i class="kf-icon kf-icon04"></i>
+                            <div class="kf-icon-tt">身份认证</div>
+                            <div class="kf-icon-txt">在平台交易时，需要对交易双方进行身份认证</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="kf-icon-c text-center">
+                            <i class="kf-icon kf-icon05"></i>
+                            <div class="kf-icon-tt">密码安全问题</div>
+                            <div class="kf-icon-txt">在平台交易时，需要对交易双方进行身份认证</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="kf-icon-c text-center">
+                            <i class="kf-icon kf-icon06"></i>
+                            <div class="kf-icon-tt">设置支付密码</div>
+                            <div class="kf-icon-txt">在平台交易时，需要对交易双方进行身份认证</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proposal-tt-i">帮助教程</div>
+                <ul class="clearfix proposal-list kf-list">
+                     <?php foreach($v1 as $v): ?>
+                    <li><a href="index.php?p=show&c=index&a=help1&id=<?=$v['id']?>&name=买家帮助"><?=$v['biaoti']?></a></li>
+                      <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+
+    <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+</html>

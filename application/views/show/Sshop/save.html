@@ -18,7 +18,7 @@
             <ul class="clearfix pull-left tab-list">
                 <!--<li><a href="">我出售的网店</a></li>-->
                 <li ><a href="index.php?p=show&c=shop&a=buy">我购买的网店</a></li>
-                <li ><a href="index.php?p=show&c=shop&a=auction">我参与的竞拍</a></li>
+
                 <li class="active"><a href="index.php?p=show&c=shop&a=save">我收藏的网店</a></li>
             </ul>
             <div class="pull-right">
@@ -50,10 +50,10 @@
           <?php foreach($lists as $v):?>
             <tr>
               <td>
-                  <div class="checkbox table-checkbox">
-                      <label>
-                          <input type="checkbox" name="ids[]" value="<?=$v['id']?>"> <?=$v['biaoti']?>
-                      </label>
+                  <div class="checkbox table-checkbox" style="margin-left: 1em">
+                      <input type="checkbox" name="ids[]" value="<?=$v['id']?>">
+                      <a href="<?=$v['type']==1?'?c=buy&a=xiangxi&id='.$v['id']:'?c=buy&a=qytb1&id='.$v['id']?>"><?=$v['biaoti']?>
+                      </a>
                   </div>
               </td>
               <td><span class="table-number">¥<?=$v['csjg']?></span></td>
@@ -90,6 +90,12 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $(function () {
+        var len = $("table tr").length;
+        if (len>1){
+            $(".table-null").css("display","none");
+        }
+    });
     $("#checkall").click(function () {
         if (this.checked){
             $("input[name='ids[]']").attr('checked', true)

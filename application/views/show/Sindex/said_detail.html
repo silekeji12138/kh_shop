@@ -1,0 +1,332 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户说</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+	<div class="top" id="top">
+    	<div class="container">
+        	<div class="row">
+        	<div class="col-xs-3">您好，欢迎来到店来店往</div>
+            <div class="col-xs-6 text-center">
+                <ol class="breadcrumb">
+                  <li><a href="#"><i class="icon icon-login"></i>登录</a></li>
+                  <li><a href="#">注册</a></li>
+                </ol>	
+            </div>
+            <div class="col-xs-3">
+                <ol class="breadcrumb pull-right">
+                  <li class="active"><a href="#">会员中心</a></li>
+                  <li><a href="#">帮助中心</a></li>
+                  <li><a href="">投诉建议</a></li>
+                </ol>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-back">
+    	<div class="container clearfix">
+        	<div class="pull-left logo"><a href=""></a></div>
+            <ul class="nav-list pull-left">
+            	<li><a href="">公司简介</a></li>
+                <li><a href="">商务合作</a></li>
+                <li><a href="">网店资讯</a></li>
+                <li><a href="">诚聘英才</a></li>
+                <li class="active"><a href="">网店拍卖</a></li>
+                <li><a href="">其它网店</a></li>
+                <li><a href="">代入驻</a></li>
+                <li>
+                	<a href="">更多服务 <span class="caret"></span></a>
+                	<div class="nav-down">
+                    	<i class="glyphicon glyphicon-triangle-top"></i>
+                    	<ul class="nav-down-list">
+                        	<li><a href="">企业服务</a></li>
+                            <li><a href="">网店代运营</a></li>
+                            <li><a href="">服务市场</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="pull-right phone">
+            	<i class="icon icon-phone"></i>400-123-5678
+            </div>
+        </div>
+    </div>
+    <div class="fw-banner yhs-banner">
+    	<div class="container">
+            <div class="yhs-c">
+                <div class="yhs01"><img src="public/khshop/images/yhs01.png"></div>
+                <div class="yhs-txt">店来店往，给你想要的店， 真实讲述网店转让的故事</div>
+            </div>
+        </div>
+    </div>
+    <div class="back-f9">
+        <div class="container clearfix">
+            <div class="pull-left yh-left-width">
+                <div class="yh-left">
+                    <div class="yhs-tt">主持人采访前言</div>
+                    <div class="yhs-txt-t"><?=$list['cfqy']?></div>
+                    <div class="yhs-tt-back">店铺信息</div>
+                    <div class="yhs-one">交易标题：<span class="jy-tt"><?=$list['biaoti']?></span></div>
+                    <div class="yhs-one yhs-one02">商城类型：<span><?=$list['sclx']?></span></div>
+                    <div class="yhs-one yhs-one03">商标类型：<span><?=$list['sblx']?></span></div>
+                    <div class="yhs-one yhs-one04">一级类目：<span>童装/婴儿装/亲子装 童鞋/婴儿鞋/亲子鞋 孕妇装/孕产妇用品/营养</span></div>
+                    <div class="yhs-one yhs-one05">网店价格：<div class="yhs-money"><?=$list['jiage']?></div></div>
+                    <div class="yhs-txt-t">卖家描述：<?=$list['mjms']?></div>
+                    <?=$list['content']?>
+                </div>
+                <div class="yh-left">
+                    <div class="yhs-tt-back yhs-tt-back02">结束语</div>
+                    <div class="yhs-article"><p><?=$list['jsy']?></p></div>
+                </div>
+            </div>
+            <div class="pull-right yhs-right">
+                <div class="yhs-right-top">
+                    <div class="yhs-right-back">
+                        <div class="yhs-right-tt">明星店主：<span><?=$list['name']?></span></div>
+                        <div class="yhs-qs">第<span><?=$list['qs']?></span>期</div>
+                    </div>
+                    <div class="yhs-img"><img src="<?=$list['header']?>"></div>
+                    <div class="yhs-img-txt">
+                        <p>店主称呼：<span><?=$list['name']?></span></p>
+                        <p>店来店往账号：<span>*********<?=substr($list['zh'],-1,1)?></span></p>
+                        <p>交易类型：<span><?=$list['jylx']?></span></p>
+                        <p>入行时间：<span><?=substr($list['rhsj'],0,4)?>年</span></p>
+                        <p>擅长类目：<span><?=$list['sclm']?></span></p>
+                    </div>
+                    <div class="yhs-img-bottom"><span>自述：</span><?=$list['zishu']?></div>
+                </div>
+                <div class="yh-left">
+                    <div class="yh-left-r-tt">往期回顾</div>
+                    <ul class="ths-list">
+                        <?php foreach($lists as $v):?>
+                        <li>
+                            <div><?=$v['biaoti']?></div>
+                            <div class="label-yh">第<span><?=$v['qs']?></span>期</div>
+                            <div class="yhs-time">Time : <span><?=substr($v['dtime'],0,10)?></span></div>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                <div class="yhs-right-img"><img src="public/khshop/images/yhs10.png"></div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <div class="icon footer-right">
+            <a role="button" data-toggle="modal" data-target="#kefu" class="kf-right">点击展开客服咨询</a>
+            <a href="#top" class="back-top"></a>
+        </div>
+    	<div class="container clearfix">
+        	<div class="pull-left">
+            	<div class="footer-tt">关于我们</div>
+                <ul>
+                	<li><a href="">公司简介</a></li>
+                    <li><a href="">商务合作</a></li>
+                    <li><a href="">网店资讯</a></li>
+                    <li><a href="">诚聘英才</a></li>
+                </ul>
+            </div>
+        	<div class="pull-left">
+            	<div class="footer-tt">提现充值</div>
+                <ul>
+                	<li><a href="">如何充值</a></li>
+                    <li><a href="">如何提现</a></li>
+                    <li><a href="">收费标准</a></li>
+                </ul>
+            </div>
+        	<div class="pull-left">
+            	<div class="footer-tt">服务流程</div>
+                <ul>
+                	<li><a href="">购买流程</a></li>
+                    <li><a href="">出售流程</a></li>
+                    <li><a href="">寄售交易</a></li>
+                </ul>
+            </div>
+        	<div class="pull-left">
+            	<div class="footer-tt">安全保障</div>
+                <ul>
+                	<li><a href="">店铺转让认证</a></li>
+                    <li><a href="">担保交易</a></li>
+                    <li><a href="">合同如何签署</a></li>
+                </ul>
+            </div>
+        	<div class="pull-left">
+            	<div class="footer-tt">帮助中心</div>
+                <ul>
+                	<li><a href="">买家帮助</a></li>
+                    <li><a href="">卖家帮助</a></li>
+                    <li><a href="">隐私保护</a></li>
+                </ul>
+            </div>
+        	<div class="pull-left">
+            	<div class="footer-tt footer-tt-last">客服中心</div>
+                <ul>
+                	<li><a href="">客服咨询</a></li>
+                    <li><a href="">建议中心</a></li>
+                    <li><a href="">在线问答</a></li>
+                </ul>
+            </div>
+            <div class="pull-right ewm text-center">
+            	<div class="ewm-img"><img src="public/khshop/images/ewm02.png"></div>
+                <div class="ewm-txt">店来店往手机站</div>
+            </div>
+            <div class="pull-right ewm text-center">
+            	<div class="ewm-img"><img src="public/khshop/images/ewm01.png"></div>
+                <div>扫码关注我们</div>
+            </div>
+        </div>
+        <div class="footer-lind"></div>
+        <div class="container clearfix">
+        	<div class="pull-left footer-link">
+            	<a href=""><img src="public/khshop/images/footer01.png"></a>
+                <a href=""><img src="public/khshop/images/footer02.png"></a>
+                <a href=""><img src="public/khshop/images/footer03.png"></a>
+                <a href=""><img src="public/khshop/images/footer04.png"></a>
+                <a href=""><img src="public/khshop/images/footer05.png"></a>
+                <a href=""><img src="public/khshop/images/footer06.png"></a>
+            </div>
+            <div class="pull-right phone phone-footer">
+            	<i class="icon icon-phone"></i>400-123-5678<br><span>周一至周五   9:30- 18:30</span>
+            </div>
+        </div>
+        <div class="beian text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+    </div>
+    <div class="fixed-nav">
+    	<ul>
+        	<li>
+            	<div class="list01 list-c"><i class="icon fixed01"></i></div>
+                <div class="phone-c">官方电话<span>400-123-5678</span></div>
+            </li>
+        	<li>
+            	<div class="list02 list-c"><i class="icon fixed02"></i></div>
+                <div class="phone-c ts-c"><a href="">投诉建议</a></div>
+            </li>
+        	<li>
+            	<div class="list03 list-c"><i class="icon fixed03"></i></div>
+                <div class="phone-c qq-c"><a role="button" data-toggle="modal" data-target="#myModal">客服QQ校验</a></div>
+            </li>
+        	<li>
+            	<div class="list04 list-c"><i class="icon fixed04"></i></div>
+                <div class="phone-c ts-c"><a href="">我的收藏</a></div>
+            </li> 
+        </ul>
+    </div>
+ <!--提交需求-->
+    <!-- Modal -->
+    <div class="modal fade" id="yy-xq" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-close" data-dismiss="modal" aria-label="Close"><i class="icon"></i></div>
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="modal-tt text-center">在线提交需求信息</div>
+            <div class="yy-modal-c">
+                <input type="text" class="form-control qq-input" placeholder="姓       名：">
+                <input type="text" class="form-control qq-input" placeholder="手机号码：">
+                <input type="text" class="form-control qq-input" placeholder="店  铺  名： ">
+                <textarea class="form-control qq-input" placeholder="需求描述："></textarea>
+                <button type="button" class="btn btn-qq">提交</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!--QQ校验-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-close" data-dismiss="modal" aria-label="Close"><i class="icon"></i></div>
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="modal-tt text-center">客服QQ校验</div>
+            <div class="qq-txt-c">
+            	<div class="qq-ts text-center" style="display:none;">请在下方填写业务QQ号码 ，提交辨别真伪</div>
+                <div class="qq-error clearfix">
+                	<i class="icon icon-qq"></i>
+                    <div class="pull-left">
+                    	<div class="error-txt">经校验，该号码假冒存疑。</div>
+                        <div class="error-lg">客服校验失败!</div>
+                        <div class="error-txt">如您在交易中遇到，请立即停止交易，如有疑问，</div>
+                        <div class="error-txt">请咨询客服热线：<span>400-969-8688</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+            	<input type="text" class="form-control qq-input" placeholder="请填写业务QQ号码 " />
+                <button type="button" class="btn btn-qq">提交</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!--QQ客服-->
+    <!-- Modal -->
+    <div class="modal fade" id="kefu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-dialog-kf" role="document">
+        <div class="modal-close02 icon" data-dismiss="modal" aria-label="Close"></div>
+        <div class="qq-top clearfix">
+        	<div class="qq-phone pull-left"><i class="icon"></i>400-123-5678</div>
+            <div class="qq-date pull-right"><i class="icon"></i>周一至周五  9:30-18:30</div>
+        </div>
+        <div class="modal-content modal-content-kf">
+          <div class="modal-body">
+			<div class="clearfix qq-link-c">
+            	<div class="col-xs-6 qq-after">
+                	<div class="clearfix">
+                    	<div class="icon icon-tall"></div>
+                        <div class="pull-left shop-name">买天猫店</div>
+                        <a href="" class="qq-link"><i class="icon"></i>联系我</a>
+                    </div>
+                	<div class="clearfix">
+                    	<div class="icon icon-tall02"></div>
+                        <div class="pull-left shop-name">买淘宝店</div>
+                        <a href="" class="qq-link"><i class="icon"></i>联系我</a>
+                    </div>
+                	<div class="clearfix">
+                    	<div class="icon icon-tall03"></div>
+                        <div class="pull-left shop-name">买其它店</div>
+                        <a href="" class="qq-link"><i class="icon"></i>联系我</a>
+                    </div>
+                </div>
+            	<div class="col-xs-6">
+                	<div class="clearfix">
+                    	<div class="icon icon-tall"></div>
+                        <div class="pull-left shop-name">买天猫店</div>
+                        <a href="" class="qq-link"><i class="icon"></i>联系我</a>
+                    </div>
+                	<div class="clearfix">
+                    	<div class="icon icon-tall02"></div>
+                        <div class="pull-left shop-name">买淘宝店</div>
+                        <a href="" class="qq-link"><i class="icon"></i>联系我</a>
+                    </div>
+                	<div class="clearfix">
+                    	<div class="icon icon-tall03"></div>
+                        <div class="pull-left shop-name">买其它店</div>
+                        <a href="" class="qq-link"><i class="icon"></i>联系我</a>
+                    </div>
+                </div>
+            </div>
+            <a href="" class="qq-sh">店来店往售后客服</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+</html>
