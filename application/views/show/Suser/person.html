@@ -40,18 +40,9 @@
                     </div> 
                 </div>
             </div>
-            <div class="clearfix gl-clearfix" style="display: <?=empty($list['name'])?'block':'none'?>">
-                <div class="hl-phone-txt">温馨提示：您的手机号[<span><?=substr($list['tel'],0,3)?>****<?=substr($list['tel'],7,4)?></span>]已经通过认证</div>
-                <div class="clearfix gl-clearfix gl-clearfix02">
-                    <div class="pull-left cs-left-txt cs-left-txt02">短信验证</div>
-                    <div class="pull-left"><input type="text" name="captcha" class="form-control input"></div>
-                    <div class="pull-left"><input type="button" id="btn_unbind" class="btn btn-tj btn-tj02" value="获取验证码"></div>
-                </div>
-            </div>
-            <input type="hidden" id="old" name="old" value="<?=$list['tel']?>">
-            <div class="clearfix gl-clearfix">
+			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">真实姓名</div>
-              <div class="pull-left"><input type="text" name="name"  <?=!empty($list['name'])?'readonly':''?> value="<?=$list['name']?>" class="form-control input"></div>
+              <div class="pull-left"><input type="text" name="name"  <?=isset($list['name'])?'readonly':''?> value="<?=$list['name']?>" class="form-control input"></div>
               <div class="pull-left cs-left-txt cs-left-txt03">* 请真实填写,提交后不可修改</div>
             </div>
 			<div class="clearfix gl-clearfix">
@@ -133,42 +124,7 @@
 });
 </script>
 <script>
-<<<<<<< HEAD
 
-=======
-    $("#btn_unbind").click(function () {
-        var that = $("#btn_unbind")
-        $.post('?c=sms&a=sms',{
-            'tel':$("#old").val()
-        },function (data) {
-            if (data=='success'){
-                alert("短信发送成功");
-                settime(that);
-            }else {
-                alert("发送失败，请稍后再试")
-            }
-        })
-    });
-
-    var countdown=120;
-    function settime(obj) { //发送验证码倒计时
-        if (countdown == 0) {
-            obj.attr('disabled',false);
-            //obj.removeattr("disabled");
-            obj.val("获取验证码");
-            countdown = 120;
-            return;
-        } else {
-            obj.attr('disabled',true);
-            obj.val("重新发送(" + countdown + ")");
-            countdown--;
-        }
-        setTimeout(function() {
-                settime(obj)
-            }
-            ,1000)
-    }
->>>>>>> f3825c32007b4ba901592eebdc5ed128917fc7dc
 
 	$(".bank-radio .radio-inline").click(function(){
 		$(".radio-inline").removeClass("active");
