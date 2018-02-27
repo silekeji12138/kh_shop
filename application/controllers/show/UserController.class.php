@@ -103,7 +103,7 @@ class UserController extends BaseController
         $token = mt_rand(1,100000);
         $_SESSION['token'.$uid] = $token;
         //订单号
-        $no = date('Ymd',time()).$uid.rand(100000,999999);
+        $no = date('Ymd',time()).$uid.rand(10000,99999);
         //余额
         $row = $model->select("select property from sl_member WHERE id={$uid}")[0];
 
@@ -310,7 +310,7 @@ class UserController extends BaseController
         if($request=='POST'){
             $data = $_POST;
             $type = $_GET['type'];
-            $no = date('Ymd',time()).$uid.rand(100000,999999);
+            $no = date('Ymd',time()).$uid.rand(10000,99999);
             if ($_GET['type']==1){
                 $list['type'] = '店铺升级';
                 $list['sort_id'] = 78;
@@ -428,35 +428,61 @@ class UserController extends BaseController
         $request = $_SERVER['REQUEST_METHOD'];
         if($request=="POST"){
             $data = $_POST;
-            $model = new Model('');
+            $uid = $_SESSION['user_id'];
+            //凭证
+            $file = $_FILES;
+            if ($file['hkpz']['error']==0){
+                $this->library("Upload");
+                $upload = new Upload();
+                $data['hkpz'] = $upload->up($_FILES['hkpz']);
+            }
+            //流水号
+            $model = new Model('recharge');
+            $no = date('Ymd',time());
+            $row = $model->select("select *from sl_count WHERE `day`={$no} limit 0,1");
+            $number = new Model("count");
+            if (!$row){
+                $arr['day'] = $no;
+                $arr['count'] = 1;
+                $number->insert($arr);
+            }else{
+                $arr['count'] = $row[0]['count'] + 1;
+                $number->xg($arr,"`day`={$no}");
+            }
+            $tail = substr("00000000".$arr['count'],-6);
+            $data['lsh'] = $no.$tail;
+            //var_dump($data['lsh']);die;
+            $data['czzt'] = '处理中';
+            $data['uid'] = $uid;
             $model->insert($data);
+            $this->jump("?c=user&a=record","",0);
         }
         include CUR_VIEW_PATH . "Suser" . DS ."recharge.html";
     }
 
     //充值记录
     public function recordAction(){
-        $model = new Model('log');
+        $model = new Model('recharge');
         $uid = $_SESSION['user_id'];
-        $where = "where uid={$uid} and type='充值'";
+        $where = "where uid={$uid} ";
         $request = $_SERVER['REQUEST_METHOD'];
         if ($request=='POST'){
             $data = $_POST;
             foreach ($data as $k=>$v){
                 if ($k=='start'&&$v!=0){
-                    $v = strtotime($v);
-                    $where .= " and dtime>$v";
+                    $v = substr($v,0,10);
+                    $where .= " and  hkrq >'{$v}'";
                 }
                 if ($k=='end'&&$v!=0){
-                    $v = strtotime($v);
-                    $where .= " and dtime<$v";
+                    $v = substr($v,0,10);
+                    $where .= " and hkrq < '{$v}'";
                 }
                 if ($k=='status'&&$v!='所有'){
-                    $where .= " and status='$v'";
+                    $where .= " and czzt='$v'";
                 }
             }
         }
-        $list = $model->select("select *from sl_log $where ORDER BY dtime DESC ");
+        $list = $model->select("select *from sl_recharge $where ORDER BY dtime DESC ");
         include CUR_VIEW_PATH . "Suser" . DS ."record.html";
     }
 

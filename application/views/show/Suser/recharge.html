@@ -22,6 +22,7 @@
             </ul>
             
         </div>
+        <form id="myForm" action="?c=user&a=recharge" method="post" ENCTYPE="multipart/form-data">
          <div class="user-back">
 			<div class="cz-tt"><i class="glyphicon glyphicon-triangle-right"></i>选择支付方式</div>
             <div class="bank-radio">
@@ -29,7 +30,7 @@
                   <input type="radio" name="bank" checked> 网上银行( 免手续费，不支持信用卡 )
                 </label>-->
                 <label class="radio-inline  radio-inline-tow active">
-                  <input type="radio" name="bank" checked> 线下银行汇款（如选择的是“线下银行汇款”银行汇款方式，请确保汇款确认单提交真实！）
+                  <input type="radio" name="" checked> 线下银行汇款（如选择的是“线下银行汇款”银行汇款方式，请确保汇款确认单提交真实！）
                 </label>
             </div>
             <!--<div class="brank-one">
@@ -103,23 +104,23 @@
                 <div class="cz-tt"><i class="glyphicon glyphicon-triangle-right"></i>提交汇款确认单</div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz"><span>*</span>收款账户</div>
-                  <div class="pull-left"><input type="text" class="form-control input input-cz"></div>
+                  <div class="pull-left"><input type="text" name="skzh" class="form-control input input-cz"></div>
                 </div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz"><span>*</span>汇款银行</div>
-                  <div class="pull-left"><input type="text" class="form-control input input-cz"></div>
+                  <div class="pull-left"><input type="text" name="hkyh" class="form-control input input-cz"></div>
                 </div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz"><span>*</span>汇款金额</div>
-                  <div class="pull-left"><input type="text" class="form-control input input-cz"></div>
+                  <div class="pull-left"><input type="text" name="hkje" class="form-control input input-cz"></div>
                 </div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz"><span>*</span>汇款日期</div>
-                  <div class="pull-left"><input type="text" class="form-control input input-cz"></div>
+                  <div class="pull-left"><input type="date" name="hkrq" class="form-control input input-cz"></div>
                 </div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz"><span>*</span>汇款人姓名</div>
-                  <div class="pull-left"><input type="text" class="form-control input input-cz"></div>
+                  <div class="pull-left"><input type="text" name="hkr" class="form-control input input-cz"></div>
                 </div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz">上传汇款凭证</div>
@@ -128,7 +129,7 @@
                     <div class="uploader white">
                     <input type="text" class="filename form-control input input-cz" readonly/>
                     <input type="button" name="file" class="button" value="浏览"/>
-                    <input type="file" class="file" onchange="previewImage(this)" size="30"/>
+                    <input type="file" name="hkpz" class="file" onchange="previewImage(this)" size="30"/>
                     </div> 
                     <div id="preview" class="zj">
                         <img id="imghead" width="100%" height="auto" border="0" src="">
@@ -138,11 +139,12 @@
                 </div>
                 <div class="clearfix gl-clearfix">
                   <div class="pull-left cs-left-txt cs-left-txt02 txt-cz">备注</div>
-                  <div class="pull-left"><input type="text" class="form-control input input-cz"></div>
+                  <div class="pull-left"><input type="text" name="bz" class="form-control input input-cz"></div>
                 </div>
-                <button type="submit" class="btn btn-tj btn-tj02 btn-cz btn-cz02">确认提交</button>
+                <button type="submit" id="submit" class="btn btn-tj btn-tj02 btn-cz btn-cz02">确认提交</button>
             </div>
         </div>
+        </form>
         <div class="ewm-c">
             <div class="ewm text-center">
                 <div><img src="public/khshop/images/user/ewm.png"></div>
@@ -164,7 +166,12 @@
 });
 </script>
 <script>
-	$(".bank-radio .radio-inline").click(function(){
+    $("#submit").click(function(){
+        $("form").submit(function(e){
+            $(this).attr("disabled","true");
+        });
+    });
+    $(".bank-radio .radio-inline").click(function(){
 		$(".radio-inline").removeClass("active");
 		$(this).addClass("active");
 		})

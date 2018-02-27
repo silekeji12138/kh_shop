@@ -3,28 +3,29 @@
 /**
  * Created by PhpStorm.
  * User: DELL
- * Date: 2018/1/3
- * Time: 16:45
+ * Date: 2018/2/23
+ * Time: 14:24
  */
-header("Content-type: text/html; charset=gbk2312");
 class SmsController extends BaseController
 {
-    //»ñÈ¡ÊÖ»úÑéÖ¤Âë
     public function smsAction(){
-        header("Content-type: text/html; charset=gbk2312");
-        date_default_timezone_set('PRC'); //ÉèÖÃÄ¬ÈÏÊ±ÇøÎª±±¾©Ê±¼ä
-        //¶ÌÐÅ½Ó¿ÚÓÃ»§Ãû $uid
-        $uid = 'SLKJ006499';
-        //¶ÌÐÅ½Ó¿ÚÃÜÂë $passwd
-        $pwd = '123456';
+        header("Content-type: text/html; charset=uft8");
+        date_default_timezone_set('PRC'); //è®¾ç½®é»˜è®¤æ—¶åŒºä¸ºåŒ—äº¬æ—¶é—´
+        //çŸ­ä¿¡æŽ¥å£ç”¨æˆ·å $uid
+        $uid = 104394;
+        //çŸ­ä¿¡æŽ¥å£å¯†ç  $passwd
+        $pwd = md5('m91TcV');
         $tel = $_POST['tel'];
+        //æŽ¥å…¥å·
+        $no = 106910134394;
         $message=rand(1000,9000);
         $_SESSION[$tel] = $message;
-        $msg = rawurlencode(mb_convert_encoding($message, "gb2312", "utf-8"));
-        $msg=$msg."¡¾µêÀ´µêÍù¡¿";
-        $gateway = "http://mb345.com:999/ws/BatchSend2.aspx?CorpID={$uid}&Pwd={$pwd}&Mobile={$tel}&Content={$msg}&SendTime=&cell=";
+        //$msg = rawurlencode(mb_convert_encoding($message, "gb2312", "utf-8"));
+        $msg = "ã€å‰‘å—æ˜¥ã€‘æ‚¨çš„çŸ­ä¿¡éªŒè¯ç æ˜¯ï¼š{$message}";
+        $msg = urlencode($msg);
+        $gateway = "http://119.23.114.82:6666/cmppweb/sendsms?uid={$uid}&pwd={$pwd}&mobile={$tel}&srcphone={$no}&msg={$msg}";
         $result = file_get_contents($gateway);
-        if ($result>0){
+        if ($result==0){
             echo "success";
         }else{
             echo $result;
