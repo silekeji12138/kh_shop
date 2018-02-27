@@ -124,7 +124,7 @@ class ShopController extends BaseController
         }
         //所属行业
         $hy = $model->select("select u1 from sl_canshu  where classid=267 order by id desc");
-        $pt = $model->select("select u1 from sl_canshu  where classid=278 order by id desc");
+
         include CUR_VIEW_PATH . "Sshop" . DS ."other.html";
     }
 

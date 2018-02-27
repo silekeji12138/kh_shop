@@ -4,23 +4,16 @@ class AutotableController extends BaseController{
 	
 	//显示自动表列表
 	public function indexAction(){
-	    $u6="";
-	    $model_id="";
 	    
-	    if(!empty($_REQUEST['model_id']))
-	    {
-	        $model_id = $_REQUEST['model_id'];
-	    }
-	    
-	    if(!empty( $_REQUEST['u6']))
-	    {
-	        $u6 = $_REQUEST['u6'];
-	    }
-	   
+	    $model_id = $_REQUEST['model_id'];
+	    //$sort_id = $_REQUEST['sort_id'];
+	    $u6 = $_REQUEST['u6'];
 	    $where = " 1=1 ";
 	    // 获得当前表名
 	    $moxingModel = new MoxingModel("moxing");
 	    $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
+        $u7=$moxingModel->select("select u7 from sl_moxing WHERE u1='".$tableName."'")[0]['u7'];
+
 	    //先获取文章信息
 	    $tableModel = new Model($tableName);
 	    //查询条件
@@ -47,6 +40,7 @@ class AutotableController extends BaseController{
 	    }
 	    //需要显示的字段
 	    $filedLists=$filedModel->select("select * from sl_filed where model_id='{$model_id}' and u5='是' order by u10 asc ");//显示查询字段
+	    
 	   
 	    // 载入分页类
 	    include LIB_PATH . "Page.class.php";
@@ -108,9 +102,6 @@ class AutotableController extends BaseController{
 
 	//定义insert方法，完成自动表的插入
 	public function insertAction(){
-//         $this->library("Upload"); //载入文件上传类
-//         $upload = new Upload(); //实例化上传对象
-	    
 	    $model_id = $_REQUEST['model_id'];
 	    // 获得当前表名
 	    $moxingModel = new MoxingModel("moxing");
@@ -139,6 +130,30 @@ class AutotableController extends BaseController{
 	            $data[$v['u1']]= date('Y-m-d H:i:s',time());
 	        }
 	    }
+	    //如果字段设置为文件和图片
+	    foreach ($filedAraay as $v)
+	    {
+	        $filedList=$filedModel->select("select * from sl_filed where  u7='图片'  and model_id='{$model_id}' and u1='{$v['u1']}' ");
+	        //判断是否为图片，请图片参数不为空
+	        if(count($filedList)>0 )
+	        {
+	            //echo "select * from sl_filed where  u7='图片'  and model_id='{$model_id}' and u1='{$v['u1']}'  <br>";
+	            //$data[$v['u1']]= date('Y-m-d H:i:s',time());
+	            //处理文件上传,需要使用到Upload.class.php
+	            $this->library("Upload"); //载入文件上传类
+	            $upload = new Upload(); //实例化上传对象
+	            if ($filename = $upload->up($_FILES[$v['u1']])){
+	                //成功
+	                $data[$v['u1']] = $filename;
+	                //调用模型完成入库操作，并给出相应的提示
+	                 
+	            }else {
+	                //print_r($_FILES[$v['u1']]);
+	                //$this->jump('index.php?p=admin&c=autotable&a=add&model_id='.$model_id."&sort_id=".$sort_id.$data['sort_id'],$upload->error(),3);
+	            }
+	    
+	        }
+	    }
 	    
 	    
 	    //单独处理密码
@@ -148,6 +163,22 @@ class AutotableController extends BaseController{
 	        if(count($filedList)>0)
 	        {
 	            $data[$v['u1']]=md5($data[$v['u1']]);
+	        }
+	    }
+	    
+	    //单独处理文件
+	    foreach ($filedAraay as $v)
+	    {
+	        $filedList=$filedModel->select("select * from sl_filed where  u7='文件' and model_id='{$model_id}' and u1='{$v['u1']}' ");
+	        if(count($filedList)>0)
+	        {
+	            //上传文件到服务器
+	            $this->library("Upload"); //载入文件上传类
+	            $upload = new Upload(); //实例化上传对象
+	            if ($filename = $upload->up($_FILES[$v['u1']])){
+	                $data[$v['u1']]=$filename;
+	            }
+	            
 	        }
 	    }
 	    
@@ -182,7 +213,48 @@ class AutotableController extends BaseController{
 	    //如果字段设置为文件和图片
 	    $filedModel=new Model("filed");
 	    $filedAraay=$filedModel->select("select u1 from sl_filed where model_id='{$model_id}' ");
- 
+	    foreach ($filedAraay as $v)
+	    {
+	        $filedList=$filedModel->select("select * from sl_filed where  u7='图片'  and model_id='{$model_id}' and u1='{$v['u1']}' ");
+	        //判断是否为图片，请图片参数不为空
+	        if(count($filedList)>0 )
+	        {
+	            //echo "select * from sl_filed where  u7='图片'  and model_id='{$model_id}' and u1='{$v['u1']}'  <br>";
+	            //$data[$v['u1']]= date('Y-m-d H:i:s',time());
+	            //处理文件上传,需要使用到Upload.class.php
+	            $this->library("Upload"); //载入文件上传类
+	            $upload = new Upload(); //实例化上传对象
+	            if ($filename = $upload->up($_FILES[$v['u1']])){
+	                //成功
+	                $data[$v['u1']] = $filename;
+	                //调用模型完成入库操作，并给出相应的提示
+	                 
+	            }else {
+	                //print_r($_FILES[$v['u1']]);
+	                //$this->jump('index.php?p=admin&c=autotable&a=add&model_id='.$model_id."&sort_id=".$sort_id.$data['sort_id'],$upload->error(),3);
+	            }
+	    
+	        }
+	    }
+	    
+	    
+	    //单独处理文件
+	    foreach ($filedAraay as $v)
+	    {
+	        $filedList=$filedModel->select("select * from sl_filed where  u7='文件'  and model_id='{$model_id}' and u1='{$v['u1']}' ");
+	        //判断是否为文件，请文件参数不为空
+	        if(count($filedList)>0 )
+	        {
+	            //处理文件上传,需要使用到Upload.class.php
+	            $this->library("Upload"); //载入文件上传类
+	            $upload = new Upload(); //实例化上传对象
+	            if ($filename = $upload->up($_FILES[$v['u1']])){
+	                $data[$v['u1']] = $filename;
+	            }else {
+	            }
+	            
+	        }
+	    }
 	    //调用模型完成更新
 	    //var_dump($data);die();
 	    if($tableModel->update($data)){
@@ -209,13 +281,46 @@ class AutotableController extends BaseController{
 	    $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
 	    //先获取文章信息
 	    $tableModel = new Model($tableName);
-	    
+
 	    if ($tableModel->delete($array_id)!="false") {
 	        $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "删除成功", 2);
 	    } else {
 	        $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "删除失败", 3);
 	    }
 	}
+
+	//同意的方法
+    public function tongyiAction(){
+	    $model_id=$_REQUEST['model_id'];
+        $sys_id = $_REQUEST['id'];
+        $array_id=explode(",", $sys_id)[0];
+        $moxingModel = new MoxingModel("moxing");
+        $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
+        //先获取文章信息
+        $tableModel = new Model($tableName);
+        $data['status']='通过';
+        if ($tableModel->xg($data,"id=$array_id")!="false") {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "成功", 2);
+        } else {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "失败", 3);
+        }
+    }
+    //拒绝的方法
+    public function jujueAction(){
+        $model_id=$_REQUEST['model_id'];
+        $sys_id = $_REQUEST['id'];
+        $array_id=explode(",", $sys_id)[0];
+        $moxingModel = new MoxingModel("moxing");
+        $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
+        //先获取文章信息
+        $tableModel = new Model($tableName);
+        $data['status']='拒绝';
+        if ($tableModel->xg($data,"id=$array_id")!="false") {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "成功", 2);
+        } else {
+            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "失败", 3);
+        }
+    }
 	
 	
 	//复制当前记录
@@ -242,14 +347,10 @@ class AutotableController extends BaseController{
 	        $autotable = $tableModel->selectByPk($v);
 	        //去除主建
 	        unset($autotable["id"]);
-	        unset($autotable["0"]);
 	        //插入数据库
 	        if($tableModel->insert($autotable))
 	        {
 	            $this->jump('index.php?p=admin&c=autotable&a=index&model_id='.$model_id, "复制成功", 1);
-	        }else 
-	        {
-	            die("复制失败");
 	        }
 	        
 	        

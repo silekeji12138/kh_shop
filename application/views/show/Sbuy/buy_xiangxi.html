@@ -65,7 +65,7 @@
                                     <div class="pm-kf-name pm-kf-qq pm-kf-gh02 pull-left"><?=$rs['yg']?></div>
                                 </div>
                                 <div class="btn-toolbar">
-                                    <div class="btn-group"><div class="pf-label">评分：(待定)</div></div>
+                                    <div class="btn-group"><div class="pf-label">评分：<?=$rs['pf']?></div></div>
                                     <div class="btn-group"><a role="button" data-toggle="modal" data-target="#pingfen" class="pf-label pf-link" name="<?=$rs['id']?>" id="pf">我要评分</a></div>
                                 </div>
                             </div>
@@ -156,36 +156,18 @@
                             </tr>
                           </thead>
                           <tbody>
+                          <?php foreach($m4 as $v): ?>
                             <tr>
-                              <td>2017-10-15</td>
-                              <td>15800</td>
-                              <td>3980</td>
-                              <td>168</td>
-                              <td>18</td>
-                              <td>22</td>
-                              <td>82%</td>
-                              <td>395000</td>
+                              <td><?=$v['tongjiriqi']?></td>
+                              <td><?=$v['lanliang']?></td>
+                              <td><?=$v['fangkeshu']?></td>
+                              <td><?=$v['zhifushangpinshuliang']?></td>
+                              <td><?=$v['zhifumaijiashu']?></td>
+                              <td><?=$v['kedanjia']?></td>
+                              <td><?=$v['zhifuzhuanhualv']?></td>
+                              <td><?=$v['zhifujine']?></td>
                             </tr>
-                            <tr>
-                              <td>2017-10-15</td>
-                              <td>15800</td>
-                              <td>3980</td>
-                              <td>168</td>
-                              <td>18</td>
-                              <td>22</td>
-                              <td>82%</td>
-                              <td>395000</td>
-                            </tr>
-                            <tr>
-                              <td>2017-10-15</td>
-                              <td>15800</td>
-                              <td>3980</td>
-                              <td>168</td>
-                              <td>18</td>
-                              <td>22</td>
-                              <td>82%</td>
-                              <td>395000</td>
-                            </tr>
+                         <?php endforeach; ?>
                           </tbody>
                         </table>
                     </div>
@@ -365,7 +347,7 @@ $('#xx5').click(function(){
                     }else if (msg=='2'){
                         alert('你今天已经评价过该客服了');
                     }else {
-                        window.location.href("?c=login&a=login");
+                        window.location.href = 'index.php?p=show&c=login&a=login';
                     }
                 })
               $(this).destroy();

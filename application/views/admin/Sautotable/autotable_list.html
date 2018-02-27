@@ -56,10 +56,9 @@
 <table class="table table-border table-hover" id="content">
 	<thead>
 		<tr>
-			<th style='width:5%'></th>
-			
+			<th style='width:5%'>编号</th>
 			<?php foreach($filedLists as $v){ ?>
-                <th style='width:<?php echo $v[u9]?>;text-align:left'><?php echo $v['u2']?></th>
+                <th style='width:<?php echo $v['u9']?>;text-align:left'><?php echo $v['u2']?></th>
             <?php } ?>
 			
 			
@@ -71,12 +70,12 @@
 	<?php foreach($tableModel as $brand) : ?>
 	<tr>
 		<td style='width:5%'> &nbsp;&nbsp;
-			<div class="checkbox checkbox-inline checkbox-success"><input type="checkbox" name="chk" value="<?php echo $brand[id]?>"><label></label></div>
+			<div class="checkbox checkbox-inline checkbox-success"><input type="checkbox" name="chk" value="<?php echo $brand['id']?>"><label><?php echo $brand['id']?></label></div>
 		</td>
-		
+		 
 		<?php foreach($filedLists as $v){ ?>
 		
-		   <td style='width:<?php echo $v[u9]?>;text-align:left'> 
+		   <td style='width:<?php echo $v['u9']?>;text-align:left'> 
                   <?php echo $this->showKj($v['u7'],$v['u2'],$v['u1'] ,$brand[$v['u1']],$v['u3'] ,$v['id']) ?>
                   
                   </td>
@@ -89,17 +88,10 @@
 			<div>
 				<!-- <a href='#' target=_blank>查看</a> | -->
 
-				<?php if($u7==1){ ?>
 				<a href="index.php?p=admin&c=autotable&a=copy&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">复制</a>|
 				<a href="index.php?p=admin&c=autotable&a=edit&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">修改</a> |
-				<a onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');" href="index.php?p=admin&c=wenzhang&a=delete&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">删除</a>
-				<?php  }elseif($u7=2){ ?>
-				<a href="index.php?p=admin&c=autotable&a=copy&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">复制</a>|
-				<a href="index.php?p=admin&c=autotable&a=tongyi&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">同意</a>|
-				<a href="index.php?p=admin&c=autotable&a=jujue&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">拒绝</a>|
-				<a href="index.php?p=admin&c=autotable&a=edit&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">修改</a> |
-				<a onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');" href="index.php?p=admin&c=wenzhang&a=delete&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">删除</a>
-				<?php };?>
+				<a onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');" href="index.php?p=admin&c=autotable&a=delete&model_id=<?php echo $_GET['model_id']?>&id=<?php echo $brand['id'];?>">删除</a>
+
 			</div>
 		</td>
 	</tr>
@@ -142,6 +134,80 @@
 
 <script src="application/views/admin/js/wow.min.js" type="text/javascript"></script>
 <script src="application/views/admin/js/common.js" type="text/javascript"></script>
+
+
+<script>
+
+//获取传递的参数
+function GetUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if(r != null) return unescape(r[2]);
+	return null;
+}
+
+var model_id = GetUrlParam("model_id");
+if(model_id==90)
+{
+	
+	//订单
+	getData(true, 'get', web_url() + "/?type=search&t=dingdan", '', function(result) {
+		if(result.status == 'true') {
+			
+			var _data = JSON.parse(result.msg);
+			var dingdanshu = _data.length; //总数
+			var dingdan_yidu = _data.length;
+			if(dingdan_yidu == "" || dingdan_yidu == null) {
+				dingdan_yidu = 0;
+			}
+			var dingdan_weidu = 0; //未读回答数
+			dingdan_weidu = (Number(dingdanshu) - Number(dingdan_yidu))<0 ? "0": (Number(dingdanshu) - Number(dingdan_yidu));
+			console.log(dingdan_weidu);
+			//记录当前的未读数
+			setParam("dingdan_yidu",dingdan_yidu);
+			//语音提示
+			if(Number(dingdan_weidu)>0 ) 						{
+				playSound("/public/dingdan.mp3");
+			}
+            
+            //修改界面数字
+            $("#tongzhi_dingdan").html(dingdan_weidu);
+		}
+	});
+	
+}
+else if(model_id==80){
+	//提问
+	getData(true, 'get', web_url() + "/?type=search&t=wenti" , '', function(result) {
+		if(result.status == 'true') {
+			//console.log(result.msg);
+			var _data = JSON.parse(result.msg);
+			var tiwenshu = _data.length; //总数
+			var tiwenshu_yidu = _data.length;
+			if(tiwenshu_yidu == "" || tiwenshu_yidu == null) {
+				tiwenshu_yidu = 0;
+			}
+			var tiwenshu_weidu = 0; //未读回答数
+			tiwenshu_weidu = (Number(tiwenshu) - Number(tiwenshu_yidu))<0 ? "0": (Number(tiwenshu) - Number(tiwenshu_yidu));
+			//console.log(tiwenshu_weidu);
+			//记录当前的已读数
+			setParam("tiwenshu_yidu",tiwenshu_yidu);
+			//语音提示
+			if(Number(tiwenshu_weidu)>0 ) 						{
+				//startPlay(); 
+				playSound("public/tongzhi.mp3");
+			}
+            
+			 //修改界面数字
+            $("#tongzhi_wenda").html(tiwenshu_weidu);
+		}
+	});
+	
+	
+}
+
+
+</script>
 
 <!--wow 初始化-->
 <script>

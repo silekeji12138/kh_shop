@@ -79,17 +79,16 @@
                 <div role="tabpanel" class="tab-pane active" id="list01">
                     <div id="aaa" class="area text-center">
                         <div class="cons">
-                            <div class="con con01" style="left: 0px;" id="lx1"><!--调整第一个显示位置请修改"left:0px;的值" -->
 
+                            <div class="con con01" style="left: 0px;" id="lx1"><!--调整第一个显示位置请修改"left:0px;的值" -->
                                 <?php foreach($tm as $v): ?>
-                                <a class="<?=$v['tubiao']?>" href="<?=$v['url']?>" >
+                                <a class="left left01" href="<?=$v['url']?>" >
                                     <div class="img-icon"><img src="<?=$v['img']?>"></div>
                                     <div class="icon-txt"><?=$v['biaoti']?></div>
                                 </a>
                                 <?php endforeach; ?>
-
-                                
                             </div>
+
                         </div>
                         <div class="btns btns01"><a href="javascript:void(0)" class="up up01"></a><a href="javascript:void(0)" class="down down01"></a></div>
                     </div>
@@ -98,8 +97,9 @@
                     <div id="bbb" class="area text-center">
                         <div class="cons cons02">
                             <div class="con con02" style="left: 0px;"><!--调整第一个显示位置请修改"left:0px;的值" -->
+
                                 <?php foreach($tb as $v): ?>
-                                <a class="<?=$v['tubiao']?>" href="<?=$v['url']?>" >
+                                <a class="left left01" href="<?=$v['url']?>" >
                                     <div class="img-icon"><img src="<?=$v['img']?>"></div>
                                     <div class="icon-txt"><?=$v['biaoti']?></div>
                                 </a>
@@ -117,7 +117,7 @@
 
 
                                 <?php foreach($jd as $v): ?>
-                                <a class="<?=$v['tubiao']?>" href="<?=$v['url']?>" >
+                                <a class="<left left01" href="<?=$v['url']?>" >
                                     <div class="img-icon"><img src="<?=$v['img']?>"></div>
                                     <div class="icon-txt"><?=$v['biaoti']?></div>
                                 </a>
@@ -137,7 +137,7 @@
 
 
                                 <?php foreach($mgj as $v): ?>
-                                <a class="<?=$v['tubiao']?>" href="<?=$v['url']?>" >
+                                <a class="left left01" href="<?=$v['url']?>" >
                                     <div class="img-icon"><img src="<?=$v['img']?>"></div>
                                     <div class="icon-txt"><?=$v['biaoti']?></div>
                                 </a>
@@ -156,7 +156,7 @@
 
 
                                 <?php foreach($snyg as $v): ?>
-                                <a class="<?=$v['tubiao']?>" href="<?=$v['url']?>" >
+                                <a class="left left01" href="<?=$v['url']?>" >
                                     <div class="img-icon"><img src="<?=$v['img']?>"></div>
                                     <div class="icon-txt"><?=$v['biaoti']?></div>
                                 </a>
@@ -327,14 +327,14 @@
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         <ul class="shop-tab clearfix" id="tm">
-                            <li><a class="active" href="#tabs1" onclick="location.href='abc.html';">服装饰品</a></li>
-                            <li><a href="#tabs2" onclick="location.href='javascript';">家居用品</a></li>
-                            <li><a href="#tabs3" onclick="location.href='abc.html';">家装家饰</a></li>
-                            <li><a href="#tabs4" onclick="location.href='abc.html';">美容护理</a></li>
-                            <li><a href="#tabs5" onclick="location.href='abc.html';">母婴用品</a></li>
-                            <li><a href="#tabs6">3C数码类</a></li>
-                            <li><a href="#tabs7">运动户外</a></li>
-                            <li class="border-no"><a href="#tabs8">食品保健</a></li>
+                            <li><a class="active" href="#tabs1" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('服装饰品'));?>';">服装饰品</a></li>
+                            <li><a href="#tabs2" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('家居用品'));?>';">家居用品</a></li>
+                            <li><a href="#tabs3" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('家装家饰'));?>';">家装家饰</a></li>
+                            <li><a href="#tabs4" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('美容护理'));?>';">美容护理</a></li>
+                            <li><a href="#tabs5" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('母婴用品'));?>';">母婴用品</a></li>
+                            <li><a href="#tabs6" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('3C数码类'));?>';" >3C数码类</a></li>
+                            <li><a href="#tabs7" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('运动户外'));?>';">运动户外</a></li>
+                            <li class="border-no"><a href="#tabs8" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('天猫商城'));?>&hy=<?=urlencode(base64_encode('食品保健'));?>';">食品保健</a></li>
                         </ul>
                     </div>
                     <div class="item">
@@ -401,14 +401,14 @@
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         <ul class="shop-tab clearfix">
-                            <li><a class="active" href="#tabs17">服装饰品</a></li>
-                            <li><a href="#tabs18">家居用品</a></li>
-                            <li><a href="#tabs19">家装家饰</a></li>
-                            <li><a href="#tabs20">美容护理</a></li>
-                            <li><a href="#tabs21">母婴用品</a></li>
-                            <li><a href="#tabs22">3C数码类</a></li>
-                            <li><a href="#tabs23">运动户外</a></li>
-                            <li class="border-no"><a href="#tabs24">食品保健</a></li>
+                            <li><a class="active" href="#tabs17" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('服装饰品'));?>';">服装饰品</a></li>
+                            <li><a href="#tabs18" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('家居用品'));?>';">家居用品</a></li>
+                            <li><a href="#tabs19" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('家装家饰'));?>';">家装家饰</a></li>
+                            <li><a href="#tabs20" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('美容护理'));?>';">美容护理</a></li>
+                            <li><a href="#tabs21" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('母婴用品'));?>';">母婴用品</a></li>
+                            <li><a href="#tabs22" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('3C数码类'));?>';">3C数码类</a></li>
+                            <li><a href="#tabs23" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('运动户外'));?>';">运动户外</a></li>
+                            <li class="border-no"><a href="#tabs24" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('淘宝网店'));?>&hy=<?=urlencode(base64_encode('食品保健'));?>';">食品保健</a></li>
                         </ul>
                     </div>
                     <div class="item">
@@ -478,14 +478,14 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <ul class="shop-tab clearfix">
-                                <li><a class="active" href="#tabs33">服装饰品</a></li>
-                                <li><a href="#tabs34">家居用品</a></li>
-                                <li><a href="#tabs35">家装家饰</a></li>
-                                <li><a href="#tabs36">美容护理</a></li>
-                                <li><a href="#tabs37">母婴用品</a></li>
-                                <li><a href="#tabs38">3C数码类</a></li>
-                                <li><a href="#tabs39">运动户外</a></li>
-                                <li class="border-no"><a href="#tabs40">食品保健</a></li>
+                                <li><a class="active" href="#tabs33" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('服装饰品'));?>';">服装饰品</a></li>
+                                <li><a href="#tabs34" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('家居用品'));?>';">家居用品</a></li>
+                                <li><a href="#tabs35" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('家装家饰'));?>';">家装家饰</a></li>
+                                <li><a href="#tabs36" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('美容护理'));?>';">美容护理</a></li>
+                                <li><a href="#tabs37" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('母婴用品'));?>';">母婴用品</a></li>
+                                <li><a href="#tabs38" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('3C数码类'));?>';">3C数码类</a></li>
+                                <li><a href="#tabs39" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('运动户外'));?>';">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs40" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('京东商城'));?>&hy=<?=urlencode(base64_encode('食品保健'));?>';">食品保健</a></li>
                             </ul>
                         </div>
                         <div class="item">
@@ -503,10 +503,10 @@
                     </div>
 
                     <!-- Controls -->
-                    <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                    <a class="left carousel-control" href="#slide-show03" role="button" data-slide="prev">
                         <
                     </a>
-                    <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                    <a class="right carousel-control" href="#slide-show03" role="button" data-slide="next">
                         >
                     </a>
                 </div>
@@ -556,14 +556,14 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <ul class="shop-tab clearfix">
-                                <li><a class="active" href="#tabs49">服装饰品</a></li>
-                                <li><a href="#tabs50">家居用品</a></li>
-                                <li><a href="#tabs51">家装家饰</a></li>
-                                <li><a href="#tabs52">美容护理</a></li>
-                                <li><a href="#tabs53">母婴用品</a></li>
-                                <li><a href="#tabs54">3C数码类</a></li>
-                                <li><a href="#tabs55">运动户外</a></li>
-                                <li class="border-no"><a href="#tabs56">食品保健</a></li>
+                                <li><a class="active" href="#tabs49" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('服装饰品'));?>';">服装饰品</a></li>
+                                <li><a href="#tabs50" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('家居用品'));?>';">家居用品</a></li>
+                                <li><a href="#tabs51" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('家装家饰'));?>';">家装家饰</a></li>
+                                <li><a href="#tabs52" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('美容护理'));?>';">美容护理</a></li>
+                                <li><a href="#tabs53" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('母婴用品'));?>';">母婴用品</a></li>
+                                <li><a href="#tabs54" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('3C数码类'));?>';">3C数码类</a></li>
+                                <li><a href="#tabs55" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('运动户外'));?>';">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs56" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('蘑菇街'));?>&hy=<?=urlencode(base64_encode('食品保健'));?>';">食品保健</a></li>
                             </ul>
                         </div>
                         <div class="item">
@@ -581,10 +581,10 @@
                     </div>
 
                     <!-- Controls -->
-                    <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                    <a class="left carousel-control" href="#slide-show05" role="button" data-slide="prev">
                         <
                     </a>
-                    <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                    <a class="right carousel-control" href="#slide-show05" role="button" data-slide="next">
                         >
                     </a>
                 </div>
@@ -637,14 +637,14 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <ul class="shop-tab clearfix">
-                                <li><a class="active" href="#tabs65">服装饰品</a></li>
-                                <li><a href="#tabs66">家居用品</a></li>
-                                <li><a href="#tabs67">家装家饰</a></li>
-                                <li><a href="#tabs68">美容护理</a></li>
-                                <li><a href="#tabs69">母婴用品</a></li>
-                                <li><a href="#tabs70">3C数码类</a></li>
-                                <li><a href="#tabs71">运动户外</a></li>
-                                <li class="border-no"><a href="#tabs72">食品保健</a></li>
+                                <li><a class="active" href="#tabs65" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('服装饰品'));?>';">服装饰品</a></li>
+                                <li><a href="#tabs66" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('家居用品'));?>';">家居用品</a></li>
+                                <li><a href="#tabs67" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('家装家饰'));?>';">家装家饰</a></li>
+                                <li><a href="#tabs68" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('美容护理'));?>';">美容护理</a></li>
+                                <li><a href="#tabs69" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('母婴用品'));?>';">母婴用品</a></li>
+                                <li><a href="#tabs70" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('3C数码类'));?>';">3C数码类</a></li>
+                                <li><a href="#tabs71" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('运动户外'));?>';">运动户外</a></li>
+                                <li class="border-no"><a href="#tabs72" onclick="location.href='index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode('其他商城'));?>&hy=<?=urlencode(base64_encode('食品保健'));?>';">食品保健</a></li>
                             </ul>
                         </div>
                         <div class="item">
@@ -662,10 +662,10 @@
                     </div>
 
                     <!-- Controls -->
-                    <a class="left carousel-control" href="#slide-show02" role="button" data-slide="prev">
+                    <a class="left carousel-control" href="#slide-show06" role="button" data-slide="prev">
                         <
                     </a>
-                    <a class="right carousel-control" href="#slide-show02" role="button" data-slide="next">
+                    <a class="right carousel-control" href="#slide-show06" role="button" data-slide="next">
                         >
                     </a>
                 </div>
@@ -833,6 +833,19 @@ $('#tabs17').prop('class','tab-pane active')
 $('#tabs33').prop('class','tab-pane active')
 $('#tabs49').prop('class','tab-pane active')
 $('#tabs65').prop('class','tab-pane active')
+
+//        $.ajax({
+//            url : 'index.php?p=show&c=index&a=index1',
+//            data : {ids:1},
+//            dataType : "json",
+//            type : "GET",
+//            async:false
+//        }).done(function(msg) {
+//            $(msg).each(function (i,v) {
+//                $('<a class="left left01" href="'+this.url+'"><div class="img-icon"><img src="'+this.img+'"></div><div class="icon-txt">'+this.biaoti+'</div></a> ').appendTo('#lx1')
+//            })
+//        });
+
 
 </script>
 </html>

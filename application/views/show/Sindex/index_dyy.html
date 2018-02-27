@@ -162,14 +162,13 @@
                             <input name="tel" type="text" class="form-control qq-input" placeholder="手机号码：">
                             <input name="dpm" type="text" class="form-control qq-input" placeholder="店  铺  名： ">
                             <textarea name="content" class="form-control qq-input" placeholder="需求描述："></textarea>
-                            <button type="submit" class="btn btn-qq">提交</button>
+                            <button type="button" id="tj" class="btn btn-qq">提交</button>
                         </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
             <?php include CUR_VIEW_PATH."Spublic/foot.html";?>
 
 </body> 
@@ -182,5 +181,23 @@ if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
 $('#id').children('li').prop('class','');
+
+$('#tj').click(function () {
+
+    var tel=$('input[name=tel]').val();
+    var name=$('input[name=name]').val();
+    var reg = /^1[34578]\d{9}$/;
+    var reg1=/^[1-9][0-9]{4,9}$/;
+    if (reg.test(tel)){
+            if (name!=''){
+                $('form').submit();
+            }else {
+                alert('请输入姓名')
+            }
+    }else{
+        alert('请正确输入手机号码')
+    }
+
+});
 </script>
 </html>

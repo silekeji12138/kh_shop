@@ -57,8 +57,8 @@
                 <div class="user-back">
                     <div class="clearfix">
                         <div class="pull-left tj-number">
-                            <p>全部余额：<span><?=$row['property']+$row['frozen']?></span> 元</p>
-                            <p>可用余额：<span><?=$row['property']?></span> 元</p>
+                            <p>全部余额：<span><?=$row['property']?></span> 元</p>
+                            <p>可用余额：<span><?=$row['property']-$row['frozen']?></span> 元</p>
                             <p>冻结资金：<span><?=$row['frozen']?></span> 元</p>
                             <p>保证金余额：<span><?=$row['xbj']?></span> 元</p>
                         </div>
@@ -101,7 +101,7 @@
                 <div class="user-back">
                     <div class="clearfix">
                         <div class="pull-left lc-tt">
-                            <div class="lc-title">卖家入门</div>
+                            <div class="lc-title">买家入门</div>
                             <div><a href="" class="btn btn-tj">下载详细流程</a></div>
                         </div>
                         <div class="lc-img">

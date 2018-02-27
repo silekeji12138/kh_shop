@@ -26,7 +26,8 @@ class BaseController extends Controller {
 
 
 	}
-
+	
+	
 	//返回联动空间选中的下一项html
 	public function getLiandongHtml($classid,$filedName,$selected_val="",$canshu_id=""){
 	    $CanshuModel = new Model("canshu");

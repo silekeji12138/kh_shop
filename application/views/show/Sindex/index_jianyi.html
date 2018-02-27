@@ -58,7 +58,7 @@
                         <li class="active">
                         	<a href="">客服中心</a>
                             <ul class="help-list-down help-list-down-last">
-                            	<li><a href="index.php?p=show&c=index&a=kefu1&name=客服咨询">客服咨询</a></li>
+                            	<li><a href="index.php?p=show&c=index&a=kfzx">客服咨询</a></li>
                                 <li class="active"><a href="">建议中心</a></li>
                                 <li class="border-no"><a href="index.php?p=show&c=index&a=zxwd">在线问答</a></li>
                             </ul>
@@ -82,7 +82,7 @@
                     	<input name="tel" type="text" class="form-control input-sell" placeholder="您的联系方式：">
                     </div>
                     <div class="col-xs-6">
-                    	<button type="submit" class="btn btn-proposal">提交您的建议</button>
+                    	<button type="button" id="tj" class="btn btn-proposal">提交您的建议</button>
                     </div>
                     <div class="col-xs-6">
                     	<div class="btn-help">您的建议提交后我们会认证仔细阅读，如符合采纳要求，我们将会联系您！</div>
@@ -140,5 +140,17 @@
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };
+$('#tj').click(function () {
+
+    var tel=$('input[name=tel]').val();
+    var reg = /^1[34578]\d{9}$/;
+    var reg1=/^[1-9][0-9]{4,9}$/;
+    if (reg.test(tel)){
+                $('form').submit();
+            }else{
+                alert('请正确输入手机号码')
+           }
+
+});
 </script>
 </html>

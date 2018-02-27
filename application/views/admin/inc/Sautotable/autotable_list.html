@@ -41,7 +41,7 @@
 			 
 			
 			<?php foreach($filedLists as $v){ ?>
-                <th style='width:<?php echo $v["u9"]?>;text-align:left'><?php echo $v['u2']?></th>
+                <th style='width:<?php echo $v[u9]?>;text-align:left'><?php echo $v['u2']?></th>
             <?php } ?>
 			
 				<th>操作</th>
@@ -56,7 +56,7 @@
 		
 		<?php foreach($filedLists as $v){ ?>
 		
-		   <td style='width:<?php echo $v["u9"]?>;text-align:left'>
+		   <td style='width:<?php echo $v[u9]?>;text-align:left'> 
                   <?php echo $this->showKj($v['u7'],$v['u2'],$v['u1'] ,$brand[$v['u1']],$v['u3'] ,$v['id']) ?>
                   
                   </td>

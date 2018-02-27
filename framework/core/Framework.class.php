@@ -48,14 +48,13 @@ class Framework {
 		include CORE_PATH . "Controller.class.php";
 		include CORE_PATH . "Model.class.php";
 		include DB_PATH . "Mysql.class.php";
-        include DB_PATH . "CPdo.class.php";
-        include CORE_PATH . "ModelNew.class.php";
 
         include LIB_PATH . "Common.class.php";
        // include LIB_PATH . "Page.class.php";
         //include LIB_PATH . "Upload.class.php";
         
 		//开启session
+		session_start();
 	}	
 
 	//路由方法,说白了，就是实例化对象并调用方法
