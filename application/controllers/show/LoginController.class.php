@@ -4,6 +4,10 @@ class LoginController extends BaseController
 {
 
     //注册显示页面
+    public function  __construct()
+    {
+        ob_end_clean();
+    }
     public function registerAction(){
 
         include CUR_VIEW_PATH . "Slogin" . DS ."login_register.html";
@@ -45,6 +49,7 @@ class LoginController extends BaseController
 
   //用户注册的功能
     public function zhuceAction(){
+
         $data=$_POST;
         $data['password'] = md5($data['password']);
         $tel = $data['tel'];
@@ -68,8 +73,8 @@ class LoginController extends BaseController
 
 
     public function getAction(){
-        $num=$_GET['tel'];
-        echo $_SESSION[$num];
+        $num=$_REQUEST['tel'];
+        echo $_SESSION["a".$num];
     }
 
 }

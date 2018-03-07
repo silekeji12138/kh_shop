@@ -9,6 +9,7 @@
     <link href="public/khshop/css/css.css" rel="stylesheet">
 </head>
 <body>
+
 <header>
     <?php include CUR_VIEW_PATH."Spublic/header.html";?>
 </header>
@@ -229,12 +230,14 @@
             <div class="shop-back clearfix">
                 <div class="pull-left shop-back-left">
                     <div class="shop-back-tt clearfix"><i class="icon"></i>网店估价<span>（淘宝&天猫)</span></div>
+                    <form action="index.php?p=show&c=buy&a=gujia" method="post">
                     <div class="shop-back-form">
-                        <input type="text" class="form-control" placeholder="请输入店铺地址或旺旺账号">
-                        <input type="text" class="form-control" placeholder="请输入手机号码">
+                        <input type="text" name="dizhi" class="form-control" placeholder="请输入店铺地址或旺旺账号">
+                        <input type="text" name="shoujihao" class="form-control" placeholder="请输入手机号码">
                     </div>
                     <div class="help-txt"><span>温馨提示：</span><br>此价格仅作为您店铺出售参考价格，具体的店铺出售价格由您自行决定！</div>
-                    <button type="button" class="btn btn-g">估一下</button>
+                    <button type="submit" class="btn btn-g" >估一下</button>
+                    </form>
                 </div>
                 <div class="pull-left shop-back-right">
                     <div class="shop-back-tt clearfix"><i class="icon"></i>估价结果</div>

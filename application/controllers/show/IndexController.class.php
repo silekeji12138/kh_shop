@@ -6,6 +6,12 @@ use QL\QueryList;
 class IndexController extends BaseController
 {
 
+
+    public function  __construct()
+    {
+        ob_end_clean();
+    }
+
     public function textAction(){
         include "public/phpQuery/phpQuery.php";
         include "public/QueryList/QueryList.php";
@@ -83,6 +89,7 @@ class IndexController extends BaseController
     }
     //主页
     public function indexAction(){
+
         $r1=self::tmAction('天猫商城');
         $r2=self::tmAction('淘宝网店');
         $r3=self::tmAction('京东商城');
@@ -155,6 +162,12 @@ class IndexController extends BaseController
     }
     //服务市场的入口
     public function fwscAction(){
+        $model=new model('fwsc');
+        $jy=$model->select("select *from sl_fwsc WHERE leixing='教育培训'");
+        $rj=$model->select("select *from sl_fwsc WHERE leixing='软件服务'");
+        $ds=$model->select("select *from sl_fwsc WHERE leixing='电商ERP'");
+        $wd=$model->select("select *from sl_fwsc WHERE leixing='网店装修'");
+        $zp=$model->select("select *from sl_fwsc WHERE leixing='电商招聘'");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_fwsc.html";
     }
     //帮助中心入口
@@ -232,15 +245,38 @@ class IndexController extends BaseController
 
     //企业服务代理记账页面展示方法
     public function dljzAction(){
+        $model=new model('diqu');
+        $sheng=$model->select("select *from sl_diqu WHERE leixing='省'");
+        $shi=$model->select("select *from sl_diqu WHERE leixing='市'");
+
+        $_model=new model('dljz');
+        $v1=$_model->select("select *from sl_dljz");
+
+
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dljz.html";
     }
     //企业服务店铺升级页面的展示方法
     public function dpsjAction(){
+        $model=new model('diqu');
+        $sheng=$model->select("select *from sl_diqu WHERE leixing='省'");
+        $shi=$model->select("select *from sl_diqu WHERE leixing='市'");
 
+        $_model=new model('dpjg');
+        $result=$_model->select("select *from sl_dpjg");
+        $jg=$result[1]['jiage']+$result[2]['jiage']+$result[3]['jiage']+$result[0]['jiage'];
         include CUR_VIEW_PATH . "Sindex" . DS ."index_dpsj.html";
     }
     //企业服务变更服务页面的展示方法
     public function bgfwAction(){
+        $model=new model('diqu');
+        $sheng=$model->select("select *from sl_diqu WHERE leixing='省'");
+        $shi=$model->select("select *from sl_diqu WHERE leixing='市'");
+
+        $_model=new model('taocan');
+        $A=$_model->select("select *from sl_taocan WHERE leixing='A'")[0];
+        $B=$_model->select("select *from sl_taocan WHERE leixing='B'")[0];
+        $C=$_model->select("select *from sl_taocan WHERE leixing='C'")[0];
+
         include CUR_VIEW_PATH . "Sindex" . DS ."index_bgfw.html";
     }
 
@@ -277,7 +313,7 @@ class IndexController extends BaseController
         }
 
         $act=($page-1)*$num;
-        $result=$model->select("select *from sl_zxwd WHERE zt='已答' limit $act,$num");
+        $result=$model->select("select *from sl_zxwd limit $act,$num");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_zxwd.html";
     }
 //    public function zxwd2Action(){
@@ -288,6 +324,21 @@ class IndexController extends BaseController
 //            echo '1';
 //        }
 //    }
+    public function zxwdxqAction(){
+        $id=$_GET['id'];
+        $model=new  model('huda');
+        $_model=new model('zxwd');
+        $wt=$_model->select("select wt from sl_zxwd WHERE id=$id")[0]['wt'];
+        $bc=$_model->select("select bc from sl_zxwd WHERE id=$id")[0]['bc'];
+        $dtime=$_model->select("select dtime from sl_zxwd WHERE id=$id")[0]['dtime'];
+        $huida=$model->select("select *from sl_huda WHERE laiyuanbianhao='".$wt."'");
+        $number=$model->select("select count(*) from sl_huda WHERE laiyuanbianhao='".$wt."'")[0]['count(*)'];
+
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_zxwd1.html";
+    }
+
+
+
     public function zxwd1Action(){
         $data=$_POST;
         $data['uid']=$_SESSION['user_id'];
@@ -545,6 +596,7 @@ class IndexController extends BaseController
     }
     //分类搜索
     public function search5Action(){
+
         $name=$_SERVER['HTTP_REFERER'];
         $array=explode('&', $name);
         $a=substr($array[2],2,7);
@@ -598,6 +650,14 @@ class IndexController extends BaseController
             if ($_GET['kfqk']==1){
                 $_SESSION['kfqk']='';
             }
+            $_SESSION['bh']=$_POST['bh']?$_POST['bh']:$_SESSION['bh'];
+                if ($_POST['bh']==''){
+                    if ($_GET['bh']!=''){
+                        $_SESSION['bh']=$_GET['bh']?$_GET['bh']:$_SESSION['bh'];
+                    }else{
+                        $_SESSION['bh']='';
+                    }
+             }
 
            //------------------------
         $data2['szdq']=$_SESSION['szdq'];
@@ -608,6 +668,7 @@ class IndexController extends BaseController
         $data2['sbgh']=$_SESSION['sbgh'];
         $data2['tdzr']=$_SESSION['tdzr'];
         $data2['kfqk']=$_SESSION['kfqk'];
+        $data2['bh']=$_SESSION['bh'];
         //------------------------
             $data['pt']=$pt;
             $data['lx']=$lx;
@@ -686,6 +747,10 @@ class IndexController extends BaseController
                 if ($data2['kfqk']){
                     $sql=$sql."kfqk='".$data2['kfqk']."'  and ";
                     $sql1=$sql1."kfqk='".$data2['kfqk']."'  and ";
+                }
+                if ($data2['bh']){
+                    $sql=$sql."bianhao='".$data2['bh']."'  and ";
+                    $sql1=$sql1."bianhao='".$data2['bh']."'  and ";
                 }
 
 
@@ -881,6 +946,7 @@ class IndexController extends BaseController
             $_SESSION['tghy']='';
             $_SESSION['tdzr']='';
             $_SESSION['jy']='';
+
         }
 
 
@@ -932,6 +998,14 @@ class IndexController extends BaseController
         $_SESSION['tghy']=$_GET['tghy']?$_GET['tghy']:$_SESSION['tghy'];
         $_SESSION['tdzr']=$_GET['tdzr']?$_GET['tdzr']:$_SESSION['tdzr'];
         $_SESSION['jy']=$_GET['jy']?$_GET['jy']:$_SESSION['jy'];
+        $_SESSION['number']=$_POST['number']?$_POST['number']:$_SESSION['number'];
+        if ($_POST['number']==''){
+            if ($_GET['number']!=''){
+                $_SESSION['number']=$_GET['number']?$_GET['number']:$_SESSION['number'];
+            }else{
+                $_SESSION['number']='';
+            }
+        }
         //--------------------------------------
         if ($_GET['szdq']==1){
             $_SESSION['szdq']='';
@@ -946,11 +1020,13 @@ class IndexController extends BaseController
             $_SESSION['jy']='';
         }
 
+
         //-----------------------------------
         $ms1['szdq']=$_SESSION['szdq'];
         $ms1['tghy']=$_SESSION['tghy'];
         $ms1['tdzr']=$_SESSION['tdzr'];
         $ms1['jy']=$_SESSION['jy'];
+        $ms1['number']=$_SESSION['number'];
        //----------------------------------
 
         $ms['dpzt']=$dpzt;
@@ -992,7 +1068,11 @@ class IndexController extends BaseController
             $sql=$sql."jy='".$ms1['jy']."' and ";
             $sql1=$sql1."jy='".$ms1['jy']."' and ";
         }
-        if ($_SERVER['REQUEST_METHOD']=='POST' && $_POST['range']==''){
+        if ($ms1['number']){
+            $sql=$sql."number='".$ms1['number']."' and ";
+            $sql1=$sql1."number='".$ms1['number']."' and ";
+        }
+        if ($_SERVER['REQUEST_METHOD']=='POST' && $_POST['range']!=''){
             $di=$_POST['di']?$_POST['di']:0;
             $gao=$_POST['gao']?$_POST['gao']:100000000000000;
             $sql = $sql . " (jiage between ".$di." and ".$gao.")    ";
@@ -1080,6 +1160,8 @@ class IndexController extends BaseController
         }else{
             $result=$model->select($sql." limit $act,$num");
         }
+
+//        var_dump($sql);die;
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_qytb.html";
     }
 
@@ -1118,5 +1200,12 @@ class IndexController extends BaseController
         $v1=$model->select("select *from sl_help WHERE pname='买家帮助'");
         include CUR_VIEW_PATH . "Sindex" . DS ."index_kfzx.html";
 
+    }
+
+
+    public function kflistAction(){
+        $model=new model('kefu');
+        $v=$model->select("select *from sl_kefu WHERE zt='在线' ");
+        include CUR_VIEW_PATH . "Sindex" . DS ."index_kflist.html";
     }
 }

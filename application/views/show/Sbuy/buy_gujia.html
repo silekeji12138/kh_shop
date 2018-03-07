@@ -1,0 +1,182 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>网店估价（淘宝店估价）</title>
+
+    <!-- Bootstrap -->
+    <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+    <link href="public/khshop/css/animate.min.css" rel="stylesheet">
+    <link href="public/khshop/css/css.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <?php include CUR_VIEW_PATH."Spublic/header.html";?>
+</header>
+    <div class="back-f9">
+        <div class="container">
+            <div class="sell-banner">
+            	<img src="public/khshop/images/bbb.png">
+            </div>
+            <div class="sell-border">
+            	<div class="sell-nav">
+                	当前位置：<a href="">首页</a> > <a href="" class="">网店估价</a>
+                </div>
+                <div class="gj-width clearfix">
+                    <div class="col-xs-2">
+                        <i class="gj-number">1</i>
+                        <div class="gj-number-txt">填写基本信息<span>-></span></div>
+                    </div>
+                    <div class="col-xs-2">
+                        <i class="gj-number">2</i>
+                        <div class="gj-number-txt">获取店铺二维码<span>-></span></div>
+                    </div>
+                    <div class="col-xs-2">
+                        <i class="gj-number">3</i>
+                        <div class="gj-number-txt">扫描店铺二维码<span>-></span></div>
+                    </div>
+                    <div class="col-xs-2">
+                        <i class="gj-number">4</i>
+                        <div class="gj-number-txt">获取店铺信息<span>-></span></div>
+                    </div>
+                    <div class="col-xs-2">
+                        <i class="gj-number">5</i>
+                        <div class="gj-number-txt">店铺估价展示<span>-></span></div>
+                    </div>
+                    <div class="col-xs-2">
+                        <i class="gj-number gj-number-six">6</i>
+                        <div class="gj-number-txt gj-number-txt-r">出售店铺</div>
+                    </div> 
+                </div>
+                <div class="sell-tt-sm">
+                    <div class="sell-tt-sm-txt">请选择您的估价店铺类型</div>
+                </div>
+                <ul class="clearfix sell-chooiser">
+                    <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">天猫商城价值评估</a></li>
+                    <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">淘宝网店价值评估</a></li>
+                </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="sell-chooiser tm-input">
+                            <div class="relative">
+                                <i class="tm-icon"></i>
+                                <input type="text" class="form-control input-sell" placeholder="请输入您的姓名">
+                            </div>
+                            <div class="relative">
+                                <i class="tm-icon tm-icon02"></i>
+                                <input type="text" class="form-control input-sell" placeholder="请输入您的手机号" value="<?=$shoujihao?>">
+                            </div>
+                            <div class="relative">
+                                <i class="tm-icon tm-icon03"></i>
+                                <input type="text" class="form-control input-sell" placeholder="请输入您的QQ">
+                            </div>
+                            <div class="relative">
+                                <i class="tm-icon tm-icon04"></i>
+                                <input type="text" class="form-control input-sell" placeholder="请输入网店网址或旺旺名" value="<?=$dizhi?>">
+                            </div>
+                            <div class="relative">
+                                <i class="tm-icon tm-icon05"></i>
+                                <input type="text" class="form-control input-sell" placeholder="请输入网店网址或旺旺名">
+                            </div>
+                            <button type="button" class="btn btn-ewm">获取二维码</button>
+                            <div class="sell-btn-c">
+                                <button type="button" class="btn btn-sell-l">立即提交</button>
+                                <button type="button" class="btn btn-sell-l btn-sell-l02"><i class="icon"></i>在线咨询</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="sell-chooiser tm-input tb-input">
+                            <div class="clearfix">
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon05"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入店铺链接或旺旺名">
+                                        <span class="input-dw">必填</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon06"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入年营业额">
+                                        <span class="input-dw">万元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon07"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入近30天营业额">
+                                        <span class="input-dw">万元</span>
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon08"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入客单价">
+                                        <span class="input-dw">元</span>
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon04"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请确定店铺主营类目">
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon09"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入店铺信誉值">
+                                        <span class="input-dw">必填</span>
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon10"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入店铺好评率">
+                                        <span class="input-dw">%</span>
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon11"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入虚拟占比">
+                                        <span class="input-dw">%</span>
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon03"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入QQ">
+                                        <span class="input-dw">必填</span>
+                                    </div>
+                                </div> 
+                                <div class="col-xs-6">
+                                    <div class="relative">
+                                        <i class="tm-icon tm-icon02"></i>
+                                        <input type="text" class="form-control input-sell" placeholder="请输入手机号">
+                                        <span class="input-dw">必填</span>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="clearfix"><div class="col-xs-12"><button type="button" class="btn btn-ewm">马上估价</button></div></div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+<?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+</body> 
+<script src="public/khshop/js/jquery.min.js"></script>
+<script src="public/khshop/js/bootstrap.min.js"></script>
+<script src="public/khshop/js/common.js"></script>
+<script src="public/khshop/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+</html>

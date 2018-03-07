@@ -26,33 +26,31 @@
             <div class="yy-nav text-right">当前位置：<span>网店代运营</span></div>
             <div class="rz-top yy-top fw-top">
                 <ul class="pm-tabs fw-tabs clearfix">
-                    <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false">小规模一年</a></li>
-                    <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true">小规模半年</a></li>
-                    <li><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false">小规模三个月</a></li>
-                    <li><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false">一般纳税人一年</a></li>
-                    <li><a href="#five" aria-controls="five" role="tab" data-toggle="tab" aria-expanded="false">一般纳税人半年</a></li>
-                    <li><a href="#six" aria-controls="six" role="tab" data-toggle="tab" aria-expanded="false">一般纳税人三个月</a></li>
+                    <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false"><?=$v1[0]['leixing']?></a></li>
+                    <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><?=$v1[1]['leixing']?></a></li>
+                    <li><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false"><?=$v1[2]['leixing']?></a></li>
+                    <li><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false"><?=$v1[3]['leixing']?></a></li>
+                    <li><a href="#five" aria-controls="five" role="tab" data-toggle="tab" aria-expanded="false"><?=$v1[4]['leixing']?></a></li>
+                    <li><a href="#six" aria-controls="six" role="tab" data-toggle="tab" aria-expanded="false"><?=$v1[5]['leixing']?></a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
+
                     <div role="tabpanel" class="tab-pane active" id="home">
+                        <form action="?c=user&a=common&type=2&id=<?=$v1[0]['id']?>" method="post">
                         <div class="clearfix">
                             <div class="pull-left fw-left">
-                                <div class="fw-tabs-tt">小规模一年</div>
-                                <div class="fw-money"><span>2500-3500</span>元/套</div>
-                                <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                <div class="fw-tabs-tt"><?=$v1[0]['leixing']?></div>
+                                <div class="fw-money"><span><?=$v1[0]['jiage']?></span>元/套</div>
+                                <select class="form-control fw-select" name="province">
+                                    <?php foreach($sheng as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
-                                <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                <select class="form-control fw-select" name="city">
+                                    <?php foreach($shi as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <div class="checkbox fw-checkbox">
                                     <label>
@@ -63,32 +61,29 @@
                             <div class="pull-right fw-right">
                                 <div class="fw-right-txt">企业成立后需要有记账、核算、报税等一系列会计工作，招聘专职会计会增加企业成本，让熟人做担心不能分担法律责任和风险，怎么办？店来店网专业会计高效操作、定时通知、规范建账、规整财务报表，公司财务老板一目了然。注意：此费用只是服务费，不包括CA证书、印花税等官费。</div>
                                 <div class="clearfix">
-                                    <a href="" class="fw-btn"><i class="icon"></i>立即购买</a>
+                                    <a href="javascript:;" class="fw-btn"><i class="icon"></i><button style="background-color: rgba(0,0,0,0);border: none">立即购买</button></a>
                                     <a href="" class="fw-btn fw-btn02"><i class="icon"></i>免费咨询</a>
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                     <!---------------------------------------------------------------------->
                     <div role="tabpanel" class="tab-pane" id="profile">
-
+                        <form action="?c=user&a=common&type=2&id=<?=$v1[1]['id']?>" method="post">
                         <div class="clearfix">
                             <div class="pull-left fw-left">
-                                <div class="fw-tabs-tt">小规模一年</div>
-                                <div class="fw-money"><span>2500-3500</span>元/套</div>
+                                <div class="fw-tabs-tt"><?=$v1[1]['leixing']?></div>
+                                <div class="fw-money"><span><?=$v1[1]['jiage']?></span>元/套</div>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($sheng as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($shi as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <div class="checkbox fw-checkbox">
                                     <label>
@@ -99,34 +94,30 @@
                             <div class="pull-right fw-right">
                                 <div class="fw-right-txt">企业成立后需要有记账、核算、报税等一系列会计工作，招聘专职会计会增加企业成本，让熟人做担心不能分担法律责任和风险，怎么办？店来店网专业会计高效操作、定时通知、规范建账、规整财务报表，公司财务老板一目了然。注意：此费用只是服务费，不包括CA证书、印花税等官费。</div>
                                 <div class="clearfix">
-                                    <a href="" class="fw-btn"><i class="icon"></i>立即购买</a>
+                                    <a href="javascript:;" class="fw-btn"><i class="icon"></i><button style="background-color: rgba(0,0,0,0);border: none">立即购买</button></a>
                                     <a href="" class="fw-btn fw-btn02"><i class="icon"></i>免费咨询</a>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
 
                     </div>
                     <!---------------------------------------------------------------------->
                     <div role="tabpanel" class="tab-pane" id="messages">
-
+                        <form action="?c=user&a=common&type=2&id=<?=$v1[2]['id']?>" method="post">
                         <div class="clearfix">
                             <div class="pull-left fw-left">
-                                <div class="fw-tabs-tt">小规模一年</div>
-                                <div class="fw-money"><span>2500-3500</span>元/套</div>
+                                <div class="fw-tabs-tt"><?=$v1[2]['leixing']?></div>
+                                <div class="fw-money"><span><?=$v1[2]['jiage']?></span>元/套</div>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($sheng as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($shi as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <div class="checkbox fw-checkbox">
                                     <label>
@@ -137,33 +128,29 @@
                             <div class="pull-right fw-right">
                                 <div class="fw-right-txt">企业成立后需要有记账、核算、报税等一系列会计工作，招聘专职会计会增加企业成本，让熟人做担心不能分担法律责任和风险，怎么办？店来店网专业会计高效操作、定时通知、规范建账、规整财务报表，公司财务老板一目了然。注意：此费用只是服务费，不包括CA证书、印花税等官费。</div>
                                 <div class="clearfix">
-                                    <a href="" class="fw-btn"><i class="icon"></i>立即购买</a>
+                                    <a href="javascript:;" class="fw-btn"><i class="icon"></i><button style="background-color: rgba(0,0,0,0);border: none">立即购买</button></a>
                                     <a href="" class="fw-btn fw-btn02"><i class="icon"></i>免费咨询</a>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                     </div>
                     <!---------------------------------------------------------------------->
                     <div role="tabpanel" class="tab-pane" id="settings">
-
+                        <form action="?c=user&a=common&type=2&id=<?=$v1[3]['id']?>" method="post">
                         <div class="clearfix">
                             <div class="pull-left fw-left">
-                                <div class="fw-tabs-tt">小规模一年</div>
-                                <div class="fw-money"><span>2500-3500</span>元/套</div>
+                                <div class="fw-tabs-tt"><?=$v1[3]['leixing']?></div>
+                                <div class="fw-money"><span><?=$v1[3]['jiage']?></span>元/套</div>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($sheng as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($shi as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <div class="checkbox fw-checkbox">
                                     <label>
@@ -174,33 +161,29 @@
                             <div class="pull-right fw-right">
                                 <div class="fw-right-txt">企业成立后需要有记账、核算、报税等一系列会计工作，招聘专职会计会增加企业成本，让熟人做担心不能分担法律责任和风险，怎么办？店来店网专业会计高效操作、定时通知、规范建账、规整财务报表，公司财务老板一目了然。注意：此费用只是服务费，不包括CA证书、印花税等官费。</div>
                                 <div class="clearfix">
-                                    <a href="" class="fw-btn"><i class="icon"></i>立即购买</a>
+                                    <a href="javascript:;" class="fw-btn"><i class="icon"></i><button style="background-color: rgba(0,0,0,0);border: none">立即购买</button></a>
                                     <a href="" class="fw-btn fw-btn02"><i class="icon"></i>免费咨询</a>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                     </div>
                     <!---------------------------------------------------------------------->
                     <div role="tabpanel" class="tab-pane" id="fivs">
-
+                        <form action="?c=user&a=common&type=2&id=<?=$v1[4]['id']?>" method="post">
                         <div class="clearfix">
                             <div class="pull-left fw-left">
-                                <div class="fw-tabs-tt">小规模一年</div>
-                                <div class="fw-money"><span>2500-3500</span>元/套</div>
+                                <div class="fw-tabs-tt"><?=$v1[4]['leixing']?></div>
+                                <div class="fw-money"><span><?=$v1[4]['jiage']?></span>元/套</div>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($sheng as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($shi as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <div class="checkbox fw-checkbox">
                                     <label>
@@ -211,49 +194,45 @@
                             <div class="pull-right fw-right">
                                 <div class="fw-right-txt">企业成立后需要有记账、核算、报税等一系列会计工作，招聘专职会计会增加企业成本，让熟人做担心不能分担法律责任和风险，怎么办？店来店网专业会计高效操作、定时通知、规范建账、规整财务报表，公司财务老板一目了然。注意：此费用只是服务费，不包括CA证书、印花税等官费。</div>
                                 <div class="clearfix">
-                                    <a href="" class="fw-btn"><i class="icon"></i>立即购买</a>
+                                    <a href="javascript:;" class="fw-btn"><i class="icon"></i><button style="background-color: rgba(0,0,0,0);border: none">立即购买</button></a>
                                     <a href="" class="fw-btn fw-btn02"><i class="icon"></i>免费咨询</a>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                     </div>
                     <!---------------------------------------------------------------------->
                     <div role="tabpanel" class="tab-pane" id="six">
-
+                        <form action="?c=user&a=common&type=2&id=<?=$v1[5]['id']?>" method="post">
                         <div class="clearfix">
                             <div class="pull-left fw-left">
-                                <div class="fw-tabs-tt">小规模一年</div>
-                                <div class="fw-money"><span>2500-3500</span>元/套</div>
+                                <div class="fw-tabs-tt"><?=$v1[5]['leixing']?></div>
+                                <div class="fw-money"><span><?=$v1[5]['jiage']?></span>元/套</div>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($sheng as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <select class="form-control fw-select">
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
-                                    <option>请选择所在省</option>
+                                    <?php foreach($shi as $v): ?>
+                                    <option><?=$v['diqu']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                                 <div class="checkbox fw-checkbox">
                                     <label>
-                                        <input type="checkbox"> 我已阅读并同意《<a href="">“企业服务”服务协议</a>》
+                                        <input type="checkbox" id="xy"> 我已阅读并同意《<a href="">“企业服务”服务协议</a>》
                                     </label>
                                 </div>
                             </div>
                             <div class="pull-right fw-right">
                                 <div class="fw-right-txt">企业成立后需要有记账、核算、报税等一系列会计工作，招聘专职会计会增加企业成本，让熟人做担心不能分担法律责任和风险，怎么办？店来店网专业会计高效操作、定时通知、规范建账、规整财务报表，公司财务老板一目了然。注意：此费用只是服务费，不包括CA证书、印花税等官费。</div>
                                 <div class="clearfix">
-                                    <a href="" class="fw-btn"><i class="icon"></i>立即购买</a>
+                                    <a href="javascript:;" class="fw-btn"><i class="icon"></i><button style="background-color: rgba(0,0,0,0);border: none">立即购买</button></a>
                                     <a href="" class="fw-btn fw-btn02"><i class="icon"></i>免费咨询</a>
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
@@ -330,6 +309,12 @@
 <script src="public/khshop/js/common.js"></script>
 <script src="public/khshop/js/wow.min.js"></script>
 <script>
+    $('#submit').click(function () {alert("请认真读取协议");
+        if ($('#xy').is(":checked")==false){
+            alert("请认真读取协议"); return false;
+        }
+    })
+
 if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 	new WOW().init();
 };

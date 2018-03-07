@@ -35,7 +35,7 @@ a:hover{ text-decoration:none !important; color: #eca567;}
 .user-img{ width: 40px; height: 40px; border: solid 2px #3bbb71; border-radius: 50%; float: right; margin-left: 20px; margin-top: -5px; }
 .user-img img{ width: 100%; height: 100%; border-radius: 50%; }
 .user-link{ color: #ffb775; margin-right: 0 }
-.nav-left{overflow:hidden; position: fixed; left: 0; top: 0; width: 240px; background: #424242; height: 100%; padding-top: 104px; padding-bottom: 30px; z-index: 10;}
+.nav-left{overflow:hidden; position: fixed; left: 0; top: 0; width: 240px; background: #424242; height: 100%; padding-top: 104px; padding-bottom:40px; z-index: 10;}
 .user-home{ font-size: 18px; color: #969696; padding-left: 60px; font-weight: bold; margin-bottom: 20px; position: relative; display: block; }
 .user-home:before{ display: block; content: ""; width: 17px; height: 17px; background: url(../images/user/user-icon.png); background-position: 0 -22px; position: absolute; left: 34px; top: 5px; }
 .user-list li a{ display: block; height: 60px; padding-left: 27px; padding-right: 20px; line-height: 59px; color: #fff; font-weight: bold; }
@@ -166,7 +166,7 @@ a:hover{ text-decoration:none !important; color: #eca567;}
 .tab-list-sm li a{ padding:0 20px;}
 .cs-left-txt02{ width:110px; color:#999;}
 .gl-clearfix{ margin-bottom:20px;}
-.gl-clearfix .input{ width:180px; color:#999;}
+.gl-clearfix .input{ width:180px; color:#666;}
 .cs-left-txt03{ width:auto; margin-left:10px; color:#ecb867;}
 .cs-left-txt-sm{ width:auto; margin:0 10px; color:#999;}
 .gl-clearfix .input-select{ width:auto;}

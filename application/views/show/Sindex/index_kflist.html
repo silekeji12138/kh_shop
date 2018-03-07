@@ -1,0 +1,61 @@
+﻿<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>在线咨询客服列表</title>
+
+		<!-- Bootstrap -->
+		<link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+		<link href="public/khshop/css/style_css.css" rel="stylesheet">
+		<link href="public/khshop/css/css.css" rel="stylesheet">
+	</head>
+
+	<body style="background:#f9f9f9;">
+	<header>
+		<?php include CUR_VIEW_PATH."Spublic/header.html";?>
+	</header>
+	<style>
+		.wan-nei{padding-left:0; padding:130px 0;}
+	</style>
+		<div class="container">
+			<div class="kefu-biao">客服中心</div>
+			<div class="kefu-list">
+				<ul>
+					<?php foreach($v as $a): ?>
+					<li class="box">
+						<div class="kefu-ico fl">
+							<img src="<?=$a['ss']?>" />
+							<?=$a['nc']?>
+						</div>
+						<div class="kefu-bie fl">性别：<?=$a['xb']?></div>
+						<div class="kefu-pin fl">负责平台：淘宝</div>
+						<div class="kefu-qian fl">个性签名：<?=$a['qianming']?></div>
+						<div class="lx-me fr">
+							<a href="http://wpa.qq.com/msgrd?v=3&uin=<?=$a['yuangong']?>&site=qq&menu=yes" target="_blank">
+							<img src="public/khshop/images/lx-me_03.jpg"/></a>
+						</div>
+					</li>
+					<?php endforeach; ?>
+
+				</ul>
+			</div>
+			
+		</div>
+
+		<!--footer-->
+	<?php include CUR_VIEW_PATH."Spublic/foot.html";?>
+	</body>
+	<script src="public/khshop/js/jquery.min.js"></script>
+	<script src="public/khshop/js/bootstrap.min.js"></script>
+	<script src="public/khshop/js/common.js"></script>
+	<script src="public/khshop/js/wow.min.js"></script>
+	<script>
+		if(!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+			new WOW().init();
+		};
+	</script>
+	
+
+</html>

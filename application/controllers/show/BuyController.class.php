@@ -3,6 +3,12 @@
 class BuyController extends BaseController
 {
 
+    public function __construct()
+    {
+        ob_end_clean();
+    }
+
+
     //商城购买的页面=>天猫
     public function tmallAction(){
         $model=new model('shangpin');
@@ -189,7 +195,21 @@ class BuyController extends BaseController
         $m3=$model->select("select *from sl_shangpin WHERE  sshy='".$v['sshy']."'  limit 0,2");
         $m2=new model('cjwt');
         $cjwt=$m2->select("select *from sl_cjwt limit 0,4");
+        $zutu=$v['jietu'];
+        $zutu=rtrim($zutu,'{title}');
+        $zutu=explode('{title}{next}',$zutu);
+
+        $dtpf1=new model('dtpf');
+        $m4=$dtpf1->select("select *from sl_dtpf WHERE shangpinbianhao='".$v['number']."'");
+
         include CUR_VIEW_PATH . "Sbuy" . DS ."buy_qytb1.html";
+    }
+
+    public function gujiaAction(){
+        $dizhi=$_POST['dizhi']?$_POST['dizhi']:'';
+        $shoujihao=$_POST['shoujihao']?$_POST['shoujihao']:'';
+
+        include CUR_VIEW_PATH . "Sbuy" . DS ."buy_gujia.html";
     }
 
 

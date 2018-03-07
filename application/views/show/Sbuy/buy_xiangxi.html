@@ -75,8 +75,9 @@
             </div>
             <div class="sell-border sell-border-m">
             	<div class="clearfix title-con">
-                    <div class="pull-left title-xq-sm"><i class="<?=$v['logo']?>"></i>商城编号:24358321506734316</div>
-                    <div class="pull-right">一般违规<span>0</span>分 严重违规<span>0</span>分 售假违规<span>0</span>分</div>
+                    <div class="pull-left title-xq-sm"><i class="<?=$v['logo']?>"></i>商城编号:<?=$v['bianhao']?></div>
+                    <?php $a=explode('-',$v['wgkf']); ?>
+                    <div class="pull-right">一般违规<span><?=$a[0]?></span>分 严重违规<span><?=$a[1]?></span>分 售假违规<span><?=$a[2]?></span>分</div>
                 </div>
             	<div class="clearfix">
 				<div class="clearfix purchase-row purchase-row02">

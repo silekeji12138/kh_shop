@@ -28,8 +28,8 @@
                 <div class="clearfix bg-clearfix">
                     <div class="pull-left bg-tt">地区</div>
                     <ul class="pull-left dq-list clearfix" id="a">
-                        <li><a href="">黑龙江</a></li>
-                        <li><a href="">鸡西</a></li>
+                        <li><a href="">请选择</a></li>
+                        <li><a href="">请选择</a></li>
                     </ul>
                     <ul class="pull-left dq-list clearfix">
                         <li id="ql"><a  class="dq-btn">重置</a></li>
@@ -38,54 +38,42 @@
                 <div class="clearfix bg-clearfix">
                     <div class="pull-left bg-tt bg-tt-sm">选择省：</div>
                     <ul class="pull-left purchase-ul dq-list dq-list02 clearfix" id="b">
-                        <li><a role="button" >浙江</a></li>
-                        <li><a role="button">湖南</a></li>
-                        <li><a role="button">湖北</a></li>
-                        <li><a role="button">江西</a></li>
-                        <li><a role="button">辽宁</a></li>
-                        <li><a role="button" class="active">黑龙江</a></li>
-                        <li><a role="button">北京</a></li>
-                        <li><a role="button">上海</a></li>
+                        <?php foreach($sheng as $v): ?>
+                        <li><a role="button" ><?=$v['diqu']?></a></li>
+                       <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="clearfix">
                     <div class="pull-left bg-tt bg-tt-sm">选择市区：</div>
                     <ul class="pull-left purchase-ul dq-list dq-list02 clearfix" id="c">
-                        <li><a role="button" class="active">鸡西</a></li>
-                        <li><a role="button">鹤岗市</a></li>
-                        <li><a role="button">双鸭山</a></li>
-                        <li><a role="button">大庆</a></li>
-                        <li><a role="button">伊春</a></li>
-                        <li><a role="button">佳木斯</a></li>
-                        <li><a role="button">七台河</a></li>
-                        <li><a role="button">牡丹江</a></li>
-                        <li><a role="button">黑河</a></li>
-                        <li><a role="button">绥化</a></li>
+                        <?php foreach($shi as $v): ?>
+                        <li><a role="button"><?=$v['diqu']?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="bg-back">
                     <div class="row">
                         <div class="col-xs-4">
-                            <div class="bg-back-tt active" name="q"><span>A</span>套餐</div>
-                            <div class="bg-back-txt" name="a">企业变更（含工商、税务、银行变更）</div>
+                            <div class="bg-back-tt active" name="q" id="<?=$A['id']?>"><span>A</span>套餐</div>
+                            <div class="bg-back-txt" name="a"><?=$A['fwxq']?></div>
                             <div class="clearfix">
-                                <div class="bg-back-money pull-left"><span>1000</span>元</div>
+                                <div class="bg-back-money pull-left"><span><?=$A['jiage']?></span>元</div>
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <div class="bg-back-tt" name="w"><span>B</span>套餐</div>
-                            <div class="bg-back-txt" name="s">企业变更+小规模纳税人1年代理记账</div>
+                            <div class="bg-back-tt" name="w" id="<?=$B['id']?>"><span>B</span>套餐</div>
+                            <div class="bg-back-txt" name="s"><?=$B['fwxq']?></div>
                             <div class="clearfix">
-                                <div class="bg-back-money pull-left"><span>3600</span>元</div>
-                                <div class="bg-back-money-yh pull-left">优惠<span>400</span>元</div>
+                                <div class="bg-back-money pull-left"><span><?=$B['jiage']?></span>元</div>
+                                <div class="bg-back-money-yh pull-left">优惠<span><?=$B['youhui']?></span>元</div>
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <div class="bg-back-tt" name="e"><span>C</span>套餐</div>
-                            <div class="bg-back-txt" name="d">企业变更+一般纳税人1年代理记账</div>
+                            <div class="bg-back-tt" name="e" id="<?=$C['id']?>"><span>C</span>套餐</div>
+                            <div class="bg-back-txt" name="d"><?=$C['fwxq']?></div>
                             <div class="clearfix">
-                                <div class="bg-back-money pull-left"><span>6200</span>元</div>
-                                <div class="bg-back-money-yh pull-left">优惠<span>400</span>元</div>
+                                <div class="bg-back-money pull-left"><span><?=$C['jiage']?></span>元</div>
+                                <div class="bg-back-money-yh pull-left">优惠<span><?=$C['youhui']?></span>元</div>
                             </div>
                         </div>
                     </div>
@@ -95,10 +83,10 @@
                 <div class="clearfix">
                     <div class="bg-icon pull-left">加入购物车</div>
                     <div class="pull-left">
-                        <div class="relative bg-car-input"><span id="d">套餐A</span> (<name id="f">黑龙江</name>-<name id="g">鸡西</name>)<a role="button" class="icon"></a></div>
+                        <div class="relative bg-car-input"><span id="d">套餐A</span> (<name id="f"></name>-<name id="g"></name>)<a role="button" class="icon"></a></div>
                         <div class="bg-jz" name="f">企业变更（含工商、税务、银行变更）</div>
                     </div>
-                    <form method="post" action="www.baidu.com">
+                    <form method="post" action="?c=user&a=common&type=3">
                     <div class="pull-right">
                         <div class="pull-left bg-hj"><span>小计：</span><span class="lg" id="xj">1000</span><span>元</span></div>
                         <div class="pull-left">
@@ -113,6 +101,8 @@
                             </div>
                         </div>
                     </div>
+                        <input type="hidden" name="province" id="province">
+                        <input type="hidden" name="city" id="city">
                     </form>
                 </div>
             </div>
@@ -210,20 +200,20 @@ $('#c').children('li').click(function () {
 
 //-----
 $('#ql').click(function () {
-    $('#a').children('li:first').children('a').text('黑龙江');
-    $('#a').children('li:not(:first)').children('a').text('鸡西');
+    $('#a').children('li:first').children('a').text('请选择');
+    $('#a').children('li:not(:first)').children('a').text('请选择');
 
     $('#b').children('li').children('a').prop('class','');
     $('#c').children('li').children('a').prop('class','');
 
-    $('#b').children('li:eq(5)').children('a').prop('class','active');
-    $('#c').children('li:eq(0)').children('a').prop('class','active');
+//    $('#b').children('li:eq(5)').children('a').prop('class','active');
+//    $('#c').children('li:eq(0)').children('a').prop('class','active');
 
-    $('#f').text('黑龙江');
-    $('#g').text('鸡西');
+    $('#f').text('请选择');
+    $('#g').text('请选择');
 
-    $('#province').val('黑龙江');
-    $('#city').val('鸡西');
+    $('#province').val('请选择');
+    $('#city').val('请选择');
 });
 
 $('div[name=q]').click(function () {
@@ -232,6 +222,8 @@ $('div[name=q]').click(function () {
    $('div[name=f]').text(b);
    $('#d').text(a);
    $('#xj').text(1000);
+   $('#price').val(1000);
+   $('#detail').val(b);
 })
 
 $('div[name=w]').click(function () {
@@ -240,6 +232,8 @@ $('div[name=w]').click(function () {
     $('div[name=f]').text(b);
     $('#d').text(a);
     $('#xj').text(3200);
+    $('#price').val(3200);
+    $('#detail').val(b);
 })
 
 $('div[name=e]').click(function () {
@@ -248,12 +242,20 @@ $('div[name=e]').click(function () {
     $('div[name=f]').text(b);
     $('#d').text(a);
     $('#xj').text(5800);
+    $('#price').val(5800);
+    $('#detail').val(b);
 })
 
     $('#js').click(function () {
+        if (!$("#f").text()||!$("#g").text()){
+            alert("请选择城市"); return false;
+        }
         if ($('#xy').is(":checked")==false){
             alert("请认真读取协议"); return false;
         }
+        var a=$('.bg-back-tt.active').prop('id');
+        var url = "?c=user&a=common&type=3&id="+a;
+        $("form").attr("action",url);
     })
 
 </script>

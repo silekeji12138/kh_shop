@@ -23,10 +23,10 @@
         	<div class="sell-border purchase-border">
 				<div class="sell-nav clearfix">
                 	<div class="pull-left">当前位置：<a href="">首页</a> &gt; <a href="" class="active">出售网店</a></div>
-                    <form method="post" action="index.php?p=show&c=buy&a=search7">
+                    <form method="post" action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&qx=<?=$key?>">
                     <div class="pull-right search-margin">
                         <div class="search-w clearfix">
-                            <input name="key" type="text" class="form-control input-search" placeholder="填写关键词或网店编号" />
+                            <input name="bh" type="text" value="<?=$data2['bh']?>" class="form-control input-search" placeholder="填写网店编号" />
                             <button type="submit" class="btn btn-search"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 }
                              ?>
                             <?php endif; ?>
-                            <li><span><?=$v?><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&qx=<?=$key?>">×</a></span></li>
+                            <li><span><?=$v?><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&qx=<?=$key?>&bh=<?=$data2['bh']?>">×</a></span></li>
                             <?php endif;  ?>
                             <?php endforeach; ?>
                         </ul>
@@ -76,9 +76,9 @@
                             <?php $vs=BuyController::syptAction(); foreach($vs as $v): ?>
 
                             <?php if($v['u1']==$data['pt']){ ?>
-                            <li><a  class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($v['u1']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a  class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($v['u1']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php  }else{ ;?>
-                            <li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($v['u1']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($v['u1']));?>&lx=<?=urlencode(base64_encode($data['lx']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php }?>
 
                             <?php endforeach; ?>
@@ -94,9 +94,9 @@
 
                             <?php $vs1=BuyController::sysclxAction(); foreach($vs1 as $v): ?>
                             <?php if($data['lx']==$v['u1']){ ?>
-                        	<li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($v['u1']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                        	<li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($v['u1']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php }else{ ;?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($v['u1']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($v['u1']));?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php } ?>
                             <?php endforeach; ?>
 
@@ -111,9 +111,9 @@
 
                             <?php $vs2=BuyController::sblxAction(); foreach($vs2 as $v): ?>
                             <?php if($data['sb']==$v['u1']){ ?>
-                            <li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($v['u1']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($v['u1']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php }else{ ;?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($v['u1']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($v['u1']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php } ?>
                             <?php endforeach; ?>
 
@@ -129,9 +129,9 @@
 
                             <?php $vs3=BuyController::sshyAction(); foreach($vs3 as $v): ?>
                             <?php if($data['hy']==$v['u1']){ ?>
-                            <li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($v['u1']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a class="active" role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($v['u1']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php }else{ ;?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($v['u1']));?>&jg=<?=$data['jg']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($v['u1']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php } ?>
                             <?php endforeach; ?>
 
@@ -144,12 +144,12 @@
                 	<div class="pull-left purchase-left">价<span></span>格</div>
                     <div class="pull-left purchase-right">
                     	<ul class="purchase-ul" id="jg">
-                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=1" role="button">5万-10万</a></li>
-                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=2" role="button">10万-20万</a></li>
-                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=3" role="button">20万-50万</a></li>
-                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=4" role="button">50万以上</a></li>
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=1&bh=<?=$data2['bh']?>" role="button">5万-10万</a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=2&bh=<?=$data2['bh']?>" role="button">10万-20万</a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=3&bh=<?=$data2['bh']?>" role="button">20万-50万</a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=4&bh=<?=$data2['bh']?>" role="button">50万以上</a></li>
                         </ul>
-                        <form method="post" action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>">
+                        <form method="post" action="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&bh=<?=$data2['bh']?>">
                         <div class="pull-right">
                         	<input name="low" type="text" class="form-control input-money" />
                             <div class="pull-left money-txt">-</div>
@@ -179,60 +179,60 @@
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane" id="purchase01">
                     	<ul class="purchase-ul purchase-ul-region">
-                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&szdq=1">不限</a></li>
+                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&szdq=1&bh=<?=$data2['bh']?>">不限</a></li>
 
                             <?php $vs4=BuyController::diquAction(); foreach($vs4 as $v): ?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&szdq=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&szdq=<?=$v['u1']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase02">
                     	<ul class="purchase-ul purchase-ul-region01">
-                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&kfqk=1" role="button">不限</a></li>
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&kfqk=1&bh=<?=$data2['bh']?>" role="button">不限</a></li>
 
                             <?php $vs11=BuyController::kfqkAction(); foreach($vs11 as $v): ?>
-                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&kfqk=<?=$v['u1']?>" role="button"><?=$v['u1']?></a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&kfqk=<?=$v['u1']?>&bh=<?=$data2['bh']?>" role="button"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase03">
                     	<ul class="purchase-ul purchase-ul-region02">
-                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&nszz=1">不限</a></li>
+                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&nszz=1&bh=<?=$data2['bh']?>">不限</a></li>
 
                             <?php $vs5=BuyController::zizhiAction(); foreach($vs5 as $v): ?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&nszz=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&nszz=<?=$v['u1']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase04">
                     	<ul class="purchase-ul purchase-ul-region03">
-                        	<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sfdh=1">不限</a></li>
+                        	<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sfdh=1&bh=<?=$data2['bh']?>">不限</a></li>
 
                             <?php $vs6=BuyController::daihuoAction(); foreach($vs6 as $v): ?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sfdh=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sfdh=<?=$v['u1']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase05">
                     	<ul class="purchase-ul purchase-ul-region04">
-                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tghy=1">不限</a></li>
+                        	<li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tghy=1&bh=<?=$data2['bh']?>">不限</a></li>
 
                             <?php $vs7=BuyController::daihuoAction(); foreach($vs7 as $v): ?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tghy=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tghy=<?=$v['u1']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase06">
                     	<ul class="purchase-ul purchase-ul-region05">
-                        	<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sblb=1">不限</a></li>
+                        	<li><a  role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sblb=1&bh=<?=$data2['bh']?>">不限</a></li>
 
                             <?php $vs8=BuyController::sblx1Action(); foreach($vs8 as $v): ?>
-                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sblb=<?=$v['u1']?>"><?=$v['u1']?></a></li>
+                            <li><a role="button" href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sblb=<?=$v['u1']?>&bh=<?=$data2['bh']?>"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
@@ -240,19 +240,19 @@
                     <div role="tabpanel" class="tab-pane" id="purchase07">
                     	<ul class="purchase-ul purchase-ul-region06">
 
-                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sbgh=1" role="button">不限</a></li>
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sbgh=1&bh=<?=$data2['bh']?>" role="button">不限</a></li>
                             <?php $vs9=BuyController::sbghAction(); foreach($vs9 as $v): ?>
-                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sbgh=<?=$v['u1']?>" role="button"><?=$v['u1']?></a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&sbgh=<?=$v['u1']?>&bh=<?=$data2['bh']?>" role="button"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="purchase08">
                     	<ul class="purchase-ul">
-                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tdzr=1"  role="button">不限</a></li>
+                        	<li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tdzr=1&bh=<?=$data2['bh']?>"  role="button">不限</a></li>
 
                             <?php $vs10=BuyController::tdzrAction(); foreach($vs10 as $v): ?>
-                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tdzr=<?=$v['u1']?>" role="button"><?=$v['u1']?></a></li>
+                            <li><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&jg=<?=$data['jg']?>&tdzr=<?=$v['u1']?>&bh=<?=$data2['bh']?>" role="button"><?=$v['u1']?></a></li>
                             <?php endforeach; ?>
 
                         </ul>
@@ -264,8 +264,8 @@
 				<div class="sell-nav border-no clearfix">
                 	<!--<div class="pull-left sell-nav-one">默认排序</div>-->
                 	<div class="pull-left <?=$_GET['model']?'':'sell-nav-one'?>">默认排序</div>
-                    <div class="pull-left"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=shang" role="button" class="sell-px sell-px-one">出售价格</a></div>
-                    <div class="pull-left"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=dj" role="button" class="sell-px">独家店铺<i class="icon sell-px-i">独家</i></a></div>
+                    <div class="pull-left"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=shang&bh=<?=$data2['bh']?>" role="button" class="sell-px sell-px-one">出售价格</a></div>
+                    <div class="pull-left"><a href="index.php?p=show&c=index&a=search5&pt=<?=urlencode(base64_encode($data['pt']));?>&lx=<?=urlencode(base64_encode($data['lx']))?>&sb=<?=urlencode(base64_encode($data['sb']));?>&hy=<?=urlencode(base64_encode($data['hy']));?>&low=<?=$data1['low']?>&high=<?=$data1['high']?>&model=dj&bh=<?=$data2['bh']?>" role="button" class="sell-px">独家店铺<i class="icon sell-px-i">独家</i></a></div>
                     <!--<div class="pull-left"><a role="button" class="sell-px">双十一店铺<i class="icon sell-px-i sell-px-i02">双11</i></a></div>-->
                 </div>
             </div>

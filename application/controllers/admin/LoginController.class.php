@@ -13,6 +13,18 @@ class LoginController extends Controller
     // 验证用户名和密码
     public function signinAction()
     {
+
+        $xianzhi=$_SESSION['number']?$_SESSION['number']:1;
+        if ($xianzhi>=5){
+            $time=$_SESSION['time'];
+            $cha=time()-$time;
+            if ($cha>3600/2){
+                $_SESSION['number']='';
+                $_SESSION['time']='';
+                $this->jump('index.php?p=admin&c=login&a=login', '请重新登录',3);
+            }
+            $this->jump('index.php?p=admin&c=login&a=login', 'IP已被锁定,请半小时后在进行尝试');
+        }
         
         // 1.获取用户名和密码
         $username = trim($_POST['username']);
@@ -28,16 +40,20 @@ class LoginController extends Controller
         $date1 = date('Y-m-d H:i:s', time());
         $date2 = $date1;
         $System1 = new SystemModel('System');
+
+
         $date2 = $System1->oneRowCol("dtime", " u3='" . $Common->getIP() . "' and u4='管理员登录' order by id desc ");
         $date2 = $date2['dtime'];
+
+
         $minute = floor((strtotime($date1) - strtotime($date2)) % 86400 / 60);
-        
-        // echo $date1." date1<br>";
-        // echo $date2." date2<br>";
-        // echo $minute."minute3<br>";
-        // die();
-        
-//         if ($minute < 1) {
+
+//         echo $date1." date1<br>";
+//         echo $date2." date2<br>";
+//         echo $minute."minute3<br>";
+//         die();
+        //登录平率限制
+//         if ($minute < 2) {
 //             $this->jump('index.php?p=admin&c=login&a=login', '您的操作过于频繁');
 //         }
         // 验证和处理
@@ -47,14 +63,17 @@ class LoginController extends Controller
         if (! ($Common->isName($username) || $Common->isName($password))) {
             
             // 写入日志
+
             $System->addSystem($username, $username . ":登录失败，用户名或密码不合法。操作页面:" . $Common->getUrl(), $Common->getIP(), "管理员登录");
             $this->jump('index.php?p=admin&c=login&a=login', '用户名或密码不合法');
+
         }
         
         // 3.调用模型来完成验证操作并给出提示
         $adminModel = new AdminModel('admin');
         $user = $adminModel->checkUser($username, $password);
         if ($user) {
+            $_SESSION['number']='';
             $groupModel = new Model("group");
             $user["zuming"]=$groupModel->selectByPk($user["group_id"])["zuming"];
             // 登录成功,保存登录标识符
@@ -79,10 +98,17 @@ class LoginController extends Controller
             // 跳转
             $this->jump('index.php?p=admin&c=index&a=index', '', 0);
         } else {
+            $xianzhi=$_SESSION['number']?$_SESSION['number']:1;
             // 写入日志
+            var_dump($xianzhi);
             $System->addSystem($username, $username . ":登录失败，用户名或密码错误。操作页面:" . $Common->getUrl(), $Common->getIP(), "管理员登录");
             // 失败
+            $_SESSION['number']=$xianzhi+1;
+            if ($xianzhi>=4){
+                $_SESSION['time']=time();
+            }
             $this->jump('index.php?p=admin&c=login&a=login', '用户名或密码错误');
+
         }
     }
     

@@ -9,6 +9,7 @@
     <link href="public/khshop/css/bootstrap.css" rel="stylesheet">
     <link href="public/khshop/css/animate.min.css" rel="stylesheet">
     <link href="public/khshop/css/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/khshop/css/style_css.css" />
 </head>
 <body class="body-padding-sm">
 <header>
@@ -98,14 +99,36 @@
         <div class="sell-border">
             <div class="gd navbarExample">
                 <ul class="pm-tabs gm-tabs nav clearfix">
-                    <li class="active one"><a href="#one">卖家描述</a></li>
-                    <li class="tow"><a href="#tow">常见问题</a></li>
-                    <li class="three"><a href="#three">购买流程</a></li>
-                    <li class="four"><a href="#four">同类店铺</a></li>
+                    <li class="active one"><a href="#one">店铺截图</a></li>
+                    <li class="two"><a href="#two">卖家描述</a></li>
+                    <li class="three"><a href="#three">常见问题</a></li>
+                    <li class="four"><a href="#four">购买流程</a></li>
+                    <li class="five"><a href="#five">同类店铺</a></li>
                 </ul>
             </div>
             <div class="pm-tabs-c clearfix">
-                <div class="pm-add-tt" id="one">华南地区母婴旗舰店童装女装类目名字好听诚心出售</div>
+
+                <div class="nei-lubno" id="one">
+                    <img src="public/khshop/images/arrow_lft.png" class="arrow_lft"/>
+                    <img src="public/khshop/images/arrow_rht.png" class="arrow_rht"/>
+                    <div class="neibanner">
+                        <ul>
+                            <!--<li><img src="public/khshop/images/neibanner_03.jpg"/></li>-->
+                            <!--<li><img src="public/khshop/images/neibanner_01.jpg"/></li>-->
+                            <!--<li><img src="public/khshop/images/neibanner_02.jpg"/></li>-->
+
+                            <?php foreach($zutu as $v): ?>
+                            <li><img src="<?=$v?>"/></li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="bzj-border bzj-border02" id="two" style="border-bottom:1px solid #e5e5e5;">
+                    <div class="news-title-icon">卖家描述</div>
+                </div>
+                <div class="pm-add-tt" >华南地区母婴旗舰店童装女装类目名字好听诚心出售</div>
                 <div class="bzj-border bzj-border02">
                     <p>店铺半年内动态评分</p>
                     <div class="clearfix">
@@ -157,40 +180,22 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php foreach($m4 as $v): ?>
                         <tr>
-                            <td>2017-10-15</td>
-                            <td>15800</td>
-                            <td>3980</td>
-                            <td>168</td>
-                            <td>18</td>
-                            <td>22</td>
-                            <td>82%</td>
-                            <td>395000</td>
+                            <td><?=$v['tongjiriqi']?></td>
+                            <td><?=$v['lanliang']?></td>
+                            <td><?=$v['fangkeshu']?></td>
+                            <td><?=$v['zhifushangpinshuliang']?></td>
+                            <td><?=$v['zhifumaijiashu']?></td>
+                            <td><?=$v['kedanjia']?></td>
+                            <td><?=$v['zhifuzhuanhualv']?></td>
+                            <td><?=$v['zhifujine']?></td>
                         </tr>
-                        <tr>
-                            <td>2017-10-15</td>
-                            <td>15800</td>
-                            <td>3980</td>
-                            <td>168</td>
-                            <td>18</td>
-                            <td>22</td>
-                            <td>82%</td>
-                            <td>395000</td>
-                        </tr>
-                        <tr>
-                            <td>2017-10-15</td>
-                            <td>15800</td>
-                            <td>3980</td>
-                            <td>168</td>
-                            <td>18</td>
-                            <td>22</td>
-                            <td>82%</td>
-                            <td>395000</td>
-                        </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-                <div class="bzj-border bzj-border02" id="tow">
+                <div class="bzj-border bzj-border02" id="three">
                     <div class="news-title-icon">常见问题</div>
                 </div>
                 <div class="bzj-border bzj-border02">
@@ -211,13 +216,13 @@
 
                     </ul>
                 </div>
-                <div class="bzj-border bzj-border03" id="three">
+                <div class="bzj-border bzj-border03" id="four">
                     <div class="news-title-icon news-title-icon02">购买流程</div>
                 </div>
                 <div class="bzj-border bzj-border02">
                     <div class="lc-img"><img src="public/khshop/images/lc-img.png"></div>
                 </div>
-                <div class="bzj-border bzj-border03" id="four">
+                <div class="bzj-border bzj-border03" id="five">
                     <div class="news-title-icon news-title-icon03">同类店铺</div>
                 </div>
                 <div class="bzj-border bzj-border02">
@@ -308,6 +313,32 @@
 <script src="public/khshop/js/common.js"></script>
 <script src="public/khshop/js/wow.min.js"></script>
 <script>
+    var neibanner= $(".neibanner").width(),
+        neibanner_ul= $(".neibanner ul"),
+        neibanner_li= $(".neibanner li"),
+        iis=false;
+
+    $(".arrow_lft").on("click",function(){
+        if(iis) return;
+        iis=true;
+        neibanner_ul.css("margin-left","-"+neibanner);
+        neibanner_li.last().prependTo(neibanner_ul);
+        neibanner_ul.animate({"margin-left":"+="+neibanner},function(){
+            iis=false;
+        });
+    })
+
+    $(".arrow_rht").on("click",function(){
+        if(iis) return;
+        iis=true;
+        neibanner_ul.animate({"margin-left":"-="+neibanner},function(){
+            $(this).css("margin-left","0");
+            $(this).append(neibanner_li.eq(0));
+            iis=false;
+        });
+    })
+</script>
+<script>
     if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
         new WOW().init();
     };
@@ -374,14 +405,13 @@
     })
 </script>
 <script>
-    $('#id').children('li').prop('class','');
     $(document).ready(function() {
         $('.gm-tabs a').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            if(location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 var $target = $(this.hash);
                 $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
-                if ($target.length) {
-                    var targetOffset = $target.offset().top-100;
+                if($target.length) {
+                    var targetOffset = $target.offset().top - 100;
                     $('html,body').animate({
                             scrollTop: targetOffset
                         },
@@ -392,4 +422,5 @@
         });
     });
 </script>
+
 </html>
