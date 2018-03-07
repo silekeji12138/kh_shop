@@ -38,7 +38,7 @@
                       <input name="status" value="所有" type="radio"> 所有
                     </label>
                     <label class="radio-inline">
-                      <input name="status" value="已提现" type="radio"> 已提现
+                      <input name="status" value="成功" type="radio"> 已提现
                     </label>
                     <label class="radio-inline">
                       <input name="status" value="失败" type="radio"> 失败
@@ -59,7 +59,6 @@
               <th>银行账号</th>
               <th>提现申请时间</th>
               <th>提现金额</th>
-              <th>实际到账</th>
               <th style="width: 120px">提现状态</th>
               <th>备注</th>
             </tr>
@@ -67,12 +66,11 @@
           <tbody>
           <?php foreach($list as $v):?>
             <tr>
-              <td><?=$v['num']?></td>
+              <td><?=$v['lsh']?></td>
               <td><?=$v['bank']?></td>
               <td><?=$v['account']?></td>
-              <td><?=date('Y-m-d',$v['dtime'])?></td>
+              <td><?=substr($v['dtime'],2,10)?></td>
               <td><span class="table-number">¥<?=$v['price']?></span></td>
-              <td><span class="table-number">¥7,800</span></td>
               <td><?=$v['status']?></td>
               <td><?=$v['intro']?></td>
             </tr>

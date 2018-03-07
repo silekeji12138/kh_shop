@@ -23,12 +23,11 @@
             <div class="pull-right">
                 <div class="pull-left select-txt">交易状态</div>
                 <div class="pull-left">
-                    <select class="form-control input">
-                      <option>不限</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                    <select class="form-control input" id="keywords">
+                      <option value="">不限</option>
+                      <option <?=$keywords=='处理中'?'selected':''?> value="处理中">处理中</option>
+                      <option <?=$keywords=='成功'?'selected':''?> value="成功">成功</option>
+                      <option <?=$keywords=='失败'?'selected':''?> value="失败">失败</option>
                     </select>
                 </div>
             </div>
@@ -102,6 +101,10 @@
 <script src="public/khshop/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script type="text/javascript">
+    $("#keywords").change(function () {
+        var keywords = $(this).val();
+        window.location.href="?c=shop&a=upgrade&keywords="+keywords;
+    });
     $(function () {
         var len = $("table tr").length;
         if (len>1){

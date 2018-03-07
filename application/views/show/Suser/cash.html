@@ -20,79 +20,57 @@
                 <li class="active"><a href="">我要提现</a></li>
                 <li><a href="index.php?p=show&c=user&a=log">提现记录</a></li>
             </ul>
-            <div class="pull-right">
-            	<div class="pull-left select-txt radio-txt">起止日期</div>
-            	<div class="pull-left">
-                      <input type="text" id="dt" class="form-control input time-input">
-                      <div id="dd"></div>
-                </div>
-                <div class="pull-left select-txt radio-txt">-</div>
-            	<div class="pull-left">
-                      <input type="text" id="dt02" class="form-control input time-input">
-                      <div id="dd02"></div>
-                </div>
-                <div class="pull-left select-txt radio-txt">处理结果</div>
-                <div class="pull-left radio-cz">
-                    <label class="radio-inline">
-                      <input type="radio"> 所有
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio"> 成功
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio"> 失败
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio"> 处理中
-                    </label>
-                </div>
-                <a href="" class="btn btn-tj btn-tj02 pull-right">立即查询</a>
-            </div>
         </div>
         <table class="table table-sj table-bordered">
           <thead>
             <tr>
               <th>银行账户</th>
-              <th>银行卡尾号</th>
+              <th>开户银行</th>
               <th>开户名</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
+            <?php foreach($lists as $v):?>
             <tr>
-              <td>023612121321232</td>
-              <td>6008</td>
-              <td>王晓晓</td>
+              <td><?=$v['yhkh']?></td>
+              <td><?=$v['khyh']?></td>
+              <td><?=$v['khr']?></td>
               <td>无</td>
             </tr>
+          <?php endforeach;?>
           </tbody>
         </table>
+        <form action="?c=user&a=cash" method="post">
         <div class="table-bottom">
-            <a role="button" class="btn btn-tj btn-tj02 btn-tx"><i class="glyphicon glyphicon-plus-sign"></i>添加银行卡<span>（还可以添加5个）</span></a>
+            <a role="button" href="?p=show&c=user&a=bind" class="btn btn-tj btn-tj02 btn-tx"><i class="glyphicon glyphicon-plus-sign"></i>添加银行卡<span>（还可以添加<?=5-$count[0]['total']?>个）</span></a>
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">提现金额</div>
-              <div class="pull-left"><input type="text" class="form-control input" /></div>
+              <div class="pull-left"><input type="text" class="form-control input" id="price" value="0.00" name="price" /></div>
               <div class="pull-left cs-left-txt cs-left-txt-sm">元</div>
-              <div class="pull-left cs-left-txt cs-left-txt-sm txt-tx">可提现金额<span> 0.00 </span>元</div>
+              <div class="pull-left cs-left-txt cs-left-txt-sm txt-tx">可提现金额<span id="balance"> <?=$balance[0]['property']?></span>元</div>
             </div>
 			<div class="clearfix gl-clearfix">
               <div class="pull-left cs-left-txt cs-left-txt02">支付密码</div>
-              <div class="pull-left"><input type="password" class="form-control input tx-password" /></div>
-			  <div class="pull-left"><a href="" class="btn btn-tj btn-tj02">设置支付密码</a></div>
+              <div class="pull-left"><input type="password" name="paywords" class="form-control input tx-password" /></div>
+			  <div class="pull-left"><a href="?c=user&a=paywords" class="btn btn-tj btn-tj02">设置支付密码</a></div>
             </div>
 			<div class="clearfix gl-clearfix">
-              <div class="pull-left cs-left-txt cs-left-txt02">短信验证码</div>
-              <div class="pull-left"><input type="password" class="form-control input tx-dx" /></div>
+              <div class="pull-left cs-left-txt cs-left-txt02">
+                  短信验证码
+              </div>
+              <div class="pull-left"><input type="text" name="yzm" class="form-control input tx-dx" /></div>
             </div>
             <div class="clearfix tx-bottom">
             	<div class="clearfix">
-            	<div class="pull-left cs-left-txt cs-left-txt-sm">手机号：159****6968</div>
-                <div class="pull-left"><input type="button" class="btn btn-tj btn-tj02" value="获取短信验证码" /></div>
+            	<div class="pull-left cs-left-txt cs-left-txt-sm">手机号：<?=substr($balance[0]['tel'],0,3)?>****<?=substr($balance[0]['tel'],7,4)?></div>
+                <div class="pull-left"><input type="button" id="bind"  class="btn btn-tj btn-tj02" value="获取短信验证码" /></div>
                 </div>
-                <div class="tx-ts">【温馨提示：为了您的满意，提现手续费将由店来店往承担，感谢您对舞泡的支持！】</div>
-                <button type="button" class="btn btn-tj btn-tj01 btn-login">确认提交</button>
+                <div class="tx-ts">【温馨提示：为了您的满意，提现手续费将由店来店往承担，感谢您对店来店往的支持！】</div>
+                <button type="submit" id="submit" class="btn btn-tj btn-tj01 btn-login">确认提交</button>
             </div>
         </div>
+        </form>
         <div class="ewm-c">
             <div class="ewm text-center">
                 <div><img src="public/khshop/images/user/ewm.png"></div>
@@ -100,6 +78,7 @@
             </div>
         </div>
         <div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved  京ICP备XD-20176980号  未经同意，不得转载</div>
+        <input type="hidden" id="tel" value="<?=$balance[0]['tel']?>">
     </div>
 </body>
 <script src="public/khshop/js/jquery.min.js"></script>
@@ -107,6 +86,54 @@
 <script type="text/javascript" src="public/khshop/js/calendar.js" charset="UTF-8"></script>
 <script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
 <script>
+
+    $("#bind").click(function () {
+        var reg = /^1[34578]\d{9}$/;
+        var txt = $(this);
+        if (reg.test($("#tel").val())){
+            $.post('?c=sms&a=sms',{
+                'tel':$("#tel").val()
+            },function (data) {
+                if (data=='success'){
+                    alert("短信发送成功");
+                    settime(txt);
+                }else {
+                    alert("发送失败，请稍后再试")
+                }
+            })
+        }else {
+            alert("手机格式不正确")
+        }
+    });
+
+    $("#submit").click(function () {
+        var money = parseFloat($("#balance").text());
+        var price = parseFloat($("#price").val());
+        if (money < price){
+            alert('余额不足');
+            return false;
+        }
+    });
+
+    var countdown=120;
+    function settime(obj) { //发送验证码倒计时
+        if (countdown == 0) {
+            obj.attr('disabled',false);
+            //obj.removeattr("disabled");
+            obj.val("获取验证码");
+            countdown = 120;
+            return;
+        } else {
+            obj.attr('disabled',true);
+            obj.val("重新发送(" + countdown + ")");
+            countdown--;
+        }
+        setTimeout(function() {
+                settime(obj)
+            }
+            ,1000)
+    }
+
 	//日历JS
     $('#dd').calendar({
         trigger: '#dt',

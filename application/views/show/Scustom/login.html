@@ -1,0 +1,68 @@
+﻿<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>客服登录</title>
+		<link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+		<link href="public/khshop/css/css.css" rel="stylesheet">
+		<link rel="stylesheet" href="public/khshop/css/user.css" />
+		<link href="public/khshop/css/style_css.css" rel="stylesheet">
+		<script src="public/khshop/js/jquery.min.js"></script>
+		<style>
+			.btn-g{width:100%;color:#fff;background:#0ba96b; font-size:16px; font-weight:500;}
+			.btn-g02:hover{background:#0bb975;}
+			.forget a{color:#0ba96b !important;}
+		</style>
+	</head>
+
+	<body>
+		<div class="ke-login">
+			<div class="ke-loginimg">
+				<p><img src="public/khshop/images/ke-loginback_01.jpg"/></p>
+				
+			</div>
+			<div class="ke-loins">
+				<div class="ke-logo">
+					<img src="public/khshop/images/ke-logo_03.png"/>
+				</div>
+				<form action="?c=login&a=custom_login" method="post">
+				<div class="ke-loin box">
+					<div class="ke-lointop">
+						<p>
+							<img src="public/khshop/images/ke-heng_03.jpg"/>
+							<span>客服登录</span>
+							<img src="public/khshop/images/ke-heng_03.jpg"/>
+						</p>
+					</div>
+					<div style="height:34px;"></div>
+
+					<input type="text" name="username"  value="" class="ke-input box" placeholder="请输入您的用户名"/>
+					<input type="password" name="pwd"  value="" class="ke-input box" placeholder="请输入您的密码"/>
+
+					<div class="clearfix">
+              <div class="pull-left" style="margin-top:-10px;">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="remember"> 记住用户名
+                  </label>
+                </div>
+              </div>
+              <div class="pull-right forget"><a href="">忘记密码？</a></div>
+          </div>
+          <button type="submit" class="btn btn-g btn-g02" >登 录</button>
+
+				</div>
+				</form>
+			</div>
+		</div>
+	</body>
+
+
+
+
+
+
+
+</html>

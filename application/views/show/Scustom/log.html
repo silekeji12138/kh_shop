@@ -1,0 +1,91 @@
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>操作日志</title>
+
+		<!-- Bootstrap -->
+		<link href="public/khshop/css/bootstrap.css" rel="stylesheet">
+		<link href="public/khshop/css/user.css" rel="stylesheet">
+		<link rel="stylesheet" href="public/khshop/css/style_css.css" />
+	</head>
+
+	<body>
+	<?php include CUR_VIEW_PATH."Spublic/custom_header.html";?>
+		<div class="right-c" id="right-c">
+			<div class="nav-list">当前位置：
+				<a href="">个人中心</a> >
+				<a href="javascript:;" class="active">企业服务</a>
+			</div>
+			
+			<ul class="clearfix pull-left tab-list">
+        <li class="active"><a href="">操作日志</a></li>
+      </ul>
+			<table class="table table-sj table-dj table-bordered">
+              <thead>
+                <tr>
+                  <th style="width:20%;">操作时间</th>
+                  <th style="width:16%;">操作人员</th>
+                  <th style="width:22%;">操作类型</th>
+                  <th>操作字段</th>
+                </tr>
+              </thead>
+              <tbody>
+			  <?php foreach($lists as $v):?>
+                <tr>
+                  <td><?=$v['dtime']?></td>
+                  <td><?=$v['caozuoren']?></td>
+                  <td><?=$v['caozuo']?></td>
+                  <td>--</td>
+                </tr>
+                <?php endforeach;?>
+              </tbody>
+            </table>
+			
+			<div class="ewm-c">
+				<div class="ewm text-center">
+					<div><img src="public/khshop/images/user/ewm.png"></div>
+					扫码关注我们
+				</div>
+			</div>
+			<div class="footer text-center">Copyright © 2015-2017,www.dianlaidianwang.com, All rights reserved 京ICP备XD-20176980号 未经同意，不得转载</div>
+		</div>
+	</body>
+	<script src="public/khshop/js/jquery.min.js"></script>
+	<script src="public/khshop/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="public/khshop/js/user.nicescroll.js"></script>
+	<script type="text/javascript" src="public/khshop/js/zen_javascript.js" ></script>
+	<script type="text/javascript">
+		$("#nav-left").niceScroll({
+			cursorcolor: "#a5a5a5",
+			cursoropacitymax: 1,
+			touchbehavior: false,
+			cursorwidth: "5px",
+			cursorborder: "0",
+			cursorborderradius: "5px"
+		});
+		$("#right-c").niceScroll({
+			cursorcolor: "#a5a5a5",
+			cursoropacitymax: 1,
+			touchbehavior: false,
+			cursorwidth: "5px",
+			cursorborder: "0",
+			cursorborderradius: "5px"
+		});
+	</script>
+	<script>
+		$(".nav-click").click(function() {
+			$(".nav-click").parents("li").removeClass("active");
+			$(".nav-down").slideUp("slow");
+			if($(this).parents("li").find(".nav-down").is(":hidden")) {
+				$(this).parents("li").find(".nav-down").slideDown("slow");
+				$(this).parents("li").addClass("active");
+			} else {
+				$(this).parents("li").find(".nav-down").slideUp("slow");
+			}
+		});
+	</script>
+
+</html>

@@ -199,10 +199,15 @@ class ShopController extends BaseController
     public function upgradeAction(){
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
-        $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=78 GROUP BY `no` ORDER BY dtime DESC");
+        if (isset($_GET['keywords'])){
+            $keywords = $_GET['keywords'];
+            $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=82 and clzt LIKE  '%{$keywords}%'  GROUP BY `no` ORDER BY dtime DESC");
+        }else{
+            $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=82  GROUP BY `no` ORDER BY dtime DESC");
+        }
         $lists = [];
         foreach ($cate as $v){
-            $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=78 AND  `no`={$v['no']}  ORDER BY dtime DESC");
+            $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=82 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }
 
         include CUR_VIEW_PATH . "Sshop" . DS ."upgrade.html";
@@ -212,10 +217,15 @@ class ShopController extends BaseController
     public function agentAction(){
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
-        $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=79  GROUP BY `no` ORDER BY dtime DESC");
+        if (isset($_GET['keywords'])){
+            $keywords = $_GET['keywords'];
+            $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=83 and clzt LIKE  '%{$keywords}%'  GROUP BY `no` ORDER BY dtime DESC");
+        }else{
+            $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=83  GROUP BY `no` ORDER BY dtime DESC");
+        }
         $lists = [];
         foreach ($cate as $v){
-            $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=79 AND  `no`={$v['no']}  ORDER BY dtime DESC");
+            $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=83 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }
         include CUR_VIEW_PATH . "Sshop" . DS ."agent.html";
     }
@@ -224,11 +234,17 @@ class ShopController extends BaseController
     public function replaceAction(){
         $model = new Model('service');
         $uid = $_SESSION['user_id'];
-        $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=80  GROUP BY `no` ORDER BY dtime DESC");
+        if (isset($_GET['keywords'])){
+            $keywords = $_GET['keywords'];
+            $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=84 and clzt LIKE  '%{$keywords}%'  GROUP BY `no` ORDER BY dtime DESC");
+        }else{
+            $cate = $model->select("select `no` from sl_service WHERE uid={$uid} and sort_id=84  GROUP BY `no` ORDER BY dtime DESC");
+        }
         $lists = [];
         foreach ($cate as $v){
-            $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=80 AND  `no`={$v['no']}  ORDER BY dtime DESC");
+            $lists[$v['no']] = $model->select("select *from sl_service WHERE uid={$uid} and sort_id=84 AND  `no`={$v['no']}  ORDER BY dtime DESC");
         }
+
         include CUR_VIEW_PATH . "Sshop" . DS ."replace.html";
     }
 
